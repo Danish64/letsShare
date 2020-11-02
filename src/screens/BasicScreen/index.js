@@ -6,12 +6,12 @@ import {Text, View, TouchableOpacity} from 'react-native';
 
 //Third Party Exports Ends
 
-const Letsshare = () => {
+const Component = () => {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Lets Share Architecture Settings...</Text>
+      <Text>Component Screen</Text>
     </View>
   );
 };
 
-export default Letsshare;
+export default Component;
