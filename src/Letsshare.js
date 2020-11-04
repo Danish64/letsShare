@@ -1,17 +1,13 @@
 import React from 'react';
-import {Text, View, TouchableOpacity} from 'react-native';
-
+import {Text, View} from 'react-native';
+import UITemplate from './screens/UiTemplateScreen';
 //Native Exports Ends Here
 //Third Party Exports Starts
 
 //Third Party Exports Ends
 
 const Letsshare = () => {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Lets Share Architecture Settings...</Text>
-    </View>
-  );
+  return <UITemplate />;
 };
 
 export default Letsshare;
