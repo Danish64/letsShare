@@ -1,15 +1,12 @@
 import React from 'react';
-import {Text} from 'react-native';
 import Container from 'res/UniversalComponents/Container.js';
+import SplashScreenAnimator from '../../components/SplashScreenAnimation';
 //Native Exports Ends Here
-//Third Party Exports Starts
 
-//Third Party Exports Ends
-
-const Component = () => {
+const Component = ({navigation}) => {
   return (
     <Container>
-      <Text>Basic Blank Screen To Start With</Text>
+      <SplashScreenAnimator navigation={navigation} />
     </Container>
   );
 };

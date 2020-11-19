@@ -56,3 +56,9 @@ export const CaptionText = (props) => (
 export const OverlineText = (props) => (
   <Text style={styles.overlineText}>{props.children}</Text>
 );
+export const BottomTabText = (props) => (
+  <Text style={styles.bottomTabText}>{props.children}</Text>
+);
+export const BottomTabFocusedText = (props) => (
+  <Text style={styles.bottomTabFocusedText}>{props.children}</Text>
+);

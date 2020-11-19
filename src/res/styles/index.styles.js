@@ -1,118 +1,204 @@
-import {StyleSheet, Platform} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {Colors} from 'res/constants/Colors';
+import {
+  DEFAULT_SCREEN_COLOR,
+  DEFAULT_SPLASH_SCREEN_COLOR,
+  DEFAULT_HEADING_TEXT_SIZE,
+  LARGE_HEADING_TEXT_SIZE,
+  DEFAULT_SUBTITLE_TEXT_SIZE,
+  DEFAULT_GROUP_LABEL_TEXT_SIZE,
+  DEFAULT_BODY_TEXT_SIZE,
+  LIGHT_BODY_TEXT_SIZE,
+  DEFAULT_BUTTON_TEXT_SIZE,
+  DEFAULT_CAPTION_TEXT_SIZE,
+  DEFAULT_OVERLINE_TEXT_SIZE,
+  DEFAULT_BUTTON_PADDING_VERTICAL,
+  DEFAULT_BUTTON_PADDING_HORIZONTAL,
+  DEFAULT_BUTTON_RADIUS,
+} from 'res/constants/constants';
 import {s, vs, ms} from 'react-native-size-matters';
 
+const FONT_AIRBNB_CEREAL_BOLD = 'AirbnbCereal-Bold';
+const FONT_AIRBNB_CEREAL_MEDIUM = 'AirbnbCereal-Medium';
+const FONT_AIRBNB_CEREAL_BLACK = 'AirbnbCereal-Black';
+const FONT_AIRBNB_CEREAL_BOOK = 'AirbnbCereal-Book';
+const FONT_AIRBNB_CEREAL_LIGHT = 'AirbnbCereal-Light';
+
+const headingTextProperties = {
+  fontFamily: FONT_AIRBNB_CEREAL_BOLD,
+  letterSpacing: ms(0.15),
+};
+const subTitleProperties = {
+  fontSize: ms(DEFAULT_SUBTITLE_TEXT_SIZE),
+  fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
+  letterSpacing: ms(0.15),
+};
+const bodyTextProperties = {
+  fontSize: ms(DEFAULT_BODY_TEXT_SIZE),
+  fontFamily: FONT_AIRBNB_CEREAL_LIGHT,
+  letterSpacing: ms(0.5),
+};
+
+const buttonTextProperties = {
+  fontSize: ms(DEFAULT_BUTTON_TEXT_SIZE),
+  fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
+  letterSpacing: ms(0.75),
+};
+
+const buttonProperties = {
+  paddingVertical: vs(DEFAULT_BUTTON_PADDING_VERTICAL),
+  paddingHorizontal: s(DEFAULT_BUTTON_PADDING_HORIZONTAL),
+  borderRadius: ms(DEFAULT_BUTTON_RADIUS),
+};
+
 export default StyleSheet.create({
+  // Screen Styles Container
+  screenStyle: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: DEFAULT_SCREEN_COLOR,
+  },
+  //Splash Screen Style Starts
+  splashScreenStyle: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: DEFAULT_SPLASH_SCREEN_COLOR,
+  },
+  //Splash Screen Style ends
+  // Text/Font Styling Starts Here
+
   heading: {
-    fontSize: ms(20),
+    ...headingTextProperties,
+    fontSize: ms(DEFAULT_HEADING_TEXT_SIZE),
     color: Colors.Black,
-    fontFamily: 'AirbnbCereal-Bold',
-    letterSpacing: ms(0.15),
   },
   headingGrey: {
-    fontSize: ms(20),
+    ...headingTextProperties,
+
+    fontSize: ms(DEFAULT_HEADING_TEXT_SIZE),
     color: Colors.DarkGrey,
-    fontFamily: 'AirbnbCereal-Bold',
-    letterSpacing: ms(0.15),
   },
 
   headingLrg: {
-    fontSize: ms(24),
+    ...headingTextProperties,
+
+    fontSize: ms(LARGE_HEADING_TEXT_SIZE),
     color: Colors.Black,
-    fontFamily: 'AirbnbCereal-Bold',
-    letterSpacing: ms(0.15),
   },
   headingLrgGrey: {
-    fontSize: ms(24),
+    ...headingTextProperties,
+
+    fontSize: ms(LARGE_HEADING_TEXT_SIZE),
     color: Colors.DarkGrey,
-    fontFamily: 'AirbnbCereal-Bold',
-    letterSpacing: ms(0.15),
   },
 
   subTitle: {
-    fontSize: ms(18),
+    ...subTitleProperties,
     color: Colors.DarkGrey,
-    fontFamily: 'AirbnbCereal-Medium',
-    letterSpacing: ms(0.15),
   },
   subTitleBlack: {
-    fontSize: ms(18),
+    ...subTitleProperties,
     color: Colors.Black,
-    fontFamily: 'AirbnbCereal-Medium',
-    letterSpacing: ms(0.15),
   },
   subTitleWhite: {
-    fontSize: ms(18),
+    ...subTitleProperties,
     color: Colors.White,
-    fontFamily: 'AirbnbCereal-Medium',
-    letterSpacing: ms(0.15),
   },
   subTitleBold: {
-    fontSize: ms(18),
+    fontSize: ms(DEFAULT_SUBTITLE_TEXT_SIZE),
     color: Colors.DarkGrey,
-    fontFamily: 'AirbnbCereal-Black',
+    fontFamily: FONT_AIRBNB_CEREAL_BLACK,
     letterSpacing: ms(0.1),
   },
   groupLabel: {
-    fontSize: ms(16),
+    fontSize: ms(DEFAULT_GROUP_LABEL_TEXT_SIZE),
     color: Colors.LightGrey,
-    fontFamily: 'AirbnbCereal-Book',
+    fontFamily: FONT_AIRBNB_CEREAL_BOOK,
     letterSpacing: ms(0.15),
     textTransform: 'uppercase',
   },
+
   body: {
-    fontSize: ms(16),
+    ...bodyTextProperties,
     color: Colors.LightGrey,
-    fontFamily: 'AirbnbCereal-Light',
-    letterSpacing: ms(0.5),
   },
   bodyWhite: {
-    fontSize: ms(16),
+    ...bodyTextProperties,
     color: Colors.White,
-    fontFamily: 'AirbnbCereal-Light',
-    letterSpacing: ms(0.5),
   },
   bodyBlack: {
-    fontSize: ms(16),
+    ...bodyTextProperties,
     color: Colors.Black,
-    fontFamily: 'AirbnbCereal-Light',
-    letterSpacing: ms(0.5),
   },
   bodyLight: {
-    fontSize: ms(14),
+    ...bodyTextProperties,
+    fontSize: ms(LIGHT_BODY_TEXT_SIZE),
     color: Colors.LightGrey,
-    fontFamily: 'AirbnbCereal-Light',
-    letterSpacing: ms(0.5),
   },
+
+  bottomTabText: {
+    fontSize: ms(10),
+    fontFamily: FONT_AIRBNB_CEREAL_BOOK,
+    color: Colors.LightGrey,
+    marginBottom: ms(5),
+  },
+  bottomTabFocusedText: {
+    fontSize: ms(10),
+    fontFamily: FONT_AIRBNB_CEREAL_BOLD,
+    marginBottom: ms(5),
+  },
+  bottomTabHeight: {
+    height: ms(55),
+  },
+  //ButtonText Properties
+
   buttonTextBlack: {
-    fontSize: ms(14),
+    ...buttonTextProperties,
     color: Colors.Black,
-    fontFamily: 'AirbnbCereal-Medium',
-    letterSpacing: ms(1.25),
   },
   buttonTextWhite: {
-    fontSize: ms(14),
+    ...buttonTextProperties,
     color: Colors.White,
-    fontFamily: 'AirbnbCereal-Medium',
-    letterSpacing: ms(1.25),
   },
   textButtonText: {
-    fontSize: ms(14),
+    ...buttonTextProperties,
     color: Colors.Primary,
-    fontFamily: 'AirbnbCereal-Medium',
-    letterSpacing: ms(1.25),
   },
   captionText: {
-    fontSize: ms(12),
+    fontSize: ms(DEFAULT_CAPTION_TEXT_SIZE),
     color: Colors.LightGrey,
-    fontFamily: 'AirbnbCereal-Medium',
+    fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
     letterSpacing: ms(0.4),
   },
   overlineText: {
-    fontSize: ms(10),
+    fontSize: ms(DEFAULT_OVERLINE_TEXT_SIZE),
     color: Colors.Black,
-    fontFamily: 'AirbnbCereal-Black',
+    fontFamily: FONT_AIRBNB_CEREAL_BLACK,
     letterSpacing: ms(1.5),
     textTransform: 'uppercase',
   },
+  // Text/Font Styling Ends Here
+  // Button Styling Starts Here
+
+  buttonPrimary: {
+    ...buttonProperties,
+    backgroundColor: Colors.Primary,
+  },
+  buttonPrimaryWhite: {
+    ...buttonProperties,
+    backgroundColor: Colors.White,
+  },
+  buttonPrimaryDarkGrey: {
+    ...buttonProperties,
+    backgroundColor: Colors.DarkGrey,
+  },
+  buttonOutlined: {
+    ...buttonProperties,
+    borderColor: Colors.Primary,
+    borderWidth: ms(2),
+  },
+  // Button Styling Ends Here
 });

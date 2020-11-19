@@ -1,7 +1,10 @@
 import React from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, ScrollView} from 'react-native';
+import Container from 'res/UniversalComponents/Container.js';
 import TextTemplate from './TextTemplates';
+import ButtonsTemplate from './Buttons';
 import Logo from 'res/images/Logos/LogoPrimary.png';
+import SplashScreen from '../SplashScreen';
 
 //Native Exports Ends Here
 //Third Party Exports Starts
@@ -10,13 +13,7 @@ import Logo from 'res/images/Logos/LogoPrimary.png';
 
 const Component = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'flex-start',
-        padding: 5,
-        backgroundColor: 'white',
-      }}>
+    <Container>
       <View
         style={{
           width: '100%',
@@ -29,8 +26,11 @@ const Component = () => {
           source={Logo}
         />
       </View>
-      <TextTemplate />
-    </View>
+
+      {/* <TextTemplate /> */}
+      <ButtonsTemplate />
+    </Container>
+    // <SplashScreen />
   );
 };
 

@@ -19,7 +19,7 @@ import {
   TextButton,
   CaptionText,
   OverlineText,
-} from 'res/UBC/Text.js';
+} from 'res/UniversalComponents/Text.js';
 
 //Native Exports Ends Here
 //Third Party Exports Starts
