@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeStack from '../ScreenStacks/HomeStack';
 import SpaceShareStack from '../ScreenStacks/SpaceShareStack';
@@ -10,7 +11,6 @@ import EventStack from '../ScreenStacks/EventManageStack';
 import Inbox from '../../screens/ModulesScreens/InboxScreen';
 import Utilities from '../../screens/ModulesScreens/UtilitiesScreen';
 import UserManagerStack from '../ScreenStacks/UserManagerStack';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from 'res/styles/index.styles.js';
 import {
   BottomTabText,

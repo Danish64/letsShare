@@ -41,6 +41,5 @@ function* signupRequest(obj) {
 
 export default function* watcher() {
   yield all([takeLatest('LOGIN_REQUEST', loginRequest)]);
-
   yield all([takeLatest('SIGNUP_REQUEST', signupRequest)]);
 }

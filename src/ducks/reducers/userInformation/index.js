@@ -25,8 +25,8 @@ const userInformation = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-
-        message: 'Login Sucessfull',
+        message: 'Login Succeed',
+        loginResponse: action.data,
       };
     case LOGIN_FALIURE:
       return {
