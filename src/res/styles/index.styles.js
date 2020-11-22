@@ -77,20 +77,17 @@ export default StyleSheet.create({
   },
   headingGrey: {
     ...headingTextProperties,
-
     fontSize: ms(DEFAULT_HEADING_TEXT_SIZE),
     color: Colors.DarkGrey,
   },
 
   headingLrg: {
     ...headingTextProperties,
-
     fontSize: ms(LARGE_HEADING_TEXT_SIZE),
     color: Colors.Black,
   },
   headingLrgGrey: {
     ...headingTextProperties,
-
     fontSize: ms(LARGE_HEADING_TEXT_SIZE),
     color: Colors.DarkGrey,
   },

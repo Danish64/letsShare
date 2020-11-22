@@ -1,3 +1,5 @@
+import {Colors} from 'res/constants/Colors.js';
+
 export const ANIMATED_SPRING_FRICTION = 6.75;
 export const ANIMATED_SPRING_TENSION = 100;
 export const ANIMATED_ELASTIC_DURATION = 300;
@@ -31,3 +33,9 @@ export const DEFAULT_OVERLINE_TEXT_SIZE = 10;
 export const DEFAULT_BUTTON_PADDING_VERTICAL = 12;
 export const DEFAULT_BUTTON_PADDING_HORIZONTAL = 25;
 export const DEFAULT_BUTTON_RADIUS = 8;
+
+export const DEFAULT_BOTTOM_TAB_ICON_SIZE = 26;
+export const DEFAULT_BOTTOM_TAB_ICON_SCALE_FACTOR = 0.6;
+
+//Color Constants
+export const ACTIVE_COLOR = Colors.Primary;

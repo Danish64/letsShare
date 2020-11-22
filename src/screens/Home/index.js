@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
-import {Text} from 'react-native';
 import Container from 'res/UniversalComponents/Container.js';
+import {HeadingText} from 'res/UniversalComponents/Text.js';
 //For Redux
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -19,7 +19,7 @@ const Component = ({loginRequest, userInfo}) => {
   }, [userInfo]);
   return (
     <Container>
-      <Text>Homescreen</Text>
+      <HeadingText>Home</HeadingText>
     </Container>
   );
 };

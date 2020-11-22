@@ -1,6 +1,7 @@
 import React from 'react';
-import {Text} from 'react-native';
 import Container from 'res/UniversalComponents/Container.js';
+import {HeadingText} from 'res/UniversalComponents/Text.js';
+
 //Native Exports Ends Here
 //Third Party Exports Starts
 
@@ -9,7 +10,7 @@ import Container from 'res/UniversalComponents/Container.js';
 const Component = () => {
   return (
     <Container>
-      <Text>Food Share Screens</Text>
+      <HeadingText>Food Share Screens</HeadingText>
     </Container>
   );
 };
