@@ -9,7 +9,7 @@ import Container from 'res/UniversalComponents/Container.js';
 const Component = () => {
   return (
     <Container>
-      <Text>Basic Blank Screen To Start With</Text>
+      <Text>Basic Blank Screen To Start With Test</Text>
     </Container>
   );
 };
