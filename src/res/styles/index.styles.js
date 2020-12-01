@@ -55,9 +55,10 @@ export default StyleSheet.create({
   // Screen Styles Container
   screenStyle: {
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
     backgroundColor: DEFAULT_SCREEN_COLOR,
+  },
+  scrollViewContainer: {
+    marginHorizontal: ms(20),
   },
   //Splash Screen Style Starts
   splashScreenStyle: {
@@ -91,6 +92,12 @@ export default StyleSheet.create({
     fontSize: ms(LARGE_HEADING_TEXT_SIZE),
     color: Colors.DarkGrey,
   },
+  logoText: {
+    fontFamily: FONT_AIRBNB_CEREAL_BLACK,
+    letterSpacing: ms(0.25),
+    fontSize: ms(28),
+    color: Colors.Primary,
+  },
 
   subTitle: {
     ...subTitleProperties,
@@ -112,7 +119,7 @@ export default StyleSheet.create({
   },
   groupLabel: {
     fontSize: ms(DEFAULT_GROUP_LABEL_TEXT_SIZE),
-    color: Colors.LightGrey,
+    color: Colors.DarkGrey,
     fontFamily: FONT_AIRBNB_CEREAL_BOOK,
     letterSpacing: ms(0.15),
     textTransform: 'uppercase',
@@ -196,6 +203,9 @@ export default StyleSheet.create({
     ...buttonProperties,
     borderColor: Colors.Primary,
     borderWidth: ms(2),
+  },
+  roundSearchIcon: {
+    marginRight: s(10),
   },
   // Button Styling Ends Here
 });

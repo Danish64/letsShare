@@ -14,6 +14,9 @@ export const HeadingTextLarge = (props) => (
 export const HeadingTextLargeGrey = (props) => (
   <Text style={styles.headingLrgGrey}>{props.children}</Text>
 );
+export const LogoText = (props) => (
+  <Text style={styles.logoText}>{props.children}</Text>
+);
 export const SubtitleText = (props) => (
   <Text style={styles.subTitle}>{props.children}</Text>
 );

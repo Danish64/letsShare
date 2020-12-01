@@ -7,4 +7,5 @@ export const Colors = {
   Failure: '#D44333',
   Black: '#000000',
   White: '#FFFFFF',
+  SearchBarWhite: '#F5F5F5',
 };
