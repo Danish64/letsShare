@@ -21,7 +21,7 @@ const Component = ({loginRequest, userInfo, navigation}) => {
     loginRequest();
   }, []);
   useEffect(() => {
-    console.log('UserInfo on Home Screen', userInfo);
+    console.log('UserInfo on Home Screen tedt', userInfo);
   }, [userInfo]);
   return (
     <Container>
