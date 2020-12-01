@@ -11,7 +11,7 @@ const Component = (props) => {
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
-      style={{marginHorizontal: 20}}>
+      style={styles.scrollViewContainer}>
       {props.children}
     </ScrollView>
   );

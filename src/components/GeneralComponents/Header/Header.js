@@ -18,7 +18,7 @@ const Component = ({navigation, navigateTo}) => {
   return (
     <View style={styles.headerArea}>
       <View style={styles.logoArea}>
-        <LogoText>let's share</LogoText>
+        <LogoText>Let's Share</LogoText>
       </View>
       <SearchRoundIcon navigation={navigation} navigateTo={navigateTo} />
     </View>

@@ -16,7 +16,7 @@ import {
   DEFAULT_BUTTON_PADDING_HORIZONTAL,
   DEFAULT_BUTTON_RADIUS,
 } from 'res/constants/constants';
-import {s, vs, ms} from 'react-native-size-matters';
+import {s, vs, ms, mvs} from 'react-native-size-matters';
 
 const FONT_AIRBNB_CEREAL_BOLD = 'AirbnbCereal-Bold';
 const FONT_AIRBNB_CEREAL_MEDIUM = 'AirbnbCereal-Medium';
@@ -117,6 +117,12 @@ export default StyleSheet.create({
     fontFamily: FONT_AIRBNB_CEREAL_BLACK,
     letterSpacing: ms(0.1),
   },
+  sectionHeading: {
+    fontSize: mvs(20, 0.7),
+    color: Colors.Black,
+    fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
+    letterSpacing: ms(0.2),
+  },
   groupLabel: {
     fontSize: ms(DEFAULT_GROUP_LABEL_TEXT_SIZE),
     color: Colors.DarkGrey,
@@ -137,6 +143,11 @@ export default StyleSheet.create({
     ...bodyTextProperties,
     color: Colors.Black,
   },
+  bodyBold: {
+    ...bodyTextProperties,
+    fontFamily: FONT_AIRBNB_CEREAL_BOLD,
+    color: Colors.Black,
+  },
   bodyLight: {
     ...bodyTextProperties,
     fontSize: ms(LIGHT_BODY_TEXT_SIZE),
@@ -147,15 +158,15 @@ export default StyleSheet.create({
     fontSize: ms(10),
     fontFamily: FONT_AIRBNB_CEREAL_BOOK,
     color: Colors.LightGrey,
-    marginBottom: ms(5),
+    marginBottom: mvs(12, 0.7),
   },
   bottomTabFocusedText: {
     fontSize: ms(10),
     fontFamily: FONT_AIRBNB_CEREAL_BOLD,
-    marginBottom: ms(5),
+    marginBottom: ms(12, 0.7),
   },
   bottomTabHeight: {
-    height: ms(55),
+    height: mvs(55, 0.7),
   },
   //ButtonText Properties
 
@@ -208,4 +219,11 @@ export default StyleSheet.create({
     marginRight: s(10),
   },
   // Button Styling Ends Here
+  scrollViewContainer: {
+    marginHorizontal: mvs(20, 0.7),
+  },
+
+  //ScrollViewContainer Styles
+
+  //ScrollViewContainer Styles ends
 });

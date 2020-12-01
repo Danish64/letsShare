@@ -29,6 +29,9 @@ export const SubtitleTextWhite = (props) => (
 export const SubtitleTextBold = (props) => (
   <Text style={styles.subTitleBold}>{props.children}</Text>
 );
+export const SectionHeadingText = (props) => (
+  <Text style={styles.sectionHeading}>{props.children}</Text>
+);
 export const GroupLabelText = (props) => (
   <Text style={styles.groupLabel}>{props.children}</Text>
 );
@@ -40,6 +43,9 @@ export const BodyTextWhite = (props) => (
 );
 export const BodyTextBlack = (props) => (
   <Text style={styles.bodyBlack}>{props.children}</Text>
+);
+export const BodyTextBold = (props) => (
+  <Text style={styles.bodyBold}>{props.children}</Text>
 );
 export const BodyTextLight = (props) => (
   <Text style={styles.bodyLight}>{props.children}</Text>

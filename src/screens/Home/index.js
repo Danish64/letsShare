@@ -25,7 +25,7 @@ const Component = ({loginRequest, userInfo, navigation}) => {
   }, [userInfo]);
   return (
     <Container>
-      <Header />
+      <Header navigation={navigation} navigateTo="HomeSearchScreen" />
       <HomeComponents />
     </Container>
   );
