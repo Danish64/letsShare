@@ -14,12 +14,20 @@ export const HeadingTextLarge = (props) => (
 export const HeadingTextLargeGrey = (props) => (
   <Text style={styles.headingLrgGrey}>{props.children}</Text>
 );
+export const RecentlySharedTitleText = (props) => (
+  <Text style={styles.recentlySharedTitleText}>{props.children}</Text>
+);
+export const RecentlySharedSubtitleText = (props) => (
+  <Text style={styles.recentlySharedSubtitleText}>{props.children}</Text>
+);
+
 export const LogoText = (props) => (
   <Text style={styles.logoText}>{props.children}</Text>
 );
 export const SubtitleText = (props) => (
   <Text style={styles.subTitle}>{props.children}</Text>
 );
+
 export const SubtitleTextBlack = (props) => (
   <Text style={styles.subTitleBlack}>{props.children}</Text>
 );
@@ -31,6 +39,9 @@ export const SubtitleTextBold = (props) => (
 );
 export const SectionHeadingText = (props) => (
   <Text style={styles.sectionHeading}>{props.children}</Text>
+);
+export const ShareActionAreaHeadingText = (props) => (
+  <Text style={styles.shareActionAreaHeading}>{props.children}</Text>
 );
 export const GroupLabelText = (props) => (
   <Text style={styles.groupLabel}>{props.children}</Text>

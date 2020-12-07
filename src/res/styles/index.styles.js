@@ -5,6 +5,8 @@ import {
   DEFAULT_SPLASH_SCREEN_COLOR,
   DEFAULT_HEADING_TEXT_SIZE,
   LARGE_HEADING_TEXT_SIZE,
+  MEDIUM_HEADING_TEXT_SIZE,
+  SMALL_HEADING_TEXT_SIZE,
   DEFAULT_SUBTITLE_TEXT_SIZE,
   DEFAULT_GROUP_LABEL_TEXT_SIZE,
   DEFAULT_BODY_TEXT_SIZE,
@@ -99,6 +101,18 @@ export default StyleSheet.create({
     color: Colors.Primary,
   },
 
+  recentlySharedTitleText: {
+    ...headingTextProperties,
+    fontSize: ms(MEDIUM_HEADING_TEXT_SIZE),
+    color: Colors.Black,
+  },
+
+  recentlySharedSubtitleText: {
+    ...headingTextProperties,
+    fontSize: ms(SMALL_HEADING_TEXT_SIZE),
+    color: Colors.Black,
+  },
+
   subTitle: {
     ...subTitleProperties,
     color: Colors.DarkGrey,
@@ -118,6 +132,12 @@ export default StyleSheet.create({
     letterSpacing: ms(0.1),
   },
   sectionHeading: {
+    fontSize: mvs(20, 0.7),
+    color: Colors.Black,
+    fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
+    letterSpacing: ms(0.2),
+  },
+  shareActionAreaHeading: {
     fontSize: mvs(20, 0.7),
     color: Colors.Black,
     fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
@@ -217,6 +237,11 @@ export default StyleSheet.create({
   },
   roundSearchIcon: {
     marginRight: s(10),
+  },
+  buttonIconPrimary: {
+    ...buttonProperties,
+    backgroundColor: Colors.Primary,
+    flexDirection: 'row',
   },
   // Button Styling Ends Here
   scrollViewContainer: {
