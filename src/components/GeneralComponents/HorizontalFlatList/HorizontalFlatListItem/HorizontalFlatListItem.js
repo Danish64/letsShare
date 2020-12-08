@@ -23,15 +23,23 @@ const Component = ({item}) => {
         style={styles.imageContainer}
         source={DummyImage}
       />
-      <View>
-        <RecentlySharedTitleText numberOfLines={1}>
-          Ride Type
-        </RecentlySharedTitleText>
-      </View>
-      <View>
-        <RecentlySharedSubtitleText>
-          Route Description
-        </RecentlySharedSubtitleText>
+      <View style={styles.descriptionStyle}>
+        <View style={styles.titleContainer}>
+          <RecentlySharedTitleText numberOfLines={1}>
+            Ride Type
+          </RecentlySharedTitleText>
+
+          <RecentlySharedTitleText>PKR./</RecentlySharedTitleText>
+        </View>
+        <View>
+          <RecentlySharedSubtitleText>
+            Route Description
+          </RecentlySharedSubtitleText>
+        </View>
+
+        <View>
+          <RecentlySharedSubtitleText>Seats Left:</RecentlySharedSubtitleText>
+        </View>
       </View>
     </View>
   );

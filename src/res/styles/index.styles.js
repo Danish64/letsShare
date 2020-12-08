@@ -103,14 +103,16 @@ export default StyleSheet.create({
 
   recentlySharedTitleText: {
     ...headingTextProperties,
+    fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
     fontSize: ms(MEDIUM_HEADING_TEXT_SIZE),
-    color: Colors.Black,
+    color: Colors.DarkGrey,
   },
 
   recentlySharedSubtitleText: {
     ...headingTextProperties,
+    fontFamily: FONT_AIRBNB_CEREAL_BOLD,
     fontSize: ms(SMALL_HEADING_TEXT_SIZE),
-    color: Colors.Black,
+    color: Colors.Primary,
   },
 
   subTitle: {

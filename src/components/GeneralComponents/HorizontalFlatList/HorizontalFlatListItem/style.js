@@ -20,4 +20,22 @@ export default StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
+
+  descriptionStyle: {
+    width: '100%',
+    height: '30%',
+    marginTop: mvs(5, 0.7),
+    paddingHorizontal: ms(10, 0.7),
+  },
+
+  otherDetails: {
+    justifyContent: 'space-evenly',
+  },
+
+  titleContainer: {
+    width: '100%',
+    height: '40%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });
