@@ -12,6 +12,8 @@ import HomeMenuIcon from '../../../Icons/HomeMenuIcon';
 //Native Exports Ends Here
 
 const Component = () => {
+
+  
   const CardTitle = ({title}) => {
     return (
       <View style={styles.cardTitle}>
