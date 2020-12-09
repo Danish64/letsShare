@@ -1,11 +1,13 @@
 import React from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import styles from 'res/styles/index.styles.js';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   ButtonTextBlack,
   ButtonTextWhite,
   TextButton,
 } from 'res/UniversalComponents/Text.js';
+import { Colors } from 'res/constants/Colors.js';
 export const PrimaryButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.buttonPrimary}>
@@ -32,6 +34,19 @@ export const OutlinedButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.buttonOutlined}>
       <TextButton>{props.children}</TextButton>
+    </View>
+  </TouchableOpacity>
+);
+
+export const PrimaryIconButton = (props) => (
+  <TouchableOpacity onPress={props.onPress}>
+    <View style={styles.buttonIconPrimary}>
+    <Ionicons
+      name={'car-outline'}
+      color={Colors.White}
+      size={28}
+    />
+      <ButtonTextWhite>{props.children}</ButtonTextWhite>
     </View>
   </TouchableOpacity>
 );
