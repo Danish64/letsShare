@@ -12,7 +12,7 @@ export default StyleSheet.create({
   },
   shareAssetTitleText: {
     width: '100%',
-    marginBottom: mvs(5, 0.6),
+    marginBottom: mvs(15, 0.6),
     marginTop: mvs(5, 0.6),
   },
   shareAssetRowContainer: {

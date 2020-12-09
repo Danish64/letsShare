@@ -63,7 +63,7 @@ const Component = () => {
       <ShareAssetRow
         firstCardTitle="Share Goods"
         firstCardIconName="cart-outline"
-        secondCardTitle="Share Foods"
+        secondCardTitle="Share Food"
         secondCardIconName="fast-food-outline"
       />
     </View>
