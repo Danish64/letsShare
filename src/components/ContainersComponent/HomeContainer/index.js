@@ -13,6 +13,8 @@ const Component = (props) => {
   return (
     <ScrollViewContainer>
       <ShareYourAssets />
+      <NearbyShares />
+      <RecommendedShares />
     </ScrollViewContainer>
   );
 };

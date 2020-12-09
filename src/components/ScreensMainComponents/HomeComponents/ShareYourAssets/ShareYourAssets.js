@@ -12,8 +12,6 @@ import HomeMenuIcon from '../../../Icons/HomeMenuIcon';
 //Native Exports Ends Here
 
 const Component = () => {
-
-  
   const CardTitle = ({title}) => {
     return (
       <View style={styles.cardTitle}>
@@ -56,18 +54,20 @@ const Component = () => {
       <View style={styles.shareAssetTitleText}>
         <SectionHeadingText>Share your assets</SectionHeadingText>
       </View>
-      <ShareAssetRow
-        firstCardTitle="Share Space"
-        firstCardIconName="ios-business-outline"
-        secondCardTitle="Share Ride"
-        secondCardIconName="car-outline"
-      />
-      <ShareAssetRow
-        firstCardTitle="Share Goods"
-        firstCardIconName="cart-outline"
-        secondCardTitle="Share Food"
-        secondCardIconName="fast-food-outline"
-      />
+      <View style={styles.shareAssetActionArea}>
+        <ShareAssetRow
+          firstCardTitle="Share Space"
+          firstCardIconName="ios-business-outline"
+          secondCardTitle="Share Ride"
+          secondCardIconName="car-outline"
+        />
+        <ShareAssetRow
+          firstCardTitle="Share Food"
+          firstCardIconName="fast-food-outline"
+          secondCardTitle="Share Goods"
+          secondCardIconName="basket-outline"
+        />
+      </View>
     </View>
   );
 };

@@ -20,7 +20,7 @@ export default StyleSheet.create({
     width: '100%',
     height: '100%',
     marginBottom: mvs(5, 0.6),
-    //  backgroundColor: "green",
+    // backgroundColor: 'green',
     // padding:ms(5,0.7),
   },
 });

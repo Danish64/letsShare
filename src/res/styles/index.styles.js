@@ -59,9 +59,7 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: DEFAULT_SCREEN_COLOR,
   },
-  scrollViewContainer: {
-    marginHorizontal: ms(20),
-  },
+
   //Splash Screen Style Starts
   splashScreenStyle: {
     width: '100%',
@@ -69,6 +67,10 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: DEFAULT_SPLASH_SCREEN_COLOR,
+  },
+
+  generalComponentContainer: {
+    marginHorizontal: ms(20, 0.6),
   },
   //Splash Screen Style ends
   // Text/Font Styling Starts Here
