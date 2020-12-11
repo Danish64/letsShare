@@ -5,7 +5,7 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   shareItemContainer: {
     width: ms(200, 0.6),
-    height: mvs(200, 0.7),
+    height: mvs(270, 0.7),
     marginTop: mvs(15, 0.6),
     marginBottom: mvs(15, 0.6),
     backgroundColor: 'white',
@@ -16,7 +16,7 @@ export default StyleSheet.create({
   },
   imageContainer: {
     width: '100%',
-    height: '70%',
+    height: '50%',
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
@@ -34,8 +34,13 @@ export default StyleSheet.create({
 
   titleContainer: {
     width: '100%',
-    height: '40%',
+    height: '30%',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+  },
+
+  seatsLeft: {
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
   },
 });

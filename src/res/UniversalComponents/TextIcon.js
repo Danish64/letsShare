@@ -1,11 +1,9 @@
 import React from 'react';
 import styles from 'res/styles/index.styles.js';
+import {Colors} from 'res/constants/Colors.js';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {FlatList, View, Text, Image} from 'react-native';
-import FontAwesome, {
-  SolidIcons,
-  RegularIcons,
-  BrandIcons,
-} from 'react-native-fontawesome';
+
 import {
   RecentlySharedTitleText,
   RecentlySharedSubtitleText,
@@ -18,7 +16,21 @@ import {
 
 export const ChargesIcon = (props) => (
   <View style={styles.chargesIcon}>
-    <FontAwesome icon={SolidIcons.money} color="black" size={20} />
-    <RecentlySharedTitleText>{props.children}</RecentlySharedTitleText>
+    <Ionicons name={'cash-outline'} color={Colors.Black} size={18} />
+    <RecentlySharedSubtitleText>{props.children}</RecentlySharedSubtitleText>
+  </View>
+);
+
+export const SeatsLeftIcon = (props) => (
+  <View style={styles.seatsLeft}>
+    <Ionicons name={'people-outline'} color={Colors.Black} size={18} />
+    <RecentlySharedSubtitleText>{props.children}</RecentlySharedSubtitleText>
+  </View>
+);
+
+export const RouteIcon = (props) => (
+  <View style={styles.routeDetail}>
+    <Ionicons name={'navigate-outline'} color={Colors.Black} size={18} />
+    <RecentlySharedSubtitleText>{props.children}</RecentlySharedSubtitleText>
   </View>
 );
