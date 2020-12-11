@@ -7,6 +7,7 @@ import {
   RecentlySharedSubtitleText,
 } from 'res/UniversalComponents/Text.js';
 import DummyImage from 'res/images/DummyImages/testImage.jpg';
+import {ChargesIcon} from 'res/UniversalComponents/TextIcon.js';
 import styles from './style';
 import style from './style';
 //Native Exports Ends Here
@@ -29,7 +30,7 @@ const Component = ({item}) => {
             Ride Type
           </RecentlySharedTitleText>
 
-          <RecentlySharedTitleText>PKR./</RecentlySharedTitleText>
+          <ChargesIcon>PKR./</ChargesIcon>
         </View>
         <View>
           <RecentlySharedSubtitleText>

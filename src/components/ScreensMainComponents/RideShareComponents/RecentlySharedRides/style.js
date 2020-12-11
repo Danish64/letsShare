@@ -7,7 +7,7 @@ export default StyleSheet.create({
     width: '100%',
     height: mvs(250, 0.7),
     marginBottom: mvs(20, 0.6),
-    marginLeft: ms(20, 0.6),
+    marginHorizontal: ms(20, 0.6),
   },
 
   shareRideTitleText: {

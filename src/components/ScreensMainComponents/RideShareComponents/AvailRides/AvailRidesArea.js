@@ -1,6 +1,11 @@
 import React from 'react';
-import {HeadingText, GroupLabelText} from 'res/UniversalComponents/Text.js';
+import {
+  HeadingText,
+  ShareActionAreaHeadingText,
+} from 'res/UniversalComponents/Text.js';
 import styles from './style';
+import {View, TouchableOpacity, Text} from 'react-native';
+
 //Native Exports Ends Here
 //Third Party Exports Starts
 
@@ -8,7 +13,13 @@ import styles from './style';
 
 const Component = () => {
   //to use styles -> {styles.propertyName}
-  return <HeadingText>Avail ride action area</HeadingText>;
+  return (
+    <View style={styles.availRideComponentArea}>
+      <View style={styles.availRideTitleText}>
+        <ShareActionAreaHeadingText>Avail Ride</ShareActionAreaHeadingText>
+      </View>
+    </View>
+  );
 };
 
 export default Component;
