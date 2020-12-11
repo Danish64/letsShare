@@ -7,9 +7,12 @@ import {
   RecentlySharedSubtitleText,
 } from 'res/UniversalComponents/Text.js';
 import DummyImage from 'res/images/DummyImages/testImage.jpg';
-import {ChargesIcon} from 'res/UniversalComponents/TextIcon.js';
+import {
+  ChargesIcon,
+  SeatsLeftIcon,
+  RouteIcon,
+} from 'res/UniversalComponents/TextIcon.js';
 import styles from './style';
-import style from './style';
 //Native Exports Ends Here
 //Third Party Exports Starts
 
@@ -29,18 +32,12 @@ const Component = ({item}) => {
           <RecentlySharedTitleText numberOfLines={1}>
             Ride Type
           </RecentlySharedTitleText>
-
-          <ChargesIcon>PKR./</ChargesIcon>
         </View>
-        <View>
-          <RecentlySharedSubtitleText>
-            Route Description
-          </RecentlySharedSubtitleText>
-        </View>
-
-        <View>
-          <RecentlySharedSubtitleText>Seats Left:</RecentlySharedSubtitleText>
-        </View>
+        <ChargesIcon>100/-Rs</ChargesIcon>
+        <SeatsLeftIcon>2</SeatsLeftIcon>
+        <RouteIcon numberOfLines={1}>
+          KRL road, Rawalpindi - E11, Islamabad
+        </RouteIcon>
       </View>
     </View>
   );
