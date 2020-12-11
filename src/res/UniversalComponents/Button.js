@@ -7,7 +7,7 @@ import {
   ButtonTextWhite,
   TextButton,
 } from 'res/UniversalComponents/Text.js';
-import { Colors } from 'res/constants/Colors.js';
+import {Colors} from 'res/constants/Colors.js';
 export const PrimaryButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.buttonPrimary}>
@@ -41,11 +41,7 @@ export const OutlinedButton = (props) => (
 export const PrimaryIconButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.buttonIconPrimary}>
-    <Ionicons
-      name={'car-outline'}
-      color={Colors.White}
-      size={28}
-    />
+      <Ionicons name={'car-outline'} color={Colors.White} size={28} />
       <ButtonTextWhite>{props.children}</ButtonTextWhite>
     </View>
   </TouchableOpacity>

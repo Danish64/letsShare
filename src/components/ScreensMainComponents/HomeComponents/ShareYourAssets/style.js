@@ -4,11 +4,12 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 
 export default StyleSheet.create({
   shareAssetComponentArea: {
-    width: '100%',
+    width: '90%',
     height: mvs(260, 0.7),
     marginTop: mvs(15, 0.6),
     marginBottom: mvs(15, 0.6),
     justifyContent: 'space-between',
+    marginHorizontal: ms(20, 0.6),
   },
   shareAssetTitleText: {
     width: '100%',
