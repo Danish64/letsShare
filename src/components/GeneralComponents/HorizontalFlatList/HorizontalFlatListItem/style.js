@@ -9,7 +9,7 @@ export default StyleSheet.create({
     marginTop: mvs(15, 0.6),
     marginBottom: mvs(15, 0.6),
     backgroundColor: 'white',
-    marginRight: ms(20, 0.7),
+    marginRight: ms(10, 0.7),
     marginLeft: ms(2, 0.7),
     elevation: ms(3),
     borderRadius: ms(10, 0.7),

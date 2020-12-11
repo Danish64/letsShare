@@ -9,9 +9,7 @@ import styles from 'res/styles/index.styles.js';
 
 const Component = (props) => {
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      style={styles.scrollViewContainer}>
+    <ScrollView showsVerticalScrollIndicator={false}>
       {props.children}
     </ScrollView>
   );

@@ -246,9 +246,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
   },
   // Button Styling Ends Here
-  scrollViewContainer: {
-    marginHorizontal: mvs(20, 0.7),
-  },
 
   //ScrollViewContainer Styles
 
