@@ -105,14 +105,14 @@ export default StyleSheet.create({
     ...headingTextProperties,
     fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
     fontSize: ms(MEDIUM_HEADING_TEXT_SIZE),
-    color: Colors.DarkGrey,
+    color: Colors.Primary,
   },
 
   recentlySharedSubtitleText: {
     ...headingTextProperties,
     fontFamily: FONT_AIRBNB_CEREAL_BOLD,
     fontSize: ms(SMALL_HEADING_TEXT_SIZE),
-    color: Colors.Primary,
+    color: Colors.DarkGrey,
   },
 
   subTitle: {
@@ -244,6 +244,21 @@ export default StyleSheet.create({
     ...buttonProperties,
     backgroundColor: Colors.Primary,
     flexDirection: 'row',
+  },
+
+  chargesIcon: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+
+  seatsLeft: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+
+  routeDetail: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   // Button Styling Ends Here
 
