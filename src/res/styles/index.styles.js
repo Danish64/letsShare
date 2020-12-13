@@ -101,6 +101,13 @@ export default StyleSheet.create({
     color: Colors.Primary,
   },
 
+  imageTextBold: {
+    fontFamily: FONT_AIRBNB_CEREAL_BLACK,
+    letterSpacing: ms(0.25),
+    fontSize: ms(28),
+    color: Colors.White,
+  },
+
   recentlySharedTitleText: {
     ...headingTextProperties,
     fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
