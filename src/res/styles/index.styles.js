@@ -251,21 +251,25 @@ export default StyleSheet.create({
     ...buttonProperties,
     backgroundColor: Colors.Primary,
     flexDirection: 'row',
+    alignItems: 'center',
   },
 
   chargesIcon: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginHorizontal: ms(5, 0.6),
   },
 
   seatsLeft: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginHorizontal: ms(5, 0.6),
   },
 
   routeDetail: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginHorizontal: ms(5, 0.6),
   },
   // Button Styling Ends Here
 
