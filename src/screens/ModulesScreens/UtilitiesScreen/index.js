@@ -8,6 +8,8 @@ import Header from '../../../components/GeneralComponents/Header';
 import UtilitiesShareContainer from '../../../components/ContainersComponent/UtilitiesShareContainer';
 //Third Party Exports Ends
 
+import GoodsShareHome from '../../../components/ContainersComponent/GoodsShareContainer';
+
 const Component = ({navigation}) => {
   return (
     <Container>

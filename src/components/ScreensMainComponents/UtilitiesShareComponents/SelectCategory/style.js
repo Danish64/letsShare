@@ -5,7 +5,7 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   shareAssetComponentArea: {
     width: '90%',
-    height: mvs(260, 0.7),
+    height: mvs(400, 0.7),
     marginTop: mvs(15, 0.6),
     marginBottom: mvs(15, 0.6),
     justifyContent: 'space-between',
@@ -19,15 +19,16 @@ export default StyleSheet.create({
   shareAssetRowContainer: {
     width: '100%',
     height: '45%',
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: mvs(15, 0.6),
+    marginTop: mvs(130, 0.6),
   },
 
   shareAssetCardContainer: {
     width: '45%',
-    height: '90%',
+    height: '65%',
     borderRadius: mvs(20, 0.6),
     borderWidth: ms(1),
     borderColor: Colors.Black,
