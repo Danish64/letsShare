@@ -20,7 +20,8 @@ import image from 'res/images/DummyImages/shareRide.png';
 
 //Third Party Exports Ends
 
-const Component = () => {
+const Component = ({navigation}) => {
+  console.log('RideShareActionArea', navigation);
   //to use styles -> {styles.propertyName}
   return (
     <View style={styles.shareRideComponentArea}>
@@ -32,7 +33,10 @@ const Component = () => {
       </View>
 
       <View style={styles.shareRideButtonView}>
-        <PrimaryIconButton> Share Ride</PrimaryIconButton>
+        <PrimaryIconButton
+          onPress={() => navigation.navigate('CreateRideScreen')}>
+          Share Ride
+        </PrimaryIconButton>
       </View>
     </View>
   );
