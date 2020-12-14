@@ -14,7 +14,7 @@ const Component = ({navigation}) => {
   return (
     <Container>
       <Header title="Utilities Sharing" navigation={navigation} navigateTo="HomeSearchScreen"></Header>
-      <UtilitiesShareContainer/>
+      <GoodsShareHome/>
     </Container>
   );
 };

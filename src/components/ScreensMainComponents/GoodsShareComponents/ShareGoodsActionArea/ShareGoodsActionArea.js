@@ -1,31 +1,36 @@
 import React from 'react';
-import {HeadingText, GroupLabelText, ShareActionAreaHeadingText, TextButton} from 'res/UniversalComponents/Text.js';
-import {PrimaryButton,PrimaryIconButton,OutlinedButton } from 'res/UniversalComponents/Button.js';
+import {
+  ShareActionAreaHeadingText,
+} from 'res/UniversalComponents/Text.js';
+import {
+  GoodsIconButton,
+} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, Image, TouchableOpacity, Text} from 'react-native';
+import image from 'res/images/DummyImages/shareGoods.jpeg';
+
 //Native Exports Ends Here
 //Third Party Exports Starts
 
 //Third Party Exports Ends
 
-const Component = () => {  
+const Component = () => {
   //to use styles -> {styles.propertyName}
-  return(
-     <View style={styles.shareGoodsComponentArea}>
+  return (
+    <View style={styles.shareGoodsComponentArea}>
+      <Image resizeMode="cover" style={styles.imageStyle} source={image} />
       <View style={styles.shareGoodsTitleText}>
-        <ShareActionAreaHeadingText>Wanna Share Goods?</ShareActionAreaHeadingText>
+        <ShareActionAreaHeadingText>
+          Wanna Share Goods?
+        </ShareActionAreaHeadingText>
       </View>
 
       <View style={styles.shareGoodsButtonView}>
-      <PrimaryIconButton > Share Goods</PrimaryIconButton>
+        <GoodsIconButton> Share Goods</GoodsIconButton>
       </View>
-    </View>  
+    </View>
   );
-
-
-  
 };
-  
 
 export default Component;
