@@ -41,7 +41,7 @@ export const OutlinedButton = (props) => (
 export const PrimaryIconButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.buttonIconPrimary}>
-      <Ionicons name={'car-outline'} color={Colors.White} size={28} />
+      <Ionicons name={'car-outline'} color={Colors.White} size={30} />
       <ButtonTextWhite>{props.children}</ButtonTextWhite>
     </View>
   </TouchableOpacity>
