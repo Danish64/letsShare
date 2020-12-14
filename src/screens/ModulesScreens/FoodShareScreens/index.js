@@ -1,6 +1,8 @@
 import React from 'react';
 import Container from 'res/UniversalComponents/Container.js';
-import {HeadingText} from 'res/UniversalComponents/Text.js';
+
+import Header from '../../../components/GeneralComponents/Header';
+import FoodShareHome from '../../../components/ContainersComponent/FoodShareContainer';
 
 //Native Exports Ends Here
 //Third Party Exports Starts
@@ -10,7 +12,8 @@ import {HeadingText} from 'res/UniversalComponents/Text.js';
 const Component = () => {
   return (
     <Container>
-      <HeadingText>Food Share Screens</HeadingText>
+      <Header  title= "Food Sharing" navigation={navigation} navigateTo="HomeSearchScreen" />
+      <FoodShareHome/>
     </Container>
   );
 };

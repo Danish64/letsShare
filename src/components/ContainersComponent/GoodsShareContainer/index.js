@@ -6,12 +6,12 @@ import {
     AvailGoodsArea
 } from '../../ScreensMainComponents/GoodsShareComponents';
 
-const Component = (props) => {
+const Component = ({navigation}) => {
     return(
         <ScrollViewContainer>
-            <ShareGoodsActionArea/>
-            <RecentlySharedGoodsArea/>
-            <AvailGoodsArea/>
+            <ShareGoodsActionArea navigation={navigation}/>
+            <RecentlySharedGoodsArea navigation={navigation}/>
+            <AvailGoodsArea navigation={navigation}/>
         </ScrollViewContainer>
     );
 }

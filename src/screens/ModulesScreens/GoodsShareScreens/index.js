@@ -9,11 +9,11 @@ import GoodsShareHome from '../../../components/ContainersComponent/GoodsShareCo
 
 //Third Party Exports Ends
 
-const Component = () => {
+const Component = ({navigation}) => {
   return (
     <Container>
       <Header  title= "Goods Sharing" navigation={navigation} navigateTo="HomeSearchScreen" />
-      <GoodsShareHome/>
+      <GoodsShareHome navigation={navigation}/>
     </Container>
   );
 };

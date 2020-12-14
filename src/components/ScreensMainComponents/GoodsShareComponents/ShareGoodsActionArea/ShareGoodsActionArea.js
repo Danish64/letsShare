@@ -15,7 +15,7 @@ import image from 'res/images/DummyImages/shareGoods.jpeg';
 
 //Third Party Exports Ends
 
-const Component = () => {
+const Component = ({navigation}) => {
   //to use styles -> {styles.propertyName}
   return (
     <View style={styles.shareGoodsComponentArea}>
@@ -27,7 +27,7 @@ const Component = () => {
       </View>
 
       <View style={styles.shareGoodsButtonView}>
-        <GoodsIconButton> Share Goods</GoodsIconButton>
+        <GoodsIconButton onPress={() => navigation.navigate('CreateGoodsScreen')}> Share Goods</GoodsIconButton>
       </View>
     </View>
   );
