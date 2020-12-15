@@ -24,6 +24,11 @@ export const RecentlySharedSubtitleText = (props) => (
 export const LogoText = (props) => (
   <Text style={styles.logoText}>{props.children}</Text>
 );
+
+export const ImageTextBold = (props) => (
+  <Text style={styles.imageTextBold}>{props.children}</Text>
+);
+
 export const SubtitleText = (props) => (
   <Text style={styles.subTitle}>{props.children}</Text>
 );

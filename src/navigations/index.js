@@ -5,7 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import HomeNavigator from './BottomTabNavigator';
 import SplashScreen from '../screens/SplashScreen';
-
+import GoodsShareHomeScreen from '../screens/ModulesScreens/GoodsShareScreens';
 const Stack = createStackNavigator();
 
 function MainNavigator() {
