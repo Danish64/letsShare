@@ -1,0 +1,28 @@
+import React from 'react';
+import {ImageTextBold, HeadingText} from 'res/UniversalComponents/Text.js';
+import styles from './style';
+import {View, Image, Text, TouchableOpacity} from 'react-native';
+//Native Exports Ends Here
+//Third Party Exports Starts
+
+//Third Party Exports Ends
+
+const Component = ({image, text}) => {
+  //to use styles -> {styles.propertyName}
+  return (
+    <TouchableOpacity>
+      <View style={styles.componentArea}>
+        <Image
+          resizeMode="cover"
+          style={styles.imageContainer}
+          source={image}
+        />
+        <View style={styles.textStyle}>
+          <ImageTextBold>{text}</ImageTextBold>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+};
+
+export default Component;

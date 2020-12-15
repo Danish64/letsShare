@@ -1,8 +1,7 @@
 import React from 'react';
 import Container from 'res/UniversalComponents/Container.js';
-
-import RideShareHome from '../../../components/ContainersComponent/RideShareContainer';
-import Header from '../../../components/GeneralComponents/Header';
+import Header from '../../../../components/GeneralComponents/Header';
+import {ScrollView, View, Text} from 'react-native';
 
 //Native Exports Ends Here
 //Third Party Exports Starts
@@ -18,7 +17,8 @@ const Component = ({navigation}) => {
         navigation={navigation}
         navigateTo="HomeSearchScreen"
       />
-      <RideShareHome navigation={navigation} />
+      <Text>Create Ride Component</Text>
+      {/* <RideShareHome navigation={navigation} /> */}
     </Container>
   );
 };
