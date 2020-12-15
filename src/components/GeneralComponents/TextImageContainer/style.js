@@ -13,13 +13,13 @@ export default StyleSheet.create({
     marginHorizontal: ms(8, 0.6),
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'blue',
   },
 
   imageContainer: {
     width: '100%',
     height: '100%',
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    borderRadius: ms(15, 0.6),
   },
 
   textStyle: {

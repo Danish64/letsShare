@@ -6,8 +6,7 @@ export default StyleSheet.create({
   shareRideComponentArea: {
     width: '90%',
     height: mvs(150, 0.7),
-    marginTop: mvs(15, 0.6),
-    marginBottom: mvs(15, 0.6),
+    marginVertical: mvs(15, 0.6),
     marginHorizontal: ms(20, 0.6),
     borderRadius: ms(20, 0.6),
   },
@@ -21,7 +20,7 @@ export default StyleSheet.create({
   shareRideTitleText: {
     width: '100%',
     marginBottom: mvs(5, 0.6),
-    // marginTop: mvs(5, 0.6),
+    marginTop: mvs(5, 0.6),
     alignItems: 'flex-start',
   },
   shareRideButtonView: {

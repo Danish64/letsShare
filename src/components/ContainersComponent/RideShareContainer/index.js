@@ -13,8 +13,8 @@ const Component = ({navigation}) => {
   return (
     <ScrollViewContainer>
       <ShareRideActionArea navigation={navigation} />
-      <RecentlySharedRideArea />
-      <AvailRideArea />
+      <RecentlySharedRideArea navigation={navigation} />
+      <AvailRideArea navigation={navigation} />
     </ScrollViewContainer>
   );
 };
