@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeStack from '../ScreenStacks/HomeStack';
 import SpaceShareStack from '../ScreenStacks/SpaceShareStack';
 import RideShareStack from '../ScreenStacks/RideShareStack';
+import UtilitiesShareStack from '../ScreenStacks/UtilitiesShareStack';
 import Inbox from '../../screens/ModulesScreens/InboxScreen';
 import Utilities from '../../screens/ModulesScreens/UtilitiesScreen';
 import UserManagerStack from '../ScreenStacks/UserManagerStack';
@@ -104,7 +105,7 @@ export default function BottomTabNavigator() {
       />
       <Tab.Screen
         name="Utilities"
-        component={Utilities}
+        component={UtilitiesShareStack}
         options={({route}) => ({
           tabBarVisible: ((route) => {
             const routeName =

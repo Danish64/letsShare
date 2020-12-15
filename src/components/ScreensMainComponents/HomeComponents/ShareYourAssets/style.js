@@ -25,7 +25,7 @@ export default StyleSheet.create({
     height: mvs(100, 0.7),
     flexDirection: 'row',
     justifyContent: 'space-between',
-   // alignItems: 'center',
+    alignItems: 'center',
     marginBottom: mvs(15, 0.6),
   },
 

@@ -252,6 +252,12 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  goodsIconPrimary: {
+    ...buttonProperties,
+    backgroundColor: Colors.Primary,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 
   chargesIcon: {
     flexDirection: 'row',

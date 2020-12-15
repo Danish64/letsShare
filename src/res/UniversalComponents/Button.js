@@ -46,3 +46,13 @@ export const PrimaryIconButton = (props) => (
     </View>
   </TouchableOpacity>
 );
+
+export const GoodsIconButton = (props) => (
+  <TouchableOpacity onPress={props.onPress}>
+    <View style={styles.buttonIconPrimary}>
+      <Ionicons name={'basket-outline'} color={Colors.White} size={30} />
+      <ButtonTextWhite>{props.children}</ButtonTextWhite>
+    </View>
+  </TouchableOpacity>
+);
+

@@ -7,10 +7,10 @@ import {View, Image, Text, TouchableOpacity} from 'react-native';
 
 //Third Party Exports Ends
 
-const Component = ({image, text}) => {
+const Component = ({image, text, onPress}) => {
   //to use styles -> {styles.propertyName}
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.componentArea}>
         <Image
           resizeMode="cover"
