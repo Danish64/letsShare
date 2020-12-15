@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View} from 'react-native';
 import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList/';
 import {
   HeadingText,
@@ -8,9 +8,6 @@ import {
 } from 'res/UniversalComponents/Text.js';
 import styles from './style';
 //Native Exports Ends Here
-//Third Party Exports Starts
-
-//Third Party Exports Ends
 
 const Component = () => {
   //to use styles -> {styles.propertyName}

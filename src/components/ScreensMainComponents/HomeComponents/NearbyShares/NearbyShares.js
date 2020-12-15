@@ -1,5 +1,11 @@
 import React from 'react';
-import {HeadingText, GroupLabelText} from 'res/UniversalComponents/Text.js';
+import {View} from 'react-native';
+import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList';
+import {
+  HeadingText,
+  GroupLabelText,
+  SectionHeadingText,
+} from 'res/UniversalComponents/Text.js';
 import styles from './style';
 //Native Exports Ends Here
 //Third Party Exports Starts
@@ -7,8 +13,26 @@ import styles from './style';
 //Third Party Exports Ends
 
 const Component = () => {
-  //to use styles -> {styles.propertyName}
-  return <HeadingText>Nearby Shares</HeadingText>;
+  const data = [
+    {id: '1'},
+    {id: '2'},
+    {id: '3'},
+    {id: '4'},
+    {id: '5'},
+    {id: '6'},
+    {id: '7'},
+  ];
+
+  return (
+    <View style={styles.nearBySharesArea}>
+      <View style={styles.nearByShareTitleText}>
+        <SectionHeadingText>Recently Shared</SectionHeadingText>
+      </View>
+      <View style={styles.recentlySharedFlatlistArea}>
+        <HorizontalFlatList data={data} />
+      </View>
+    </View>
+  );
 };
 
 export default Component;
