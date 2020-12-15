@@ -1,16 +1,15 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from 'res/constants/Colors';
-import styles from 'res/styles/index.styles.js';
 import {s, vs, ms, mvs} from 'react-native-size-matters';
 
 export default StyleSheet.create({
   shareAssetComponentArea: {
-    ...styles.generalComponentContainer,
     width: '90%',
     height: mvs(240, 0.7),
     marginTop: mvs(15, 0.6),
     marginBottom: mvs(15, 0.6),
     justifyContent: 'space-between',
+    marginHorizontal: ms(10, 0.6),
   },
   shareAssetTitleText: {
     width: '100%',

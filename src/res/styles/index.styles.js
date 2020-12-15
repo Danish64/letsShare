@@ -66,12 +66,9 @@ export default StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: DEFAULT_SPLASH_SCREEN_COLOR,
+    backgroundColor: DEFAULT_SPLASH_SCREEN_COLOR, 
   },
 
-  generalComponentContainer: {
-    marginHorizontal: ms(20, 0.6),
-  },
   //Splash Screen Style ends
   // Text/Font Styling Starts Here
 

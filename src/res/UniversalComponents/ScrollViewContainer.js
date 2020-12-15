@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView, View} from 'react-native';
-import styles from 'res/styles/index.styles.js';
+
 
 //Native Exports Ends Here
 //Third Party Exports Starts
