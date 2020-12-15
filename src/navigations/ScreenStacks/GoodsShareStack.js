@@ -11,7 +11,7 @@ function GoodsShareNavigator() {
       screenOptions={{
         headerShown: false,
       }}>
-      {/* <Stack.Screen name="GoodsShareHome" component={GoodsShareHomeScreen} /> */}
+      <Stack.Screen name="GoodsShareHome" component={GoodsShareHomeScreen} />
       {/* <Stack.Screen name="CreateGoodsScreen" component={CreateRideScreen} /> */}
     </Stack.Navigator>
   );

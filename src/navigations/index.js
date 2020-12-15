@@ -17,7 +17,6 @@ function MainNavigator() {
         }}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="Home" component={HomeNavigator} />
-        <Stack.Screen name="GoodsShareHome" component={GoodsShareHomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

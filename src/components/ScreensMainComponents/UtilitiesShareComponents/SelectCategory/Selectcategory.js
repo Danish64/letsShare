@@ -24,7 +24,7 @@ const Component = ({navigation}) => {
       <TextImageContainer 
       text="Share Goods" 
       image={DonateGoods} 
-      onPress={() => navigation.navigate('GoodsShareHome')}/>
+      onPress={() => navigation.navigate('GoodsShareStack')}/>
 
       <TextImageContainer
         text="Share Food"
