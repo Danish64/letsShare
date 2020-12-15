@@ -6,8 +6,8 @@ export default StyleSheet.create({
   availRideComponentArea: {
     width: '90%',
     height: mvs(380, 3.0),
-    marginTop: mvs(30, 0.6),
-    marginBottom: mvs(15, 0.6),
+    marginBottom: mvs(10, 0.6),
+    marginVertical: mvs(15, 0.6),
     marginHorizontal: ms(20, 0.6),
   },
   availRideTitleText: {
