@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from 'res/constants/Colors';
-import {s, vs, ms,mvs} from 'react-native-size-matters';
+import {s, vs, ms, mvs} from 'react-native-size-matters';
 
 export default StyleSheet.create({
-  componentTemplateText: {
-    fontSize: 20,
+  FlatListStyle: {
+    paddingLeft: ms(18, 0.6),
+    width: '100%',
   },
 });

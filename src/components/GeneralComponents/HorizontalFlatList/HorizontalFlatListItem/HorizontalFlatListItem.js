@@ -22,11 +22,14 @@ const Component = ({item}) => {
   //to use styles -> {styles.propertyName}
   return (
     <View style={styles.shareItemContainer}>
-      <Image
-        resizeMode="cover"
-        style={styles.imageContainer}
-        source={DummyImage}
-      />
+      <View style={styles.imageContainer}>
+        <Image
+          resizeMode="cover"
+          style={styles.imageStyle}
+          source={DummyImage}
+        />
+      </View>
+
       <View style={styles.descriptionStyle}>
         <View style={styles.titleContainer}>
           <RecentlySharedTitleText numberOfLines={1}>
