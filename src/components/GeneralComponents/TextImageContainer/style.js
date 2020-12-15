@@ -12,6 +12,7 @@ export default StyleSheet.create({
     elevation: ms(3),
     marginHorizontal: ms(8, 0.6),
     alignItems: 'center',
+    justifyContent: 'center',
   },
 
   imageContainer: {
@@ -23,6 +24,6 @@ export default StyleSheet.create({
 
   textStyle: {
     position: 'absolute',
-    marginVertical: mvs(80, 0.6),
+    //marginVertical: mvs(80, 0.6),
   },
 });

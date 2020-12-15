@@ -21,7 +21,7 @@ import image from 'res/images/DummyImages/shareRide.png';
 //Third Party Exports Ends
 
 const Component = ({navigation}) => {
-  console.log('RideShareActionArea', navigation);
+  // console.log('RideShareActionArea', navigation);
   //to use styles -> {styles.propertyName}
   return (
     <View style={styles.shareRideComponentArea}>
