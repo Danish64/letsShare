@@ -13,14 +13,16 @@ import styles from './style';
 
 //Third Party Exports Ends
 
-const Component = ({title,navigation, navigateTo}) => {
+const Component = ({title, navigation, navigateTo, isSearchable}) => {
   //to use styles -> {styles.propertyName}
   return (
     <View style={styles.headerArea}>
       <View style={styles.logoArea}>
         <LogoText>{title}</LogoText>
       </View>
-      <SearchRoundIcon navigation={navigation} navigateTo={navigateTo} />
+      {isSearchable ? (
+        <SearchRoundIcon navigation={navigation} navigateTo={navigateTo} />
+      ) : null}
     </View>
   );
 };

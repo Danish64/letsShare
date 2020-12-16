@@ -66,7 +66,7 @@ export default StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: DEFAULT_SPLASH_SCREEN_COLOR, 
+    backgroundColor: DEFAULT_SPLASH_SCREEN_COLOR,
   },
 
   //Splash Screen Style ends
@@ -243,6 +243,16 @@ export default StyleSheet.create({
     borderColor: Colors.Primary,
     borderWidth: ms(2),
   },
+  categoryButtonOutlined: {
+    ...buttonProperties,
+    borderColor: Colors.Black,
+    borderWidth: ms(2),
+    flexDirection: 'row',
+    marginHorizontal: ms(10, 0.6),
+    marginVertical: ms(10, 0.6),
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   roundSearchIcon: {
     marginRight: s(10),
   },
@@ -259,23 +269,37 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
 
-  chargesIcon: {
+  textIconStyle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: ms(5, 0.6),
   },
 
-  seatsLeft: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  addAssetButton: {
+    ...buttonProperties,
+    backgroundColor: Colors.White,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: ms(20, 0.6),
+    width: ms(150, 0.6),
+    height: mvs(100, 0.6),
     marginHorizontal: ms(5, 0.6),
+    borderWidth: 2,
   },
 
-  routeDetail: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginHorizontal: ms(5, 0.6),
+  addAssetTextArea: {
+    width: '100%',
+    height: '50%',
+    //backgroundColor: 'pink',
+    alignItems: 'center',
   },
+  addAssetIconArea: {
+    width: '100%',
+    height: '50%',
+    //backgroundColor: 'lightblue',
+    alignItems: 'center',
+  },
+
   // Button Styling Ends Here
 
   //ScrollViewContainer Styles

@@ -37,22 +37,33 @@ export const OutlinedButton = (props) => (
     </View>
   </TouchableOpacity>
 );
+export const CategoryOutlinedButton = (props) => (
+  <TouchableOpacity onPress={props.onPress}>
+    <View style={styles.categoryButtonOutlined}>
+      <ButtonTextBlack>{props.children}</ButtonTextBlack>
+      <Ionicons name={props.iconName} color={Colors.Black} size={30} />
+    </View>
+  </TouchableOpacity>
+);
 
 export const PrimaryIconButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.buttonIconPrimary}>
-      <Ionicons name="car-outline" color={Colors.White} size={30} />
+      <Ionicons name={props.iconName} color={Colors.White} size={30} />
       <ButtonTextWhite>{props.children}</ButtonTextWhite>
     </View>
   </TouchableOpacity>
 );
 
-export const GoodsIconButton = (props) => (
+export const AddAssetButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
-    <View style={styles.buttonIconPrimary}>
-      <Ionicons name={'basket-outline'} color={Colors.White} size={30} />
-      <ButtonTextWhite>{props.children}</ButtonTextWhite>
+    <View style={styles.addAssetButton}>
+      <View style={styles.addAssetIconArea}>
+        <Ionicons name={props.iconName} color={Colors.Black} size={40} />
+      </View>
+      <View style={styles.addAssetTextArea}>
+        <ButtonTextBlack>{props.children}</ButtonTextBlack>
+      </View>
     </View>
   </TouchableOpacity>
 );
-
