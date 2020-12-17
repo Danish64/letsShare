@@ -4,15 +4,14 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 
 export default StyleSheet.create({
   shareItemContainer: {
-    width: ms(250, 0.6),
+    width: ms(260, 0.6),
     height: mvs(250, 0.7),
     marginTop: mvs(15, 0.6),
     marginBottom: mvs(15, 0.6),
     marginRight: ms(10, 0.7),
     marginLeft: ms(5, 0.7),
-    elevation: ms(3),
+    //elevation: ms(3, 0.2),
     borderRadius: ms(10, 0.7),
-    marginRight: ms(10, 0.6),
   },
   imageContainer: {
     width: '100%',

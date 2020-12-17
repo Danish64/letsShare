@@ -34,6 +34,7 @@ const Component = ({navigation}) => {
 
       <View style={styles.shareRideButtonView}>
         <PrimaryIconButton
+          iconName="car-outline"
           onPress={() => navigation.navigate('CreateRideScreen')}>
           Share Ride
         </PrimaryIconButton>

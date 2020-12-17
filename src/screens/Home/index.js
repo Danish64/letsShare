@@ -24,9 +24,14 @@ const Component = ({loginRequest, userInfo, navigation}) => {
     console.log('UserInfo on Home Screen tedt', userInfo);
   }, [userInfo]);
   return (
-    <Container> 
-      <Header title="let's share" navigation={navigation} navigateTo="HomeSearchScreen" />
-      <HomeComponents/>
+    <Container>
+      <Header
+        isSearchable
+        title="let's share"
+        navigation={navigation}
+        navigateTo="HomeSearchScreen"
+      />
+      <HomeComponents />
     </Container>
   );
 };
