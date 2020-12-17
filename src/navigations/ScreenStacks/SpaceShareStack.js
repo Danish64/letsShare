@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import SpaceShareHomeScreen from '../../screens/ModulesScreens/SpaceShareScreens';
+import SpaceShareHomeScreen from '../../screens/ModulesScreens/SpaceShareScreens/Home';
 
 const Stack = createStackNavigator();
 
