@@ -19,7 +19,7 @@ const Component = ({navigation}) => {
   //to use styles -> {styles.propertyName}
   return (
     <View style={styles.shareGoodsComponentArea}>
-      <Image resizeMode="cover" style={styles.imageStyle} source={image} />
+      {/* <Image resizeMode="cover" style={styles.imageStyle} source={image} /> */}
       <View style={styles.shareGoodsTitleText}>
         <ShareActionAreaHeadingText>
           Wanna Share Goods?

@@ -6,12 +6,12 @@ import {
     AvailFoodArea
 } from '../../ScreensMainComponents/FoodShareComponents';
 
-const Component = (props) => {
+const Component = ({navigation}) => {
     return(
         <ScrollViewContainer>
-            <ShareFoodActionArea/>
-            <RecentlySharedFoodsArea/>
-            <AvailFoodArea/>
+            <ShareFoodActionArea navigation={navigation}/>
+            <RecentlySharedFoodsArea navigation={navigation}/>
+            <AvailFoodArea navigation={navigation}/>
         </ScrollViewContainer>
     );
 }
