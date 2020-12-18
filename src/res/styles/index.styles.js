@@ -103,8 +103,8 @@ export default StyleSheet.create({
   imageTextBold: {
     fontFamily: FONT_AIRBNB_CEREAL_BLACK,
     letterSpacing: ms(0.25),
-    fontSize: ms(28),
-    color: Colors.White,
+    fontSize: ms(20),
+    color: Colors.DarkGrey,
   },
 
   recentlySharedTitleText: {

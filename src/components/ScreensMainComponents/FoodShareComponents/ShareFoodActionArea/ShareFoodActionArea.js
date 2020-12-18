@@ -1,10 +1,6 @@
 import React from 'react';
-import {
-  ShareActionAreaHeadingText,
-} from 'res/UniversalComponents/Text.js';
-import {
-  GoodsIconButton,
-} from 'res/UniversalComponents/Button.js';
+import {ShareActionAreaHeadingText} from 'res/UniversalComponents/Text.js';
+import {PrimaryIconButton} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
@@ -18,16 +14,21 @@ import image from 'res/images/DummyImages/shareGoods.jpeg';
 const Component = ({navigation}) => {
   //to use styles -> {styles.propertyName}
   return (
-    <View style={styles.shareFoodComponentArea}>
+    <View style={styles.shareGoodsComponentArea}>
       {/* <Image resizeMode="cover" style={styles.imageStyle} source={image} /> */}
-      <View style={styles.shareFoodTitleText}>
+      <View style={styles.shareGoodsTitleText}>
         <ShareActionAreaHeadingText>
           Wanna Share Food?
         </ShareActionAreaHeadingText>
       </View>
 
-      <View style={styles.shareFoodButtonView}>
-        <GoodsIconButton onPress={() => navigation.navigate('CreateFoodScreen')}> Share Food</GoodsIconButton>
+      <View style={styles.shareGoodsButtonView}>
+        <PrimaryIconButton
+          imageName="basket-outline"
+          onPress={() => navigation.navigate('CreateFoodScreen')}>
+          {' '}
+          Share Food
+        </PrimaryIconButton>
       </View>
     </View>
   );

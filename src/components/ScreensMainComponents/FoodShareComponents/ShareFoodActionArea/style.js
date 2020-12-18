@@ -3,7 +3,7 @@ import {Colors} from 'res/constants/Colors';
 import {s, vs, ms, mvs} from 'react-native-size-matters';
 
 export default StyleSheet.create({
-  shareFoodComponentArea: {
+  shareGoodsComponentArea: {
     width: '90%',
     height: mvs(150, 0.7),
     marginTop: mvs(15, 0.6),
@@ -18,13 +18,13 @@ export default StyleSheet.create({
     marginTop: mvs(30, 0.6),
     borderRadius: ms(10, 0.6),
   },
-  shareFoodTitleText: {
+  shareGoodsTitleText: {
     width: '100%',
     marginBottom: mvs(5, 0.6),
     // marginTop: mvs(5, 0.6),
     alignItems: 'flex-start',
   },
-  shareFoodButtonView: {
+  shareGoodsButtonView: {
     width: '100%',
     alignItems: 'center',
     marginTop: mvs(40, 0.6),
