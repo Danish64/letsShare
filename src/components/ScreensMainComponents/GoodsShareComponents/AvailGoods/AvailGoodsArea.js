@@ -21,11 +21,14 @@ const Component = () => {
       <View style={styles.availRideTitleText}>
         <ShareActionAreaHeadingText>Avail Goods</ShareActionAreaHeadingText>
       </View>
-      <TextImageContainer text="Donate Goods" image={DonateGoods} />
+      <TextImageContainer 
+        text="Donate Goods" 
+        // image={DonateGoods} 
+      />
 
       <TextImageContainer
         text="Sell Goods"
-        image={SellGoods}
+        // image={SellGoods}
       />
     </View>
   );

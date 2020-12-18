@@ -9,11 +9,11 @@ import FoodShareHome from '../../../components/ContainersComponent/FoodShareCont
 
 //Third Party Exports Ends
 
-const Component = () => {
+const Component = ({navigation}) => {
   return (
     <Container>
       <Header  title= "Food Sharing" navigation={navigation} navigateTo="HomeSearchScreen" />
-      <FoodShareHome/>
+      <FoodShareHome navigation={navigation}/>
     </Container>
   );
 };

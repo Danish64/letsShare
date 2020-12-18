@@ -9,12 +9,13 @@ export default StyleSheet.create({
     marginTop: mvs(10, 0.6),
     marginBottom: mvs(2, 0.6),
     borderRadius: ms(10, 0.7),
+    borderColor: 'black',
     elevation: ms(3),
     marginHorizontal: ms(8, 0.6),
     alignItems: 'center',
     justifyContent: 'center',
-
     backgroundColor: 'blue',
+
   },
 
   imageContainer: {
