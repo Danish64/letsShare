@@ -34,7 +34,6 @@ const Component = ({navigation}) => {
         source={SplashScreenLogoAnimation}
         style={{width: '50%'}}
         autoPlay
-        loop
       />
     </View>
   );

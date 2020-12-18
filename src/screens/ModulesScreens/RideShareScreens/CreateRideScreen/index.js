@@ -5,7 +5,7 @@ import {ScrollView, View, Text} from 'react-native';
 import CreateRideContainer from '../../../../components/ContainersComponent/RideShareContainer/CreateRideContainer';
 
 //Native Exports Ends Here
-//Third Party Exports Starts
+//Third Party  Exports Starts
 
 //Third Party Exports Ends
 

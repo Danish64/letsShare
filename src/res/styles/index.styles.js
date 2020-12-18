@@ -265,7 +265,8 @@ export default StyleSheet.create({
 
   buttonActionIconOutlined: {
     ...buttonProperties,
-
+    paddingVertical: vs(6),
+    paddingHorizontal: s(60),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

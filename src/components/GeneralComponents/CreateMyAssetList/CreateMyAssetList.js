@@ -14,7 +14,7 @@ const Component = ({navigation}) => {
   return (
     <HorizontalScrollViewContainer>
       <View style={styles.itemsArea}>
-        <AddAssetButton iconName="car-outline">Alto VRX</AddAssetButton>
+        <AddAssetButton iconName="car-outline">Alto VXR</AddAssetButton>
         <AddAssetButton iconName="car-outline">Corolla GLI</AddAssetButton>
         <AddAssetButton iconName="car-outline">Civic</AddAssetButton>
         <AddAssetButton
