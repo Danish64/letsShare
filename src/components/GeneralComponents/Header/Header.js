@@ -17,6 +17,7 @@ const Component = ({
   navigation,
   navigateTo,
 }) => {
+
   //to use styles -> {styles.propertyName}
   return (
     <View style={styles.headerArea}>
@@ -24,6 +25,7 @@ const Component = ({
       <View style={hasBackIcon ? null : styles.logoArea}>
         <LogoText>{title}</LogoText>
       </View>
+
       {isSearchAble ? (
         <SearchRoundIcon navigation={navigation} navigateTo={navigateTo} />
       ) : null}

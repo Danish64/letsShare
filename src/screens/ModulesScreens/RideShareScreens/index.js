@@ -11,6 +11,7 @@ const Component = ({navigation}) => {
         title="Ride Sharing"
         navigation={navigation}
         navigateTo="HomeSearchScreen"
+        isSearchable
       />
       <RideShareHome navigation={navigation} />
     </Container>

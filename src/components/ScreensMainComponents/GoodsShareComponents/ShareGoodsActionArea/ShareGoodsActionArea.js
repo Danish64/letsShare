@@ -1,10 +1,6 @@
 import React from 'react';
-import {
-  ShareActionAreaHeadingText,
-} from 'res/UniversalComponents/Text.js';
-import {
-  GoodsIconButton,
-} from 'res/UniversalComponents/Button.js';
+import {ShareActionAreaHeadingText} from 'res/UniversalComponents/Text.js';
+import {PrimaryIconButton} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
@@ -27,7 +23,12 @@ const Component = ({navigation}) => {
       </View>
 
       <View style={styles.shareGoodsButtonView}>
-        <GoodsIconButton onPress={() => navigation.navigate('CreateGoodsScreen')}> Share Goods</GoodsIconButton>
+        <PrimaryIconButton
+          imageName="basket-outline"
+          onPress={() => navigation.navigate('CreateGoodsScreen')}>
+          {' '}
+          Share Goods
+        </PrimaryIconButton>
       </View>
     </View>
   );

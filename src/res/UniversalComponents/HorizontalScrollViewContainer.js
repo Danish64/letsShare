@@ -8,7 +8,7 @@ import {ScrollView, View} from 'react-native';
 
 const Component = (props) => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
       {props.children}
     </ScrollView>
   );

@@ -13,8 +13,12 @@ import GoodsShareHome from '../../../components/ContainersComponent/GoodsShareCo
 const Component = ({navigation}) => {
   return (
     <Container>
-      <Header title="Utilities Sharing" navigation={navigation} navigateTo="HomeSearchScreen"></Header>
-      <UtilitiesShareContainer navigation={navigation}/>
+      <Header
+        isSearchable
+        title="Utilities Sharing"
+        navigation={navigation}
+        navigateTo="HomeSearchScreen"></Header>
+      <UtilitiesShareContainer navigation={navigation} />
     </Container>
   );
 };

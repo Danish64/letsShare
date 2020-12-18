@@ -1,8 +1,10 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 import HorizontalFlatListItem from './HorizontalFlatListItem';
+
 import {FlatListData} from 'res/constants/dummyData.js';
 import {HeadingText, GroupLabelText} from 'res/UniversalComponents/Text.js';
+
 import styles from './style';
 //Native Exports Ends Here
 //Third Party Exports Starts
