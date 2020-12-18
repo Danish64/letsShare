@@ -26,8 +26,8 @@ const Component = ({loginRequest, userInfo, navigation}) => {
   return (
     <Container>
       <Header
-        isSearchable
         title="let's share"
+        isSearchAble
         navigation={navigation}
         navigateTo="HomeSearchScreen"
       />

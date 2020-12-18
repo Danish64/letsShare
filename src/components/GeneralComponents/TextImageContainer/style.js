@@ -15,7 +15,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
 
     backgroundColor: 'blue',
-
   },
 
   imageContainer: {
@@ -27,8 +26,6 @@ export default StyleSheet.create({
   textStyle: {
     position: 'absolute',
 
-  
     //marginVertical: mvs(80, 0.6),
-
   },
 });

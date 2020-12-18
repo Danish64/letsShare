@@ -1,11 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList';
-import {
-  HeadingText,
-  GroupLabelText,
-  SectionHeadingText,
-} from 'res/UniversalComponents/Text.js';
+import {SectionHeadingText} from 'res/UniversalComponents/Text.js';
 import styles from './style';
 //Native Exports Ends Here
 //Third Party Exports Starts
@@ -21,6 +17,8 @@ const Component = () => {
     {id: '5'},
     {id: '6'},
     {id: '7'},
+    {id: '8'},
+    {id: '9'},
   ];
 
   return (

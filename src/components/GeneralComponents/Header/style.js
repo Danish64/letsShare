@@ -8,7 +8,7 @@ export default StyleSheet.create({
     height: '10%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     backgroundColor: Colors.White,
     borderWidth: ms(1),
     borderLeftColor: Colors.White,

@@ -262,6 +262,19 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+
+  buttonActionIconOutlined: {
+    ...buttonProperties,
+
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: Colors.LightGrey,
+    borderWidth: ms(1),
+  },
+  buttonIconMargin: {
+    marginRight: ms(10, 0.6),
+  },
   goodsIconPrimary: {
     ...buttonProperties,
     backgroundColor: Colors.Primary,

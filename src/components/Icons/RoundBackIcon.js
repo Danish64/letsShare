@@ -7,14 +7,18 @@ import {s, vs, ms} from 'react-native-size-matters';
 
 export default SearchRoundIcon = ({navigation, navigateTo}) => {
   const onPress = (navigation) => {
-    console.log(navigateTo);
-    navigation.navigate(navigateTo);
+    // console.log(navigateTo);
+    navigation.goBack();
   };
   return (
     <TouchableOpacity
       onPress={() => onPress(navigation)}
       style={styles.roundSearchIcon}>
-      <Ionicons name="search-outline" color={Colors.Primary} size={ms(30)} />
+      <Ionicons
+        name="arrow-back-outline"
+        color={Colors.Primary}
+        size={ms(30)}
+      />
     </TouchableOpacity>
   );
 };

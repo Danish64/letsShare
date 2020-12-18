@@ -55,7 +55,23 @@ export const PrimaryIconButton = (props) => (
   </TouchableOpacity>
 );
 
-export const AddAssetButton = (props) => (
+
+export const OutlinedActionIconButton = (props) => (
+  <TouchableOpacity
+    style={styles.buttonActionIconOutlined}
+    onPress={props.onPress}>
+    <Ionicons
+      name={props.iconName}
+      color={Colors.Black}
+      size={30}
+      style={styles.buttonIconMargin}
+    />
+    <ButtonTextBlack>{props.children}</ButtonTextBlack>
+  </TouchableOpacity>
+);
+
+export const GoodsIconButton = (props) => (
+
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.addAssetButton}>
       <View style={styles.addAssetIconArea}>
