@@ -11,7 +11,7 @@ import {CategoryOutlinedButton} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
-import CreateMyAssetList from '../../../GeneralComponents/CreateMyAssetList';
+import CreateMyAssetList from '../../../GeneralComponents/CreateMyAssetList/';
 import ShareRide from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
 
 //Native Exports Ends Here

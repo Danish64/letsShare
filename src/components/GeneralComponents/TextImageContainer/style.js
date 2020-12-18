@@ -14,8 +14,7 @@ export default StyleSheet.create({
     marginHorizontal: ms(8, 0.6),
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'blue',
-
+    backgroundColor: 'white',
   },
 
   imageContainer: {
