@@ -8,4 +8,5 @@ export const Colors = {
   Black: '#000000',
   White: '#FFFFFF',
   SearchBarWhite: '#F5F5F5',
+  BackGroundGrey: '#F5F5F5',
 };

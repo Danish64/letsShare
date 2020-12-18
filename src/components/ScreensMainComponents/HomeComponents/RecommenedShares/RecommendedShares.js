@@ -1,14 +1,20 @@
 import React from 'react';
-import {HeadingText, GroupLabelText} from 'res/UniversalComponents/Text.js';
+import {View} from 'react-native';
+import {SectionHeadingText} from 'res/UniversalComponents/Text.js';
+import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList';
 import styles from './style';
-//Native Exports Ends Here
-//Third Party Exports Starts
-
-//Third Party Exports Ends
 
 const Component = () => {
-  //to use styles -> {styles.propertyName}
-  return <HeadingText>Recommended Shares</HeadingText>;
+  return (
+    <View style={styles.recommendedArea}>
+      <View style={styles.recommendedAreaTitleText}>
+        <SectionHeadingText>Recommended Shares</SectionHeadingText>
+      </View>
+      <View style={styles.recommendedFlatlistArea}>
+        <HorizontalFlatList />
+      </View>
+    </View>
+  );
 };
 
 export default Component;

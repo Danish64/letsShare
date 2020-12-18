@@ -66,7 +66,7 @@ export default StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: DEFAULT_SPLASH_SCREEN_COLOR, 
+    backgroundColor: DEFAULT_SPLASH_SCREEN_COLOR,
   },
 
   //Splash Screen Style ends
@@ -251,6 +251,19 @@ export default StyleSheet.create({
     backgroundColor: Colors.Primary,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+
+  buttonActionIconOutlined: {
+    ...buttonProperties,
+
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: Colors.LightGrey,
+    borderWidth: ms(1),
+  },
+  buttonIconMargin: {
+    marginRight: ms(10, 0.6),
   },
   goodsIconPrimary: {
     ...buttonProperties,
