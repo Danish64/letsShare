@@ -9,7 +9,7 @@ export default StyleSheet.create({
     marginVertical: mvs(15, 0.6),
     marginHorizontal: ms(20, 0.6),
     borderRadius: ms(20, 0.6),
-    // backgroundColor: Colors.BackGroundGrey,
+    backgroundColor: Colors.BackGroundGrey,
   },
   imageStyle: {
     position: 'absolute',
