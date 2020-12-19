@@ -9,6 +9,7 @@ export default StyleSheet.create({
     marginBottom: mvs(10, 0.6),
     marginVertical: mvs(15, 0.6),
     marginHorizontal: ms(20, 0.6),
+    // backgroundColor: 'grey',
   },
   availRideTitleText: {
     width: '100%',
@@ -16,5 +17,15 @@ export default StyleSheet.create({
     marginTop: mvs(5, 0.6),
     //backgroundColor: 'pink',
     alignItems: 'flex-start',
+  },
+  categoriesArea: {
+    width: '100%',
+    height: mvs(330, 0.6),
+    //backgroundColor: 'red',
+  },
+  illustrationArea: {
+    width: '100%',
+    height: mvs(240, 0.6),
+    //backgroundColor: 'blue',
   },
 });

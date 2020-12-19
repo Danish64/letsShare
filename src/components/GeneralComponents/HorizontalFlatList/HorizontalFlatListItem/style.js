@@ -12,8 +12,7 @@ export default StyleSheet.create({
 
     marginRight: ms(15, 0.7),
     borderRadius: ms(10, 0.7),
-    elevation: ms(1),
-
+    elevation: ms(3),
   },
   imageContainer: {
     width: '100%',

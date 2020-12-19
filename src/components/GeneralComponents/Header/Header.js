@@ -17,7 +17,6 @@ const Component = ({
   navigation,
   navigateTo,
 }) => {
-
   //to use styles -> {styles.propertyName}
   return (
     <View style={styles.headerArea}>
@@ -27,7 +26,9 @@ const Component = ({
       </View>
 
       {isSearchAble ? (
-        <SearchRoundIcon navigation={navigation} navigateTo={navigateTo} />
+        <View style={styles.searchBarArea}>
+          <SearchRoundIcon navigation={navigation} navigateTo={navigateTo} />
+        </View>
       ) : null}
     </View>
   );

@@ -5,16 +5,16 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   componentArea: {
     width: '95%',
-    height: mvs(110, 3.0),
+    height: mvs(50, 3.0),
     marginTop: mvs(10, 0.6),
     marginBottom: mvs(2, 0.6),
     borderRadius: ms(10, 0.7),
-    borderColor: 'black',
     elevation: ms(3),
     marginHorizontal: ms(8, 0.6),
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
+    borderWidth: 0.5,
   },
 
   imageContainer: {
@@ -25,7 +25,6 @@ export default StyleSheet.create({
 
   textStyle: {
     position: 'absolute',
-
     //marginVertical: mvs(80, 0.6),
   },
 });

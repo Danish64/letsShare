@@ -45,8 +45,14 @@ export const SubtitleTextBold = (props) => (
 export const SectionHeadingText = (props) => (
   <Text style={styles.sectionHeading}>{props.children}</Text>
 );
+export const TextInputTitleText = (props) => (
+  <Text style={styles.textInputTitle}>{props.children}</Text>
+);
 export const ShareActionAreaHeadingText = (props) => (
   <Text style={styles.shareActionAreaHeading}>{props.children}</Text>
+);
+export const AvailCategoryTextGrey = (props) => (
+  <Text style={styles.availCategoryTextGrey}>{props.children}</Text>
 );
 export const GroupLabelText = (props) => (
   <Text style={styles.groupLabel}>{props.children}</Text>
