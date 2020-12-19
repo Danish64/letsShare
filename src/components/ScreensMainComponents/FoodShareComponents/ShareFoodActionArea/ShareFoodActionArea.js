@@ -23,7 +23,7 @@ const Component = ({navigation}) => {
     <View style={styles.shareFoodComponentArea}>
       <View style={styles.shareFoodTitleText}>
         <ShareActionAreaHeadingText>
-          Got some goods to share?
+          Got some food to share?
         </ShareActionAreaHeadingText>
       </View>
 
@@ -31,7 +31,7 @@ const Component = ({navigation}) => {
         <OutlinedActionIconButton
           onPress={() => navigation.navigate('CreateFoodScreen')}
           iconName="add-outline">
-          Share your Goods
+          Share your Food
         </OutlinedActionIconButton>
       </View>
     </View>

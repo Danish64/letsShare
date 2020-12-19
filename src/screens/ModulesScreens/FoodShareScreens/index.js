@@ -12,7 +12,7 @@ import FoodShareHome from '../../../components/ContainersComponent/FoodShareCont
 const Component = ({navigation}) => {
   return (
     <Container>
-      <Header  title= "Food Sharing" navigation={navigation} navigateTo="HomeSearchScreen" />
+      <Header title= "Food Sharing" navigation={navigation} navigateTo="HomeSearchScreen" />
       <FoodShareHome navigation={navigation}/>
     </Container>
   );

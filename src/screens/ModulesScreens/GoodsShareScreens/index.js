@@ -12,7 +12,7 @@ import GoodsShareHome from '../../../components/ContainersComponent/GoodsShareCo
 const Component = ({navigation}) => {
   return (
     <Container>
-      <Header  title= "Goods Sharing" navigation={navigation} navigateTo="HomeSearchScreen" />
+      <Header   title= "Goods Sharing" navigation={navigation} navigateTo="HomeSearchScreen" />
       <GoodsShareHome navigation={navigation}/>
     </Container>
   );

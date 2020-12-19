@@ -1,8 +1,8 @@
 import React from 'react';
 import Container from 'res/UniversalComponents/Container.js';
-import Header from '../../../../components/GeneralComponents/Header';
+import Header from '../../../../../components/GeneralComponents/Header';
 import {ScrollView, View, Text} from 'react-native';
-import CreateGoodsContainer from '../../../../components/ContainersComponent/GoodsShareContainer/CreateGoodsContainer';
+import AddFoodFormContainer from '../../../../../components/ContainersComponent/FoodShareContainer/CreateFoodContainer/AddFoodFormContainer';
 
 //Native Exports Ends Here
 //Third Party Exports Starts
@@ -13,8 +13,8 @@ const Component = ({navigation}) => {
   //  console.log('RideShareScreen', navigation);
   return (
     <Container>
-      <Header title="Share Goods"  />
-      <CreateGoodsContainer navigation={navigation} />
+      <Header hasBackIcon title="Add Food" />
+      <AddFoodFormContainer navigation={navigation} />
     </Container>
   );
 };

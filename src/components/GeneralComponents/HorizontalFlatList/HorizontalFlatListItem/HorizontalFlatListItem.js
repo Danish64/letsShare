@@ -33,7 +33,7 @@ const Component = ({item}) => {
         <View style={styles.descriptionStyle}>
           <View style={styles.titleContainer}>
             <RecentlySharedTitleText numberOfLines={1}>
-              Ride Type
+              Share Type
             </RecentlySharedTitleText>
           </View>
           <TextIcon iconName="cash-outline">100/-Rs</TextIcon>

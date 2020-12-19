@@ -18,7 +18,7 @@ const Component = ({navigation}) => {
         <AddAssetButton iconName="fast-food-outline">Fruits</AddAssetButton>
         <AddAssetButton iconName="fast-food-outline">Vegetables</AddAssetButton>
         <AddAssetButton
-        //   onPress={() => navigation.navigate('')}
+          onPress={() => navigation.navigate('AddFoodScreen')}
           iconName="add-circle-outline">
           Add Food
         </AddAssetButton>

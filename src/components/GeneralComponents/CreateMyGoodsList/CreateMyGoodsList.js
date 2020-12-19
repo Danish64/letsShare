@@ -17,7 +17,7 @@ const Component = ({navigation}) => {
         <AddAssetButton iconName="cart-outline">Wearable</AddAssetButton>
         <AddAssetButton iconName="cart-outline">Household</AddAssetButton>
         <AddAssetButton
-        //   onPress={() => navigation.navigate('')}
+          onPress={() => navigation.navigate('AddGoodsScreen')}
           iconName="add-circle-outline">
           Add Goods
         </AddAssetButton>
