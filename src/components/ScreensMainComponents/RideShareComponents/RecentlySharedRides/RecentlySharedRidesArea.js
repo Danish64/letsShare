@@ -7,9 +7,10 @@ import {
   SectionHeadingText,
 } from 'res/UniversalComponents/Text.js';
 import styles from './style';
+
 //Native Exports Ends Here
 
-const Component = () => {
+const Component = ({navigation}) => {
   //to use styles -> {styles.propertyName}
   const data = [
     {id: '1'},

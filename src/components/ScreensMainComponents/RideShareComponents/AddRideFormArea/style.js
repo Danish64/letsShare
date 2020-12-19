@@ -12,8 +12,22 @@ export default StyleSheet.create({
   },
   formArea: {
     width: '100%',
-    height: mvs(450, 0.7),
-    backgroundColor: 'lightyellow',
+    height: mvs(230, 0.7),
+    // backgroundColor: 'lightyellow',
+  },
+  buttonAreastyle: {
+    width: '100%',
+    height: mvs(100, 0.7),
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginHorizontal: ms(10, 0.6),
+    backgroundColor: Colors.White,
+    borderWidth: ms(1),
+    borderLeftColor: Colors.White,
+    borderRightColor: Colors.White,
+    borderBottomColor: Colors.SearchBarWhite,
+    borderTopColor: Colors.White,
   },
   myRidesTitleText: {
     width: '100%',
@@ -27,12 +41,6 @@ export default StyleSheet.create({
     //backgroundColor: 'grey',
     alignItems: 'center',
   },
-  selectRideTypeArea: {
-    width: '100%',
-    height: mvs(270, 0.7),
-    marginVertical: mvs(10, 0.6),
-    //backgroundColor: 'blue',
-  },
   categoryButtonsArea: {
     width: '100%',
     height: mvs(230, 0.7),
@@ -41,7 +49,11 @@ export default StyleSheet.create({
   },
   pngImageArea: {
     width: '100%',
-    height: mvs(150, 0.6),
+    height: mvs(100, 0.6),
+  },
+  pngImageAreaLarge: {
+    width: '100%',
+    height: mvs(180, 0.6),
   },
   imageContainer: {
     width: '100%',

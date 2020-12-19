@@ -9,6 +9,7 @@ import {
   PrimaryButton,
   PrimaryIconButton,
   OutlinedButton,
+  OutlinedActionIconButton,
 } from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
@@ -28,16 +29,16 @@ const Component = ({navigation}) => {
       {/* <Image resizeMode="cover" style={styles.imageStyle} source={image} /> */}
       <View style={styles.shareRideTitleText}>
         <ShareActionAreaHeadingText>
-          Wanna Share Ride?
+          Got a ride to share?
         </ShareActionAreaHeadingText>
       </View>
 
       <View style={styles.shareRideButtonView}>
-        <PrimaryIconButton
-          iconName="car-outline"
-          onPress={() => navigation.navigate('CreateRideScreen')}>
-          Share Ride
-        </PrimaryIconButton>
+        <OutlinedActionIconButton
+          onPress={() => navigation.navigate('CreateRideScreen')}
+          iconName="add-outline">
+          Share your Ride
+        </OutlinedActionIconButton>
       </View>
     </View>
   );

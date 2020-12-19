@@ -120,6 +120,12 @@ export default StyleSheet.create({
     fontSize: ms(SMALL_HEADING_TEXT_SIZE),
     color: Colors.DarkGrey,
   },
+  availCategoryTextGrey: {
+    fontSize: mvs(20, 0.7),
+    color: Colors.DarkGrey,
+    fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
+    letterSpacing: ms(0.2),
+  },
 
   subTitle: {
     ...subTitleProperties,
@@ -314,6 +320,42 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
 
+  //Text Input Styles
+
+  textInputAreaBlur: {
+    width: '90%',
+    height: mvs(70, 0.6),
+    marginHorizontal: ms(15, 0.6),
+    justifyContent: 'center',
+    backgroundColor: Colors.White,
+    borderWidth: ms(1),
+    borderLeftColor: Colors.White,
+    borderRightColor: Colors.White,
+    borderBottomColor: Colors.SearchBarWhite,
+    borderTopColor: Colors.White,
+    padding: ms(5),
+  },
+
+  textInputAreaFocus: {
+    width: '90%',
+    height: mvs(70, 0.6),
+    marginHorizontal: ms(15, 0.6),
+    justifyContent: 'center',
+    backgroundColor: Colors.White,
+    borderWidth: ms(1),
+    borderLeftColor: Colors.White,
+    borderRightColor: Colors.White,
+    borderBottomColor: Colors.Primary,
+    borderTopColor: Colors.White,
+    padding: ms(5),
+    borderColor: 'green',
+  },
+  textInputTitle: {
+    fontSize: mvs(12, 0.7),
+    color: Colors.Black,
+    fontFamily: FONT_AIRBNB_CEREAL_BOLD,
+    letterSpacing: ms(0.2),
+  },
   // Button Styling Ends Here
 
   //ScrollViewContainer Styles
