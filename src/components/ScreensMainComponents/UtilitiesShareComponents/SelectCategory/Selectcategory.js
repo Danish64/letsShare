@@ -1,49 +1,5 @@
-// import React from 'react';
-// import {
-//   HeadingText,
-//   ShareActionAreaHeadingText,
-// } from 'res/UniversalComponents/Text.js';
-// import TextImageContainer from '../../../GeneralComponents/TextImageContainer';
-// import styles from './style';
-// import {View, TouchableOpacity, Text} from 'react-native';
-// import DonateGoods from 'res/images/DummyImages/DonateGoods.jpeg';
-// import SellGoods from 'res/images/DummyImages/SellGoods.jpeg';
-
-// //Native Exports Ends Here
-// //Third Party Exports Starts
-
-// //Third Party Exports Ends
-
-// const Component = ({navigation}) => {
-//   //to use styles -> {styles.propertyName}
-//   return (
-//     <View style={styles.availRideComponentArea}>
-//       {/* <View style={styles.availRideTitleText}>
-//         <ShareActionAreaHeadingText>Avail Goods</ShareActionAreaHeadingText>
-//       </View> */}
-//       <TextImageContainer 
-//       text="Share Goods" 
-//       image={DonateGoods} 
-//       onPress={() => navigation.navigate('GoodsShareStack')}/>
-
-//       <TextImageContainer
-//         text="Share Food"
-//         image={SellGoods}
-//         onPress={() => navigation.navigate('FoodShareStack')}/>
-
-//     </View>
-//   );
-// };
-
-// export default Component;
-
-
-
-
-
-
 import React from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, TouchableOpacity, Image} from 'react-native';
 import {
   HeadingText,
   GroupLabelText,
@@ -53,6 +9,7 @@ import {
 } from 'res/UniversalComponents/Text.js';
 import styles from './style';
 import HomeMenuIcon from '../../../Icons/HomeMenuIcon';
+import utilities from 'res/images/ModulesImages/GeneralImages/utilities.png';
 //Native Exports Ends Here
 
 const Component = ({navigation}) => {
@@ -83,6 +40,9 @@ const Component = ({navigation}) => {
   }) => {
     return (
       <View style={styles.shareAssetRowContainer}>
+        {/* <View style={styles.shareAssetTitleText}>
+        <SectionHeadingText>Share your assets</SectionHeadingText>
+      </View> */}
         <ShareAssetCard
           iconName={firstCardIconName}
           cardTitle={firstCardTitle}
@@ -99,15 +59,22 @@ const Component = ({navigation}) => {
   //to use styles -> {styles.propertyName}
   return (
     <View style={styles.shareAssetComponentArea}>
-      {/* <View style={styles.shareAssetTitleText}>
+      <View style={styles.shareAssetTitleText}>
         <SectionHeadingText>Share Utilities</SectionHeadingText>
-      </View> */}
+      </View>
       <ShareAssetRow
         firstCardTitle="Share Goods"
         firstCardIconName="cart-outline"
         secondCardTitle="Share Food"
         secondCardIconName="fast-food-outline"
       />
+      <View style={styles.pngImageArea}>
+          <Image
+            resizeMode="contain"
+            source={utilities}
+            style={styles.imageContainer}
+          />
+        </View>
     </View>
   );
 };

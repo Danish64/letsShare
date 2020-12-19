@@ -1,30 +1,3 @@
-// import {StyleSheet} from 'react-native';
-// import {Colors} from 'res/constants/Colors';
-// import {s, vs, ms, mvs} from 'react-native-size-matters';
-
-// export default StyleSheet.create({
-//   availRideComponentArea: {
-//     width: '90%',
-//     height: mvs(280, 3.0),
-//     // justifyContent: 'center',
-//     // alignItems: 'center',
-//     marginTop: mvs(30, 0.6),
-//     marginBottom: mvs(15, 0.6),
-//     marginHorizontal: ms(20, 0.6),
-//   },
-//   availRideTitleText: {
-//     width: '100%',
-//     marginBottom: mvs(5, 0.6),
-//     marginTop: mvs(5, 0.6),
-//     //backgroundColor: 'pink',
-//     alignItems: 'flex-start',
-//   },
-// });
-
-
-
-
-
 import {StyleSheet} from 'react-native';
 import {Colors} from 'res/constants/Colors';
 import {s, vs, ms, mvs} from 'react-native-size-matters';
@@ -32,7 +5,7 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   shareAssetComponentArea: {
     width: '90%',
-    height: mvs(400, 0.7),
+    height: '100%',
     marginTop: mvs(15, 0.6),
     marginBottom: mvs(15, 0.6),
     justifyContent: 'space-between',
@@ -40,30 +13,32 @@ export default StyleSheet.create({
   },
   shareAssetTitleText: {
     width: '100%',
-    marginBottom: mvs(5, 0.6),
-    marginTop: mvs(5, 0.6),
+    height: '10%',
+    alignItems: 'baseline',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
+  shareAssetActionArea: {
+    width: '100%',
+    height: '90%',
   },
   shareAssetRowContainer: {
     width: '100%',
-    height: '45%',
+    height: mvs(230, 0.7),
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: mvs(15, 0.6),
-    marginTop: mvs(130, 0.6),
   },
 
   shareAssetCardContainer: {
     width: '45%',
-    height: '65%',
+    height: mvs(110, 0.7),
     borderRadius: mvs(20, 0.6),
     borderWidth: ms(1),
     borderColor: Colors.Black,
-
     alignItems: 'center',
     justifyContent: 'center',
-
-    marginBottom: mvs(5, 0.6),
   },
   cardIcon: {
     width: '80%',
@@ -71,5 +46,13 @@ export default StyleSheet.create({
   },
   cardTitle: {
     marginTop: mvs(5, 0.6),
+  },
+  pngImageArea: {
+    width: '100%',
+    height: mvs(200, 0.6),
+  },
+  imageContainer: {
+    width: '100%',
+    height: '100%',
   },
 });

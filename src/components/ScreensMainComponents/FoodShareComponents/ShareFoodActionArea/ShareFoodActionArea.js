@@ -1,10 +1,15 @@
 import React from 'react';
-import {ShareActionAreaHeadingText} from 'res/UniversalComponents/Text.js';
-import {PrimaryIconButton} from 'res/UniversalComponents/Button.js';
+import {
+  HeadingText,
+  GroupLabelText,
+  ShareActionAreaHeadingText,
+  TextButton,
+} from 'res/UniversalComponents/Text.js';
+import {OutlinedActionIconButton} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
-import image from 'res/images/DummyImages/shareGoods.jpeg';
+import image from 'res/images/DummyImages/shareRide.png';
 
 //Native Exports Ends Here
 //Third Party Exports Starts
@@ -12,23 +17,22 @@ import image from 'res/images/DummyImages/shareGoods.jpeg';
 //Third Party Exports Ends
 
 const Component = ({navigation}) => {
+  // console.log('RideShareActionArea', navigation);
   //to use styles -> {styles.propertyName}
   return (
-    <View style={styles.shareGoodsComponentArea}>
-      {/* <Image resizeMode="cover" style={styles.imageStyle} source={image} /> */}
-      <View style={styles.shareGoodsTitleText}>
+    <View style={styles.shareFoodComponentArea}>
+      <View style={styles.shareFoodTitleText}>
         <ShareActionAreaHeadingText>
-          Wanna Share Food?
+          Got some goods to share?
         </ShareActionAreaHeadingText>
       </View>
 
-      <View style={styles.shareGoodsButtonView}>
-        <PrimaryIconButton
-          imageName="basket-outline"
-          onPress={() => navigation.navigate('CreateFoodScreen')}>
-          {' '}
-          Share Food
-        </PrimaryIconButton>
+      <View style={styles.shareFoodButtonView}>
+        <OutlinedActionIconButton
+          onPress={() => navigation.navigate('CreateFoodScreen')}
+          iconName="add-outline">
+          Share your Goods
+        </OutlinedActionIconButton>
       </View>
     </View>
   );
