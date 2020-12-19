@@ -267,6 +267,9 @@ export default StyleSheet.create({
     backgroundColor: Colors.Primary,
     flexDirection: 'row',
     alignItems: 'center',
+    paddingVertical: vs(6),
+    paddingHorizontal: s(60),
+    justifyContent: 'center',
   },
 
   buttonActionIconOutlined: {
