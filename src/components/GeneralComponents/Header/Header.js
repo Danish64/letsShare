@@ -28,14 +28,12 @@ const Component = ({
           navigation={navigation}
         />
       ) : null}
-      <View style={hasBackIcon ? null : styles.logoArea}>
+      <View style={hasBackIcon ? styles.headerAreaBackIcon : styles.logoArea}>
         <LogoText>{title}</LogoText>
       </View>
 
       {isSearchAble ? (
-        <View style={styles.searchBarArea}>
-          <SearchRoundIcon navigation={navigation} navigateTo={navigateTo} />
-        </View>
+        <SearchRoundIcon navigation={navigation} navigateTo={navigateTo} />
       ) : null}
     </View>
   );

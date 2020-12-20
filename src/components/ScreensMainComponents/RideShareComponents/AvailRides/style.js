@@ -5,7 +5,7 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   availRideComponentArea: {
     width: '90%',
-    height: mvs(380, 3.0),
+    height: mvs(350, 0.6),
     marginBottom: mvs(10, 0.6),
     marginVertical: mvs(15, 0.6),
     marginHorizontal: ms(20, 0.6),
@@ -20,12 +20,7 @@ export default StyleSheet.create({
   },
   categoriesArea: {
     width: '100%',
-    height: mvs(330, 0.6),
+    height: mvs(300, 0.6),
     //backgroundColor: 'red',
-  },
-  illustrationArea: {
-    width: '100%',
-    height: mvs(240, 0.6),
-    //backgroundColor: 'blue',
   },
 });
