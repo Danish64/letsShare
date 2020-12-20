@@ -54,7 +54,7 @@ const Component = ({navigation}) => {
             source={AddRide}
             style={styles.imageContainer}
           />
-        </View>q
+        </View>
       </View>
     </KeyboardAvoidingView>
   );

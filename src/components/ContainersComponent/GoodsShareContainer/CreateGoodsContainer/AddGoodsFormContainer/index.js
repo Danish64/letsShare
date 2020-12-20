@@ -9,6 +9,7 @@ const Component = ({navigation}) => {
   return (
     <ScrollViewContainer>
       <AddGoodsFormArea navigation={navigation} />
+      
     </ScrollViewContainer>
   );
 };

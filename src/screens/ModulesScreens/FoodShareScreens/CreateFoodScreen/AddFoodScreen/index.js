@@ -13,7 +13,7 @@ const Component = ({navigation}) => {
   //  console.log('RideShareScreen', navigation);
   return (
     <Container>
-      <Header hasBackIcon title="Add Food" />
+      <Header hasBackIcon title="Add Food" navigation={navigation}/>
       <AddFoodFormContainer navigation={navigation} />
     </Container>
   );
