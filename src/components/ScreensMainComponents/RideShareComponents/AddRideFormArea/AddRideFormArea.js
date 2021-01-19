@@ -2,6 +2,7 @@ import React from 'react';
 import {ShareActionAreaHeadingText} from 'res/UniversalComponents/Text.js';
 import {PrimaryIconButton} from 'res/UniversalComponents/Button.js';
 import {FormTextInput} from 'res/UniversalComponents/TextInput.js';
+
 import styles from './style';
 import {
   View,
@@ -44,7 +45,10 @@ const Component = ({navigation}) => {
           />
         </View>
         <View style={styles.buttonAreastyle}>
-          <PrimaryIconButton>Add Ride</PrimaryIconButton>
+          <PrimaryIconButton
+            onPress={() => navigation.navigate('LoadingScreen')}>
+            Add Ride
+          </PrimaryIconButton>
         </View>
         <View style={styles.pngImageAreaLarge}>
           <Image

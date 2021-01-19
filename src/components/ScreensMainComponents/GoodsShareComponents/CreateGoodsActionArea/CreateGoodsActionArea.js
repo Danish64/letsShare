@@ -11,7 +11,7 @@ import {CategoryOutlinedButton} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
-import CreateMyAssetList from '../../../GeneralComponents/CreateMyAssetList';
+import CreateMyGoodsList from '../../../GeneralComponents/CreateMyGoodsList';
 import ShareGoods from 'res/images/ModulesImages/GoodsSharingImages/shareGoods.png';
 
 //Native Exports Ends Here
@@ -30,7 +30,7 @@ const Component = ({navigation}) => {
         </View>
 
         <View style={styles.myGoodsListArea}>
-          <CreateMyAssetList navigation={navigation} />
+          <CreateMyGoodsList navigation={navigation} />
         </View>
       </View>
       <View style={styles.selectGoodsTypeArea}>

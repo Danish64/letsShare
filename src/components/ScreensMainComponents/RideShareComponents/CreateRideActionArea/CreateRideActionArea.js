@@ -1,4 +1,6 @@
 import React from 'react';
+import {View, Image, TouchableOpacity, Text} from 'react-native';
+
 import {
   HeadingText,
   GroupLabelText,
@@ -6,11 +8,11 @@ import {
   ShareActionAreaHeadingText,
   SectionHeadingText,
 } from 'res/UniversalComponents/Text.js';
-
 import {CategoryOutlinedButton} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
+
+import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList';
 import CreateMyAssetList from '../../../GeneralComponents/CreateMyAssetList/';
 import ShareRide from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
 
@@ -20,6 +22,16 @@ import ShareRide from 'res/images/ModulesImages/RideSharingImages/ShareRide.png'
 //Third Party Exports Ends
 
 const Component = ({navigation}) => {
+  const data = [
+    {
+      id: '1',
+      name: 'Alto VXR',
+    },
+    {
+      id: '2',
+      name: 'Honda Civic',
+    },
+  ];
   // console.log('RideShareActionArea', navigation);
   //to use styles -> {styles.propertyName}
   return (
@@ -30,7 +42,11 @@ const Component = ({navigation}) => {
         </View>
 
         <View style={styles.myRidesListArea}>
-          <CreateMyAssetList navigation={navigation} />
+          <CreateMyAssetList
+            icon="car-outline"
+            data={data}
+            navigation={navigation}
+          />
         </View>
       </View>
       <View style={styles.selectRideTypeArea}>

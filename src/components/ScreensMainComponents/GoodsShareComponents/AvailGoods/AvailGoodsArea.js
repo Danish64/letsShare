@@ -22,12 +22,12 @@ const Component = () => {
         <ShareActionAreaHeadingText>Avail Goods</ShareActionAreaHeadingText>
       </View>
       <TextImageContainer 
-        text="Donate Goods" 
+        text="Donated Goods" 
         // image={DonateGoods} 
       />
 
       <TextImageContainer
-        text="Sell Goods"
+        text="Buy Goods"
         // image={SellGoods}
       />
     </View>

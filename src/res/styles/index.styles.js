@@ -293,9 +293,9 @@ export default StyleSheet.create({
   },
 
   textIconStyle: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     marginHorizontal: ms(5, 0.6),
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 
   addAssetButton: {
@@ -308,19 +308,6 @@ export default StyleSheet.create({
     height: mvs(100, 0.6),
     marginHorizontal: ms(5, 0.6),
     borderWidth: 2,
-  },
-
-  addAssetTextArea: {
-    width: '100%',
-    height: '50%',
-    //backgroundColor: 'pink',
-    alignItems: 'center',
-  },
-  addAssetIconArea: {
-    width: '100%',
-    height: '50%',
-    //backgroundColor: 'lightblue',
-    alignItems: 'center',
   },
 
   //Text Input Styles

@@ -1,6 +1,7 @@
 import React from 'react';
 import {FlatList} from 'react-native';
 import HorizontalFlatListItem from './HorizontalFlatListItem';
+import FlatListItem from '../../GeneralComponents/HorizontalFlatList/FlatListItem';
 
 import {FlatListData} from 'res/constants/dummyData.js';
 import {HeadingText, GroupLabelText} from 'res/UniversalComponents/Text.js';
@@ -17,7 +18,18 @@ const Component = ({data, isRecentlyShared}) => {
   return (
     <FlatList
       data={data ? data : FlatListData}
-      renderItem={HorizontalFlatListItem}
+      renderItem={({item}) => (
+        <FlatListItem
+          title={item.title}
+          image={item.image}
+          price={item.price}
+          priceIcon={item.priceIcon}
+          quantity={item.seats}
+          quantityIcon={item.seatsIcon}
+          location={item.route}
+          locationIcon={item.routeIcon}
+        />
+      )}
       style={styles.FlatListStyle}
       keyExtractor={(item) => item.id}
       horizontal

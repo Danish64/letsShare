@@ -14,9 +14,13 @@ import {
 
 //Third Party Exports Ends
 
-export const TextIcon = (props) => (
-  <View style={styles.textIconStyle}>
-    <Ionicons name={props.iconName} color={Colors.Black} size={18} />
-    <RecentlySharedSubtitleText>{props.children}</RecentlySharedSubtitleText>
+export const TextIcon = ({iconName, flexDirection, children}) => (
+  <View style={[styles.textIconStyle, {flexDirection: flexDirection}]}>
+    <View style={styles.textIconAlign}>
+      <Ionicons name={iconName} color={Colors.Black} size={18} />
+    </View>
+    <View style={styles.textIconAlign}>
+      <RecentlySharedSubtitleText>{children}</RecentlySharedSubtitleText>
+    </View>
   </View>
 );

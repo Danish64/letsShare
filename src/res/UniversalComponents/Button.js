@@ -69,15 +69,11 @@ export const OutlinedActionIconButton = (props) => (
   </TouchableOpacity>
 );
 
-export const AddAssetButton = (props) => (
-  <TouchableOpacity onPress={props.onPress}>
+export const AddAssetButton = ({iconName, onPress, assetName}) => (
+  <TouchableOpacity onPress={onPress}>
     <View style={styles.addAssetButton}>
-      <View style={styles.addAssetIconArea}>
-        <Ionicons name={props.iconName} color={Colors.Black} size={40} />
-      </View>
-      <View style={styles.addAssetTextArea}>
-        <ButtonTextBlack>{props.children}</ButtonTextBlack>
-      </View>
+      <Ionicons name={iconName} color={Colors.Black} size={40} />
+      <ButtonTextBlack>{assetName}</ButtonTextBlack>
     </View>
   </TouchableOpacity>
 );
