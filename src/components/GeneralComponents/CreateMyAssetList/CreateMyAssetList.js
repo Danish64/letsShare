@@ -1,17 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, FlatList} from 'react-native';
 
 import {HeadingText, GroupLabelText} from 'res/UniversalComponents/Text.js';
 import styles from './style';
 import {PrimaryButton, AddAssetButton} from 'res/UniversalComponents/Button.js';
-import AssetListItem from '../../GeneralComponents/CreateMyAssetList/AssetListItem';
+import {Text} from 'react-native';
 
 //Native Exports Ends Here
 //Third Party Exports Starts
 
 //Third Party Exports Ends
 
-const Component = ({navigation, data, icon}) => {
+const Component = ({navigation, DATA, icon}) => {
+  const [data, setData] = useState(DATA);
+  const selectItem = (selectedId) => {
+    const newData = [
+      ...data.map((item) => {
+        if (selectedId === item.id) {
+          return {
+            ...item,
+            selected: !item.selected,
+          };
+        }
+        return item;
+      }),
+    ];
+    setData(newData);
+  };
+
   const addButton = () => {
     return (
       <AddAssetButton
@@ -26,14 +42,17 @@ const Component = ({navigation, data, icon}) => {
       <FlatList
         data={data ? data : FlatListData}
         renderItem={({item}) => (
-          <AssetListItem
+          <AddAssetButton
+            item={item}
+            selected={item.selected}
+            onPress={() => selectItem(item.id)}
             navigation={navigation}
-            assetName={item.name}
-            assetIcon={icon}
+            assetName={item.title}
+            iconName={icon}
           />
         )}
         style={styles.FlatListStyle}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id}
         horizontal
         showsHorizontalScrollIndicator={false}
         ListFooterComponent={addButton}

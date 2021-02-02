@@ -11,6 +11,7 @@ const Component = () => {
   return (
     <Container>
       <HeadingText>Inbox Screen</HeadingText>
+      {/* <AuthenticationHome /> */}
     </Container>
   );
 };

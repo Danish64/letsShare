@@ -10,4 +10,5 @@ export const Colors = {
   SearchBarWhite: '#F5F5F5',
   BackGroundGrey: '#F5F5F5',
   light: '#f8f4f4',
+  MediumGrey: '#6e6969',
 };

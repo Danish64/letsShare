@@ -19,3 +19,34 @@ export const FormTextInput = (props) => (
     <TextInput placeholder={props.placeHolder}></TextInput>
   </View>
 );
+
+export const OutlinedBorderTextInput = ({title}) => (
+  <View style={styles.outlinedBorderTextInput}>
+    <TextInput>
+      <Text
+        style={{fontSize: 20, color: Colors.LightGrey, textAlign: 'center'}}>
+        {title}
+      </Text>
+    </TextInput>
+  </View>
+);
+export const IconTextInputSquare = ({icon, ...otherProps}) => (
+  <View style={styles.iconTextInputField}>
+    {icon && (
+      <Ionicons
+        name={icon}
+        size={20}
+        color={Colors.MediumGrey}
+        style={{marginLeft: 10}}
+      />
+    )}
+    <TextInput style={styles.inputText} {...otherProps} />
+  </View>
+);
+
+export const FormInputTitleBaseline = ({icon, title, ...otherProps}) => (
+  <View style={styles.textInputAreaBaseline}>
+    <TextInputTitleText>{title}</TextInputTitleText>
+    <TextInput style={styles.inputTextSmall} {...otherProps}></TextInput>
+  </View>
+);

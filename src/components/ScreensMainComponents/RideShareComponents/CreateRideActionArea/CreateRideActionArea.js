@@ -11,27 +11,18 @@ import {
 import {CategoryOutlinedButton} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
+import ScrollViewList from '../../../GeneralComponents/ScrollViewList';
 
 import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList';
 import CreateMyAssetList from '../../../GeneralComponents/CreateMyAssetList/';
 import ShareRide from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
-
+import {addRideDummyData} from 'res/constants/dummyData.js';
 //Native Exports Ends Here
 //Third Party Exports Starts
 
 //Third Party Exports Ends
 
 const Component = ({navigation}) => {
-  const data = [
-    {
-      id: '1',
-      name: 'Alto VXR',
-    },
-    {
-      id: '2',
-      name: 'Honda Civic',
-    },
-  ];
   // console.log('RideShareActionArea', navigation);
   //to use styles -> {styles.propertyName}
   return (
@@ -42,9 +33,9 @@ const Component = ({navigation}) => {
         </View>
 
         <View style={styles.myRidesListArea}>
-          <CreateMyAssetList
+          <ScrollViewList
             icon="car-outline"
-            data={data}
+            DATA={addRideDummyData}
             navigation={navigation}
           />
         </View>
