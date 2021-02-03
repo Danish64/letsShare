@@ -8,6 +8,7 @@ export default StyleSheet.create({
     height: '10%',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginHorizontal: ms(10, 0.6),
     alignItems: 'center',
     backgroundColor: Colors.White,
     borderWidth: ms(1),
@@ -18,5 +19,19 @@ export default StyleSheet.create({
   },
   logoArea: {
     marginStart: s(15),
+  },
+  headerAreaBackIcon: {
+    width: '100%',
+    height: '10%',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginHorizontal: ms(10, 0.6),
+    alignItems: 'center',
+    backgroundColor: Colors.White,
+    borderWidth: ms(1),
+    borderLeftColor: Colors.White,
+    borderBottomColor: Colors.SearchBarWhite,
+    borderTopColor: Colors.White,
+    padding: ms(5),
   },
 });

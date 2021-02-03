@@ -17,12 +17,18 @@ const Component = ({
   navigation,
   navigateTo,
 }) => {
-
   //to use styles -> {styles.propertyName}
   return (
     <View style={styles.headerArea}>
-      {hasBackIcon ? <BackRoundIcon navigation={navigation} /> : null}
-      <View style={hasBackIcon ? null : styles.logoArea}>
+      {hasBackIcon ? (
+        <BackRoundIcon
+          onPress={() => {
+            navigation.goBack();
+          }}
+          navigation={navigation}
+        />
+      ) : null}
+      <View style={hasBackIcon ? styles.headerAreaBackIcon : styles.logoArea}>
         <LogoText>{title}</LogoText>
       </View>
 

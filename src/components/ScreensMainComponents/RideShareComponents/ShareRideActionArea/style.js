@@ -4,11 +4,11 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 
 export default StyleSheet.create({
   shareRideComponentArea: {
-    width: '90%',
-    height: mvs(150, 0.7),
+    width: '100%',
+    height: mvs(120, 0.7),
     marginVertical: mvs(15, 0.6),
-    marginHorizontal: ms(20, 0.6),
     borderRadius: ms(20, 0.6),
+    backgroundColor: Colors.BackGroundGrey,
   },
   imageStyle: {
     position: 'absolute',
@@ -21,11 +21,11 @@ export default StyleSheet.create({
     width: '100%',
     marginBottom: mvs(5, 0.6),
     marginTop: mvs(5, 0.6),
-    alignItems: 'flex-start',
+    alignItems: 'center',
   },
   shareRideButtonView: {
     width: '100%',
     alignItems: 'center',
-    marginTop: mvs(40, 0.6),
+    marginTop: mvs(10, 0.6),
   },
 });

@@ -1,4 +1,6 @@
 import React from 'react';
+import {View, Image, TouchableOpacity, Text} from 'react-native';
+
 import {
   HeadingText,
   GroupLabelText,
@@ -6,14 +8,15 @@ import {
   ShareActionAreaHeadingText,
   SectionHeadingText,
 } from 'res/UniversalComponents/Text.js';
-
 import {CategoryOutlinedButton} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
+import ScrollViewList from '../../../GeneralComponents/ScrollViewList';
+
+import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList';
 import CreateMyAssetList from '../../../GeneralComponents/CreateMyAssetList/';
 import ShareRide from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
-
+import {addRideDummyData} from 'res/constants/dummyData.js';
 //Native Exports Ends Here
 //Third Party Exports Starts
 
@@ -30,7 +33,11 @@ const Component = ({navigation}) => {
         </View>
 
         <View style={styles.myRidesListArea}>
-          <CreateMyAssetList navigation={navigation} />
+          <ScrollViewList
+            icon="car-outline"
+            DATA={addRideDummyData}
+            navigation={navigation}
+          />
         </View>
       </View>
       <View style={styles.selectRideTypeArea}>

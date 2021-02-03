@@ -1,13 +1,15 @@
 import React from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity, View, Image} from 'react-native';
 import styles from 'res/styles/index.styles.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {
   ButtonTextBlack,
   ButtonTextWhite,
+  ButtonTextLightGrey,
   TextButton,
 } from 'res/UniversalComponents/Text.js';
 import {Colors} from 'res/constants/Colors.js';
+import {Text} from 'react-native';
 export const PrimaryButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.buttonPrimary}>
@@ -26,6 +28,29 @@ export const PrimaryButtonDarkGrey = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.buttonPrimaryDarkGrey}>
       <ButtonTextWhite>{props.children}</ButtonTextWhite>
+    </View>
+  </TouchableOpacity>
+);
+
+export const LandscapeButtonBlack = (props) => (
+  <TouchableOpacity onPress={props.onPress}>
+    <View style={styles.buttonLandscapeBlack}>
+      <ButtonTextWhite>{props.children}</ButtonTextWhite>
+    </View>
+  </TouchableOpacity>
+);
+export const LandscapeButtonPrimary = (props) => (
+  <TouchableOpacity onPress={props.onPress}>
+    <View style={styles.buttonLandscapePrimary}>
+      <ButtonTextWhite>{props.children}</ButtonTextWhite>
+    </View>
+  </TouchableOpacity>
+);
+export const LandscapeImageButtonWhite = ({icon, ...props}) => (
+  <TouchableOpacity onPress={props.onPress}>
+    <View style={styles.buttonLandscapeImageWhite}>
+      <Image source={icon} style={styles.socialIconStyle} />
+      <ButtonTextBlack>{props.children}</ButtonTextBlack>
     </View>
   </TouchableOpacity>
 );
@@ -69,15 +94,35 @@ export const OutlinedActionIconButton = (props) => (
   </TouchableOpacity>
 );
 
-export const AddAssetButton = (props) => (
-  <TouchableOpacity onPress={props.onPress}>
-    <View style={styles.addAssetButton}>
-      <View style={styles.addAssetIconArea}>
-        <Ionicons name={props.iconName} color={Colors.Black} size={40} />
+export const AddAssetButton = ({
+  iconName,
+  assetName,
+  onPress,
+  selected,
+  addButton,
+}) => (
+  <TouchableOpacity onPress={onPress}>
+    <View
+      style={selected ? styles.addAssetButtonActive : styles.addAssetButton}>
+      <View style={styles.addAssetButtonCheckMark}>
+        {addButton ? null : (
+          <Ionicons
+            name={selected ? 'checkmark-circle' : 'ellipse-outline'}
+            size={25}
+            color={selected ? Colors.Primary : Colors.BackGroundGrey}
+          />
+        )}
       </View>
-      <View style={styles.addAssetTextArea}>
-        <ButtonTextBlack>{props.children}</ButtonTextBlack>
-      </View>
+      <Ionicons
+        name={iconName}
+        color={selected ? Colors.Black : Colors.LightGrey}
+        size={40}
+      />
+      {selected ? (
+        <ButtonTextBlack>{assetName}</ButtonTextBlack>
+      ) : (
+        <ButtonTextLightGrey>{assetName}</ButtonTextLightGrey>
+      )}
     </View>
   </TouchableOpacity>
 );

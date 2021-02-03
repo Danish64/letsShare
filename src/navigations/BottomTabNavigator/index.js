@@ -9,6 +9,7 @@ import Inbox from '../../screens/ModulesScreens/InboxScreen';
 import Utilities from '../../screens/ModulesScreens/UtilitiesScreen';
 import UserManagerStack from '../ScreenStacks/UserManagerStack';
 import styles from 'res/styles/index.styles.js';
+import AuthenticationStack from '../ScreenStacks/AuthenticationStack';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 
 import {

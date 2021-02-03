@@ -14,10 +14,11 @@ const Component = ({navigation}) => {
   return (
     <Container>
       <Header
-        isSearchable
+        
         title="Utilities Sharing"
         navigation={navigation}
-        navigateTo="HomeSearchScreen"></Header>
+        navigateTo="HomeSearchScreen">
+        </Header>
       <UtilitiesShareContainer navigation={navigation} />
     </Container>
   );

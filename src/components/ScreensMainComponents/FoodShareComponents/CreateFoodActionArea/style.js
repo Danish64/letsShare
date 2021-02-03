@@ -35,7 +35,7 @@ export default StyleSheet.create({
   },
   categoryButtonsArea: {
     width: '100%',
-    height: mvs(230, 0.7),
+    height: mvs(220, 0.7),
     marginVertical: mvs(10, 0.6),
     justifyContent: 'center',
   },
