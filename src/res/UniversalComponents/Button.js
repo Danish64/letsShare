@@ -82,6 +82,16 @@ export const AddAssetButton = (props) => (
   </TouchableOpacity>
 );
 
+export const StepperButton = (props) => (
+  <TouchableOpacity onPress={props.onPress}>
+    <View style={styles.stepperButton}>
+      <View style={styles.stepperIconArea}>
+        <Ionicons name={props.iconName} color={Colors.Black} size={15} />
+      </View>
+    </View>
+  </TouchableOpacity>
+);
+
 export const GoodsIconButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.addAssetButton}>

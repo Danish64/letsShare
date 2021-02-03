@@ -199,6 +199,11 @@ export default StyleSheet.create({
     fontFamily: FONT_AIRBNB_CEREAL_BOLD,
     marginBottom: ms(12, 0.7),
   },
+  formText: {
+    fontSize: ms(10),
+    fontFamily: FONT_AIRBNB_CEREAL_BOLD,
+    marginBottom: ms(12, 0.7),
+  },
   bottomTabHeight: {
     height: mvs(55, 0.7),
   },
@@ -359,6 +364,29 @@ export default StyleSheet.create({
     fontFamily: FONT_AIRBNB_CEREAL_BOLD,
     letterSpacing: ms(0.2),
   },
+
+  stepperButton: {
+    ...buttonProperties,
+    backgroundColor: Colors.White,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // borderRadius: ms(2, 0.6),
+    width: ms(30, 0.6),
+    height: mvs(30, 0.6),
+    paddingHorizontal: ms(5, 0.6),
+    marginRight: ms(6, 0.6),
+    borderWidth: 2,
+    borderRadius: 30,
+  },
+
+  stepperIconArea: {
+    width: '100%',
+    height: '100%',
+    //backgroundColor: 'lightblue',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
   // Button Styling Ends Here
 
   //ScrollViewContainer Styles

@@ -9,3 +9,16 @@ export const FlatListData = [
   {id: '8'},
   {id: '9'},
 ];
+
+export const GoodsList = [
+  {id: 1,
+  title: "Chairs",
+  quantity: 2,
+  description: "Two wooden chairs, 8/10 quality"
+  },
+  {id:2,
+  title: "Curler",
+  quantity: 1,
+  description: "philips curler, travel size,"}
+];
+

@@ -93,3 +93,6 @@ export const BottomTabText = (props) => (
 export const BottomTabFocusedText = (props) => (
   <Text style={styles.bottomTabFocusedText}>{props.children}</Text>
 );
+export const FormText = (props) => (
+  <Text style={styles.formText}>{props.children}</Text>
+);

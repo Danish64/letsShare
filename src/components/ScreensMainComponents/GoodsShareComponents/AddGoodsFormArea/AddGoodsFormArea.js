@@ -1,61 +1,101 @@
-import React from 'react';
+import React , {useState} from 'react';
+import {
+  View,
+  KeyboardAvoidingView,
+  TextInput
+} from 'react-native';
+//Native Exports Ends Here
+
+//Third Party Exports Starts
 import {ShareActionAreaHeadingText} from 'res/UniversalComponents/Text.js';
 import {PrimaryIconButton} from 'res/UniversalComponents/Button.js';
 import {FormTextInput} from 'res/UniversalComponents/TextInput.js';
+import {StepperButton} from '../../../../res/UniversalComponents/Button.js';
+import {TextInputTitleText} from '../../../../res/UniversalComponents/Text.js';
 import styles from './style';
-import {
-  View,
-  Image,
-  TouchableOpacity,
-  Text,
-  KeyboardAvoidingView,
-} from 'react-native';
-import AddRide from 'res/images/ModulesImages/RideSharingImages/AddRide.png';
-import CheckBoxes from 'res/images/ModulesImages/GeneralImages/checkBoxes.png';
-
-//Native Exports Ends Here
-//Third Party Exports Starts
-
+import { Formik, Field } from 'formik';
+import {GoodsList} from '../../../../res/constants/dummyData';
+import SetLocation from '../../../GeneralComponents/SetLocation';
+import { set } from 'react-native-reanimated';
 //Third Party Exports Ends
 
 const Component = ({navigation}) => {
-  // console.log('RideShareActionArea', navigation);
-  //to use styles -> {styles.propertyName}
+  const [goods, setGoods] = useState(GoodsList);
+  const [count, setCount] = useState(0);
+
+    const increment = () => {
+        setCount(count + 1);
+    };
+    const decrement = () => {
+        if(count === 0){
+            
+        }
+        else{
+            setCount(count - 1);
+        }
+    };
+    const addGoods = ({goods, navigation}) => {
+      goods.key = Math.random().toString();
+      // setGoods((currentGoods) => {
+      //   return [goods, ...currentGoods];
+      // });
+      GoodsList.unshift(goods);
+    };
+
   return (
     <KeyboardAvoidingView>
       <View style={styles.createGoodsComponentArea}>
-        <View style={styles.pngImageArea}>
-          <Image
-            resizeMode="contain"
-            source={CheckBoxes}
-            style={styles.imageContainer}
-          />
+        <Formik
+          initialValues={{
+            title: '',
+            description: '',
+            quantity: ''
+          }}
+          onSubmit={(values, actions) => {
+            actions.resetForm();
+            addGoods(values);
+            navigation.navigate('CreateGoodsScreen');
+            //console.log(GoodsList);
+          }}
+        >
+          {(props) =>(
+              <View style={styles.formArea}>
+              <FormTextInput 
+                title="Title" 
+                placeHolder="e.g. Shampoo Bottle" 
+                onChangeText={props.handleChange('title')}
+                value={props.values.title}
+              />
+              <FormTextInput
+                title="Description"
+                placeHolder="e.g. 3 bottles of shampoo, 1 half filled..."
+                onChangeText={props.handleChange('description')}
+                value={props.values.description}
+              />
+              <View style={styles.textInputAreaBlur}>
+                <TextInputTitleText>Quantity</TextInputTitleText> 
+                <View style={styles.container}>              
+                  <StepperButton iconName="remove-outline" onPress={decrement}/>
+                  <TextInput 
+                    placeHolder={count.toString()}
+                    onChangeText={props.handleChange("quantity")}
+                    value={(props.values.quantity = count.toString())}>
+                  </TextInput>
+                  <StepperButton iconName="add-outline" onPress={increment}/> 
+                </View>
+              </View>
+              <View style={styles.buttonAreastyle}>
+              <PrimaryIconButton onPress={props.handleSubmit}>Add </PrimaryIconButton>
+              </View>
+            </View>
+          )}                                  
+        
+          </Formik>
+          {/* <View>
+          <SetLocation/>
+        </View> */}
+         
         </View>
-        <View style={styles.formArea}>
-          <FormTextInput 
-            title="Item Name" 
-            placeHolder="Enter your item name" 
-          />
-          <FormTextInput
-            title="Quantity"
-            placeHolder="Enter quantity"
-          />
-          <FormTextInput
-            title="Phone Number"
-            placeHolder="Enter your contact number"
-          />
-        </View>
-        <View style={styles.buttonAreastyle}>
-          <PrimaryIconButton>Add </PrimaryIconButton>
-        </View>
-        <View style={styles.pngImageAreaLarge}>
-          <Image
-            resizeMode="contain"
-            source={AddRide}
-            style={styles.imageContainer}
-          />
-        </View>
-      </View>
     </KeyboardAvoidingView>
   );
 };

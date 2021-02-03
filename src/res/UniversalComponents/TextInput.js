@@ -16,6 +16,8 @@ var hasFocus = null;
 export const FormTextInput = (props) => (
   <View style={styles.textInputAreaBlur}>
     <TextInputTitleText>{props.title}</TextInputTitleText>
-    <TextInput placeholder={props.placeHolder}></TextInput>
+    <TextInput placeholder={props.placeHolder} onChangeText={props.onChangeText} value={props.value}></TextInput>
   </View>
 );
+
+
