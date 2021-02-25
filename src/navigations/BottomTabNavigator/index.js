@@ -90,8 +90,9 @@ export default function BottomTabNavigator() {
         options={({route}) => ({
           tabBarVisible: ((route) => {
             const routeName =
-              getFocusedRouteNameFromRoute(route) ?? 'RideStack';
-            if (routeName === 'RideStack') {
+              getFocusedRouteNameFromRoute(route) ??
+              ('RideStack' || 'RideShareHome');
+            if (routeName === 'RideStack' || routeName === 'RideShareHome') {
               return true;
             }
             return false;

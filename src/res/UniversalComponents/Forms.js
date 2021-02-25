@@ -4,7 +4,7 @@ import {Colors} from 'res/constants/Colors.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {View, Text, TextInput, compose} from 'react-native';
 import {Formik} from 'formik';
-import {useFormikContext} from 'formik';
+import {useFormikContext, useField} from 'formik';
 import Picker from '../../components/GeneralComponents/Picker';
 import PickerItem from '../../components/GeneralComponents/Picker/PickerItem';
 
@@ -21,6 +21,7 @@ import {
 import {
   IconTextInputSquare,
   FormInputTitleBaseline,
+  TestField,
 } from 'res/UniversalComponents/TextInput.js';
 import {Button} from 'react-native';
 
@@ -49,13 +50,25 @@ export const ErrorMessage = ({error, visible}) => {
     </TextInputErrorMessage>
   );
 };
-export const FormField = ({name, ...otherProps}) => {
-  const {setFieldTouched, handleChange, errors, touched} = useFormikContext();
+export const FormField = ({name, showDate, ...otherProps}) => {
+  const {
+    setFieldTouched,
+    handleChange,
+    errors,
+    touched,
+    values,
+  } = useFormikContext();
   return (
     <>
       <IconTextInputSquare
         onChangeText={handleChange(name)}
-        onBlur={() => setFieldTouched(name)}
+        onBlur={() => {
+          setFieldTouched(name);
+        }}
+        onFocus={() => {
+          showDate ? showDate(name) : null;
+        }}
+        value={values.name}
         {...otherProps}
       />
       <ErrorMessage visible={touched[name]} error={errors[name]} />
@@ -116,5 +129,46 @@ export const SubmitButton = ({title}) => {
 
   return (
     <LandscapeButtonBlack onPress={handleSubmit}>{title}</LandscapeButtonBlack>
+  );
+};
+
+// export const DatePickerField = ({...props}) => {
+//   const {setFieldValue} = useFormikContext();
+//   const [field] = useField(props);
+//   return (
+//     <DatePicker
+//       {...field}
+//       {...props}
+//       selected={(field.value && new Date(field.value)) || null}
+//       onChange={(val) => {
+//         setFieldValue(field.name, val);
+//       }}
+//     />
+//   );
+// };
+
+export const TestFormField = ({name, showDate, ...otherProps}) => {
+  const {
+    setFieldTouched,
+    handleChange,
+    errors,
+    touched,
+    values,
+  } = useFormikContext();
+  return (
+    <>
+      <TestField
+        onChangeText={handleChange(name)}
+        onBlur={() => {
+          setFieldTouched(name);
+        }}
+        onFocus={() => {
+          showDate ? showDate(name) : null;
+        }}
+        value={values.name}
+        {...otherProps}
+      />
+      <ErrorMessage visible={touched[name]} error={errors[name]} />
+    </>
   );
 };

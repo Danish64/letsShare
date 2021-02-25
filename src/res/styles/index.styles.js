@@ -421,9 +421,9 @@ export default StyleSheet.create({
   },
 
   inputText: {
-    color: Colors.LightGrey,
+    color: Colors.Black,
     fontFamily: 'FONT_AIRBNB_CEREAL_LIGHT',
-    fontSize: mvs(18, 0.7),
+    fontSize: mvs(15, 0.7),
     marginHorizontal: ms(10, 0.6),
   },
   inputTextSmall: {
@@ -434,8 +434,21 @@ export default StyleSheet.create({
   },
   iconTextInputField: {
     backgroundColor: Colors.White,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: Colors.LightGrey,
+    flexDirection: 'row',
+    width: '100%',
+    borderRadius: ms(4, 0.4),
+    paddingVertical: mvs(5, 0.6),
+    marginVertical: mvs(3, 0.6),
+    alignItems: 'center',
+  },
+
+  testField: {
+    backgroundColor: Colors.White,
+    borderWidth: 1,
+    borderColor: Colors.LightGrey,
+    borderRadius: ms(4, 0.4),
     flexDirection: 'row',
     width: '100%',
     paddingVertical: mvs(5, 0.6),
