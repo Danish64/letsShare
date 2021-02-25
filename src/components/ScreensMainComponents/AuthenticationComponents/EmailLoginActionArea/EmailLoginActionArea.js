@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
 import * as Yup from 'yup';
 
@@ -12,8 +12,8 @@ import {
   BodyTextBold,
 } from 'res/UniversalComponents/Text.js';
 import {LandscapeButtonBlack} from 'res/UniversalComponents/Button.js';
-
 import styles from './style';
+import {AuthContext} from 'res/constants/AuthContext.js';
 
 //Native Exports Ends Here
 //Third Party Exports Starts
@@ -27,13 +27,9 @@ const Component = ({navigation}) => {
   });
 
   const submitHandler = (values) => {
-    display(values);
+    navigation.navigate('RegisterUser');
+  };
 
-    navigation.navigate('Home');
-  };
-  const display = (values) => {
-    console.log(values.email);
-  };
   return (
     <View style={styles.emailLoginComponentArea}>
       <View style={styles.loginOrSignupTitleText}>
@@ -44,7 +40,7 @@ const Component = ({navigation}) => {
       <View style={styles.emailInputArea}>
         <Form
           initialValues={{email: ''}}
-          onSubmit={(values) => submitHandler(values)}
+          onSubmit={submitHandler}
           validationSchema={validationSchema}>
           <Field
             autoCapitalize="none"

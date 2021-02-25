@@ -50,3 +50,17 @@ export const FormInputTitleBaseline = ({icon, title, ...otherProps}) => (
     <TextInput style={styles.inputTextSmall} {...otherProps}></TextInput>
   </View>
 );
+
+export const TestField = ({icon, ...otherProps}) => (
+  <View style={styles.testField}>
+    {icon && (
+      <Ionicons
+        name={icon}
+        size={20}
+        color={Colors.MediumGrey}
+        style={{marginLeft: 10}}
+      />
+    )}
+    <TextInput style={styles.inputText} {...otherProps} />
+  </View>
+);
