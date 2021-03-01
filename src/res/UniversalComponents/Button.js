@@ -94,8 +94,6 @@ export const OutlinedActionIconButton = (props) => (
   </TouchableOpacity>
 );
 
-<<<<<<< HEAD
-=======
 // export const AddAssetButton = (props) => (
 //   <TouchableOpacity onPress={props.onPress}>
 //     <View style={styles.addAssetButton}>
@@ -109,7 +107,6 @@ export const OutlinedActionIconButton = (props) => (
 //   </TouchableOpacity>
 // );
 
->>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
 export const AddAssetButton = ({
   iconName,
   assetName,
@@ -128,8 +125,6 @@ export const AddAssetButton = ({
             color={selected ? Colors.Primary : Colors.BackGroundGrey}
           />
         )}
-<<<<<<< HEAD
-=======
       </View>
       <Ionicons
         name={iconName}
@@ -153,7 +148,6 @@ export const GoodsIconButton = (props) => (
       </View>
       <View style={styles.addAssetTextArea}>
         <ButtonTextBlack>{props.children}</ButtonTextBlack>
->>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
       </View>
       <Ionicons
         name={iconName}
@@ -194,32 +188,8 @@ export const ShareButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.shareButton}>
       <View style={styles.shareIconArea}>
-        <Ionicons name={props.iconName} color={Colors.Black} size={30}/>
+        <Ionicons name={props.iconName} color={Colors.Black} size={30} />
       </View>
-    </View>
-  </TouchableOpacity>
-);
-
-export const LandscapeButtonBlack = (props) => (
-  <TouchableOpacity onPress={props.onPress}>
-    <View style={styles.buttonLandscapeBlack}>
-      <ButtonTextWhite>{props.children}</ButtonTextWhite>
-    </View>
-  </TouchableOpacity>
-);
-
-export const LandscapeButtonPrimary = (props) => (
-  <TouchableOpacity onPress={props.onPress}>
-    <View style={styles.buttonLandscapePrimary}>
-      <ButtonTextWhite>{props.children}</ButtonTextWhite>
-    </View>
-  </TouchableOpacity>
-);
-export const LandscapeImageButtonWhite = ({icon, ...props}) => (
-  <TouchableOpacity onPress={props.onPress}>
-    <View style={styles.buttonLandscapeImageWhite}>
-      <Image source={icon} style={styles.socialIconStyle} />
-      <ButtonTextBlack>{props.children}</ButtonTextBlack>
     </View>
   </TouchableOpacity>
 );

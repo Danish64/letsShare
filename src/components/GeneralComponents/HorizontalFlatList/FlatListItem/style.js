@@ -41,10 +41,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginVertical: mvs(10, 0.6),
-<<<<<<< HEAD
-=======
-    width: '90%'
->>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
+    width: '90%',
   },
 
   titleContainer: {

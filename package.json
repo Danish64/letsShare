@@ -12,36 +12,24 @@
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.13",
     "@react-native-community/datetimepicker": "^3.0.9",
-<<<<<<< HEAD
     "@react-native-community/google-signin": "^5.0.0",
-=======
->>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.1",
     "@react-navigation/native": "^5.8.9",
     "@react-navigation/stack": "^5.12.6",
-<<<<<<< HEAD
     "buffer": "^6.0.3",
     "formik": "^2.2.6",
     "lottie-react-native": "^3.5.0",
     "moment": "^2.29.1",
-=======
-    "formik": "^2.2.6",
-    "lottie-react-native": "^3.5.0",
-    "native-base": "^2.15.2",
->>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-elements": "^3.0.0-alpha.1",
     "react-native-fontawesome": "^7.0.0",
     "react-native-gesture-handler": "^1.8.0",
-<<<<<<< HEAD
-    "react-native-modal-datetime-picker": "^9.1.0",
-=======
     "react-native-google-places-autocomplete": "^2.1.2",
     "react-native-image-picker": "^3.2.1",
     "react-native-maps": "^0.27.1",
->>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
+    "react-native-modal-datetime-picker": "^9.1.0",
     "react-native-reanimated": "^1.13.2",
     "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "^2.15.0",

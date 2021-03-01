@@ -16,7 +16,10 @@ var hasFocus = null;
 export const FormTextInput = (props) => (
   <View style={styles.textInputAreaBlur}>
     <TextInputTitleText>{props.title}</TextInputTitleText>
-    <TextInput placeholder={props.placeHolder} onChangeText={props.onChangeText} value={props.value}></TextInput>
+    <TextInput
+      placeholder={props.placeHolder}
+      onChangeText={props.onChangeText}
+      value={props.value}></TextInput>
   </View>
 );
 
@@ -51,7 +54,6 @@ export const FormInputTitleBaseline = ({icon, title, ...otherProps}) => (
   </View>
 );
 
-<<<<<<< HEAD
 export const TestField = ({icon, ...otherProps}) => (
   <View style={styles.testField}>
     {icon && (
@@ -65,6 +67,3 @@ export const TestField = ({icon, ...otherProps}) => (
     <TextInput style={styles.inputText} {...otherProps} />
   </View>
 );
-=======
-
->>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f

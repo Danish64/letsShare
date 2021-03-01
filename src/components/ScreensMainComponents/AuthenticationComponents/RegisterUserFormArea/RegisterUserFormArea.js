@@ -34,8 +34,11 @@ const Component = ({navigation}) => {
     password: Yup.string().required().min(4).label('Password'),
   });
   const submitHandler = (values) => {
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'Home'}],
+    });
     values.myDate = date;
-    console.log(values);
   };
 
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);

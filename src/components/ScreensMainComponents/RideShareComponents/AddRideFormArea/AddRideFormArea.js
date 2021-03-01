@@ -46,7 +46,7 @@ const categories = [
   {label: 'Bike', value: 3},
 ];
 
-const Component = ({navigation}) => {
+const Component = ({route, navigation}) => {
   const submitForm = (values) => {
     values.id = Math.floor(Math.random() * 100) + 1;
     values.selected = false;
@@ -58,6 +58,7 @@ const Component = ({navigation}) => {
   const updateRides = (newData) => {
     const arrayData = addRideDummyData;
     arrayData.push(newData);
+    updateUserRides(arrayData);
     navigation.navigate('CreateRideScreen');
   };
 
@@ -79,7 +80,7 @@ const Component = ({navigation}) => {
               contactNo: '',
               selected: null,
               id: '',
-              category: null,
+              //category: null,
             }}
             onSubmit={(values) => {
               submitForm(values);
@@ -105,13 +106,13 @@ const Component = ({navigation}) => {
               name="contactNo"
               placeholder="Enter your contact No"
             />
-            <FormPicker
+            {/* <FormPicker
               heading="Choose Ride Type"
               icon="keypad-outline"
               items={categories}
               name="category"
               placeholder="Category"
-            />
+            /> */}
             <View style={styles.submitButtonArea}>
               <SubmitForm title="Add Ride" />
             </View>

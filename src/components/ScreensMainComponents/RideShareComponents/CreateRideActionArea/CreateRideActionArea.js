@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
 
 import {
@@ -22,7 +22,20 @@ import {addRideDummyData} from 'res/constants/dummyData.js';
 
 //Third Party Exports Ends
 
+// const dummyData = [
+//   {
+//     id: '1',
+//     assetName: 'Alto VXR',
+//     registrationNo: 'LES-2010',
+//     contactNumber: '03345654654',
+//     //Type: null,
+//     selected: true,
+//   },
+// ];
+
 const Component = ({navigation}) => {
+  const [userRides, setUserRides] = useState(addRideDummyData);
+
   // console.log('RideShareActionArea', navigation);
   //to use styles -> {styles.propertyName}
   return (
@@ -35,8 +48,9 @@ const Component = ({navigation}) => {
         <View style={styles.myRidesListArea}>
           <ScrollViewList
             icon="car-outline"
-            DATA={addRideDummyData}
+            DATA={userRides}
             navigation={navigation}
+            navigateTo="AddRideScreen"
           />
         </View>
       </View>

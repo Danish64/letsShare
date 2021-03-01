@@ -12,7 +12,6 @@ export const FlatListData = [
   {id: '9'},
 ];
 
-<<<<<<< HEAD
 export const addRideDummyData = [
   {
     id: '1',
@@ -23,54 +22,55 @@ export const addRideDummyData = [
     selected: true,
   },
 ];
-=======
 export const Goods = [
   {
     id: 1,
-    title: "Book",
-    quantity: "1",
-    description: "Book name: A Silent Patient, 9/10 condition",
+    title: 'Book',
+    quantity: '1',
+    description: 'Book name: A Silent Patient, 9/10 condition',
     images: shareGoods,
-    pickupLocation: "G11/3,Islamabad to G13/1,Islamabad",
-    PickupTime: "10AM to 5PM",
-    listFor: "5"
+    pickupLocation: 'G11/3,Islamabad to G13/1,Islamabad',
+    PickupTime: '10AM to 5PM',
+    listFor: '5',
   },
   {
     id: 2,
-    title: "Lunch Box",
-    quantity: "1",
-    description: "three compartments",
+    title: 'Lunch Box',
+    quantity: '1',
+    description: 'three compartments',
     images: shareFood,
-    pickupLocation: "G11/3,Islamabad to G13/1,Islamabad",
-    PickupTime: "10AM to 5PM",
-    listFor: "5"
+    pickupLocation: 'G11/3,Islamabad to G13/1,Islamabad',
+    PickupTime: '10AM to 5PM',
+    listFor: '5',
   },
   {
     id: 3,
-    title: "Bottle",
-    quantity: "1",
-    description: "9/10 condition",
+    title: 'Bottle',
+    quantity: '1',
+    description: '9/10 condition',
     images: shareGoods,
-    pickupLocation: "G11/3,Islamabad to G13/1,Islamabad",
-    PickupTime: "10AM to 5PM",
-    listFor: "5"
+    pickupLocation: 'G11/3,Islamabad to G13/1,Islamabad',
+    PickupTime: '10AM to 5PM',
+    listFor: '5',
   },
 ];
 
 export const GoodsList = [
-  {id: 1,
-  title: "Chairs",
-  quantity: 2,
-  description: "Two wooden chairs, 8/10 quality",
-  image:  shareGoods,
-  selected: false,
+  {
+    id: 1,
+    title: 'Chairs',
+    quantity: 2,
+    description: 'Two wooden chairs, 8/10 quality',
+    image: shareGoods,
+    selected: false,
   },
-  {id:2,
-  title: "Curler",
-  quantity: 1,
-  description: "philips curler, travel size...",
-  image:  shareFood,
-  selected: false,
+  {
+    id: 2,
+    title: 'Curler',
+    quantity: 1,
+    description: 'philips curler, travel size...',
+    image: shareFood,
+    selected: false,
   },
 ];
 
@@ -109,5 +109,3 @@ export const testData = [
     routeIcon: 'navigate-outline',
   },
 ];
-
->>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f

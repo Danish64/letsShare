@@ -19,7 +19,6 @@ import {
   DEFAULT_BUTTON_RADIUS,
 } from 'res/constants/constants';
 import {s, vs, ms, mvs} from 'react-native-size-matters';
-import { Col } from 'native-base';
 
 const FONT_AIRBNB_CEREAL_BOLD = 'AirbnbCereal-Bold';
 const FONT_AIRBNB_CEREAL_MEDIUM = 'AirbnbCereal-Medium';
@@ -273,10 +272,7 @@ export default StyleSheet.create({
   roundSearchIcon: {
     marginRight: s(10),
   },
-<<<<<<< HEAD
 
-=======
->>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
   buttonLandscapeBlack: {
     ...buttonProperties,
     backgroundColor: Colors.Black,
@@ -300,14 +296,11 @@ export default StyleSheet.create({
     justifyContent: 'space-evenly',
     borderWidth: 2,
   },
-<<<<<<< HEAD
   socialIconStyle: {
     width: 25,
     height: 25,
   },
 
-=======
->>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
   buttonIconPrimary: {
     ...buttonProperties,
     backgroundColor: Colors.Primary,
@@ -432,13 +425,12 @@ export default StyleSheet.create({
     letterSpacing: ms(0.2),
   },
 
-<<<<<<< HEAD
   inputText: {
     color: Colors.Black,
     fontFamily: 'FONT_AIRBNB_CEREAL_LIGHT',
     fontSize: mvs(15, 0.7),
     marginHorizontal: ms(10, 0.6),
-=======
+  },
   stepperButton: {
     ...buttonProperties,
     backgroundColor: Colors.White,
@@ -458,7 +450,7 @@ export default StyleSheet.create({
     height: '100%',
     //backgroundColor: 'lightblue',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   addImageButton: {
@@ -473,7 +465,7 @@ export default StyleSheet.create({
     marginRight: ms(6, 0.6),
     borderWidth: 1,
     borderColor: Colors.LightGrey,
-    borderStyle: 'dashed'
+    borderStyle: 'dashed',
     // borderRadius: 30,
   },
 
@@ -482,7 +474,7 @@ export default StyleSheet.create({
     height: '100%',
     //backgroundColor: 'lightblue',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   shareButton: {
@@ -505,10 +497,8 @@ export default StyleSheet.create({
     height: '100%',
     //backgroundColor: 'lightblue',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
-
-
 
   outlinedBorderTextInput: {
     width: '100%',
@@ -527,6 +517,7 @@ export default StyleSheet.create({
     fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
     letterSpacing: ms(0.2),
   },
+
   textInputAreaBaseline: {
     width: '100%',
     height: mvs(70, 0.6),
@@ -537,15 +528,15 @@ export default StyleSheet.create({
     borderRightColor: Colors.White,
     borderBottomColor: Colors.SearchBarWhite,
     borderTopColor: Colors.White,
->>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
   },
+
   inputTextSmall: {
     color: Colors.Black,
     fontFamily: 'FONT_AIRBNB_CEREAL_LIGHT',
     fontSize: mvs(15, 0.7),
     marginHorizontal: ms(5, 0.6),
   },
-<<<<<<< HEAD
+
   iconTextInputField: {
     backgroundColor: Colors.White,
     borderWidth: 1,
@@ -569,7 +560,6 @@ export default StyleSheet.create({
     marginVertical: mvs(5, 0.6),
     alignItems: 'center',
   },
-=======
 
   inputText: {
     color: Colors.LightGrey,
@@ -600,7 +590,7 @@ export default StyleSheet.create({
     borderBottomColor: Colors.SearchBarWhite,
     borderTopColor: Colors.White,
     padding: ms(5),
-    marginTop: ms(7)
+    marginTop: ms(7),
   },
   stepperContainer: {
     width: '100%',
@@ -616,11 +606,4 @@ export default StyleSheet.create({
     // backgroundColor: 'white',
     // borderWidth: 0.5,
   },
-
->>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
-  // Button Styling Ends Here
-
-  //ScrollViewContainer Styles
-
-  //ScrollViewContainer Styles ends
 });
