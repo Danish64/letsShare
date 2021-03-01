@@ -4,6 +4,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 import GoodsShareHomeScreen from '../../screens/ModulesScreens/GoodsShareScreens';
 import CreateGoodsScreen from '../../screens/ModulesScreens/GoodsShareScreens/CreateGoodsScreen';
 import AddGoodsScreen from '../../screens/ModulesScreens/GoodsShareScreens/CreateGoodsScreen/AddGoodsScreen';
+import DonateGoodsScreen from '../../screens/ModulesScreens/GoodsShareScreens/CreateGoodsScreen/DonateGoodsScreen';
+import SellGoodsScreen from '../../screens/ModulesScreens/GoodsShareScreens/CreateGoodsScreen/SellGoodsScreen';
+import RecentlySharedScreen from '../../screens/ModulesScreens/GoodsShareScreens/RecentlySharedScreen';
 const Stack = createStackNavigator();
 
 function GoodsShareNavigator() {
@@ -15,6 +18,9 @@ function GoodsShareNavigator() {
       <Stack.Screen name="GoodsShareHome" component={GoodsShareHomeScreen} />
       <Stack.Screen name="CreateGoodsScreen" component={CreateGoodsScreen} />
       <Stack.Screen name="AddGoodsScreen" component={AddGoodsScreen} />
+      <Stack.Screen name="DonateGoodsScreen" component={DonateGoodsScreen} />
+      <Stack.Screen name="SellGoodsScreen" component={SellGoodsScreen} />
+      <Stack.Screen name="RecentlySharedScreen" component={RecentlySharedScreen} />
     
     </Stack.Navigator>
   );

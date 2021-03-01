@@ -16,6 +16,7 @@ import {
   BottomTabText,
   BottomTabFocusedText,
 } from 'res/UniversalComponents/Text.js';
+import { round } from 'react-native-reanimated';
 
 const Tab = createBottomTabNavigator();
 
@@ -66,8 +67,8 @@ export default function BottomTabNavigator() {
         options={({route}) => ({
           tabBarVisible: ((route) => {
             const routeName =
-              getFocusedRouteNameFromRoute(route) ?? 'SpaceStack';
-            if (routeName === 'SpaceStack') {
+              getFocusedRouteNameFromRoute(route) ?? ('SpaceStack' || 'SpaceShareHome');
+            if (routeName === 'SpaceStack' || routeName === 'SpaceShareHome') {
               return true;
             }
             return false;
@@ -90,8 +91,12 @@ export default function BottomTabNavigator() {
         options={({route}) => ({
           tabBarVisible: ((route) => {
             const routeName =
+<<<<<<< HEAD
               getFocusedRouteNameFromRoute(route) ??
               ('RideStack' || 'RideShareHome');
+=======
+              getFocusedRouteNameFromRoute(route) ?? ('RideStack' || 'RideShareHome');
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
             if (routeName === 'RideStack' || routeName === 'RideShareHome') {
               return true;
             }
@@ -111,8 +116,8 @@ export default function BottomTabNavigator() {
         options={({route}) => ({
           tabBarVisible: ((route) => {
             const routeName =
-              getFocusedRouteNameFromRoute(route) ?? 'Utilities';
-            if (routeName === 'Utilities') {
+              getFocusedRouteNameFromRoute(route) ?? ('Utilities' || 'UtilitiesShareHome');
+            if (routeName === 'Utilities' || routeName === 'UtilitiesShareHome') {
               return true;
             }
             return false;

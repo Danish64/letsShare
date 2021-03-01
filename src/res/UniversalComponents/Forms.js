@@ -1,11 +1,22 @@
+<<<<<<< HEAD
 import React from 'react';
+=======
+import React, {useState}from 'react';
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
 import styles from 'res/styles/index.styles.js';
 import {Colors} from 'res/constants/Colors.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {View, Text, TextInput, compose} from 'react-native';
 import {Formik} from 'formik';
+<<<<<<< HEAD
 import {useFormikContext, useField} from 'formik';
 import Picker from '../../components/GeneralComponents/Picker';
+=======
+import {useFormikContext} from 'formik';
+import Picker from '../../components/GeneralComponents/Picker';
+import ImagePicker from '../../components/GeneralComponents/ImagePicker';
+import SetLocation from '../../components/GeneralComponents/SetLocation';
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
 import PickerItem from '../../components/GeneralComponents/Picker/PickerItem';
 
 import {
@@ -16,12 +27,19 @@ import {
 import {
   LandscapeButtonBlack,
   LandscapeButtonPrimary,
+<<<<<<< HEAD
+=======
+  StepperButton
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
 } from 'res/UniversalComponents/Button.js';
 
 import {
   IconTextInputSquare,
   FormInputTitleBaseline,
+<<<<<<< HEAD
   TestField,
+=======
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
 } from 'res/UniversalComponents/TextInput.js';
 import {Button} from 'react-native';
 
@@ -50,6 +68,7 @@ export const ErrorMessage = ({error, visible}) => {
     </TextInputErrorMessage>
   );
 };
+<<<<<<< HEAD
 export const FormField = ({name, showDate, ...otherProps}) => {
   const {
     setFieldTouched,
@@ -58,10 +77,15 @@ export const FormField = ({name, showDate, ...otherProps}) => {
     touched,
     values,
   } = useFormikContext();
+=======
+export const FormField = ({name, ...otherProps}) => {
+  const {setFieldTouched, handleChange, errors, touched} = useFormikContext();
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
   return (
     <>
       <IconTextInputSquare
         onChangeText={handleChange(name)}
+<<<<<<< HEAD
         onBlur={() => {
           setFieldTouched(name);
         }}
@@ -69,6 +93,9 @@ export const FormField = ({name, showDate, ...otherProps}) => {
           showDate ? showDate(name) : null;
         }}
         value={values.name}
+=======
+        onBlur={() => setFieldTouched(name)}
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
         {...otherProps}
       />
       <ErrorMessage visible={touched[name]} error={errors[name]} />
@@ -100,6 +127,50 @@ export const BaselineFormField = ({name, ...otherProps}) => {
   );
 };
 
+<<<<<<< HEAD
+=======
+export const StepperButtonInputField = ({name, title, ...otherProps}) => {
+  const {
+    setFieldTouched,
+    handleChange,
+    errors,
+    touched,
+    values,
+  } = useFormikContext();
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+      setCount(count + 1);
+  };
+  const decrement = () => {
+      if(count === 0){      
+      }
+      else{ setCount(count - 1);}
+  };
+
+  return (
+    <>
+
+      <View style={styles.stepperInputAreaBlur}>
+        <TextInputTitleText>{title}</TextInputTitleText> 
+        <View style={styles.stepperContainer}>              
+          <StepperButton iconName="remove-outline" onPress={decrement}/>
+          <TextInput 
+            placeHolder={count.toString()}
+            onBlur={() => setFieldTouched(name)}
+            onChangeText={handleChange(name)}
+            value={(values[name] = count.toString())}
+            {...otherProps}>
+          </TextInput>
+          <ErrorMessage visible={touched[name]} error={errors[name]} />
+          <StepperButton iconName="add-outline" onPress={increment}/> 
+        </View>
+      </View>
+    </>
+  );
+};
+
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
 export const FormPicker = ({heading, items, name, placeholder, icon}) => {
   const {errors, setFieldValue, touched, values} = useFormikContext();
 
@@ -109,7 +180,10 @@ export const FormPicker = ({heading, items, name, placeholder, icon}) => {
         heading={heading}
         icon={icon}
         item={items}
+<<<<<<< HEAD
         onSelectItem={(item) => setFieldValue(name, item)}
+=======
+        onSelectItem={(item) => setFieldValue(name, item.target.file[0])}
         placeholder={placeholder}
         selectedItem={values[name]}
       />
@@ -118,6 +192,49 @@ export const FormPicker = ({heading, items, name, placeholder, icon}) => {
   );
 };
 
+export const LocationInput = ({heading, name, placeholder}) => {
+  const {errors, setFieldValue, touched, values} = useFormikContext();
+
+  return (
+    <>
+      <Picker
+        heading={heading}
+        onSelectItem={(item) => setFieldValue(name, item.target.file[0])}
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
+        placeholder={placeholder}
+        selectedItem={values[name]}
+      />
+      <ErrorMessage error={errors[name]} visible={touched[name]} />
+    </>
+  );
+};
+
+<<<<<<< HEAD
+=======
+export const FormImagePicker = ({name}) => {
+  const {errors, setFieldValue, touched, values} = useFormikContext();
+  return(
+    <>
+    <ImagePicker
+        onSelectItem={(image) => setFieldValue(name, image)}
+    />
+    <ErrorMessage error={errors[name]} visible={touched[name]}/>
+    </>
+  );
+}
+
+export const FormLocation = ({name}) => {
+  const {errors, setFieldValue, touched, values} = useFormikContext();
+  return(
+    <>
+    <SetLocation
+      onSelectItem={(data) => setFieldValue(name, data)}
+    />
+    <ErrorMessage error={errors[name]} visible={touched[name]}/>
+    </>
+  );
+}
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
 export const SubmitButton = ({title}) => {
   const {
     handleSubmit,
@@ -131,6 +248,7 @@ export const SubmitButton = ({title}) => {
     <LandscapeButtonBlack onPress={handleSubmit}>{title}</LandscapeButtonBlack>
   );
 };
+<<<<<<< HEAD
 
 // export const DatePickerField = ({...props}) => {
 //   const {setFieldValue} = useFormikContext();
@@ -172,3 +290,5 @@ export const TestFormField = ({name, showDate, ...otherProps}) => {
     </>
   );
 };
+=======
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f

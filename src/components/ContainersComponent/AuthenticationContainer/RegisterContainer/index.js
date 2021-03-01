@@ -9,7 +9,6 @@ const Component = ({navigation}) => {
   return (
     <ScrollViewContainer>
       <RegisterUserFormArea />
-      <IllustrationContainer />
     </ScrollViewContainer>
   );
 };

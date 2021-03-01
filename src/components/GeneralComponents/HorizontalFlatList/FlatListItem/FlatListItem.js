@@ -27,10 +27,20 @@ const Component = ({
   quantityIcon,
   location,
   locationIcon,
+<<<<<<< HEAD
 }) => {
   //to use styles -> {styles.propertyName}
   return (
     <TouchableOpacity>
+=======
+  onPress
+}) => {
+  //to use styles -> {styles.propertyName}
+  return (
+    <TouchableOpacity
+      onPress={onPress}
+      >
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
       <View style={styles.shareItemContainer}>
         <View style={styles.imageContainer}>
           <Image resizeMode="center" style={styles.imageStyle} source={image} />
@@ -42,7 +52,11 @@ const Component = ({
               {title}
             </RecentlySharedTitleText>
           </View>
+<<<<<<< HEAD
           <View style={styles.subtitleContainer}>
+=======
+          {/* <View style={styles.subtitleContainer}>
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
             <View style={styles.separator} />
             {price && (
               <TextIcon flexDirection="column" iconName={priceIcon}>
@@ -51,15 +65,26 @@ const Component = ({
             )}
 
             {quantity && (
+<<<<<<< HEAD
               <TextIcon flexDirection="column" iconName={quantityIcon}>
+=======
+              <TextIcon flexDirection="column" iconName="people-outline">
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
                 {quantity}
               </TextIcon>
             )}
             <View style={styles.separator} />
+<<<<<<< HEAD
           </View>
           <View style={styles.locationStyle}>
             {location && (
               <TextIcon flexDirection="row" iconName={locationIcon}>
+=======
+          </View> */}
+          <View style={styles.locationStyle}>
+            {location && (
+              <TextIcon flexDirection="row" iconName="navigate-outline">
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
                 {location}
               </TextIcon>
             )}

@@ -12,14 +12,16 @@ import styles from './style';
 
 //Third Party Exports Ends
 
-const Component = ({data, isRecentlyShared}) => {
+const Component = ({data, isRecentlyShared , navigation}) => {
   //to use styles -> {styles.propertyName}'
   // console.log(data)
+  
   return (
     <FlatList
       data={data ? data : FlatListData}
       renderItem={({item}) => (
         <FlatListItem
+<<<<<<< HEAD
           title={item.title}
           image={item.image}
           price={item.price}
@@ -28,6 +30,13 @@ const Component = ({data, isRecentlyShared}) => {
           quantityIcon={item.seatsIcon}
           location={item.route}
           locationIcon={item.routeIcon}
+=======
+          id={item.id}
+          title={item.title}
+          image={item.images}
+          location={item.pickupLocation}
+          onPress={() => {navigation.navigate('RecentlySharedScreen', { item: item })}}
+>>>>>>> ac6a846e34c5ae65bc304ba80c1c90e206730e0f
         />
       )}
       style={styles.FlatListStyle}
