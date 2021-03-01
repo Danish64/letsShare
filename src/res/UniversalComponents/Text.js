@@ -48,6 +48,9 @@ export const SectionHeadingText = (props) => (
 export const TextInputTitleText = (props) => (
   <Text style={styles.textInputTitle}>{props.children}</Text>
 );
+export const TextInputErrorMessage = (props) => (
+  <Text style={styles.textInputErrorMessage}>{props.children}</Text>
+);
 export const ShareActionAreaHeadingText = (props) => (
   <Text style={styles.shareActionAreaHeading}>{props.children}</Text>
 );
@@ -95,4 +98,7 @@ export const BottomTabFocusedText = (props) => (
 );
 export const FormText = (props) => (
   <Text style={styles.formText}>{props.children}</Text>
+);
+export const ButtonTextLightGrey = (props) => (
+  <Text style={styles.buttonTextLightGrey}>{props.children}</Text>
 );
