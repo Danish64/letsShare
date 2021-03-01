@@ -35,6 +35,7 @@ const Component = ({
   ...otherProps
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState({});
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
@@ -47,9 +48,9 @@ const Component = ({
               style={styles.icon}
             />
           )}
-          {selectedItem ? (
+          {Object.keys(selectedCategory).length !== 0 ? (
             <View style={styles.text}>
-              <TextInputTitleText>{selectedItem.label}</TextInputTitleText>
+              <TextInputTitleText>{selectedCategory.label}</TextInputTitleText>
             </View>
           ) : (
             <View style={styles.placeholder}>
@@ -73,9 +74,11 @@ const Component = ({
           keyExtractor={(item) => item.value.toString()}
           renderItem={({item}) => (
             <PickerItem
+              item={item}
               label={item.label}
               onPress={() => {
                 setModalVisible(false);
+                setSelectedCategory(item);
                 onSelectItem(item);
               }}
             />

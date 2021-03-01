@@ -94,6 +94,19 @@ export const OutlinedActionIconButton = (props) => (
   </TouchableOpacity>
 );
 
+// export const AddAssetButton = (props) => (
+//   <TouchableOpacity onPress={props.onPress}>
+//     <View style={styles.addAssetButton}>
+//       <View style={styles.addAssetIconArea}>
+//         <Ionicons name={props.iconName} color={Colors.Black} size={40} />
+//       </View>
+//       <View style={styles.addAssetTextArea}>
+//         <ButtonTextBlack>{props.children}</ButtonTextBlack>
+//       </View>
+//     </View>
+//   </TouchableOpacity>
+// );
+
 export const AddAssetButton = ({
   iconName,
   assetName,
@@ -135,6 +148,47 @@ export const GoodsIconButton = (props) => (
       </View>
       <View style={styles.addAssetTextArea}>
         <ButtonTextBlack>{props.children}</ButtonTextBlack>
+      </View>
+      <Ionicons
+        name={iconName}
+        color={selected ? Colors.Black : Colors.LightGrey}
+        size={40}
+      />
+      {selected ? (
+        <ButtonTextBlack>{assetName}</ButtonTextBlack>
+      ) : (
+        <ButtonTextLightGrey>{assetName}</ButtonTextLightGrey>
+      )}
+    </View>
+  </TouchableOpacity>
+);
+
+export const StepperButton = (props) => (
+  <TouchableOpacity onPress={props.onPress}>
+    <View style={styles.stepperButton}>
+      <View style={styles.stepperIconArea}>
+        <Ionicons name={props.iconName} color={Colors.Black} size={15} />
+      </View>
+    </View>
+  </TouchableOpacity>
+);
+
+export const AddImageButton = (props) => (
+  <TouchableOpacity onPress={props.onPress}>
+    <View style={styles.addImageButton}>
+      <View style={styles.addImageIconArea}>
+        <Ionicons name={props.iconName} color={Colors.Primary} size={50} />
+        {/* <Ionicons name='add-outline' color={Colors.Primary} size={20} /> */}
+      </View>
+    </View>
+  </TouchableOpacity>
+);
+
+export const ShareButton = (props) => (
+  <TouchableOpacity onPress={props.onPress}>
+    <View style={styles.shareButton}>
+      <View style={styles.shareIconArea}>
+        <Ionicons name={props.iconName} color={Colors.Black} size={30} />
       </View>
     </View>
   </TouchableOpacity>

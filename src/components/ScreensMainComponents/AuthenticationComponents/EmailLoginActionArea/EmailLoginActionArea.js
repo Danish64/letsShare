@@ -21,13 +21,15 @@ import {AuthContext} from 'res/constants/AuthContext.js';
 //Third Party Exports Ends
 
 const Component = ({navigation}) => {
+  const [email, setEmail] = useState('');
   const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label('Email'),
     // password: Yup.string().required().min(4).label('Password'),
   });
 
   const submitHandler = (values) => {
-    navigation.navigate('RegisterUser');
+    setEmail(values.email);
+    navigation.navigate('PasswordScreen', {email: email});
   };
 
   return (

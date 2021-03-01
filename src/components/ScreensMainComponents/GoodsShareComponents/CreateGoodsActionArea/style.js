@@ -47,4 +47,18 @@ export default StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  mainContainer: {
+    width: '100%',
+    height: mvs(120, 0.6),
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  itemContainer: {
+    width: '100%',
+    height: mvs(120, 0.6),
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

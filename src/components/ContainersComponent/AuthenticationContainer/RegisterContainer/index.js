@@ -5,11 +5,11 @@ import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer.js'
 import IllustrationContainer from '../../../../components/GeneralComponents/IllustrationContainer';
 
 const Component = ({navigation}) => {
-  //console.log('RideShareContainer', navigation);
+  //console.log('RideShareContainer', navigation); check navigation
+
   return (
     <ScrollViewContainer>
-      <RegisterUserFormArea />
-      <IllustrationContainer />
+      <RegisterUserFormArea navigation={navigation} />
     </ScrollViewContainer>
   );
 };

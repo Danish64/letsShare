@@ -25,7 +25,10 @@ const Component = ({navigation}) => {
 
   useEffect(() => {
     if (!Loading) {
-      navigation.navigate('Authentication');
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'Authentication'}],
+      });
     }
   }, [Loading]);
 

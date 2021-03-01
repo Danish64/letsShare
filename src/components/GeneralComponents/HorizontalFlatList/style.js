@@ -7,4 +7,6 @@ export default StyleSheet.create({
     paddingLeft: ms(18, 0.6),
     width: '100%',
   },
+
+  
 });
