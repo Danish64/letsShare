@@ -5,7 +5,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import HomeNavigator from './BottomTabNavigator';
 import SplashScreen from '../screens/SplashScreen';
-import GoodsShareHomeScreen from '../screens/ModulesScreens/GoodsShareScreens';
+import AuthenticationStack from './ScreenStacks/AuthenticationStack';
+
 const Stack = createStackNavigator();
 
 function MainNavigator() {
@@ -16,6 +17,7 @@ function MainNavigator() {
           headerShown: false,
         }}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
+        <Stack.Screen name="Authentication" component={AuthenticationStack} />
         <Stack.Screen name="Home" component={HomeNavigator} />
       </Stack.Navigator>
     </NavigationContainer>

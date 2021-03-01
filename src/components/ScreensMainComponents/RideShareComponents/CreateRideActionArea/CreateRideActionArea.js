@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {View, Image, TouchableOpacity, Text} from 'react-native';
+
 import {
   HeadingText,
   GroupLabelText,
@@ -6,20 +8,34 @@ import {
   ShareActionAreaHeadingText,
   SectionHeadingText,
 } from 'res/UniversalComponents/Text.js';
-
 import {CategoryOutlinedButton} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
+import ScrollViewList from '../../../GeneralComponents/ScrollViewList';
+
+import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList';
 import CreateMyAssetList from '../../../GeneralComponents/CreateMyAssetList/';
 import ShareRide from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
-
+import {addRideDummyData} from 'res/constants/dummyData.js';
 //Native Exports Ends Here
 //Third Party Exports Starts
 
 //Third Party Exports Ends
 
+// const dummyData = [
+//   {
+//     id: '1',
+//     assetName: 'Alto VXR',
+//     registrationNo: 'LES-2010',
+//     contactNumber: '03345654654',
+//     //Type: null,
+//     selected: true,
+//   },
+// ];
+
 const Component = ({navigation}) => {
+  const [userRides, setUserRides] = useState(addRideDummyData);
+
   // console.log('RideShareActionArea', navigation);
   //to use styles -> {styles.propertyName}
   return (
@@ -30,7 +46,12 @@ const Component = ({navigation}) => {
         </View>
 
         <View style={styles.myRidesListArea}>
-          <CreateMyAssetList navigation={navigation} />
+          <ScrollViewList
+            icon="car-outline"
+            DATA={userRides}
+            navigation={navigation}
+            navigateTo="AddRideScreen"
+          />
         </View>
       </View>
       <View style={styles.selectRideTypeArea}>

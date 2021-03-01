@@ -5,7 +5,7 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   availFoodComponentArea: {
     width: '90%',
-    height: mvs(390, 3.0),
+    height: mvs(220, 3.0),
     marginTop: mvs(30, 0.6),
     marginBottom: mvs(15, 0.6),
     marginHorizontal: ms(20, 0.6),

@@ -1,8 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {View, StatusBar} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, StatusBar, Text} from 'react-native';
 import SplashScreenLogoAnimation from 'res/animations/SplashScreenLogo.json';
 import LottieView from 'lottie-react-native';
 import styles from 'res/styles/index.styles.js';
+
 //Native Exports Ends Here
 //Third Party Exports Starts
 
@@ -19,12 +20,15 @@ const Component = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2300);
+    }, 1000);
   }, []);
 
   useEffect(() => {
     if (!Loading) {
-      navigation.navigate('Home');
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'Authentication'}],
+      });
     }
   }, [Loading]);
 

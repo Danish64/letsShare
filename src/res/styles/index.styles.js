@@ -120,6 +120,12 @@ export default StyleSheet.create({
     fontSize: ms(SMALL_HEADING_TEXT_SIZE),
     color: Colors.DarkGrey,
   },
+  availCategoryTextGrey: {
+    fontSize: mvs(20, 0.7),
+    color: Colors.DarkGrey,
+    fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
+    letterSpacing: ms(0.2),
+  },
 
   subTitle: {
     ...subTitleProperties,
@@ -193,6 +199,11 @@ export default StyleSheet.create({
     fontFamily: FONT_AIRBNB_CEREAL_BOLD,
     marginBottom: ms(12, 0.7),
   },
+  formText: {
+    fontSize: ms(10),
+    fontFamily: FONT_AIRBNB_CEREAL_BOLD,
+    marginBottom: ms(12, 0.7),
+  },
   bottomTabHeight: {
     height: mvs(55, 0.7),
   },
@@ -206,6 +217,11 @@ export default StyleSheet.create({
     ...buttonTextProperties,
     color: Colors.White,
   },
+  buttonTextLightGrey: {
+    ...buttonTextProperties,
+    color: Colors.LightGrey,
+  },
+
   textButtonText: {
     ...buttonTextProperties,
     color: Colors.Primary,
@@ -256,11 +272,43 @@ export default StyleSheet.create({
   roundSearchIcon: {
     marginRight: s(10),
   },
+
+  buttonLandscapeBlack: {
+    ...buttonProperties,
+    backgroundColor: Colors.Black,
+    alignItems: 'center',
+    paddingVertical: vs(15),
+    justifyContent: 'center',
+  },
+  buttonLandscapePrimary: {
+    ...buttonProperties,
+    backgroundColor: Colors.Primary,
+    alignItems: 'center',
+    paddingVertical: vs(15),
+    justifyContent: 'center',
+  },
+  buttonLandscapeImageWhite: {
+    ...buttonProperties,
+    backgroundColor: Colors.White,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: vs(15),
+    justifyContent: 'space-evenly',
+    borderWidth: 2,
+  },
+  socialIconStyle: {
+    width: 25,
+    height: 25,
+  },
+
   buttonIconPrimary: {
     ...buttonProperties,
     backgroundColor: Colors.Primary,
     flexDirection: 'row',
     alignItems: 'center',
+    paddingVertical: vs(6),
+    paddingHorizontal: s(60),
+    justifyContent: 'center',
   },
 
   buttonActionIconOutlined: {
@@ -284,9 +332,9 @@ export default StyleSheet.create({
   },
 
   textIconStyle: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     marginHorizontal: ms(5, 0.6),
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 
   addAssetButton: {
@@ -296,27 +344,266 @@ export default StyleSheet.create({
     justifyContent: 'center',
     borderRadius: ms(20, 0.6),
     width: ms(150, 0.6),
-    height: mvs(100, 0.6),
+    height: mvs(110, 0.6),
     marginHorizontal: ms(5, 0.6),
-    borderWidth: 2,
+    borderWidth: 3,
+    borderColor: Colors.LightGrey,
+  },
+  addAssetButtonActive: {
+    ...buttonProperties,
+    backgroundColor: Colors.White,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: ms(20, 0.6),
+    width: ms(150, 0.6),
+    height: mvs(110, 0.6),
+    marginHorizontal: ms(5, 0.6),
+    borderWidth: 3,
+    borderColor: Colors.Primary,
+  },
+  addAssetButtonCheckMark: {
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
+    width: ms(130, 0.6),
+    // alignItems: 'center',
   },
 
-  addAssetTextArea: {
+  //Text Input Styles
+
+  outlinedBorderTextInput: {
     width: '100%',
-    height: '50%',
-    //backgroundColor: 'pink',
-    alignItems: 'center',
+    height: mvs(60, 0.6),
+    borderWidth: 2,
+    borderColor: Colors.LightGrey,
+    borderTopLeftRadius: ms(4, 0.6),
+    borderTopRightRadius: ms(4, 0.6),
+    justifyContent: 'center',
+    //backgroundColor: 'yellow',
   },
-  addAssetIconArea: {
+
+  //text Input
+
+  textInputErrorMessage: {
+    fontSize: mvs(12, 0.7),
+    color: Colors.Failure,
+    fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
+    letterSpacing: ms(0.2),
+  },
+
+  textInputAreaBlur: {
+    width: '90%',
+    height: mvs(70, 0.6),
+    marginHorizontal: ms(15, 0.6),
+    justifyContent: 'center',
+    backgroundColor: Colors.White,
+    borderWidth: ms(1),
+    borderLeftColor: Colors.White,
+    borderRightColor: Colors.White,
+    borderBottomColor: Colors.SearchBarWhite,
+    borderTopColor: Colors.White,
+    padding: ms(5),
+  },
+  baselineFormField: {
+    marginBottom: mvs(15, 0.6),
+  },
+  textInputAreaBaseline: {
     width: '100%',
-    height: '50%',
+    height: mvs(70, 0.6),
+    justifyContent: 'center',
+    backgroundColor: Colors.White,
+    borderWidth: ms(2),
+    borderLeftColor: Colors.White,
+    borderRightColor: Colors.White,
+    borderBottomColor: Colors.SearchBarWhite,
+    borderTopColor: Colors.White,
+  },
+
+  textInputTitle: {
+    fontSize: mvs(12, 0.7),
+    color: Colors.Black,
+    fontFamily: FONT_AIRBNB_CEREAL_BOLD,
+    letterSpacing: ms(0.2),
+  },
+
+  inputText: {
+    color: Colors.Black,
+    fontFamily: 'FONT_AIRBNB_CEREAL_LIGHT',
+    fontSize: mvs(15, 0.7),
+    marginHorizontal: ms(10, 0.6),
+  },
+  stepperButton: {
+    ...buttonProperties,
+    backgroundColor: Colors.White,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // borderRadius: ms(2, 0.6),
+    width: ms(30, 0.6),
+    height: mvs(30, 0.6),
+    paddingHorizontal: ms(5, 0.6),
+    marginRight: ms(6, 0.6),
+    borderWidth: 2,
+    borderRadius: 30,
+  },
+
+  stepperIconArea: {
+    width: '100%',
+    height: '100%',
     //backgroundColor: 'lightblue',
     alignItems: 'center',
+    justifyContent: 'center',
   },
 
-  // Button Styling Ends Here
+  addImageButton: {
+    ...buttonProperties,
+    backgroundColor: Colors.White,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // borderRadius: ms(2, 0.6),
+    width: ms(100, 0.6),
+    height: mvs(100, 0.6),
+    paddingHorizontal: ms(5, 0.6),
+    marginRight: ms(6, 0.6),
+    borderWidth: 1,
+    borderColor: Colors.LightGrey,
+    borderStyle: 'dashed',
+    // borderRadius: 30,
+  },
 
-  //ScrollViewContainer Styles
+  addImageIconArea: {
+    width: '100%',
+    height: '100%',
+    //backgroundColor: 'lightblue',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
-  //ScrollViewContainer Styles ends
+  shareButton: {
+    ...buttonProperties,
+    backgroundColor: Colors.White,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // borderRadius: ms(2, 0.6),
+    width: ms(50, 0.6),
+    height: mvs(50, 0.6),
+    paddingHorizontal: ms(5, 0.6),
+    marginRight: ms(6, 0.6),
+    //borderWidth: 1,
+    borderRadius: 10,
+    borderColor: Colors.LightGrey,
+  },
+
+  shareIconArea: {
+    width: '100%',
+    height: '100%',
+    //backgroundColor: 'lightblue',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  outlinedBorderTextInput: {
+    width: '100%',
+    height: mvs(60, 0.6),
+    borderWidth: 2,
+    borderColor: Colors.LightGrey,
+    borderTopLeftRadius: ms(4, 0.6),
+    borderTopRightRadius: ms(4, 0.6),
+    justifyContent: 'center',
+    //backgroundColor: 'yellow',
+  },
+  //text Input
+  textInputErrorMessage: {
+    fontSize: mvs(12, 0.7),
+    color: Colors.Failure,
+    fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
+    letterSpacing: ms(0.2),
+  },
+
+  textInputAreaBaseline: {
+    width: '100%',
+    height: mvs(70, 0.6),
+    justifyContent: 'center',
+    backgroundColor: Colors.White,
+    borderWidth: ms(2),
+    borderLeftColor: Colors.White,
+    borderRightColor: Colors.White,
+    borderBottomColor: Colors.SearchBarWhite,
+    borderTopColor: Colors.White,
+  },
+
+  inputTextSmall: {
+    color: Colors.Black,
+    fontFamily: 'FONT_AIRBNB_CEREAL_LIGHT',
+    fontSize: mvs(15, 0.7),
+    marginHorizontal: ms(5, 0.6),
+  },
+
+  iconTextInputField: {
+    backgroundColor: Colors.White,
+    borderWidth: 1,
+    borderColor: Colors.LightGrey,
+    flexDirection: 'row',
+    width: '100%',
+    borderRadius: ms(4, 0.4),
+    paddingVertical: mvs(5, 0.6),
+    marginVertical: mvs(3, 0.6),
+    alignItems: 'center',
+  },
+
+  testField: {
+    backgroundColor: Colors.White,
+    borderWidth: 1,
+    borderColor: Colors.LightGrey,
+    borderRadius: ms(4, 0.4),
+    flexDirection: 'row',
+    width: '100%',
+    paddingVertical: mvs(5, 0.6),
+    marginVertical: mvs(5, 0.6),
+    alignItems: 'center',
+  },
+
+  inputText: {
+    color: Colors.LightGrey,
+    fontFamily: 'FONT_AIRBNB_CEREAL_LIGHT',
+    fontSize: mvs(18, 0.7),
+    marginHorizontal: ms(10, 0.6),
+  },
+
+  iconTextInputField: {
+    backgroundColor: Colors.White,
+    borderWidth: 2,
+    borderColor: Colors.LightGrey,
+    flexDirection: 'row',
+    width: '100%',
+    paddingVertical: mvs(5, 0.6),
+    marginVertical: mvs(5, 0.6),
+    alignItems: 'center',
+  },
+
+  stepperInputAreaBlur: {
+    width: '100%',
+    height: mvs(90, 0.6),
+    justifyContent: 'center',
+    backgroundColor: Colors.White,
+    borderWidth: ms(1),
+    borderLeftColor: Colors.White,
+    borderRightColor: Colors.White,
+    borderBottomColor: Colors.SearchBarWhite,
+    borderTopColor: Colors.White,
+    padding: ms(5),
+    marginTop: ms(7),
+  },
+  stepperContainer: {
+    width: '100%',
+    height: mvs(50, 3.0),
+    marginTop: mvs(10, 0.6),
+    marginBottom: mvs(2, 0.6),
+    borderRadius: ms(10, 0.7),
+    // elevation: ms(3),
+    marginHorizontal: ms(8, 0.6),
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    // backgroundColor: 'white',
+    // borderWidth: 0.5,
+  },
 });

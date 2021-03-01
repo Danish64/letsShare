@@ -26,6 +26,7 @@ export default StyleSheet.create({
     height: mvs(140, 0.7),
     //backgroundColor: 'grey',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   selectRideTypeArea: {
     width: '100%',

@@ -3,10 +3,11 @@ import {Colors} from 'res/constants/Colors';
 import {s, vs, ms, mvs} from 'react-native-size-matters';
 
 export default StyleSheet.create({
-  itemsArea: {
+  container: {
+    width: '100%',
+    height: mvs(100, 0.6),
     flexDirection: 'row',
-    marginHorizontal: ms(10, 0.6),
-    marginVertical: mvs(10, 0.6),
+    justifyContent: 'center',
     alignItems: 'center',
   },
 });

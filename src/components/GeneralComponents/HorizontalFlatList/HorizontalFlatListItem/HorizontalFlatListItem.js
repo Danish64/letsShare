@@ -9,6 +9,9 @@ import {
 import DummyImage from 'res/images/DummyImages/testImage.jpg';
 import {TextIcon} from 'res/UniversalComponents/TextIcon.js';
 import styles from './style';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import TestCaseImage from 'res/images/ModulesImages/GeneralImages/newEntry.png';
+
 //Native Exports Ends Here
 //Third Party Exports Starts
 
@@ -17,28 +20,30 @@ import styles from './style';
 const Component = ({item}) => {
   //to use styles -> {styles.propertyName}
   return (
-    <View style={styles.shareItemContainer}>
-      <View style={styles.imageContainer}>
-        <Image
-          resizeMode="cover"
-          style={styles.imageStyle}
-          source={DummyImage}
-        />
-      </View>
-
-      <View style={styles.descriptionStyle}>
-        <View style={styles.titleContainer}>
-          <RecentlySharedTitleText numberOfLines={1}>
-            Ride Type
-          </RecentlySharedTitleText>
+    <TouchableOpacity>
+      <View style={styles.shareItemContainer}>
+        <View style={styles.imageContainer}>
+          <Image
+            resizeMode="cover"
+            style={styles.imageStyle}
+            source={TestCaseImage}
+          />
         </View>
-        <TextIcon iconName="cash-outline">100/-Rs</TextIcon>
-        <TextIcon iconName="people-outline">2</TextIcon>
-        <TextIcon iconName="navigate-outline">
-          KRL road, Rawalpindi - E11, Islamabad
-        </TextIcon>
+
+        <View style={styles.descriptionStyle}>
+          <View style={styles.titleContainer}>
+            <RecentlySharedTitleText numberOfLines={1}>
+              Share Type
+            </RecentlySharedTitleText>
+          </View>
+          <TextIcon iconName="cash-outline">100/-Rs</TextIcon>
+          <TextIcon iconName="people-outline">2</TextIcon>
+          <TextIcon iconName="navigate-outline">
+            KRL road, Rawalpindi - E11, Islamabad
+          </TextIcon>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -12,36 +12,20 @@ export default StyleSheet.create({
   },
   formArea: {
     width: '100%',
-    height: mvs(450, 0.7),
-    backgroundColor: 'lightyellow',
+    height: mvs(500, 0.7),
+    // backgroundColor: 'lightyellow',
   },
-  myRidesTitleText: {
-    width: '100%',
-    marginBottom: mvs(5, 0.6),
-    marginTop: mvs(5, 0.6),
-    // backgroundColor: 'grey',
+  submitButtonArea: {
+    marginVertical: mvs(30, 0.6),
   },
-  myRidesListArea: {
-    width: '100%',
-    height: mvs(140, 0.7),
-    //backgroundColor: 'grey',
-    alignItems: 'center',
-  },
-  selectRideTypeArea: {
-    width: '100%',
-    height: mvs(270, 0.7),
-    marginVertical: mvs(10, 0.6),
-    //backgroundColor: 'blue',
-  },
-  categoryButtonsArea: {
-    width: '100%',
-    height: mvs(230, 0.7),
-    marginVertical: mvs(10, 0.6),
-    justifyContent: 'center',
-  },
+  //
   pngImageArea: {
     width: '100%',
-    height: mvs(150, 0.6),
+    height: mvs(100, 0.6),
+  },
+  pngImageAreaLarge: {
+    width: '100%',
+    height: mvs(180, 0.6),
   },
   imageContainer: {
     width: '100%',

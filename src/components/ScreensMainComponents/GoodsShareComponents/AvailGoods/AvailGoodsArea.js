@@ -14,7 +14,7 @@ import SellGoods from 'res/images/DummyImages/SellGoods.jpeg';
 
 //Third Party Exports Ends
 
-const Component = () => {
+const Component = ({navigation}) => {
   //to use styles -> {styles.propertyName}
   return (
     <View style={styles.availRideComponentArea}>
@@ -22,12 +22,12 @@ const Component = () => {
         <ShareActionAreaHeadingText>Avail Goods</ShareActionAreaHeadingText>
       </View>
       <TextImageContainer 
-        text="Donate Goods" 
+        text="Donated Goods" 
         // image={DonateGoods} 
       />
 
       <TextImageContainer
-        text="Sell Goods"
+        text="Buy Goods"
         // image={SellGoods}
       />
     </View>
