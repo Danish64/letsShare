@@ -40,7 +40,7 @@ export default StyleSheet.create({
   locationStyle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: mvs(10, 0.6),
+    marginVertical: mvs(5, 0.6),
     width: '90%',
   },
 

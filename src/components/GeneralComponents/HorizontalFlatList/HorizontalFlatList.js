@@ -22,12 +22,11 @@ const Component = ({data, isRecentlyShared}) => {
         <FlatListItem
           title={item.title}
           image={item.image}
+          description={item.description}
           price={item.price}
-          priceIcon={item.priceIcon}
+          seats={item.seats}
           quantity={item.seats}
-          quantityIcon={item.seatsIcon}
-          location={item.route}
-          locationIcon={item.routeIcon}
+          location={item.location}
         />
       )}
       style={styles.FlatListStyle}

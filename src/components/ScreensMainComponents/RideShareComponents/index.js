@@ -1,7 +1,7 @@
 import ShareRideActionArea from './ShareRideActionArea';
 import RecentlySharedRideArea from './RecentlySharedRides';
 import AvailRideArea from './AvailRides';
-import CreateRideActionArea from './CreateRideActionArea';
+import CreateRideActionArea from './ShareRideActionArea/CreateRideActionArea';
 import AddRideFormArea from './AddRideFormArea';
 
 export {
