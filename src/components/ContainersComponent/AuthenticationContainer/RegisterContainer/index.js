@@ -5,7 +5,7 @@ import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer.js'
 import IllustrationContainer from '../../../../components/GeneralComponents/IllustrationContainer';
 
 const Component = ({navigation}) => {
-  //console.log('RideShareContainer', navigation); check navigation
+  //console.log('RideShareContainer', navigation); check navigation asad-dev
 
   return (
     <ScrollViewContainer>
