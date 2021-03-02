@@ -21,12 +21,11 @@ const Component = ({
   id,
   title,
   image,
+  description,
   price,
-  priceIcon,
+  seats,
   quantity,
-  quantityIcon,
   location,
-  locationIcon,
 }) => {
   //to use styles -> {styles.propertyName}
   return (
@@ -44,22 +43,28 @@ const Component = ({
           </View>
           <View style={styles.subtitleContainer}>
             <View style={styles.separator} />
+            {description && (
+              <TextIcon flexDirection="row" iconName={'list-outline'}>
+                {description}
+              </TextIcon>
+            )}
             {price && (
-              <TextIcon flexDirection="column" iconName={priceIcon}>
+              <TextIcon flexDirection="column" iconName={'cash-outline'}>
                 {price}
               </TextIcon>
             )}
-
-            {quantity && (
-              <TextIcon flexDirection="column" iconName={quantityIcon}>
-                {quantity}
+            {/* {quantity && <TextIcon flexDirection="column">{quantity}</TextIcon>} */}
+            {seats && (
+              <TextIcon flexDirection="column" iconName={'people-outline'}>
+                {seats}
               </TextIcon>
             )}
+
             <View style={styles.separator} />
           </View>
           <View style={styles.locationStyle}>
             {location && (
-              <TextIcon flexDirection="row" iconName={locationIcon}>
+              <TextIcon flexDirection="row" iconName={'navigate-outline'}>
                 {location}
               </TextIcon>
             )}

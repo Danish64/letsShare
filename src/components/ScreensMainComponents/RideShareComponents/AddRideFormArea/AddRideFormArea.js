@@ -36,8 +36,8 @@ const validationSchema = Yup.object().shape({
     .label('Registration No'),
   contactNo: Yup.string().required().max(13).label('Contact No'),
   category: Yup.object().required().nullable().label('Category'),
-  // id: Yup.number().label('Id'),
-  // selected: Yup.object().required().nullable().label('selected'),
+  //id: Yup.number().label('Id'),
+  //selected: Yup.object().required().nullable().label('selected'),
 });
 
 const categories = [
@@ -50,15 +50,17 @@ const Component = ({route, navigation}) => {
   const submitForm = (values) => {
     values.id = Math.floor(Math.random() * 100) + 1;
     values.selected = false;
+    values.category = 'Go';
     const newData = values;
     console.log(newData);
-    updateRides(newData);
+    updateRides(newData, navigation);
   };
 
-  const updateRides = (newData) => {
+  const updateRides = (newData, navigation) => {
     const arrayData = addRideDummyData;
     arrayData.push(newData);
-    updateUserRides(arrayData);
+    //updateUserRides(arrayData);
+    console.log(arrayData);
     navigation.navigate('CreateRideScreen');
   };
 
@@ -80,10 +82,11 @@ const Component = ({route, navigation}) => {
               contactNo: '',
               selected: null,
               id: '',
-              //category: null,
+              category: '',
             }}
             onSubmit={(values) => {
-              submitForm(values);
+              console.log(values);
+              // submitForm(values);
             }}
             validationSchema={validationSchema}>
             <FormField
