@@ -11,13 +11,11 @@ import SetLocation from '../../components/GeneralComponents/SetLocation';
 import PickerItem from '../../components/GeneralComponents/Picker/PickerItem';
 
 import {
-  SectionHeadingText,
   TextInputTitleText,
   TextInputErrorMessage,
 } from 'res/UniversalComponents/Text.js';
 import {
   LandscapeButtonBlack,
-  LandscapeButtonPrimary,
   StepperButton,
 } from 'res/UniversalComponents/Button.js';
 
@@ -25,7 +23,6 @@ import {
   IconTextInputSquare,
   FormInputTitleBaseline,
 } from 'res/UniversalComponents/TextInput.js';
-import {Button} from 'react-native';
 
 export const FormByFormik = ({
   initialValues,
@@ -152,10 +149,11 @@ export const FormPicker = ({heading, items, name, placeholder, icon}) => {
         icon={icon}
         item={items}
         onSelectItem={(item) => {
-          setFieldValue(name, item.label);
+          setFieldValue(name, item);
         }}
         placeholder={placeholder}
-        selectedItem={values.category}
+        selectedItem={values[name]}
+        value={values[name]}
       />
       <ErrorMessage error={errors[name]} visible={touched[name]} />
     </>

@@ -31,4 +31,15 @@ export default StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  uploadImageArea: {
+    marginTop: mvs(10, 0.6),
+    width: '100%',
+    justifyContent: 'center',
+    backgroundColor: Colors.White,
+    borderWidth: ms(2),
+    borderLeftColor: Colors.White,
+    borderRightColor: Colors.White,
+    borderBottomColor: Colors.SearchBarWhite,
+    borderTopColor: Colors.White,
+  },
 });

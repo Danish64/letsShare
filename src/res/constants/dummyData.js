@@ -15,7 +15,18 @@ export const FlatListData = [
 export const addRideDummyData = [
   {
     id: '1',
-    assetName: 'Alto VXR',
+    rideName: 'Alto VXR',
+    registrationNo: 'LES-2010',
+    contactNumber: '03345654654',
+    rideCategory: null,
+    selected: false,
+  },
+];
+
+export const sharedRides = [
+  {
+    id: '1',
+    rideName: 'Alto VXR',
     registrationNo: 'LES-2010',
     contactNumber: '03345654654',
     //Type: null,
