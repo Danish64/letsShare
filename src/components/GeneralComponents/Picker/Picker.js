@@ -35,7 +35,7 @@ const Component = ({
   ...otherProps
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState({});
+  //const [selectedCategory, setSelectedCategory] = useState({});
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
@@ -48,9 +48,9 @@ const Component = ({
               style={styles.icon}
             />
           )}
-          {Object.keys(selectedCategory).length !== 0 ? (
+          {selectedItem ? (
             <View style={styles.text}>
-              <TextInputTitleText>{selectedCategory.label}</TextInputTitleText>
+              <TextInputTitleText>{selectedItem.label}</TextInputTitleText>
             </View>
           ) : (
             <View style={styles.placeholder}>
@@ -78,7 +78,7 @@ const Component = ({
               label={item.label}
               onPress={() => {
                 setModalVisible(false);
-                setSelectedCategory(item);
+                //setSelectedCategory(item);
                 onSelectItem(item);
               }}
             />

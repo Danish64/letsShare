@@ -10,6 +10,7 @@ import {
 } from 'res/UniversalComponents/Text.js';
 import {Colors} from 'res/constants/Colors.js';
 import {Text} from 'react-native';
+import {BodyTextLight} from './Text';
 export const PrimaryButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.buttonPrimary}>
@@ -93,19 +94,6 @@ export const OutlinedActionIconButton = (props) => (
     <ButtonTextBlack>{props.children}</ButtonTextBlack>
   </TouchableOpacity>
 );
-
-// export const AddAssetButton = (props) => (
-//   <TouchableOpacity onPress={props.onPress}>
-//     <View style={styles.addAssetButton}>
-//       <View style={styles.addAssetIconArea}>
-//         <Ionicons name={props.iconName} color={Colors.Black} size={40} />
-//       </View>
-//       <View style={styles.addAssetTextArea}>
-//         <ButtonTextBlack>{props.children}</ButtonTextBlack>
-//       </View>
-//     </View>
-//   </TouchableOpacity>
-// );
 
 export const AddAssetButton = ({
   iconName,
