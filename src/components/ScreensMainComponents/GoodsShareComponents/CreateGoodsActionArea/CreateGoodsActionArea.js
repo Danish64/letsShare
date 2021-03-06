@@ -66,11 +66,6 @@ const Component = ({navigation}) => {
               selected: true,
             };
           }
-          // return {
-          //   ...item,
-          //   selected: true,
-          // };
-          // setItem(item);
         } else {
           return {
             ...item,
@@ -80,16 +75,6 @@ const Component = ({navigation}) => {
       }),
     ];
     setData(newData);
-    // displaySection();
-    // setView(true);
-  };
-
-  const displaySection = () => {
-    data.map((item) => {
-      if (item.selected === true) {
-        return setView(true);
-      }
-    });
   };
 
   const addButton = () => {

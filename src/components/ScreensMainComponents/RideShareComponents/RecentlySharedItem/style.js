@@ -4,14 +4,10 @@ import {s, vs, mvs, ms} from 'react-native-size-matters';
 
 export default StyleSheet.create({
     mainContainer:{
-        // alignSelf: 'center',
         width: '100%',
-        // height: mvs(400, 0.7),
         backgroundColor: Colors.White,
         marginTop: mvs(15, 0.6),
         marginBottom: mvs(15, 0.6),
-        // borderRadius: ms(10, 0.7),
-        // elevation: ms(3),
     },
     subContainer1:{
         flexDirection: 'row',

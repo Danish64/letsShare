@@ -10,18 +10,11 @@ import {ScrollView, View, Text} from 'react-native';
 //Third Party Exports Ends
 
 const Component = ({navigation, route}) => {
-  const [data, setData] = useState({});
-
-    useEffect(() =>{
-        let { item } = route.params;
-
-        setData(item)
-    })
   return (
     <Container>
       <Header hasBackIcon title="Donate Goods"  navigation={navigation}/>
-      <DonateGoodsFormContainer navigation={navigation} data={data}/>
-      {/* <Text>{JSON.stringify(data)}</Text>            */}
+      <DonateGoodsFormContainer navigation={navigation} data={route.params.item}/>
+      {/* <Text>{JSON.stringify(route.params.item)}</Text>            */}
 
     </Container>
   );

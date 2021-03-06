@@ -1,5 +1,6 @@
 import shareGoods from '../images/ModulesImages/GoodsSharingImages/shareGoods.png';
 import shareFood from '../images/ModulesImages/FoodSharingImages/shareFood.png';
+import shareRide from '../images/ModulesImages/RideSharingImages/ShareRide.png';
 export const FlatListData = [
   {id: '1'},
   {id: '2'},
@@ -19,8 +20,151 @@ export const addRideDummyData = [
     registrationNo: 'LES-2010',
     contactNumber: '03345654654',
     rideCategory: null,
+    image: shareGoods,
     selected: false,
   },
+];
+
+export const NearbyRides = [
+  {
+    id: '1',
+    rideName: 'Honda',
+    rideType: 'Nearby Ride',
+    registrationNo: 'ABC-6574',
+    contactNumber: '03345656568',
+    rideCategory: 'car',
+    image: shareRide,
+    fare: '200',
+    startLocation:{
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
+    destinationLocation: {
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
+    listFor: '2',
+  }
+];
+
+export const CityToCityRides = [
+  {
+    id: '1',
+    rideName: 'Honda',
+    rideType: 'City to City Ride',
+    registrationNo: 'ABC-6574',
+    contactNumber: '03345656568',
+    rideCategory: 'car',
+    image: shareRide,
+    fare: '200',
+    startLocation:{
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
+    destinationLocation: {
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
+    departureDate: '10th March',
+    departureTime: '5:30 pm',
+    seatsAvailable: '3',
+    listFor: '2',
+  }
+];
+
+export const TourRides = [
+  {
+    id: '1',
+    rideName: 'Alto',
+    rideType: 'Tour Ride',
+    registrationNo: 'ABC-6574',
+    contactNumber: '03345656568',
+    rideCategory: 'car',
+    image: shareRide,
+    fare: '200',
+    startLocation:{
+      details:{
+        description: 'location no 1',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
+    destinationLocation: {
+      details:{
+        description: 'location no 2',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
+    departureDate: '10th March',
+    departureTime: '5:30 pm',
+    seatsAvailable: '3',
+    listFor: '2',
+  },
+  {
+    id: '2',
+    rideName: 'Honda',
+    rideType: 'Tour Ride',
+    registrationNo: 'ABC-6574',
+    contactNumber: '03345656568',
+    rideCategory: 'car',
+    image: shareGoods,
+    fare: '200',
+    startLocation:{
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
+    destinationLocation: {
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
+    departureDate: '10th March',
+    departureTime: '5:30 pm',
+    seatsAvailable: '3',
+    listFor: '2',
+  }
 ];
 
 export const sharedRides = [
@@ -40,8 +184,17 @@ export const Goods = [
     quantity: '1',
     description: ' A Silent Patient',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
+    pickupLocation: {
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
     image: shareGoods,
-    pickupLocation: 'G11/3,Islamabad to G13/1,Islamabad',
     PickupTime: '10AM to 5PM',
     listFor: '5',
   },
@@ -51,8 +204,17 @@ export const Goods = [
     quantity: '1',
     description: 'three compartments',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
+    pickupLocation: {
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+        },
+      },
+    },
     image: shareFood,
-    pickupLocation: 'G11/3,Islamabad to G13/1,Islamabad',
     PickupTime: '10AM to 5PM',
     listFor: '5',
   },
@@ -63,8 +225,41 @@ export const Goods = [
     description: 'Plastic water bottle',
     image: shareGoods,
     location: 'G11/3,Islamabad to G13/1,Islamabad',
-    pickupLocation: 'G11/3,Islamabad to G13/1,Islamabad',
+    pickupLocation: {
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
     PickupTime: '10AM to 5PM',
+    listFor: '5',
+  },
+];
+
+export const SellGoods = [
+  {
+    id: 1,
+    title: 'Book',
+    quantity: '1',
+    description: ' A Silent Patient',
+    location: 'G11/3,Islamabad to G13/1,Islamabad',
+    pickupLocation: {
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
+    image: shareGoods,
+    deliveryInfo: 'No shipping available',
+    price: '200',
     listFor: '5',
   },
 ];

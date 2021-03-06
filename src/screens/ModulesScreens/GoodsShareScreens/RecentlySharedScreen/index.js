@@ -15,7 +15,7 @@ const Component = ({navigation, route}) => {
     return(
         <Container>
             <Header title="Goods" hasBackIcon navigation={navigation}/>
-            <RecentlySharedItem navigation={navigation} data={data}/>
+            <RecentlySharedItem navigation={navigation} data={route.params.item}/>
             {/* <Text>itemId: {JSON.stringify(data)}</Text> */}
         </Container>
     );

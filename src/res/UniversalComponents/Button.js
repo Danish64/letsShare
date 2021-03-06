@@ -176,7 +176,7 @@ export const ShareButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.shareButton}>
       <View style={styles.shareIconArea}>
-        <Ionicons name={props.iconName} color={Colors.Black} size={30} />
+        <Ionicons name={props.iconName} color={props.color} size={25} />
       </View>
     </View>
   </TouchableOpacity>

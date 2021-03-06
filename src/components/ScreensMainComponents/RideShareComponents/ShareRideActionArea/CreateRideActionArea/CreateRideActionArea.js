@@ -107,17 +107,17 @@ const Component = ({navigation}) => {
             </View>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={() => console.log('Nearby Ride ')}>
+              onPress={() =>  navigation.navigate('NearbyRideScreen', {item: item})}>
               Nearby Ride
             </CategoryOutlinedButton>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={() => console.log('City to City Ride ')}>
+              onPress={() => navigation.navigate('CityToCityRideScreen', {item: item})}>
               City to City
             </CategoryOutlinedButton>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={() => console.log('Tour Ride ')}>
+              onPress={() => navigation.navigate('TourRideScreen', {item: item})}>
               Tour Ride
             </CategoryOutlinedButton>
           </View>

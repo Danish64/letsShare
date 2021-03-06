@@ -3,6 +3,31 @@ import {Colors} from 'res/constants/Colors';
 import {s, vs, ms, mvs} from 'react-native-size-matters';
 
 export default StyleSheet.create({
+  subContainer1:{
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    height: '50%',
+},
+imageContainer:{
+    width: '100%',
+    height:  '100%',
+},
+image:{
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+},
+iconsContainer:{
+    flexDirection: 'column',
+    width: '30%',
+    height:  '100%',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    padding: mvs(15, 0.6),
+},
   shareItemContainer: {
     width: ms(260, 0.6),
     height: mvs(250, 0.7),
@@ -14,10 +39,10 @@ export default StyleSheet.create({
     borderRadius: ms(10, 0.7),
     elevation: ms(3),
   },
-  imageContainer: {
-    width: '100%',
-    height: '50%',
-  },
+  // imageContainer: {
+  //   width: '100%',
+  //   height: '50%',
+  // },
   imageStyle: {
     width: '100%',
     height: '100%',

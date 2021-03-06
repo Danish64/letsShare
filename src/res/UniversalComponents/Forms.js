@@ -16,6 +16,7 @@ import {
 } from 'res/UniversalComponents/Text.js';
 import {
   LandscapeButtonBlack,
+  LandscapeButtonPrimary,
   StepperButton,
 } from 'res/UniversalComponents/Button.js';
 
@@ -205,7 +206,8 @@ export const SubmitButton = ({title}) => {
   } = useFormikContext();
 
   return (
-    <LandscapeButtonBlack onPress={handleSubmit}>{title}</LandscapeButtonBlack>
+    // <LandscapeButtonBlack onPress={handleSubmit}>{title}</LandscapeButtonBlack>
+    <LandscapeButtonPrimary onPress={handleSubmit}>{title}</LandscapeButtonPrimary>
   );
 };
 
