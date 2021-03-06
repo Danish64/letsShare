@@ -187,11 +187,13 @@ export const FormImagePicker = ({name}) => {
   );
 };
 
-export const FormLocation = ({name}) => {
+export const FormLocation = ({name, title}) => {
   const {errors, setFieldValue, touched, values} = useFormikContext();
   return (
     <>
-      <SetLocation onSelectItem={(data) => setFieldValue(name, data)} />
+      <SetLocation 
+        onSelectItem={(data) => setFieldValue(name, data)} 
+        title= {title}/>
       <ErrorMessage error={errors[name]} visible={touched[name]} />
     </>
   );
