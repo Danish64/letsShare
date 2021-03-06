@@ -11,7 +11,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { KeyboardAvoidingView } from 'react-native';
 import { SafeAreaView } from 'react-native';
 
-const Component = ({onSelectItem}) => {
+const Component = ({onSelectItem, title}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [pickupLocation, setPickupLocation] = useState(null); 
   const [viewMarker, setViewMarker] = useState(true);
@@ -36,7 +36,7 @@ const Component = ({onSelectItem}) => {
       <KeyboardAvoidingView keyboardShouldPersistTaps="handled">
         <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
           <View style={styles.container}>
-            <TextInputTitleText>Add Location</TextInputTitleText>
+            <TextInputTitleText>{title}</TextInputTitleText>
               <View style={styles.locationContainer}>
                 <MapView
                 provider={PROVIDER_GOOGLE} // remove if not using Google Maps

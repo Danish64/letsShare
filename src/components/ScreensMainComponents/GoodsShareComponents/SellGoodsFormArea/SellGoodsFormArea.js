@@ -85,7 +85,7 @@ const Component = ({navigation, Data}) => {
 
 
        {/* Input Location */}
-        <FormLocation name="location"/>
+        <FormLocation name="location" title="Add Location"/>
 
 
         {/* Input List For: */}

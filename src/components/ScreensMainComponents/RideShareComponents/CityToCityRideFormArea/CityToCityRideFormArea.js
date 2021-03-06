@@ -91,10 +91,10 @@ const Component = ({navigation, Data}) => {
 
 
                 {/* Start Location */}
-                <FormLocation name="startLocation"/>
+                <FormLocation name="startLocation" title="Start Location"/>
 
                 {/* destination Location */}
-                <FormLocation name="destinationLocation"/>
+                <FormLocation name="destinationLocation" title="Destination Location"/>
 
                 {/* Input List For: */}
                 <StepperButtonInputField

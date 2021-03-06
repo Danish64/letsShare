@@ -71,7 +71,7 @@ const Component = ({navigation, Data}) => {
             placeholder="10AM to 8PM etc."
           />
          
-          <FormLocation name="location"/>
+          <FormLocation name="location" title="Add Location"/>
 
           <StepperButtonInputField
             title="List For(days):"
