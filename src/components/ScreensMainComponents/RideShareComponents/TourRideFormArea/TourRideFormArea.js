@@ -13,7 +13,7 @@ import {
     FormImagePicker,
     FormLocation
   } from '../../../../res/UniversalComponents/Forms';
-import {TourRides} from '../../../../res/constants/dummyData';
+import {Rides} from '../../../../res/constants/dummyData';
 
 const Component = ({navigation, Data}) => {
     const submitForm = (values) => {
@@ -38,7 +38,7 @@ const Component = ({navigation, Data}) => {
       };
     
       const updateRides = (newData) => {
-        TourRides.push(newData);
+        Rides.push(newData);
         // console.log(NearbyRides);
         navigation.navigate('RideShareHome', newData);
         console.warn('Shared Successfuly');

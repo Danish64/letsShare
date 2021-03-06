@@ -13,7 +13,7 @@ import RideOrder from 'res/images/ModulesImages/RideSharingImages/orderRide.png'
 
 //Third Party Exports Ends
 
-const Component = () => {
+const Component = ({navigation}) => {
   //to use styles -> {styles.propertyName}
   return (
     <View style={styles.availRideComponentArea}>
@@ -21,9 +21,9 @@ const Component = () => {
         <ShareActionAreaHeadingText>Avail Ride</ShareActionAreaHeadingText>
       </View>
       <View style={styles.categoriesArea}>
-        <TextImageContainer text="Nearby Rides" />
-        <TextImageContainer text="City to City Rides" />
-        <TextImageContainer text="Tour Rides" />
+        <TextImageContainer text="Nearby Rides" onPress={() => navigation.navigate('AvailNearbyRideScreen')}/>
+        <TextImageContainer text="City to City Rides" onPress={() => navigation.navigate('AvailCityToCityRideScreen')}/>
+        <TextImageContainer text="Tour Rides" onPress={() => navigation.navigate('AvailTourRideScreen')}/>
       </View>
     </View>
   );
