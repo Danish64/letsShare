@@ -9,12 +9,12 @@ import {ScrollView, View, Text} from 'react-native';
 
 //Third Party Exports Ends
 
-const Component = ({navigation}) => {
+const Component = ({navigation, route}) => {
   //  console.log('RideShareScreen', navigation);
   return (
     <Container>
       <Header hasBackIcon title="Sell Goods"  navigation={navigation}/>
-      <SellGoodsFormContainer navigation={navigation}/>
+      <SellGoodsFormContainer navigation={navigation} data={route.params.item}/>
     </Container>
   );
 };

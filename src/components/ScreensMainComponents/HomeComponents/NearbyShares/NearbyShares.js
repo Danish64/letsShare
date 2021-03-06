@@ -44,7 +44,7 @@ const Component = () => {
         <SectionHeadingText>Recently Shared</SectionHeadingText>
       </View>
       <View style={styles.recentlySharedFlatlistArea}>
-        <HorizontalFlatList data={data} />
+        <HorizontalFlatList data={data} screen='RecentlySharedScreen'/>
       </View>
     </View>
   );

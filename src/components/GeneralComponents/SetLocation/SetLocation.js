@@ -26,6 +26,7 @@ const Component = ({onSelectItem}) => {
   };
   
   const setLocation = () => {
+      setViewMarker(false);
       setModalVisible(false);
       onSelectItem(pickupLocation);
   };
@@ -41,14 +42,19 @@ const Component = ({onSelectItem}) => {
                 provider={PROVIDER_GOOGLE} // remove if not using Google Maps
                 style={styles.map}
                 region={{
-                  latitude: 37.78825,
-                  longitude: -122.4324,
+                  latitude: 33.738045,
+                  longitude: 73.084488,
                   latitudeDelta: 0.015,
                   longitudeDelta: 0.0121,
                 }}               
               >
-              {/* {viewMarker ?
-                <Image></Image>
+              {viewMarker ?
+                <Marker
+                coordinate={{ 
+                  latitude: 33.738045,
+                  longitude: 73.084488,
+                }}
+              />
               :
               <Marker
                   coordinate={{ 
@@ -56,7 +62,7 @@ const Component = ({onSelectItem}) => {
                     longitude :  pickupLocation.details.geometry.location.lng 
                   }}
                 />
-              } */}
+              }
               </MapView>
               {/* <Text>{JSON.stringify(pickupLocation)}</Text> */}
               
@@ -69,10 +75,7 @@ const Component = ({onSelectItem}) => {
           <GooglePlacesAutocomplete
             placeholder='Where From?'
             onPress={(data, details = null) => {
-              console.log(data, details);
               setPickupLocation({data, details});
-              // onSelectItem(pickupLocation);
-              setViewMarker(false);
             }
             }
             keyboardShouldPersistTaps="always"

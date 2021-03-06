@@ -484,7 +484,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     // borderRadius: ms(2, 0.6),
     width: ms(50, 0.6),
-    height: mvs(50, 0.6),
+    height: mvs(40, 0.6),
     paddingHorizontal: ms(5, 0.6),
     marginRight: ms(6, 0.6),
     //borderWidth: 1,

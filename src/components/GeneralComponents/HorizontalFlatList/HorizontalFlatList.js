@@ -12,7 +12,7 @@ import styles from './style';
 
 //Third Party Exports Ends
 
-const Component = ({data, isRecentlyShared}) => {
+const Component = ({data, isRecentlyShared, navigation, screen}) => {
   //to use styles -> {styles.propertyName}'
   // console.log(data)
   return (
@@ -21,12 +21,16 @@ const Component = ({data, isRecentlyShared}) => {
       renderItem={({item}) => (
         <FlatListItem
           title={item.title}
+          rideType={item.rideType}
           image={item.image}
           description={item.description}
           price={item.price}
-          seats={item.seats}
-          quantity={item.seats}
+          fare={item.fare}
+          startLocation={item.startLocation}
+          seatsAvailable={item.seatsAvailable}
           location={item.location}
+          pickupLocation= {item.pickupLocation}
+          onPress={() => {navigation.navigate(screen, { item: item })}}
         />
       )}
       style={styles.FlatListStyle}

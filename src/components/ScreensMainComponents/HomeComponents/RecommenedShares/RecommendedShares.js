@@ -50,7 +50,7 @@ const Component = () => {
         <SectionHeadingText>Recommended Shares</SectionHeadingText>
       </View>
       <View style={styles.recommendedFlatlistArea}>
-        <HorizontalFlatList data={data} />
+        <HorizontalFlatList data={data} screen='RecentlySharedScreen' />
       </View>
     </View>
   );

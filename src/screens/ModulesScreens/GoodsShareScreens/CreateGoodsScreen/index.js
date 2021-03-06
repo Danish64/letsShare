@@ -10,14 +10,6 @@ import CreateGoodsContainer from '../../../../components/ContainersComponent/Goo
 //Third Party Exports Ends
 
 const Component = ({navigation}) => {
-  //  console.log('RideShareScreen', navigation);
-  // const [data, setData] = useState({});
-
-  //   useEffect(() =>{
-  //       let { newData } = route.params;
-
-  //       setData(newData)
-  //   })
   return (
     <Container>
       <Header title="Share Goods" hasBackIcon navigation={navigation}/>
