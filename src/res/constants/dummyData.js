@@ -25,78 +25,7 @@ export const addRideDummyData = [
   },
 ];
 
-export const NearbyRides = [
-  {
-    id: '1',
-    rideName: 'Honda',
-    rideType: 'Nearby Ride',
-    registrationNo: 'ABC-6574',
-    contactNumber: '03345656568',
-    rideCategory: 'car',
-    image: shareRide,
-    fare: '200',
-    startLocation:{
-      details:{
-        description: 'Home location',
-        geometry: { 
-          location: { 
-            lat: 24.83073230, 
-            lng:  67.10113298 } 
-          },
-      },
-    },
-    destinationLocation: {
-      details:{
-        description: 'Home location',
-        geometry: { 
-          location: { 
-            lat: 24.83073230, 
-            lng:  67.10113298 } 
-          },
-      },
-    },
-    listFor: '2',
-  }
-];
-
-export const CityToCityRides = [
-  {
-    id: '1',
-    rideName: 'Honda',
-    rideType: 'City to City Ride',
-    registrationNo: 'ABC-6574',
-    contactNumber: '03345656568',
-    rideCategory: 'car',
-    image: shareRide,
-    fare: '200',
-    startLocation:{
-      details:{
-        description: 'Home location',
-        geometry: { 
-          location: { 
-            lat: 24.83073230, 
-            lng:  67.10113298 } 
-          },
-      },
-    },
-    destinationLocation: {
-      details:{
-        description: 'Home location',
-        geometry: { 
-          location: { 
-            lat: 24.83073230, 
-            lng:  67.10113298 } 
-          },
-      },
-    },
-    departureDate: '10th March',
-    departureTime: '5:30 pm',
-    seatsAvailable: '3',
-    listFor: '2',
-  }
-];
-
-export const TourRides = [
+export const Rides = [
   {
     id: '1',
     rideName: 'Alto',
@@ -138,7 +67,7 @@ export const TourRides = [
     registrationNo: 'ABC-6574',
     contactNumber: '03345656568',
     rideCategory: 'car',
-    image: shareGoods,
+    image: shareRide,
     fare: '200',
     startLocation:{
       details:{
@@ -163,6 +92,71 @@ export const TourRides = [
     departureDate: '10th March',
     departureTime: '5:30 pm',
     seatsAvailable: '3',
+    listFor: '2',
+  },
+  {
+    id: '3',
+    rideName: 'Civic',
+    rideType: 'City to City Ride',
+    registrationNo: 'ABC-6574',
+    contactNumber: '03345656568',
+    rideCategory: 'car',
+    image: shareRide,
+    fare: '200',
+    startLocation:{
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
+    destinationLocation: {
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
+    departureDate: '10th March',
+    departureTime: '5:30 pm',
+    seatsAvailable: '3',
+    listFor: '2',
+  },
+  {
+    id: '4',
+    rideName: 'Honda',
+    rideType: 'Nearby Ride',
+    registrationNo: 'ABC-6574',
+    contactNumber: '03345656568',
+    rideCategory: 'car',
+    image: shareRide,
+    fare: '200',
+    startLocation:{
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
+    destinationLocation: {
+      details:{
+        description: 'Home location',
+        geometry: { 
+          location: { 
+            lat: 24.83073230, 
+            lng:  67.10113298 } 
+          },
+      },
+    },
     listFor: '2',
   }
 ];
