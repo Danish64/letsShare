@@ -2,14 +2,13 @@ import React, {useState, useEffect} from 'react';
 import {Text} from 'react-native';
 import Container from '../../../../res/UniversalComponents/Container';
 import Header from '../../../../components/GeneralComponents/Header';
-import RecentlySharedItem from '../../../../components/ContainersComponent/GoodsShareContainer/RecentlySharedContainer';
+import AvailGoodsList from '../../../../components/ScreensMainComponents/GoodsShareComponents/AvailGoodsList';
 
 const Component = ({navigation, route}) => {
     return(
         <Container>
-            <Header title="Goods" hasBackIcon navigation={navigation}/>
-            <RecentlySharedItem navigation={navigation} data={route.params.item}/>
-            {/* <Text>itemId: {JSON.stringify(data)}</Text> */}
+            <Header title="Avail Goods" hasBackIcon navigation={navigation}/>
+            <AvailGoodsList navigation={navigation}/>
         </Container>
     );
 };

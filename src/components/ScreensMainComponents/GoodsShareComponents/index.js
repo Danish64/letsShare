@@ -6,7 +6,8 @@ import AddGoodsFormArea from './AddGoodsFormArea';
 import RecentlySharedItem from './RecentlySharedItem';
 import DonateGoodsFormArea from './DonateGoodsFormArea';
 import SellGoodsFormArea from './SellGoodsFormArea';
-
+import AvailGoodsList from './AvailGoodsList';
+import AvailDonatedGoodsList from './AvailDonatedGoodsList';
 export {
     ShareGoodsActionArea, 
     RecentlySharedGoodsArea, 
@@ -15,5 +16,7 @@ export {
     AddGoodsFormArea,
     RecentlySharedItem,
     DonateGoodsFormArea,
-    SellGoodsFormArea
+    SellGoodsFormArea,
+    AvailGoodsList,
+    AvailDonatedGoodsList,
 };

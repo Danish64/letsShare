@@ -7,6 +7,9 @@ import CityToCityRideFormArea from './CityToCityRideFormArea';
 import NearbyRideFormArea from './NearbyRideFormArea';
 import TourRideFormArea from './TourRideFormArea';
 import RecentlySharedItem from './RecentlySharedItem';
+import AvailNearbyRide from './AvailNearbyRide';
+import AvailCityToCityRide from './AvailCityToCityRide';
+import AvailTourRide from './AvailTourRide';
 
 export {
   ShareRideActionArea,
@@ -18,4 +21,7 @@ export {
   NearbyRideFormArea,
   TourRideFormArea,
   RecentlySharedItem,
+  AvailNearbyRide,
+  AvailCityToCityRide,
+  AvailTourRide
 };

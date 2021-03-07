@@ -2,6 +2,7 @@ import React from 'react';
 import {View, KeyboardAvoidingView, TextInput, Text} from 'react-native';
 import styles from './style';
 import {
+
   FormByFormik as Form,
   StepperButtonInputField,
   BaselineFormField as FormField,
@@ -31,6 +32,7 @@ const Component = ({navigation, Data}) => {
     console.log(newData);
     updateRides(newData);
   };
+
 
   const updateRides = (newData) => {
     shareRidesData.push(newData);

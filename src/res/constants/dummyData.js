@@ -291,7 +291,6 @@ export const TourRides = [
     listFor: '2',
   },
 ];
-
 export const sharedRides = [
   {
     id: '1',
