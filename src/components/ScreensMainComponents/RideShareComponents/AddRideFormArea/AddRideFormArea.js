@@ -22,7 +22,6 @@ const validationSchema = Yup.object().shape({
     .max(10)
     .label('Registration No'),
   contactNo: Yup.string().required().min(11).label('Contact No'),
-  //category: Yup.object().required().nullable().label('Category'),
 });
 
 // const categories = [

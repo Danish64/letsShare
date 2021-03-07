@@ -42,7 +42,7 @@ export const shareRidesData = [
     seatsAvailable: '2',
     startLocation: {
       details: {
-        description: 'Home location',
+        description: 'KRL Road, Rawalpindi to G11/4, Islamabad',
         geometry: {
           location: {
             lat: 24.8307323,
@@ -53,7 +53,7 @@ export const shareRidesData = [
     },
     destinationLocation: {
       details: {
-        description: 'Home location',
+        description: 'G11/4, Islamabad',
         geometry: {
           location: {
             lat: 24.8307323,
@@ -75,10 +75,10 @@ export const shareRidesData = [
     contactNumber: '03345656568',
     rideCategory: 'car',
     image: shareRide,
-    fare: '200',
+    fare: '1500',
     startLocation: {
       details: {
-        description: 'Home location',
+        description: 'Rawalpindi to Lahore',
         geometry: {
           location: {
             lat: 24.8307323,
@@ -89,7 +89,7 @@ export const shareRidesData = [
     },
     destinationLocation: {
       details: {
-        description: 'Home location',
+        description: ' Lahore',
         geometry: {
           location: {
             lat: 24.8307323,
@@ -114,10 +114,10 @@ export const shareRidesData = [
     contactNumber: '03345656568',
     rideCategory: 'car',
     image: shareRide,
-    fare: '400',
+    fare: '4000',
     startLocation: {
       details: {
-        description: 'I-8 Markaz,Islamabad',
+        description: 'Islamabad to Malam jabba, KPK',
         geometry: {
           location: {
             lat: 24.8307323,
