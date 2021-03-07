@@ -7,12 +7,12 @@ import {
 } from '../../ScreensMainComponents/HomeComponents';
 import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer.js';
 
-const Component = (props) => {
+const Component = (navigation) => {
   return (
     <ScrollViewContainer>
-      <ShareYourAssets />
-      <NearbyShares />
-      <RecommendedShares />
+      <ShareYourAssets navigation={navigation} />
+      <NearbyShares navigation={navigation} />
+      <RecommendedShares navigation={navigation} />
     </ScrollViewContainer>
   );
 };

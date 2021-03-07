@@ -12,14 +12,14 @@ import ShareSpace from 'res/images/ModulesImages/SpaceSharingImages/selectHome.p
 
 //Third Party Exports Ends
 
-const Component = () => {
+const Component = (navigation) => {
   const data = [
     {
       id: '1',
       title: 'Daily Ride',
       image: DRCaseImage,
       price: '200 Rs',
-      seats: '3',
+      seatsAvailable: '3',
       location: 'G11/3,Islamabad to G13/1,Islamabad',
     },
     {
@@ -44,7 +44,11 @@ const Component = () => {
         <SectionHeadingText>Recently Shared</SectionHeadingText>
       </View>
       <View style={styles.recentlySharedFlatlistArea}>
-        <HorizontalFlatList data={data} screen='RecentlySharedScreen'/>
+        <HorizontalFlatList
+          navigation={navigation}
+          data={data}
+          screen="RecentlySharedScreen"
+        />
       </View>
     </View>
   );

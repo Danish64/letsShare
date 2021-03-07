@@ -11,7 +11,7 @@ import styles from './style';
 import HomeMenuIcon from '../../../Icons/HomeMenuIcon';
 //Native Exports Ends Here
 
-const Component = () => {
+const Component = (navigation) => {
   const CardTitle = ({title}) => {
     return (
       <View style={styles.cardTitle}>
@@ -19,10 +19,10 @@ const Component = () => {
       </View>
     );
   };
-  const ShareAssetCard = ({iconName, cardTitle}) => {
+  const ShareAssetCard = ({iconName, cardTitle, onPress}) => {
     return (
       <TouchableOpacity
-        onPress={() => console.log(`${cardTitle} Pressed`)}
+        onPress={onPress}
         style={styles.shareAssetCardContainer}>
         <HomeMenuIcon name={iconName} />
         <CardTitle title={cardTitle} />
@@ -34,16 +34,20 @@ const Component = () => {
     secondCardIconName,
     firstCardTitle,
     secondCardTitle,
+    firstCardOnPress,
+    secondCardOnPress,
   }) => {
     return (
       <View style={styles.shareAssetRowContainer}>
         <ShareAssetCard
           iconName={firstCardIconName}
           cardTitle={firstCardTitle}
+          onPress={firstCardOnPress}
         />
         <ShareAssetCard
           iconName={secondCardIconName}
           cardTitle={secondCardTitle}
+          onPress={secondCardOnPress}
         />
       </View>
     );
@@ -60,12 +64,24 @@ const Component = () => {
           firstCardIconName="ios-business-outline"
           secondCardTitle="Share Ride"
           secondCardIconName="car-outline"
+          firstCardOnPress={() => {
+            console.log('Share Space Pressed');
+          }}
+          secondCardOnPress={() => {
+            console.log('Share Ride Pressed');
+          }}
         />
         <ShareAssetRow
           firstCardTitle="Share Food"
           firstCardIconName="fast-food-outline"
           secondCardTitle="Share Goods"
           secondCardIconName="basket-outline"
+          firstCardOnPress={() => {
+            console.log('Share Food Pressed');
+          }}
+          secondCardOnPress={() => {
+            console.log('Share Goods Pressed');
+          }}
         />
       </View>
     </View>

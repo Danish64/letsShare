@@ -162,12 +162,19 @@ export const FormPicker = ({heading, items, name, placeholder, icon}) => {
 };
 
 export const LocationInput = ({heading, name, placeholder}) => {
-  const {errors, setFieldValue, touched, values} = useFormikContext();
+  const {
+    errors,
+    setFieldValue,
+    touched,
+    values,
+    handleChange,
+  } = useFormikContext();
 
   return (
     <>
       <Picker
         heading={heading}
+        // onChangeText={handleChange(name)}
         onSelectItem={(item) => setFieldValue(name, item.target.file[0])}
         placeholder={placeholder}
         selectedItem={values[name]}
@@ -191,9 +198,10 @@ export const FormLocation = ({name, title}) => {
   const {errors, setFieldValue, touched, values} = useFormikContext();
   return (
     <>
-      <SetLocation 
-        onSelectItem={(data) => setFieldValue(name, data)} 
-        title= {title}/>
+      <SetLocation
+        onSelectItem={(data) => setFieldValue(name, data)}
+        title={title}
+      />
       <ErrorMessage error={errors[name]} visible={touched[name]} />
     </>
   );
@@ -208,8 +216,9 @@ export const SubmitButton = ({title}) => {
   } = useFormikContext();
 
   return (
-    // <LandscapeButtonBlack onPress={handleSubmit}>{title}</LandscapeButtonBlack>
-    <LandscapeButtonPrimary onPress={handleSubmit}>{title}</LandscapeButtonPrimary>
+    <LandscapeButtonPrimary onPress={handleSubmit}>
+      {title}
+    </LandscapeButtonPrimary>
   );
 };
 

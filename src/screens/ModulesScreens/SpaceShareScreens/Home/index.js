@@ -12,7 +12,7 @@ const Component = ({navigation}) => {
         navigation={navigation}
         // navigateTo="HomeSearchScreen"
       />
-      <SpaceShareHome />
+      <SpaceShareHome navigation={navigation} />
     </Container>
   );
 };
