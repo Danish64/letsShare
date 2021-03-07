@@ -32,7 +32,7 @@ export const shareRidesData = [
 
   {
     id: '1',
-    rideName: 'Honda',
+    rideName: 'Honda Civic',
     rideType: 'Nearby Ride',
     registrationNo: 'ABC-6574',
     contactNumber: '03345656568',
@@ -65,48 +65,11 @@ export const shareRidesData = [
     listFor: '2',
   },
 
-  {
-    id: '3',
-    rideName: 'Honda',
-    rideType: 'Tour Ride',
-    registrationNo: 'ABC-6574',
-    contactNumber: '03345656568',
-    rideCategory: 'car',
-    image: shareRide,
-    fare: '400',
-    startLocation: {
-      details: {
-        description: 'I-8 Markaz,Islamabad',
-        geometry: {
-          location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
-          },
-        },
-      },
-    },
-    destinationLocation: {
-      details: {
-        description: 'Malam Jabba, KPK',
-        geometry: {
-          location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
-          },
-        },
-      },
-    },
-    departureDate: '10th March',
-    departureTime: '5:30 pm',
-    seatsAvailable: '4',
-    listFor: '2',
-  },
-
   //city to city
 
   {
     id: '2',
-    rideName: 'Honda',
+    rideName: 'Toyota Corolla',
     rideType: 'City to City Ride',
     registrationNo: 'ABC-6574',
     contactNumber: '03345656568',
@@ -138,6 +101,45 @@ export const shareRidesData = [
     departureDate: '10th March',
     departureTime: '5:30 pm',
     seatsAvailable: '3',
+    listFor: '2',
+  },
+
+  // Tour Ride Dummy Data Object
+
+  {
+    id: '3',
+    rideName: 'Hilux Vigo',
+    rideType: 'Tour Ride',
+    registrationNo: 'ABC-6574',
+    contactNumber: '03345656568',
+    rideCategory: 'car',
+    image: shareRide,
+    fare: '400',
+    startLocation: {
+      details: {
+        description: 'I-8 Markaz,Islamabad',
+        geometry: {
+          location: {
+            lat: 24.8307323,
+            lng: 67.10113298,
+          },
+        },
+      },
+    },
+    destinationLocation: {
+      details: {
+        description: 'Malam Jabba, KPK',
+        geometry: {
+          location: {
+            lat: 24.8307323,
+            lng: 67.10113298,
+          },
+        },
+      },
+    },
+    departureDate: '10th March',
+    departureTime: '5:30 pm',
+    seatsAvailable: '4',
     listFor: '2',
   },
 ];
