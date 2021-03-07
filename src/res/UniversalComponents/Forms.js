@@ -108,7 +108,7 @@ export const StepperButtonInputField = ({name, title, ...otherProps}) => {
     touched,
     values,
   } = useFormikContext();
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   const increment = () => {
     setCount(count + 1);
@@ -132,9 +132,9 @@ export const StepperButtonInputField = ({name, title, ...otherProps}) => {
             onChangeText={handleChange(name)}
             value={(values[name] = count.toString())}
             {...otherProps}></TextInput>
-          <ErrorMessage visible={touched[name]} error={errors[name]} />
           <StepperButton iconName="add-outline" onPress={increment} />
         </View>
+        <ErrorMessage visible={touched[name]} error={errors[name]} />
       </View>
     </>
   );
