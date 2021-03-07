@@ -10,13 +10,19 @@ import {
   SectionHeadingText,
 } from 'res/UniversalComponents/Text.js';
 import styles from './style';
-import {NearbyRides, CityToCityRides, Rides} from '../../../../res/constants/dummyData';
+
+import {
+  NearbyRides,
+  CityToCityRides,
+  TourRides,
+  shareRidesData,
+} from 'res/constants/dummyData';
+
 
 //Native Exports Ends Here
 
 const Component = ({navigation}) => {
   //to use styles -> {styles.propertyName}
-
 
   return (
     <View style={styles.nearBySharesArea}>
@@ -24,7 +30,13 @@ const Component = ({navigation}) => {
         <SectionHeadingText>Recently Shared</SectionHeadingText>
       </View>
       <View style={styles.recentlySharedFlatlistArea}>
-        <HorizontalFlatList data={Rides} navigation={navigation} screen='RecentlySharedRideScreen'/>
+
+        <HorizontalFlatList
+          data={shareRidesData}
+          navigation={navigation}
+          screen="RecentlySharedRideScreen"
+        />
+
       </View>
     </View>
   );

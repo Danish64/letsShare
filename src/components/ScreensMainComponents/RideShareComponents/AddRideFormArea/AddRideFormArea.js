@@ -10,9 +10,7 @@ import {
   SubmitButton as SubmitForm,
   FormImagePicker,
 } from 'res/UniversalComponents/Forms';
-import {TextInputTitleText} from 'res/UniversalComponents/Text.js';
 import {addRideDummyData} from 'res/constants/dummyData';
-import FillForm from 'res/images/ModulesImages/GeneralImages/fillForm.png';
 
 //Third Party Exports Ends
 
@@ -63,10 +61,8 @@ const Component = ({navigation}) => {
             console.log(values);
           }}
           validationSchema={validationSchema}>
-
-            {/* Input image */}
-            <FormImagePicker name="image" />
-
+          {/* Input image */}
+          <FormImagePicker name="image" />
 
           {/* Input Ride Name */}
           <FormField
