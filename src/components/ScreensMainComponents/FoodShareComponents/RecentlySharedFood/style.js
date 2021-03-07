@@ -3,9 +3,9 @@ import {Colors} from 'res/constants/Colors';
 import {s, vs, mvs, ms} from 'react-native-size-matters';
 
 export default StyleSheet.create({
-  shareFoodArea: {
+  nearBySharesArea: {
     width: '100%',
-    height: mvs(250, 0.7),
+    height: mvs(270, 0.7),
     marginBottom: mvs(20, 0.6),
     marginHorizontal: ms(20, 0.6),
   },

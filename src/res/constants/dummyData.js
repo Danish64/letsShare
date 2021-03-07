@@ -369,6 +369,72 @@ export const Goods = [
   },
 ];
 
+export const Food = [
+  {
+    id: 1,
+    title: 'Rice',
+    quantity: '2',
+    description: '2 plates of rice.',
+    location: 'G11/3,Islamabad to G13/1,Islamabad',
+    pickupLocation: {
+      details: {
+        description: 'Home location',
+        geometry: {
+          location: {
+            lat: 24.8307323,
+            lng: 67.10113298,
+          },
+        },
+      },
+    },
+    image: shareGoods,
+    PickupTime: '10AM to 5PM',
+    listFor: '5',
+  },
+  {
+    id: 2,
+    title: 'Juice Box',
+    quantity: '5',
+    description: 'Mango juice box, completly sealed boxes',
+    location: 'G11/3,Islamabad to G13/1,Islamabad',
+    pickupLocation: {
+      details: {
+        description: 'Home location',
+        geometry: {
+          location: {
+            lat: 24.8307323,
+            lng: 67.10113298,
+          },
+        },
+      },
+    },
+    image: shareFood,
+    PickupTime: '10AM to 5PM',
+    listFor: '5',
+  },
+  {
+    id: 3,
+    title: 'Sandwich',
+    quantity: '1',
+    description: 'vegetable sandwich',
+    image: shareGoods,
+    location: 'G11/3,Islamabad to G13/1,Islamabad',
+    pickupLocation: {
+      details: {
+        description: 'Home location',
+        geometry: {
+          location: {
+            lat: 24.8307323,
+            lng: 67.10113298,
+          },
+        },
+      },
+    },
+    PickupTime: '10AM to 5PM',
+    listFor: '5',
+  },
+];
+
 export const SellGoods = [
   {
     id: 1,
@@ -394,6 +460,31 @@ export const SellGoods = [
   },
 ];
 
+export const SellFood = [
+  {
+    id: 1,
+    title: 'Rice',
+    quantity: '1',
+    description: '2 kg rice, uncooked',
+    location: 'G11/3,Islamabad to G13/1,Islamabad',
+    pickupLocation: {
+      details: {
+        description: 'Home location',
+        geometry: {
+          location: {
+            lat: 24.8307323,
+            lng: 67.10113298,
+          },
+        },
+      },
+    },
+    image: shareFood,
+    deliveryInfo: 'No shipping available',
+    price: '200',
+    listFor: '5',
+  },
+];
+
 export const GoodsList = [
   {
     id: 1,
@@ -408,6 +499,25 @@ export const GoodsList = [
     title: 'Curler',
     quantity: 1,
     description: 'philips curler, travel size...',
+    image: shareFood,
+    selected: false,
+  },
+];
+
+export const FoodList = [
+  {
+    id: 1,
+    title: 'Pepsi',
+    quantity: 2,
+    description: 'Two bottles of pepsi',
+    image: shareFood,
+    selected: false,
+  },
+  {
+    id: 2,
+    title: 'Rice',
+    quantity: 1,
+    description: '2 kg rice, uncooked',
     image: shareFood,
     selected: false,
   },

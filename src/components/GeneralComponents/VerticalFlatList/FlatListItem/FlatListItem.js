@@ -19,7 +19,7 @@ const Component = ({onPress, title, description, pickupLocation, image, rideName
                     {rideName && (
                         <SubtitleTextBlack>{rideName}</SubtitleTextBlack>
                     )}
-                    <View>
+                    <View style={styles.subContainer}>
                         {description && (
                             <Text>{description}</Text>
                         )}

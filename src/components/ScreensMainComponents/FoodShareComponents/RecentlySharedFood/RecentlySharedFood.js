@@ -10,26 +10,23 @@ import styles from './style';
 //Native Exports Ends Here
 //Third Party Exports Starts
 
+import {
+  Food,
+  testData} from '../../../../res/constants/dummyData.js';
+
 //Third Party Exports Ends
 
-const Component = () => {
+const Component = ({navigation}) => {
   //to use styles -> {styles.propertyName}
-  const data = [
-    {id: '1'},
-    {id: '2'},
-    {id: '3'},
-    {id: '4'},
-    {id: '5'},
-    {id: '6'},
-    {id: '7'},
-  ];
+
+  
   return (
-    <View style={styles.shareFoodArea}>
+    <View style={styles.nearBySharesArea}>
       <View style={styles.shareFoodTitleText}>
         <SectionHeadingText>Recently Shared</SectionHeadingText>
       </View>
       <View style={styles.recentlySharedFlatlistArea}>
-        <HorizontalFlatList data={data} />
+        <HorizontalFlatList data={Food} navigation={navigation} screen='RecentlySharedFoodScreen'/>
       </View>
     </View>
   );

@@ -1,60 +1,86 @@
-import React from 'react';
-import {ShareActionAreaHeadingText} from 'res/UniversalComponents/Text.js';
-import {PrimaryIconButton} from 'res/UniversalComponents/Button.js';
-import {FormTextInput} from 'res/UniversalComponents/TextInput.js';
-import styles from './style';
+import React , {useState} from 'react';
 import {
   View,
-  Image,
-  TouchableOpacity,
-  Text,
   KeyboardAvoidingView,
+  TextInput
 } from 'react-native';
-import AddRide from 'res/images/ModulesImages/RideSharingImages/AddRide.png';
-import CheckBoxes from 'res/images/ModulesImages/GeneralImages/checkBoxes.png';
-
 //Native Exports Ends Here
-//Third Party Exports Starts
 
+//Third Party Exports Starts
+import styles from './style';
+import {
+  FormByFormik as Form,
+  StepperButtonInputField,
+  BaselineFormField as FormField,
+  FormPicker,
+  SubmitButton as SubmitForm,
+  FormImagePicker
+} from '../../../../res/UniversalComponents/Forms';
+import {FoodList} from '../../../../res/constants/dummyData';
 //Third Party Exports Ends
 
 const Component = ({navigation}) => {
-  // console.log('RideShareActionArea', navigation);
-  //to use styles -> {styles.propertyName}
+  const submitForm = (values) => {
+    values.id = Math.floor(Math.random() * 100) + 1;
+    values.selected = false;
+    const newData = values;
+    updateRides(newData);
+  };
+
+  const updateRides = (newData) => {
+    const arrayData = FoodList;
+    FoodList.unshift(newData);
+    navigation.navigate('CreateFoodScreen', newData);
+  };
+
   return (
     <KeyboardAvoidingView>
       <View style={styles.createFoodComponentArea}>
-        <View style={styles.pngImageArea}>
-          <Image
-            resizeMode="contain"
-            source={CheckBoxes}
-            style={styles.imageContainer}
+        <Form
+        initialValues={{
+          title: '',
+          description: '',
+          quantity: '',
+          selected: null,
+          image: [],
+          id: '',
+        }}
+        onSubmit={(values)=>{
+          submitForm(values);
+          console.log(values);
+        }}
+        >
+          {/* Input image */}
+          <FormImagePicker name="image"/>
+
+          {/* Input title */}
+          <FormField
+            title="Title"
+            maxLength={50}
+            name="title"
+            placeholder="e.g. Cheese Sandwich"
           />
-        </View>
-        <View style={styles.formArea}>
-          <FormTextInput 
-            title="Item Name" 
-            placeHolder="Enter your item name" 
+
+          {/* Input Description */}
+          <FormField
+            title="Description"
+            maxLength={200}
+            name="description"
+            placeholder="e.g. 3 pieces of sandwich etc..."
           />
-          <FormTextInput
+
+          {/* Stepper Button Input -> Quantity */}
+          <StepperButtonInputField
             title="Quantity"
-            placeHolder="Enter quantity"
+            name="quantity"
           />
-          <FormTextInput
-            title="Phone Number"
-            placeHolder="Enter your contact number"
-          />
-        </View>
-        <View style={styles.buttonAreastyle}>
-          <PrimaryIconButton>Add Food</PrimaryIconButton>
-        </View>
-        <View style={styles.pngImageAreaLarge}>
-          <Image
-            resizeMode="contain"
-            source={AddRide}
-            style={styles.imageContainer}
-          />
-        </View>
+
+          {/* Submit Form */}
+          <View style={styles.buttonAreastyle}>
+            <SubmitForm title="Add"></SubmitForm>
+          </View>
+
+        </Form>
       </View>
     </KeyboardAvoidingView>
   );

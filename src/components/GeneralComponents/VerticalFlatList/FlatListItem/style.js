@@ -25,8 +25,12 @@ export default StyleSheet.create({
     },
     detailsContainer:{
         justifyContent: 'space-evenly',
+        width: '70%'
         // marginTop: mvs(5, 0.5),
         // marginBottom: mvs(5, 0.6),
+    },
+    subContainer:{
+        width: '100%'
     }
  
 });
