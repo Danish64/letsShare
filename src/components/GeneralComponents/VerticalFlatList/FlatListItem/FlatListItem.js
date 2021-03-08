@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, Image} from 'react-native';
+import {View, TouchableOpacity, Text, Image} from 'react-native';
 import styles from './style';
 import {SubtitleTextBlack} from '../../../../res/UniversalComponents/Text';
 import {TextIcon} from 'res/UniversalComponents/TextIcon.js';
+
 
 const Component = ({onPress, title, description, pickupLocation, image, rideName, price, fare, seatsAvailable}) => {
     return(
@@ -47,6 +48,7 @@ const Component = ({onPress, title, description, pickupLocation, image, rideName
             </View>
         </TouchableOpacity>
     )
+
 };
 
 export default Component;

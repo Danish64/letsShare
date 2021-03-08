@@ -590,11 +590,10 @@ export default StyleSheet.create({
     borderBottomColor: Colors.SearchBarWhite,
     borderTopColor: Colors.White,
     padding: ms(5),
-    marginTop: ms(7),
   },
   stepperContainer: {
     width: '100%',
-    height: mvs(50, 3.0),
+    height: mvs(30, 3.0),
     marginTop: mvs(10, 0.6),
     marginBottom: mvs(2, 0.6),
     borderRadius: ms(10, 0.7),

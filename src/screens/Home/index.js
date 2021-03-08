@@ -18,9 +18,6 @@ import {StyleSheet, Text, SafeAreaView, ScrollView} from 'react-native';
 
 const Component = ({loginRequest, userInfo, navigation}) => {
   useEffect(() => {
-    loginRequest();
-  }, []);
-  useEffect(() => {
     console.log('UserInfo on Home Screen test', userInfo);
   }, [userInfo]);
   return (

@@ -41,10 +41,12 @@ export const shareRidesData = [
     fare: '200',
     seatsAvailable: '2',
     startLocation: {
+
       data:{
         description: 'Home location',
       },
       details: {
+
         geometry: {
           location: {
             lat: 24.8307323,
@@ -54,10 +56,12 @@ export const shareRidesData = [
       },
     },
     destinationLocation: {
+
       data:{
         description: 'Home location',
       },
       details: {
+
         geometry: {
           location: {
             lat: 24.8307323,
@@ -79,12 +83,13 @@ export const shareRidesData = [
     contactNumber: '03345656568',
     rideCategory: 'car',
     image: shareRide,
-    fare: '200',
+    fare: '1500',
     startLocation: {
       data:{
         description: 'Home location',
       },
       details: {
+
         geometry: {
           location: {
             lat: 24.8307323,
@@ -94,10 +99,12 @@ export const shareRidesData = [
       },
     },
     destinationLocation: {
+
       data:{
         description: 'Home location',
       },
       details: {
+
         geometry: {
           location: {
             lat: 24.8307323,
@@ -122,12 +129,13 @@ export const shareRidesData = [
     contactNumber: '03345656568',
     rideCategory: 'car',
     image: shareRide,
-    fare: '400',
+    fare: '4000',
     startLocation: {
       data:{
         description: 'Rawalpindi, Pakistan',
       },
       details: {
+
         geometry: {
           location: {
             lat: 33.57576,

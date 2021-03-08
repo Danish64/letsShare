@@ -2,7 +2,6 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-
 import HomeNavigator from './BottomTabNavigator';
 import SplashScreen from '../screens/SplashScreen';
 import AuthenticationStack from './ScreenStacks/AuthenticationStack';
@@ -13,6 +12,7 @@ function MainNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
+        initialRouteName="SplashScreen"
         screenOptions={{
           headerShown: false,
         }}>

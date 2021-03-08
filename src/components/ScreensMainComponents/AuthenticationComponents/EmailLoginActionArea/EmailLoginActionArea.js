@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
 import * as Yup from 'yup';
 
@@ -14,22 +14,69 @@ import {
 import {LandscapeButtonBlack} from 'res/UniversalComponents/Button.js';
 import styles from './style';
 import {AuthContext} from 'res/constants/AuthContext.js';
-
+import useDidMountEffect from '../../../../services/CustomHooks/useDidMountEffect';
+import {checkUserEmail} from '../../../../services/AuthenticationServices';
+import {useNavigation} from '@react-navigation/native';
 //Native Exports Ends Here
 //Third Party Exports Starts
 
 //Third Party Exports Ends
 
-const Component = ({navigation}) => {
+const Component = ({}) => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
+  const [checkEmailLoading, setCheckEmailLoading] = useState(false);
+  const [emailExists, setEmailExists] = useState();
+
+  useDidMountEffect(() => {
+    try {
+      if (!checkEmailLoading && email.length > 0) {
+        setCheckEmailLoading(true);
+        checkUserEmail(email, emailExistsHandler);
+      }
+    } catch (err) {
+      console.log('Auth Screen Error', err.message);
+    }
+  }, [email]);
+
+  useDidMountEffect(() => {
+    try {
+      if (checkEmailLoading) {
+        setCheckEmailLoading(false);
+        if (emailExists) {
+          // console.log('Email EmailLoginActionArea->', email);
+          navigation.navigate('PasswordScreen', {email: email});
+        } else {
+          // navigation.navigate('RegisterUserScreen');
+        }
+      }
+    } catch (err) {
+      console.log('Auth Screen Error');
+    }
+  }, [emailExists]);
+
+  useEffect(() => {
+    //Cleanup effect
+    return () => setCheckEmailLoading(false);
+  }, []);
+
+  //UseEffect Ends
+
+  const submitHandler = (values) => {
+    if (!checkEmailLoading) {
+      // console.log('Check in submitHandler');
+      setEmail(values.email);
+      setCheckEmailLoading(true);
+    }
+  };
+
   const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label('Email'),
     // password: Yup.string().required().min(4).label('Password'),
   });
 
-  const submitHandler = (values) => {
-    setEmail(values.email);
-    navigation.navigate('PasswordScreen', {email: email});
+  const emailExistsHandler = (doesEmailExist) => {
+    setEmailExists(doesEmailExist);
   };
 
   return (
@@ -53,7 +100,7 @@ const Component = ({navigation}) => {
             name="email"
           />
           <View style={styles.continueButton}>
-            <Submit title="Continue" />
+            <Submit title="Continue" loading={checkEmailLoading} />
           </View>
         </Form>
       </View>
