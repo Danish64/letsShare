@@ -17,14 +17,6 @@ import {shareRidesData} from 'res/constants/dummyData';
 const validationSchema = Yup.object().shape({
   fare: Yup.string().required().min(3).max(5).label('Fare'),
   seatsAvailable: Yup.string().required().label('Available Seats'),
-
-  startLocation: Yup.object().required().nullable().label('Start Location'),
-  destinationLocation: Yup.object()
-    .required()
-    .nullable()
-    .label('Destination Location'),
-
-  //category: Yup.object().required().nullable().label('Category'),
 });
 
 const Component = ({navigation, Data}) => {
@@ -51,7 +43,6 @@ const Component = ({navigation, Data}) => {
     shareRidesData.push(newData);
     navigation.navigate('RideShareHome', newData);
   };
-
 
   return (
     <KeyboardAvoidingView>
