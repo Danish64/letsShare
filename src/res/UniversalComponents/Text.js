@@ -20,6 +20,9 @@ export const RecentlySharedTitleText = (props) => (
 export const RecentlySharedSubtitleText = (props) => (
   <Text style={styles.recentlySharedSubtitleText}>{props.children}</Text>
 );
+export const IconTextLightGrey = (props) => (
+  <Text style={styles.iconTextLightGrey}>{props.children}</Text>
+);
 
 export const LogoText = (props) => (
   <Text style={styles.logoText}>{props.children}</Text>
@@ -89,6 +92,9 @@ export const TextButton = (props) => (
 );
 export const CaptionText = (props) => (
   <Text style={styles.captionText}>{props.children}</Text>
+);
+export const CaptionTextPrimary = (props) => (
+  <Text style={styles.captionTextPrimary}>{props.children}</Text>
 );
 export const OverlineText = (props) => (
   <Text style={styles.overlineText}>{props.children}</Text>

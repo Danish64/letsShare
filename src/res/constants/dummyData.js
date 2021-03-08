@@ -41,12 +41,10 @@ export const shareRidesData = [
     fare: '200',
     seatsAvailable: '2',
     startLocation: {
-
-      data:{
-        description: 'Home location',
+      data: {
+        description: 'Khanah Pul, Rawalpindi',
       },
       details: {
-
         geometry: {
           location: {
             lat: 24.8307323,
@@ -56,12 +54,10 @@ export const shareRidesData = [
       },
     },
     destinationLocation: {
-
-      data:{
-        description: 'Home location',
+      data: {
+        description: 'COMSATS University, Islamabad',
       },
       details: {
-
         geometry: {
           location: {
             lat: 24.8307323,
@@ -70,7 +66,6 @@ export const shareRidesData = [
         },
       },
     },
-    listFor: '2',
   },
 
   //city to city
@@ -85,11 +80,10 @@ export const shareRidesData = [
     image: shareRide,
     fare: '1500',
     startLocation: {
-      data:{
-        description: 'Home location',
+      data: {
+        description: 'I-8/3, Islamabad',
       },
       details: {
-
         geometry: {
           location: {
             lat: 24.8307323,
@@ -99,12 +93,10 @@ export const shareRidesData = [
       },
     },
     destinationLocation: {
-
-      data:{
-        description: 'Home location',
+      data: {
+        description: 'DHA, Lahore',
       },
       details: {
-
         geometry: {
           location: {
             lat: 24.8307323,
@@ -131,21 +123,20 @@ export const shareRidesData = [
     image: shareRide,
     fare: '4000',
     startLocation: {
-      data:{
+      data: {
         description: 'Rawalpindi, Pakistan',
       },
       details: {
-
         geometry: {
           location: {
             lat: 33.57576,
-            lng: 73.01190,
+            lng: 73.0119,
           },
         },
       },
     },
     destinationLocation: {
-      data:{
+      data: {
         description: 'Malam Jabba, KPK',
       },
       details: {
@@ -182,7 +173,7 @@ export const Goods = [
     description: ' A Silent Patient',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      data:{
+      data: {
         description: 'Home location',
       },
       details: {
@@ -205,7 +196,7 @@ export const Goods = [
     description: 'three compartments',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      data:{
+      data: {
         description: 'Home location',
       },
       details: {
@@ -229,7 +220,7 @@ export const Goods = [
     image: shareGoods,
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      data:{
+      data: {
         description: 'Home location',
       },
       details: {
@@ -254,7 +245,7 @@ export const Food = [
     description: '2 plates of rice.',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      data:{
+      data: {
         description: 'Home location',
       },
       details: {
@@ -277,7 +268,7 @@ export const Food = [
     description: 'Mango juice box, completly sealed boxes',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      data:{
+      data: {
         description: 'Home location',
       },
       details: {
@@ -301,7 +292,7 @@ export const Food = [
     image: shareGoods,
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      data:{
+      data: {
         description: 'Home location',
       },
       details: {
@@ -326,7 +317,7 @@ export const SellGoods = [
     description: ' A Silent Patient',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      data:{
+      data: {
         description: 'Home location',
       },
       details: {
@@ -353,7 +344,7 @@ export const SellFood = [
     description: '2 kg rice, uncooked',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      data:{
+      data: {
         description: 'Home location',
       },
       details: {
