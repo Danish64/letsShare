@@ -100,6 +100,13 @@ export default StyleSheet.create({
     color: Colors.Primary,
   },
 
+  iconTextLightGrey: {
+    ...headingTextProperties,
+    fontFamily: FONT_AIRBNB_CEREAL_BOLD,
+    fontSize: ms(SMALL_HEADING_TEXT_SIZE),
+    color: Colors.LightGrey,
+  },
+
   imageTextBold: {
     fontFamily: FONT_AIRBNB_CEREAL_BLACK,
     letterSpacing: ms(0.25),
@@ -230,6 +237,12 @@ export default StyleSheet.create({
     fontSize: ms(DEFAULT_CAPTION_TEXT_SIZE),
     color: Colors.LightGrey,
     fontFamily: FONT_AIRBNB_CEREAL_MEDIUM,
+    letterSpacing: ms(0.4),
+  },
+  captionTextPrimary: {
+    fontSize: ms(DEFAULT_CAPTION_TEXT_SIZE),
+    color: Colors.Primary,
+    fontFamily: FONT_AIRBNB_CEREAL_BOLD,
     letterSpacing: ms(0.4),
   },
   overlineText: {

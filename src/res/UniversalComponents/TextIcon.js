@@ -7,6 +7,7 @@ import {FlatList, View, Text, Image} from 'react-native';
 import {
   RecentlySharedTitleText,
   RecentlySharedSubtitleText,
+  IconTextLightGrey,
 } from 'res/UniversalComponents/Text.js';
 
 //Native Exports Ends Here
@@ -17,10 +18,18 @@ import {
 export const TextIcon = ({iconName, flexDirection, children}) => (
   <View style={[styles.textIconStyle, {flexDirection: flexDirection}]}>
     <View style={styles.textIconAlign}>
-      <Ionicons name={iconName} color={Colors.Black} size={18} />
+      <Ionicons name={iconName} color={Colors.LightGrey} size={18} />
     </View>
     <View style={styles.textIconAlign}>
-      <RecentlySharedSubtitleText>{children}</RecentlySharedSubtitleText>
+      <IconTextLightGrey>{children}</IconTextLightGrey>
+    </View>
+  </View>
+);
+
+export const Icon = ({iconName, flexDirection}) => (
+  <View style={[styles.textIconStyle, {flexDirection: flexDirection}]}>
+    <View style={styles.textIconAlign}>
+      <Ionicons name={iconName} color={Colors.Black} size={18} />
     </View>
   </View>
 );

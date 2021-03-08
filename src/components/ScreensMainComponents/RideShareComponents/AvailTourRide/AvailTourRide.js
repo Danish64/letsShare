@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
-import VerticalFlatList from '../../../GeneralComponents/VerticalFlatList';
+import AvailRidesList from '../../../GeneralComponents/AvailRidesList';
 import {shareRidesData} from '../../../../res/constants/dummyData';
 
 const Component = ({navigation}) => {
@@ -20,7 +20,7 @@ const Component = ({navigation}) => {
   };
   return (
     <View>
-      <VerticalFlatList
+      <AvailRidesList
         data={items}
         navigation={navigation}
         screen="RecentlySharedRideScreen"
