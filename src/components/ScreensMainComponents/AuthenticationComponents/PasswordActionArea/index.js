@@ -1,2 +1,102 @@
-import Component from './PasswordActionArea';
-export default Component;
+import React, {useState, useContext} from 'react';
+import {View, Image, TouchableOpacity, Text} from 'react-native';
+import styles from './style';
+import {
+  FormByFormik as Form,
+  FormField as Field,
+  SubmitButton as Submit,
+} from 'res/UniversalComponents/Forms.js';
+import {
+  ShareActionAreaHeadingText,
+  BodyTextBold,
+} from 'res/UniversalComponents/Text.js';
+
+import * as Yup from 'yup';
+import {useRoute} from '@react-navigation/native';
+import useDidMountEffect from '../../../../services/CustomHooks/useDidMountEffect';
+
+//For Redux
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {loginRequest} from '../../../../ducks/actions';
+// Import Ends
+
+const Component = ({loginRequest, userInfo}) => {
+  const route = useRoute();
+  // console.log('Checking route.params in password Screen', route.params);
+  const {email} = route.params;
+
+  const [password, setPassword] = useState('');
+
+  //useEffects for life cycles
+
+  useDidMountEffect(() => {
+    try {
+      if (password.length > 0) {
+        const credentials = {email: email, password: password};
+        // console.log(credentials);
+        loginRequest(credentials);
+      }
+    } catch (err) {
+      console.log('Password Screen Error', err.message);
+    }
+  }, [password]);
+
+  useDidMountEffect(() => {
+    try {
+      console.log('User Object After Login Password Screen-> ', userInfo.user);
+    } catch (err) {}
+  }, [userInfo.user]);
+
+  //useEffects Ends
+
+  const validationSchema = Yup.object().shape({
+    password: Yup.string().required().min(4).label('Password'),
+  });
+
+  const submitHandler = (values) => {
+    // console.log('Checking Values', values);
+    setPassword(values.password);
+    // navigation.reset({
+    //   index: 0,
+    //   routes: [{name: 'Home'}],
+    // });
+  };
+
+  return (
+    <View style={styles.emailLoginComponentArea}>
+      <ShareActionAreaHeadingText>Enter Password </ShareActionAreaHeadingText>
+
+      <View style={styles.emailInputArea}>
+        <Form
+          initialValues={{password: ''}}
+          onSubmit={submitHandler}
+          validationSchema={validationSchema}>
+          <Field
+            autoCapitalize="none"
+            autoCorrect={false}
+            icon="key-outline"
+            placeholder="Password"
+            name="password"
+            secureTextEntry
+          />
+          <View style={styles.continueButton}>
+            <Submit title="Login" />
+          </View>
+        </Form>
+      </View>
+    </View>
+  );
+};
+
+function mapStatesToProps(state) {
+  return {
+    userInfo: state.userInformation,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  loginRequest: bindActionCreators(loginRequest, dispatch),
+});
+
+export default connect(mapStatesToProps, mapDispatchToProps)(Component);

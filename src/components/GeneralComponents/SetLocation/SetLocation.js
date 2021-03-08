@@ -1,52 +1,56 @@
 import React, {useState} from 'react';
 import styles from './style';
-import {View, TouchableWithoutFeedback, Text, Modal, TouchableOpacity, Button, Image} from 'react-native';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import {
+  View,
+  TouchableWithoutFeedback,
+  Text,
+  Modal,
+  KeyboardAvoidingView,
+  TouchableOpacity,
+  Button,
+  Image,
+} from 'react-native';
+import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import {TextInputTitleText} from '../../../res/UniversalComponents/Text';
 import GOOGLE_API_KEY from '../../../res/constants/maps';
-import MapView , {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import {SubmitButton} from '../../../res/UniversalComponents/Forms';
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {ShareButton} from '../../../res/UniversalComponents/Button';
-import { ScrollView } from 'react-native-gesture-handler';
-import { KeyboardAvoidingView } from 'react-native';
-import { SafeAreaView } from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const Component = ({onSelectItem}) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [pickupLocation, setPickupLocation] = useState(null); 
+  const [pickupLocation, setPickupLocation] = useState(null);
   const [viewMarker, setViewMarker] = useState(true);
 
   const homePlace = {
     description: 'Home',
-    geometry: { location: { lat: 48.8152937, lng: 2.4597668 } },
+    geometry: {location: {lat: 48.8152937, lng: 2.4597668}},
   };
   const workPlace = {
     description: 'Work',
-    geometry: { location: { lat: 48.8496818, lng: 2.2940881 } },
+    geometry: {location: {lat: 48.8496818, lng: 2.2940881}},
   };
-  
+
   const setLocation = () => {
-      setModalVisible(false);
-      onSelectItem(pickupLocation);
+    setModalVisible(false);
+    onSelectItem(pickupLocation);
   };
-  
-  
-    return(
-      <KeyboardAvoidingView keyboardShouldPersistTaps="handled">
-        <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-          <View style={styles.container}>
-            <TextInputTitleText>Add Location</TextInputTitleText>
-              <View style={styles.locationContainer}>
-                <MapView
-                provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-                style={styles.map}
-                region={{
-                  latitude: 37.78825,
-                  longitude: -122.4324,
-                  latitudeDelta: 0.015,
-                  longitudeDelta: 0.0121,
-                }}               
-              >
+
+  return (
+    <KeyboardAvoidingView keyboardShouldPersistTaps="handled">
+      <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
+        <View style={styles.container}>
+          <TextInputTitleText>Add Location</TextInputTitleText>
+          <View style={styles.locationContainer}>
+            <MapView
+              provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+              style={styles.map}
+              region={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.015,
+                longitudeDelta: 0.0121,
+              }}>
               {/* {viewMarker ?
                 <Image></Image>
               :
@@ -57,45 +61,45 @@ const Component = ({onSelectItem}) => {
                   }}
                 />
               } */}
-              </MapView>
-              {/* <Text>{JSON.stringify(pickupLocation)}</Text> */}
-              
-              
-            </View>
+            </MapView>
+            {/* <Text>{JSON.stringify(pickupLocation)}</Text> */}
           </View>
-        </TouchableWithoutFeedback>
-        <Modal visible={modalVisible} animationType="slide" keyboardShouldPersistTaps="handled">
-          <View style={styles.setLocationContainer} keyboardShouldPersistTaps="handled">
+        </View>
+      </TouchableWithoutFeedback>
+      <Modal
+        visible={modalVisible}
+        animationType="slide"
+        keyboardShouldPersistTaps="handled">
+        <View
+          style={styles.setLocationContainer}
+          keyboardShouldPersistTaps="handled">
           <GooglePlacesAutocomplete
-            placeholder='Where From?'
+            placeholder="Where From?"
             onPress={(data, details = null) => {
               console.log(data, details);
               setPickupLocation({data, details});
               // onSelectItem(pickupLocation);
               setViewMarker(false);
-            }
-            }
+            }}
             keyboardShouldPersistTaps="always"
-            
             fetchDetails
-            enablePoweredByContainer= {true}
+            enablePoweredByContainer={true}
             query={{
-                key: 'AIzaSyAIzLQ2mPeFCSvf4qMTZwN5KyIUBpAexuc',
-                language: 'en',
-                // components: 'country:pakistan',
+              key: 'AIzaSyAIzLQ2mPeFCSvf4qMTZwN5KyIUBpAexuc',
+              language: 'en',
+              // components: 'country:pakistan',
             }}
             predefinedPlaces={[homePlace, workPlace]}
             styles={{
-                textInput: styles.textInput,
+              textInput: styles.textInput,
             }}
-            />
-              <View style={styles.buttonStyles}>
-              <Button title="Set Location" onPress={() => setLocation()} ></Button>
-            </View>
+          />
+          <View style={styles.buttonStyles}>
+            <Button title="Set Location" onPress={() => setLocation()}></Button>
           </View>
-        </Modal>      
-    </KeyboardAvoidingView>  
-    
-    );
+        </View>
+      </Modal>
+    </KeyboardAvoidingView>
+  );
 };
 export default Component;

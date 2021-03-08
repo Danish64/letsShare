@@ -7,18 +7,18 @@ import {
   signupFaliure,
 } from '../../actions';
 
+import {authorizeUser} from '../../../services/AuthenticationServices';
+
 function* loginRequest(obj) {
-  console.log('loginRequest Generator Function Called');
-  //   const response = yield doPostAws(
-  //     obj.data,
-  //     'url',
-  //   );
-  //console.log('Login Request Working', response);
-  const response = {status: 'Success Code', id: 1};
-  if (response.status === 'Success Code') {
+  // console.log('loginRequest Generator Function Called with', obj);
+
+  const response = yield authorizeUser(obj.data);
+  console.log('Login Request Working', response);
+
+  //Store the token
+
+  if (response.data.data) {
     yield put(loginSuccess(response));
-  } else if (response.status === 'Failure Code') {
-    yield put(loginFaliure(response));
   } else {
     yield put(loginFaliure(response));
   }

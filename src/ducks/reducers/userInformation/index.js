@@ -12,6 +12,7 @@ import {
 //There must be different reducers for different things,to maintain readability
 
 const initialState = {
+  user: {},
   message: '',
   isLoading: false,
 };
@@ -26,13 +27,14 @@ const userInformation = (state = initialState, action) => {
         ...state,
         isLoading: false,
         message: 'Login Succeed',
-        loginResponse: action.data,
+        user: action.data.data.data,
       };
     case LOGIN_FALIURE:
       return {
         ...state,
         isLoading: false,
-        message: 'In valid Username/Password',
+        errorCode: action.data.errorCode,
+        message: action.data.message,
       };
 
     case SIGNUP_REQUEST:

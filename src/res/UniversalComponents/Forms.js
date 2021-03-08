@@ -16,10 +16,10 @@ import {
   TextInputErrorMessage,
 } from 'res/UniversalComponents/Text.js';
 import {
-  LandscapeButtonBlack,
   LandscapeButtonPrimary,
   StepperButton,
 } from 'res/UniversalComponents/Button.js';
+import {ActionButtonBlack} from 'res/UniversalComponents/ActionButtons.js';
 
 import {
   IconTextInputSquare,
@@ -197,7 +197,7 @@ export const FormLocation = ({name}) => {
     </>
   );
 };
-export const SubmitButton = ({title}) => {
+export const SubmitButton = ({title, loading}) => {
   const {
     handleSubmit,
     resetForm,
@@ -207,7 +207,9 @@ export const SubmitButton = ({title}) => {
   } = useFormikContext();
 
   return (
-    <LandscapeButtonBlack onPress={handleSubmit}>{title}</LandscapeButtonBlack>
+    <ActionButtonBlack onPress={handleSubmit} loading={loading}>
+      {title}
+    </ActionButtonBlack>
   );
 };
 

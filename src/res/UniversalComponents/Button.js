@@ -9,7 +9,7 @@ import {
   TextButton,
 } from 'res/UniversalComponents/Text.js';
 import {Colors} from 'res/constants/Colors.js';
-import {Text} from 'react-native';
+
 export const PrimaryButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.buttonPrimary}>

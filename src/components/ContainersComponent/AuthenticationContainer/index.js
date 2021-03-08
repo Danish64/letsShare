@@ -7,12 +7,12 @@ import IllustrationContainer from '../../../components/GeneralComponents/Illustr
 
 import Container from 'res/UniversalComponents/Container.js';
 import LoginIllustration from 'res/images/ModulesImages/AuthenticationImages/emailFetch.png';
-const Component = ({navigation}) => {
+const Component = ({navigationHandler}) => {
   //console.log('RideShareContainer', navigation);
   return (
     <Container>
-      <EmailLoginActionArea navigation={navigation} />
-      <SocialLoginActionArea navigation={navigation} />
+      <EmailLoginActionArea navigationHandler={navigationHandler} />
+      <SocialLoginActionArea />
       {/* <IllustrationContainer illustration={LoginIllustration} /> */}
     </Container>
   );
