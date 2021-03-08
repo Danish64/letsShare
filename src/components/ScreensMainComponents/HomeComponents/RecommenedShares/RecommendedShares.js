@@ -22,7 +22,7 @@ const Component = () => {
       fare: '200',
       seatsAvailable: '2',
       startLocation: {
-        details: {
+        data: {
           description: 'KRL Road, Rawalpindi to G11/4, Islamabad',
           geometry: {
             location: {
@@ -33,7 +33,7 @@ const Component = () => {
         },
       },
       destinationLocation: {
-        details: {
+        data: {
           description: 'Home location',
           geometry: {
             location: {
@@ -53,7 +53,7 @@ const Component = () => {
       description: ' A Silent Patient',
       location: 'G11/3,Islamabad to G13/1,Islamabad',
       pickupLocation: {
-        details: {
+        data: {
           description: 'Rawal Town, Islamabad',
           geometry: {
             location: {
@@ -76,7 +76,7 @@ const Component = () => {
       image: shareGoods,
       location: 'G11/3,Islamabad to G13/1,Islamabad',
       pickupLocation: {
-        details: {
+        data: {
           description: 'Saddar, Rawalpindi',
           geometry: {
             location: {
@@ -98,7 +98,7 @@ const Component = () => {
       image: shareGoods,
       location: 'G11/3,Islamabad to G13/1,Islamabad',
       pickupLocation: {
-        details: {
+        data: {
           description: 'Warda Hamna Residencia, g11/3,Islamabad',
           geometry: {
             location: {
