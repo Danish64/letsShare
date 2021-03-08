@@ -13,7 +13,6 @@ const Component = ({onPress, title, description, pickupLocation, image, rideName
                 </View>
                 <View style={styles.detailsContainer}>
                     {title && (
-
                         <SubtitleTextBlack>{title}</SubtitleTextBlack>
                     )}
                     {rideName && (
@@ -38,11 +37,11 @@ const Component = ({onPress, title, description, pickupLocation, image, rideName
                                 {fare}
                           </TextIcon>
                         )}
-                        {pickupLocation && (
+                        {pickupLocation ? (
                             <TextIcon flexDirection="row" iconName={'navigate-outline'}>
-                                {pickupLocation.details.description}
+                                {pickupLocation.data.description}
                             </TextIcon>
-                        )}
+                        ): <Text></Text>}
                     </View>
                 </View>
             </View>

@@ -41,8 +41,10 @@ export const shareRidesData = [
     fare: '200',
     seatsAvailable: '2',
     startLocation: {
-      details: {
+      data:{
         description: 'Home location',
+      },
+      details: {
         geometry: {
           location: {
             lat: 24.8307323,
@@ -52,8 +54,10 @@ export const shareRidesData = [
       },
     },
     destinationLocation: {
-      details: {
+      data:{
         description: 'Home location',
+      },
+      details: {
         geometry: {
           location: {
             lat: 24.8307323,
@@ -77,8 +81,10 @@ export const shareRidesData = [
     image: shareRide,
     fare: '200',
     startLocation: {
-      details: {
+      data:{
         description: 'Home location',
+      },
+      details: {
         geometry: {
           location: {
             lat: 24.8307323,
@@ -88,8 +94,10 @@ export const shareRidesData = [
       },
     },
     destinationLocation: {
-      details: {
+      data:{
         description: 'Home location',
+      },
+      details: {
         geometry: {
           location: {
             lat: 24.8307323,
@@ -116,19 +124,23 @@ export const shareRidesData = [
     image: shareRide,
     fare: '400',
     startLocation: {
+      data:{
+        description: 'Rawalpindi, Pakistan',
+      },
       details: {
-        description: 'I-8 Markaz,Islamabad',
         geometry: {
           location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
+            lat: 33.57576,
+            lng: 73.01190,
           },
         },
       },
     },
     destinationLocation: {
-      details: {
+      data:{
         description: 'Malam Jabba, KPK',
+      },
+      details: {
         geometry: {
           location: {
             lat: 24.8307323,
@@ -144,155 +156,6 @@ export const shareRidesData = [
   },
 ];
 
-export const NearbyRides = [
-  {
-    id: '1',
-    rideName: 'Honda',
-    rideType: 'Nearby Ride',
-    registrationNo: 'ABC-6574',
-    contactNumber: '03345656568',
-    rideCategory: 'car',
-    image: shareRide,
-    fare: '200',
-    startLocation: {
-      details: {
-        description: 'Home location',
-        geometry: {
-          location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
-          },
-        },
-      },
-    },
-    destinationLocation: {
-      details: {
-        description: 'Home location',
-        geometry: {
-          location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
-          },
-        },
-      },
-    },
-    listFor: '2',
-  },
-];
-
-export const CityToCityRides = [
-  {
-    id: '1',
-    rideName: 'Honda',
-    rideType: 'City to City Ride',
-    registrationNo: 'ABC-6574',
-    contactNumber: '03345656568',
-    rideCategory: 'car',
-    image: shareRide,
-    fare: '200',
-    startLocation: {
-      details: {
-        description: 'Home location',
-        geometry: {
-          location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
-          },
-        },
-      },
-    },
-    destinationLocation: {
-      details: {
-        description: 'Home location',
-        geometry: {
-          location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
-          },
-        },
-      },
-    },
-    departureDate: '10th March',
-    departureTime: '5:30 pm',
-    seatsAvailable: '3',
-    listFor: '2',
-  },
-];
-
-export const TourRides = [
-  {
-    id: '1',
-    rideName: 'Alto',
-    rideType: 'Tour Ride',
-    registrationNo: 'ABC-6574',
-    contactNumber: '03345656568',
-    rideCategory: 'car',
-    image: shareRide,
-    fare: '200',
-    startLocation: {
-      details: {
-        description: 'location no 1',
-        geometry: {
-          location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
-          },
-        },
-      },
-    },
-    destinationLocation: {
-      details: {
-        description: 'location no 2',
-        geometry: {
-          location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
-          },
-        },
-      },
-    },
-    departureDate: '10th March',
-    departureTime: '5:30 pm',
-    seatsAvailable: '3',
-    listFor: '2',
-  },
-  {
-    id: '2',
-    rideName: 'Honda',
-    rideType: 'Tour Ride',
-    registrationNo: 'ABC-6574',
-    contactNumber: '03345656568',
-    rideCategory: 'car',
-    image: shareRide,
-    fare: '400',
-    startLocation: {
-      details: {
-        description: 'I-8 Markaz,Islamabad',
-        geometry: {
-          location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
-          },
-        },
-      },
-    },
-    destinationLocation: {
-      details: {
-        description: 'Malam Jabba, KPK',
-        geometry: {
-          location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
-          },
-        },
-      },
-    },
-    departureDate: '10th March',
-    departureTime: '5:30 pm',
-    seatsAvailable: '4',
-    listFor: '2',
-  },
-];
 export const sharedRides = [
   {
     id: '1',
@@ -311,12 +174,14 @@ export const Goods = [
     description: ' A Silent Patient',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      details: {
+      data:{
         description: 'Home location',
+      },
+      details: {
         geometry: {
           location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
+            lat: 33.568899,
+            lng: 72.987184,
           },
         },
       },
@@ -332,12 +197,14 @@ export const Goods = [
     description: 'three compartments',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      details: {
+      data:{
         description: 'Home location',
+      },
+      details: {
         geometry: {
           location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
+            lat: 31.533232,
+            lng: 74.349603,
           },
         },
       },
@@ -354,12 +221,14 @@ export const Goods = [
     image: shareGoods,
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      details: {
+      data:{
         description: 'Home location',
+      },
+      details: {
         geometry: {
           location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
+            lat: 24.88253,
+            lng: 66.99457,
           },
         },
       },
@@ -377,12 +246,14 @@ export const Food = [
     description: '2 plates of rice.',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      details: {
+      data:{
         description: 'Home location',
+      },
+      details: {
         geometry: {
           location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
+            lat: 33.568899,
+            lng: 72.987184,
           },
         },
       },
@@ -398,12 +269,14 @@ export const Food = [
     description: 'Mango juice box, completly sealed boxes',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      details: {
+      data:{
         description: 'Home location',
+      },
+      details: {
         geometry: {
           location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
+            lat: 31.533232,
+            lng: 74.349603,
           },
         },
       },
@@ -420,12 +293,14 @@ export const Food = [
     image: shareGoods,
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      details: {
+      data:{
         description: 'Home location',
+      },
+      details: {
         geometry: {
           location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
+            lat: 24.88253,
+            lng: 66.99457,
           },
         },
       },
@@ -443,12 +318,14 @@ export const SellGoods = [
     description: ' A Silent Patient',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      details: {
+      data:{
         description: 'Home location',
+      },
+      details: {
         geometry: {
           location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
+            lat: 33.568899,
+            lng: 72.987184,
           },
         },
       },
@@ -468,12 +345,14 @@ export const SellFood = [
     description: '2 kg rice, uncooked',
     location: 'G11/3,Islamabad to G13/1,Islamabad',
     pickupLocation: {
-      details: {
+      data:{
         description: 'Home location',
+      },
+      details: {
         geometry: {
           location: {
-            lat: 24.8307323,
-            lng: 67.10113298,
+            lat: 33.568899,
+            lng: 72.987184,
           },
         },
       },
