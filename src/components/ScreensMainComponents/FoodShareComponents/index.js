@@ -3,6 +3,10 @@ import RecentlySharedFoodsArea from './RecentlySharedFood';
 import AvailFoodArea from './AvailFood';
 import CreateFoodActionArea from './CreateFoodActionArea';
 import AddFoodFormArea from './AddFoodFormArea';
+import DonateFoodFormArea from './DonateFoodFormArea';
+import SellFoodFormArea from './SellFoodFormArea';
+import AvailFoodList from './AvailFoodList';
+import AvailDonatedFoodList from './AvailDonatedFoodList';
 
 
 export {
@@ -10,5 +14,9 @@ export {
     RecentlySharedFoodsArea, 
     AvailFoodArea, 
     CreateFoodActionArea,
-    AddFoodFormArea
+    AddFoodFormArea,
+    DonateFoodFormArea,
+    SellFoodFormArea,
+    AvailFoodList,
+    AvailDonatedFoodList,
 };

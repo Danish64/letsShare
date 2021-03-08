@@ -63,8 +63,8 @@ const Component = ({navigation, data}) => {
                         provider={PROVIDER_GOOGLE} 
                         style={styles.map}
                         region={{
-                            latitude: data.pickupLocation.details.geometry.location.lat,
-                            longitude: data.pickupLocation.details.geometry.location.lng,
+                            latitude : data.pickupLocation.details.geometry.location.lat, 
+                            longitude :  data.pickupLocation.details.geometry.location.lng, 
                             latitudeDelta: 0.0922,
                             longitudeDelta: 0.0421,
                         }}               
@@ -73,7 +73,8 @@ const Component = ({navigation, data}) => {
                         coordinate={{ 
                             latitude : data.pickupLocation.details.geometry.location.lat, 
                             longitude :  data.pickupLocation.details.geometry.location.lng, 
-                            }}/>
+                            }}
+                        />
 
 
                     </MapView>

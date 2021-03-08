@@ -30,7 +30,7 @@ const Component = ({
   pickupLocation,
   rideType,
   fare,
-  startLocation,
+  destinationLocation,
   onPress
 }) => {
   //to use styles -> {styles.propertyName}
@@ -89,14 +89,14 @@ const Component = ({
             <View style={styles.separator} />
           </View>
           <View style={styles.locationStyle}>
-            {startLocation && (
+            {destinationLocation && (
               <TextIcon flexDirection="row" iconName={'navigate-outline'}>
-                {startLocation.details.description}
+                {destinationLocation.data.description}
               </TextIcon>
             )}
             {pickupLocation && (
               <TextIcon flexDirection="row" iconName={'navigate-outline'}>
-                {pickupLocation.details.description}
+                {pickupLocation.data.description}
               </TextIcon>
             )}
           </View>

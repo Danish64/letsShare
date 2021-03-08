@@ -14,7 +14,7 @@ import SellGoods from 'res/images/DummyImages/SellGoods.jpeg';
 
 //Third Party Exports Ends
 
-const Component = () => {
+const Component = ({navigation}) => {
   //to use styles -> {styles.propertyName}
   return (
     <View style={styles.availFoodComponentArea}>
@@ -23,11 +23,13 @@ const Component = () => {
       </View>
       <TextImageContainer 
       text="Donated Food" 
+      onPress={() => navigation.navigate('AvailDonatedFoodScreen')}
       // image={DonateGoods} 
       />
 
       <TextImageContainer
         text="Buy Food"
+        onPress={() => navigation.navigate('AvailFoodScreen')}
         // image={SellGoods}
       />
 

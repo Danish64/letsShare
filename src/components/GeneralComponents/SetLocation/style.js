@@ -5,7 +5,7 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   container: {
     width: '100%',
-    height: mvs(200, 0.6),
+    height: mvs(215, 0.6),
     alignItems: 'flex-start',
     backgroundColor: Colors.White,
     borderWidth: ms(2),
@@ -13,7 +13,9 @@ export default StyleSheet.create({
     borderRightColor: Colors.White,
     borderBottomColor: Colors.SearchBarWhite,
     borderTopColor: Colors.White,
-    marginTop: mvs(15, 0.6),
+
+    justifyContent: 'space-between'
+
   },
   placeholder: {
     color: Colors.MediumGrey,

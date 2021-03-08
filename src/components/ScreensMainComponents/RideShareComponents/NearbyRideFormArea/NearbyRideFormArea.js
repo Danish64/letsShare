@@ -29,9 +29,9 @@ const validationSchema = Yup.object().shape({
 
 const Component = ({navigation, Data}) => {
   const submitForm = (values) => {
-    let valID = Math.floor(Math.random() * 100) + 1;
+    // let valID = Math.floor(Math.random() * 100) + 1;
     const newData = {
-      id: valID,
+      id: Math.floor(Math.random() * 100) + 1,
       rideName: Data.rideName,
       registrationNo: Data.registrationNo,
       contactNumber: Data.contactNumber,
@@ -52,7 +52,6 @@ const Component = ({navigation, Data}) => {
     navigation.navigate('RideShareHome', newData);
   };
 
-  console.log(JSON.stringify(Data));
 
   return (
     <KeyboardAvoidingView>
