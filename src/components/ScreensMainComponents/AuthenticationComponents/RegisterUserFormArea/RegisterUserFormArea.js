@@ -49,7 +49,7 @@ const Component = ({navigation}) => {
 
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
-  };
+  };a
 
   const handleConfirm = (date) => {
     const getDate = moment(date).format('YYYY-MM-DD');

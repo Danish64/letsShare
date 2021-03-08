@@ -27,13 +27,14 @@ import {Goods} from '../../../../res/constants/dummyData';
 const Component = ({navigation, Data}) => {
 
   const submitForm = (values) => {
-    values.id = Math.floor(Math.random() * 100) + 1;
+    valID = Math.floor(Math.random() * 100) + 1;
     const newData = {
+      id: valID,
       title: Data.title,
       quantity: Data.quantity,
       description: Data.description,
-      images: Data.images,
-      pickupLocation: values.pickupLocation,
+      image: Data.image,
+      pickupLocation: values.location,
       pickupTime: values.pickupTime,
       listFor: values.listFor,
     };
@@ -43,8 +44,9 @@ const Component = ({navigation, Data}) => {
 
   const updateRides = (newData) => {
     Goods.push(newData);
-    // console.log(Goods);
+    console.log(Goods);
     navigation.navigate('GoodsShareHome', newData);
+    console.warn('Shared Successfuly');
   };
 
   return (
@@ -54,10 +56,11 @@ const Component = ({navigation, Data}) => {
         initialValues={{
           pickupTime: '',
           listFor: '',
-          location: [],
+          location: {},
         }}
         onSubmit={(values)=>{
-          console.log(values);
+          // console.log(values);
+          // console.log(Data);
           submitForm(values);
         }}
         >
@@ -68,7 +71,7 @@ const Component = ({navigation, Data}) => {
             placeholder="10AM to 8PM etc."
           />
          
-          <FormLocation name="location"/>
+          <FormLocation name="location" title="Add Location"/>
 
           <StepperButtonInputField
             title="List For(days):"

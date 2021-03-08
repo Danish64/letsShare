@@ -12,8 +12,9 @@ import {Goods} from '../../../res/constants/dummyData';
 
 //Third Party Exports Ends
 
-const Component = ({navigation, DATA, icon, navigateTo}) => {
+const Component = ({navigation, DATA, icon, navigateTo, onSelectRide}) => {
   const [data, setData] = useState(DATA);
+  const [selected, setSelected] = useState(false);
   // const [view, setView] = useState(false);
 
   const renderItems = () => {
@@ -22,7 +23,10 @@ const Component = ({navigation, DATA, icon, navigateTo}) => {
       return (
         <View key={index}>
           <AddAssetButton
-            onPress={() => selectItem(item.id)}
+            onPress={() => {
+              selectItem(item.id);
+              onSelectRide(item.assetName);
+            }}
             selected={item.selected}
             iconName={icon}
             title={item.title}
@@ -38,15 +42,15 @@ const Component = ({navigation, DATA, icon, navigateTo}) => {
         if (selectedId === item.id) {
           return {
             ...item,
-            selected: true,
+            selected: false,
           };
         } else {
           return {
             ...item,
-            selected: false,
+            selected: true,
           };
         }
-        // return item;
+        //  return item;
       }),
     ];
     setData(newData);

@@ -23,11 +23,13 @@ const Component = ({navigation}) => {
       </View>
       <TextImageContainer 
         text="Donated Goods" 
+        onPress={() => navigation.navigate('AvailDonatedGoodsScreen')}
         // image={DonateGoods} 
       />
 
       <TextImageContainer
         text="Buy Goods"
+        onPress={() => navigation.navigate('AvailGoodsScreen')}
         // image={SellGoods}
       />
     </View>

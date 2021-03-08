@@ -11,7 +11,6 @@ import SetLocation from '../../components/GeneralComponents/SetLocation';
 import PickerItem from '../../components/GeneralComponents/Picker/PickerItem';
 
 import {
-  SectionHeadingText,
   TextInputTitleText,
   TextInputErrorMessage,
 } from 'res/UniversalComponents/Text.js';
@@ -25,7 +24,6 @@ import {
   IconTextInputSquare,
   FormInputTitleBaseline,
 } from 'res/UniversalComponents/TextInput.js';
-import {Button} from 'react-native';
 
 export const FormByFormik = ({
   initialValues,
@@ -110,7 +108,7 @@ export const StepperButtonInputField = ({name, title, ...otherProps}) => {
     touched,
     values,
   } = useFormikContext();
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   const increment = () => {
     setCount(count + 1);
@@ -134,9 +132,9 @@ export const StepperButtonInputField = ({name, title, ...otherProps}) => {
             onChangeText={handleChange(name)}
             value={(values[name] = count.toString())}
             {...otherProps}></TextInput>
-          <ErrorMessage visible={touched[name]} error={errors[name]} />
           <StepperButton iconName="add-outline" onPress={increment} />
         </View>
+        <ErrorMessage visible={touched[name]} error={errors[name]} />
       </View>
     </>
   );
@@ -152,10 +150,11 @@ export const FormPicker = ({heading, items, name, placeholder, icon}) => {
         icon={icon}
         item={items}
         onSelectItem={(item) => {
-          setFieldValue(name, item.label);
+          setFieldValue(name, item);
         }}
         placeholder={placeholder}
-        selectedItem={values.category}
+        selectedItem={values[name]}
+        value={values[name]}
       />
       <ErrorMessage error={errors[name]} visible={touched[name]} />
     </>
@@ -163,12 +162,19 @@ export const FormPicker = ({heading, items, name, placeholder, icon}) => {
 };
 
 export const LocationInput = ({heading, name, placeholder}) => {
-  const {errors, setFieldValue, touched, values} = useFormikContext();
+  const {
+    errors,
+    setFieldValue,
+    touched,
+    values,
+    handleChange,
+  } = useFormikContext();
 
   return (
     <>
       <Picker
         heading={heading}
+        // onChangeText={handleChange(name)}
         onSelectItem={(item) => setFieldValue(name, item.target.file[0])}
         placeholder={placeholder}
         selectedItem={values[name]}
@@ -188,11 +194,14 @@ export const FormImagePicker = ({name}) => {
   );
 };
 
-export const FormLocation = ({name}) => {
+export const FormLocation = ({name, title}) => {
   const {errors, setFieldValue, touched, values} = useFormikContext();
   return (
     <>
-      <SetLocation onSelectItem={(data) => setFieldValue(name, data)} />
+      <SetLocation
+        onSelectItem={(data) => setFieldValue(name, data)}
+        title={title}
+      />
       <ErrorMessage error={errors[name]} visible={touched[name]} />
     </>
   );
@@ -207,9 +216,9 @@ export const SubmitButton = ({title, loading}) => {
   } = useFormikContext();
 
   return (
-    <ActionButtonBlack onPress={handleSubmit} loading={loading}>
+    <LandscapeButtonPrimary onPress={handleSubmit}>
       {title}
-    </ActionButtonBlack>
+    </LandscapeButtonPrimary>
   );
 };
 

@@ -27,7 +27,7 @@ const Component = ({navigation}) => {
     if (!Loading) {
       navigation.reset({
         index: 0,
-        routes: [{name: 'Authentication'}],
+        routes: [{name: 'Home'}],
       });
     }
   }, [Loading]);

@@ -9,7 +9,8 @@ import {
   TextButton,
 } from 'res/UniversalComponents/Text.js';
 import {Colors} from 'res/constants/Colors.js';
-
+import {Text} from 'react-native';
+import {BodyTextLight} from './Text';
 export const PrimaryButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.buttonPrimary}>
@@ -94,19 +95,6 @@ export const OutlinedActionIconButton = (props) => (
   </TouchableOpacity>
 );
 
-// export const AddAssetButton = (props) => (
-//   <TouchableOpacity onPress={props.onPress}>
-//     <View style={styles.addAssetButton}>
-//       <View style={styles.addAssetIconArea}>
-//         <Ionicons name={props.iconName} color={Colors.Black} size={40} />
-//       </View>
-//       <View style={styles.addAssetTextArea}>
-//         <ButtonTextBlack>{props.children}</ButtonTextBlack>
-//       </View>
-//     </View>
-//   </TouchableOpacity>
-// );
-
 export const AddAssetButton = ({
   iconName,
   assetName,
@@ -188,7 +176,7 @@ export const ShareButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.shareButton}>
       <View style={styles.shareIconArea}>
-        <Ionicons name={props.iconName} color={Colors.Black} size={30} />
+        <Ionicons name={props.iconName} color={props.color} size={25} />
       </View>
     </View>
   </TouchableOpacity>

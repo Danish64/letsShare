@@ -10,7 +10,9 @@ import DummyImage from 'res/images/DummyImages/testImage.jpg';
 import {TextIcon} from 'res/UniversalComponents/TextIcon.js';
 import styles from './style';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {ShareButton} from '../../../../res/UniversalComponents/Button';
 import TestCaseImage from 'res/images/ModulesImages/GeneralImages/newEntry.png';
+import { colors } from 'react-native-elements';
 
 //Native Exports Ends Here
 //Third Party Exports Starts
@@ -21,46 +23,80 @@ const Component = ({
   id,
   title,
   image,
+  description,
   price,
-  priceIcon,
-  quantity,
-  quantityIcon,
+  seatsAvailable,
   location,
-  locationIcon,
+  pickupLocation,
+  rideType,
+  fare,
+  startLocation,
+  onPress
 }) => {
   //to use styles -> {styles.propertyName}
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={onPress}>
       <View style={styles.shareItemContainer}>
-        <View style={styles.imageContainer}>
+        {/* <View style={styles.imageContainer}>
           <Image resizeMode="center" style={styles.imageStyle} source={image} />
+        </View> */}
+        <View style={styles.subContainer1}>
+            <View style={styles.imageContainer}>
+                <Image source={image} style={styles.image}/>
+            </View>
         </View>
+        
 
         <View style={styles.descriptionStyle}>
           <View style={styles.titleContainer}>
-            <RecentlySharedTitleText numberOfLines={1}>
+            {title && (
+              <RecentlySharedTitleText numberOfLines={1}>
               {title}
             </RecentlySharedTitleText>
+            )}
+            {rideType && (
+              <RecentlySharedTitleText numberOfLines={1}>
+              {rideType}
+            </RecentlySharedTitleText>
+            )}
+            
           </View>
           <View style={styles.subtitleContainer}>
             <View style={styles.separator} />
+            {description && (
+              <TextIcon flexDirection="row" iconName={'list-outline'}>
+                {description}
+              </TextIcon>
+            )}
             {price && (
-              <TextIcon flexDirection="column" iconName={priceIcon}>
+              <TextIcon flexDirection="column" iconName={'cash-outline'}>
                 {price}
               </TextIcon>
             )}
-
-            {quantity && (
-              <TextIcon flexDirection="column" iconName={quantityIcon}>
-                {quantity}
+            {fare && (
+              <TextIcon flexDirection="column" iconName={'cash-outline'}>
+                {fare}Rs
               </TextIcon>
             )}
+            {/* {quantity && <TextIcon flexDirection="column">{quantity}</TextIcon>} */}
+            {seatsAvailable && (
+              <TextIcon flexDirection="column" iconName={'people-outline'}>
+                {seatsAvailable}
+              </TextIcon>
+            )}
+
             <View style={styles.separator} />
           </View>
           <View style={styles.locationStyle}>
-            {location && (
-              <TextIcon flexDirection="row" iconName={locationIcon}>
-                {location}
+            {startLocation && (
+              <TextIcon flexDirection="row" iconName={'navigate-outline'}>
+                {startLocation.details.description}
+              </TextIcon>
+            )}
+            {pickupLocation && (
+              <TextIcon flexDirection="row" iconName={'navigate-outline'}>
+                {pickupLocation.details.description}
               </TextIcon>
             )}
           </View>

@@ -28,7 +28,7 @@ const Component = ({loginRequest, userInfo, navigation}) => {
         navigation={navigation}
         navigateTo="HomeSearchScreen"
       />
-      <HomeComponents />
+      <HomeComponents navigation={navigation} />
     </Container>
   );
 };

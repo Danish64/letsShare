@@ -11,9 +11,9 @@ const Component = ({navigation}) => {
   //console.log('RideShareContainer', navigation);
   return (
     <ScrollViewContainer>
-      <ShareSpaceActionArea />
-      <RecentlySharedSpaces />
-      <RecommendedSpaces />
+      <ShareSpaceActionArea navigation={navigation} />
+      <RecentlySharedSpaces navigation={navigation} />
+      <RecommendedSpaces navigation={navigation} />
     </ScrollViewContainer>
   );
 };
