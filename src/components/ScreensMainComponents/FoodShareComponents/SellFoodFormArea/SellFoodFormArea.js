@@ -1,10 +1,7 @@
-import React , {useState} from 'react';
-import {
-  View,
-  KeyboardAvoidingView,
-  TextInput,
-  Text
-} from 'react-native';
+import React, {useState} from 'react';
+import {View, KeyboardAvoidingView, TextInput, Text} from 'react-native';
+import * as Yup from 'yup';
+
 //Native Exports Ends Here
 
 //Third Party Exports Starts
@@ -17,12 +14,17 @@ import {
   FormPicker,
   SubmitButton as SubmitForm,
   FormImagePicker,
-  FormLocation
+  FormLocation,
 } from '../../../../res/UniversalComponents/Forms';
 import SetLocation from '../../../GeneralComponents/SetLocation';
 import {SellFood} from '../../../../res/constants/dummyData';
 
 //Third Party Exports Ends
+
+const validationSchema = Yup.object().shape({
+  deliveryInfo: Yup.string().required().min(3).max(20).label('Delivery Info'),
+  price: Yup.string().required().min(2).max(7).label('Price'),
+});
 
 const Component = ({navigation, Data}) => {
   const submitForm = (values) => {
@@ -51,58 +53,48 @@ const Component = ({navigation, Data}) => {
 
   return (
     <KeyboardAvoidingView>
-    <View style={styles.donateFoodComponentArea}>
-    <Form
-      initialValues={{
-        deliveryInfo: '',
-        price: '',
-        listFor: '',
-        location: {},
-      }}
-      onSubmit={(values)=>{
-        // console.log(values);
-        // console.log(Data);
-        submitForm(values);
-      }}
-      >
+      <View style={styles.donateFoodComponentArea}>
+        <Form
+          initialValues={{
+            deliveryInfo: '',
+            price: '',
+            listFor: '',
+            location: {},
+          }}
+          onSubmit={(values) => {
+            submitForm(values);
+          }}
+          validationSchema={validationSchema}>
+          {/* Input Delivery Info */}
+          <FormField
+            title="Delivery info"
+            maxLength={500}
+            name="deliveryInfo"
+            placeholder="e.g collection only, shipping available etc."
+          />
 
-        {/* Input Delivery Info */}
-        <FormField
-          title="Delivery info"
-          maxLength={500}
-          name="deliveryInfo"
-          placeholder="e.g collection only, shipping available etc."
-        />
+          {/* Input Price */}
+          <FormField
+            title="Price"
+            maxLength={100}
+            name="price"
+            placeholder="e.g 500 Rs."
+            keyboardType="numeric"
+          />
 
-        {/* Input Price */}
-        <FormField
-          title="Price"
-          maxLength={100}
-          name="price"
-          placeholder="e.g 500 Rs."
-          keyboardType='numeric'
-        />
+          {/* Input Location */}
+          <FormLocation name="location" title="Add Location" />
 
+          {/* Input List For: */}
+          <StepperButtonInputField title="List For(days):" name="listFor" />
 
-       {/* Input Location */}
-        <FormLocation name="location" title="Add Location"/>
-
-
-        {/* Input List For: */}
-        <StepperButtonInputField
-          title="List For(days):"
-          name="listFor"
-        />
-
-
-        {/* Submit Button */}
-        <View style={styles.buttonAreastyle}>
-          <SubmitForm title="Share"></SubmitForm>
-        </View>
-
-      </Form>
-    </View>
-  </KeyboardAvoidingView>
+          {/* Submit Button */}
+          <View style={styles.buttonAreastyle}>
+            <SubmitForm title="Share"></SubmitForm>
+          </View>
+        </Form>
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 

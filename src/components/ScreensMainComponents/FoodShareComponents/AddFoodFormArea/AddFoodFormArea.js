@@ -1,9 +1,7 @@
-import React , {useState} from 'react';
-import {
-  View,
-  KeyboardAvoidingView,
-  TextInput
-} from 'react-native';
+import React, {useState} from 'react';
+import {View, KeyboardAvoidingView, TextInput} from 'react-native';
+import * as Yup from 'yup';
+
 //Native Exports Ends Here
 
 //Third Party Exports Starts
@@ -14,10 +12,15 @@ import {
   BaselineFormField as FormField,
   FormPicker,
   SubmitButton as SubmitForm,
-  FormImagePicker
+  FormImagePicker,
 } from '../../../../res/UniversalComponents/Forms';
 import {FoodList} from '../../../../res/constants/dummyData';
 //Third Party Exports Ends
+
+const validationSchema = Yup.object().shape({
+  title: Yup.string().required().min(3).max(20).label('Title'),
+  description: Yup.string().required().min(4).max(100).label('Description'),
+});
 
 const Component = ({navigation}) => {
   const submitForm = (values) => {
@@ -37,21 +40,20 @@ const Component = ({navigation}) => {
     <KeyboardAvoidingView>
       <View style={styles.createFoodComponentArea}>
         <Form
-        initialValues={{
-          title: '',
-          description: '',
-          quantity: '',
-          selected: null,
-          image: [],
-          id: '',
-        }}
-        onSubmit={(values)=>{
-          submitForm(values);
-          console.log(values);
-        }}
-        >
+          initialValues={{
+            title: '',
+            description: '',
+            quantity: '',
+            selected: null,
+            image: [],
+            id: '',
+          }}
+          onSubmit={(values) => {
+            submitForm(values);
+          }}
+          validationSchema={validationSchema}>
           {/* Input image */}
-          <FormImagePicker name="image"/>
+          <FormImagePicker name="image" />
 
           {/* Input title */}
           <FormField
@@ -70,16 +72,12 @@ const Component = ({navigation}) => {
           />
 
           {/* Stepper Button Input -> Quantity */}
-          <StepperButtonInputField
-            title="Quantity"
-            name="quantity"
-          />
+          <StepperButtonInputField title="Quantity" name="quantity" />
 
           {/* Submit Form */}
           <View style={styles.buttonAreastyle}>
             <SubmitForm title="Add"></SubmitForm>
           </View>
-
         </Form>
       </View>
     </KeyboardAvoidingView>
