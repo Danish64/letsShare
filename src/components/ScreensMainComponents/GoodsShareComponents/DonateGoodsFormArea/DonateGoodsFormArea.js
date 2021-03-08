@@ -1,10 +1,7 @@
-import React , {useState} from 'react';
-import {
-  View,
-  KeyboardAvoidingView,
-  TextInput,
-  Text
-} from 'react-native';
+import React, {useState} from 'react';
+import {View, KeyboardAvoidingView, TextInput, Text} from 'react-native';
+import * as Yup from 'yup';
+
 //Native Exports Ends Here
 
 //Third Party Exports Starts
@@ -17,15 +14,18 @@ import {
   FormPicker,
   SubmitButton as SubmitForm,
   FormImagePicker,
-  FormLocation
+  FormLocation,
 } from '../../../../res/UniversalComponents/Forms';
 import SetLocation from '../../../GeneralComponents/SetLocation';
 import {Goods} from '../../../../res/constants/dummyData';
 
 //Third Party Exports Ends
+const validationSchema = Yup.object().shape({
+  pickupTime: Yup.string().required().min(3).max(20).label('Pickup Time'),
+  listFor: Yup.string().required().min(1).max(3).label('Listing Days'),
+});
 
 const Component = ({navigation, Data}) => {
-
   const submitForm = (values) => {
     valID = Math.floor(Math.random() * 100) + 1;
     const newData = {
@@ -52,39 +52,31 @@ const Component = ({navigation, Data}) => {
   return (
     <KeyboardAvoidingView>
       <View style={styles.donateGoodsComponentArea}>
-      <Form
-        initialValues={{
-          pickupTime: '',
-          listFor: '',
-          location: {},
-        }}
-        onSubmit={(values)=>{
-          // console.log(values);
-          // console.log(Data);
-          submitForm(values);
-        }}
-        >
+        <Form
+          initialValues={{
+            pickupTime: '',
+            listFor: '',
+            location: {},
+          }}
+          onSubmit={(values) => {
+            submitForm(values);
+          }}
+          validationSchema={validationSchema}>
           <FormField
             title="Pickup Time"
             maxLength={100}
             name="pickupTime"
             placeholder="10AM to 8PM etc."
           />
-         
-          <FormLocation name="location" title="Add Location"/>
 
-          <StepperButtonInputField
-            title="List For(days):"
-            name="listFor"
-          />
-          
+          <FormLocation name="location" title="Add Location" />
+
+          <StepperButtonInputField title="List For(days):" name="listFor" />
+
           {/* <Text>{JSON.stringify(Data)}</Text> */}
           <View style={styles.buttonAreastyle}>
             <SubmitForm title="Share"></SubmitForm>
           </View>
-         
-
-
         </Form>
       </View>
     </KeyboardAvoidingView>

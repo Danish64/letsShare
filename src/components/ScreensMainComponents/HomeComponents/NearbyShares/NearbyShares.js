@@ -51,7 +51,7 @@ const Component = (navigation) => {
     },
 
     {
-      id: 2,
+      id: '2',
       title: 'Book',
       quantity: '1',
       description: ' A Silent Patient',
@@ -73,7 +73,7 @@ const Component = (navigation) => {
     },
 
     {
-      id: 3,
+      id: '3',
       title: 'Bottle',
       quantity: '1',
       description: 'Plastic water bottle',
@@ -95,7 +95,7 @@ const Component = (navigation) => {
     },
 
     {
-      id: 4,
+      id: '4',
       title: 'Living Space',
       quantity: '1',
       description: '2 Bedroom Flat',
