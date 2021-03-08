@@ -100,7 +100,6 @@ const Component = ({onSelectItem, title}) => {
             </View>
 
           </View>
-        </View>
       </TouchableWithoutFeedback>
       <Modal
         visible={modalVisible}
@@ -137,6 +136,7 @@ const Component = ({onSelectItem, title}) => {
         </View>
       </Modal>
     </KeyboardAvoidingView>
+
   );
 };
 export default Component;
