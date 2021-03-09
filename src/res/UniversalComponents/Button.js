@@ -6,7 +6,7 @@ import {
   ButtonTextBlack,
   ButtonTextWhite,
   ButtonTextLightGrey,
-  TextButton,
+  TextButton as ButtonText,
 } from 'res/UniversalComponents/Text.js';
 import {Colors} from 'res/constants/Colors.js';
 import {Text} from 'react-native';
@@ -69,6 +69,12 @@ export const CategoryOutlinedButton = (props) => (
       <ButtonTextBlack>{props.children}</ButtonTextBlack>
       <Ionicons name={props.iconName} color={Colors.Black} size={30} />
     </View>
+  </TouchableOpacity>
+);
+
+export const TextButton = (props) => (
+  <TouchableOpacity onPress={props.onPress}>
+    <ButtonText>{props.children}</ButtonText>
   </TouchableOpacity>
 );
 

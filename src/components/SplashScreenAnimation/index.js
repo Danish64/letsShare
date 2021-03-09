@@ -48,7 +48,7 @@ const Component = ({navigation, authTokenRequest, userInfo}) => {
 
   useDidMountEffect(() => {
     setLoading(false);
-    console.log('Store updated with token', userInfo.user);
+    // console.log('Store updated with token', userInfo.user);
     try {
       navigation.reset({
         index: 0,

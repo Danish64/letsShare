@@ -145,6 +145,13 @@ export default StyleSheet.create({
     fontFamily: FONT_AIRBNB_CEREAL_BLACK,
     letterSpacing: ms(0.1),
   },
+  capitalizeSubtitleBold: {
+    fontSize: ms(22),
+    color: Colors.DarkGrey,
+    fontFamily: FONT_AIRBNB_CEREAL_BLACK,
+    letterSpacing: ms(0.1),
+    textTransform: 'capitalize',
+  },
   sectionHeading: {
     fontSize: mvs(20, 0.7),
     color: Colors.Black,

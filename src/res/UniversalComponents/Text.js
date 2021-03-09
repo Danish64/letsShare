@@ -42,6 +42,9 @@ export const SubtitleTextWhite = (props) => (
 export const SubtitleTextBold = (props) => (
   <Text style={styles.subTitleBold}>{props.children}</Text>
 );
+export const SubtitleTextCapitalizedBold = (props) => (
+  <Text style={styles.capitalizeSubtitleBold}>{props.children}</Text>
+);
 export const SectionHeadingText = (props) => (
   <Text style={styles.sectionHeading}>{props.children}</Text>
 );
