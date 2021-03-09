@@ -23,7 +23,9 @@ const Component = () => {
       seatsAvailable: '2',
       startLocation: {
         data: {
-          description: 'KRL Road, Rawalpindi to G11/4, Islamabad',
+          description: 'Khanah Pul, Rawalpindi',
+        },
+        details: {
           geometry: {
             location: {
               lat: 24.8307323,
@@ -34,7 +36,9 @@ const Component = () => {
       },
       destinationLocation: {
         data: {
-          description: 'Home location',
+          description: 'COMSATS University, Islamabad',
+        },
+        details: {
           geometry: {
             location: {
               lat: 24.8307323,
@@ -43,7 +47,6 @@ const Component = () => {
           },
         },
       },
-      listFor: '2',
     },
 
     {
@@ -119,7 +122,13 @@ const Component = () => {
         <SectionHeadingText>Recommended Shares</SectionHeadingText>
       </View>
       <View style={styles.recommendedFlatlistArea}>
-        <HorizontalFlatList data={data} screen="RecentlySharedScreen" />
+        <HorizontalFlatList
+          data={data}
+          screen="RecentlySharedScreen"
+          onPress={() => {
+            console.log('Recommended Shared Item Pressed');
+          }}
+        />
       </View>
     </View>
   );
