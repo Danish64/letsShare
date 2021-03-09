@@ -5,7 +5,7 @@ import HomeStack from '../ScreenStacks/HomeStack';
 import SpaceShareStack from '../ScreenStacks/SpaceShareStack';
 import RideShareStack from '../ScreenStacks/RideShareStack';
 import UtilitiesShareStack from '../ScreenStacks/UtilitiesShareStack';
-import Inbox from '../../screens/ModulesScreens/InboxScreen';
+import InboxStack from '../ScreenStacks/InboxStack';
 import Utilities from '../../screens/ModulesScreens/UtilitiesScreen';
 import UserManagerStack from '../ScreenStacks/UserManagerStack';
 import styles from 'res/styles/index.styles.js';
@@ -137,11 +137,12 @@ export default function BottomTabNavigator() {
       />
       <Tab.Screen
         name="Inbox"
-        component={Inbox}
+        component={InboxStack}
         options={({route}) => ({
           tabBarVisible: ((route) => {
-            const routeName = getFocusedRouteNameFromRoute(route) ?? 'Inbox';
-            if (routeName === 'Inbox') {
+            const routeName =
+              getFocusedRouteNameFromRoute(route) ?? 'InboxScreen';
+            if (routeName === 'InboxScreen') {
               return true;
             }
             return false;

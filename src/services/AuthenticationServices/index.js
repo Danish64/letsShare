@@ -1,4 +1,9 @@
-import {doGet, doPost, doPostWithTokenResponse} from '../../utils/AxiosMethods';
+import {
+  doGet,
+  doPost,
+  doPostWithTokenResponse,
+  doGetWithTokenInHeader,
+} from '../../utils/AxiosMethods';
 
 export const checkUserEmail = async (email, emailExistHandler) => {
   const data = {email: email};
@@ -25,5 +30,20 @@ export const authorizeUser = async (credentials) => {
     const authResponse = await doPostWithTokenResponse(authV1Url, credentials);
     // console.log('Checking Auth Response', authResponse);
     return authResponse;
+  } catch (err) {}
+};
+
+export const authorizeTokenUser = async (token) => {
+  const authTokenV1Url = 'v1/users/loggedInUser';
+
+  // console.log('authorizeTokenUser -> ', token);
+
+  try {
+    const authTokenResponse = await doGetWithTokenInHeader(
+      authTokenV1Url,
+      token,
+    );
+    // console.log('Checking Auth Token Response', authTokenResponse.data);
+    return authTokenResponse.data;
   } catch (err) {}
 };

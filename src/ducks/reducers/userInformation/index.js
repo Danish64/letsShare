@@ -5,6 +5,9 @@ import {
   SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
   SIGNUP_FALIURE,
+  AUTH_TOKEN_REQUEST,
+  AUTH_TOKEN_SUCCESS,
+  AUTH_TOKEN_FAILURE,
 } from '../../actions';
 
 //Contains the state of the application
@@ -13,6 +16,7 @@ import {
 
 const initialState = {
   user: {},
+  error: '',
   message: '',
   isLoading: false,
 };
@@ -33,7 +37,7 @@ const userInformation = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        errorCode: action.data.errorCode,
+        error: action.data.errorCode,
         message: action.data.message,
       };
 
@@ -51,6 +55,22 @@ const userInformation = (state = initialState, action) => {
         ...state,
         isLoading: false,
         message: 'Registration Failed',
+      };
+
+    case AUTH_TOKEN_REQUEST:
+      return {...state, isLoading: true};
+    case AUTH_TOKEN_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        message: 'Login Succeed',
+        user: action.data,
+      };
+    case AUTH_TOKEN_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        message: 'Invalid Token',
       };
 
     default:

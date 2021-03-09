@@ -7,7 +7,7 @@ import {TextInputTitleText, BodyTextLight} from '../../../res/UniversalComponent
 
 import GOOGLE_API_KEY from '../../../res/constants/maps';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import {SubmitButton} from '../../../res/UniversalComponents/Forms';
+
 import {ShareButton} from '../../../res/UniversalComponents/Button';
 import { ScrollView } from 'react-native-gesture-handler';
 import { KeyboardAvoidingView } from 'react-native';

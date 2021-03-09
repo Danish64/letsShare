@@ -4,13 +4,21 @@ import SplashScreenLogoAnimation from 'res/animations/SplashScreenLogo.json';
 import LottieView from 'lottie-react-native';
 import styles from 'res/styles/index.styles.js';
 
-//Native Exports Ends Here
-//Third Party Exports Starts
+//For Redux
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {authTokenRequest} from '../../ducks/actions';
+//For Getting Token
+import {retrieveAuthToken} from '../../utils/AsyncStorageUtilities';
+import useDidMountEffect from '../../services/CustomHooks/useDidMountEffect';
 
-//Third Party Exports Ends
-
-const Component = ({navigation}) => {
+const Component = ({navigation, authTokenRequest, userInfo}) => {
   const [Loading, setLoading] = useState(true);
+  const [token, setToken] = useState('');
+
+  const tokenHandler = (token) => {
+    setToken(token);
+  };
 
   useEffect(() => {
     StatusBar.setBarStyle('dark-content', true);
@@ -18,19 +26,48 @@ const Component = ({navigation}) => {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    retrieveAuthToken(tokenHandler);
   }, []);
 
-  useEffect(() => {
-    if (!Loading) {
+  useDidMountEffect(() => {
+    try {
+      if (token) {
+        // console.log('JWT Token ->', token);
+        authTokenRequest(token);
+      } else {
+        setLoading(false);
+        navigation.reset({
+          index: 0,
+          routes: [{name: 'Authentication'}],
+        });
+      }
+    } catch (err) {
+      console.log('Splash Screen Error', err.message);
+    }
+  }, [token]);
+
+  useDidMountEffect(() => {
+    setLoading(false);
+    // console.log('Store updated with token', userInfo.user);
+    try {
       navigation.reset({
         index: 0,
         routes: [{name: 'Home'}],
       });
-    }
-  }, [Loading]);
+    } catch (err) {}
+  }, [userInfo.user]);
+
+  useDidMountEffect(() => {
+    setLoading(false);
+    console.log('Store updated with token response Failed', userInfo.error);
+
+    try {
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'Authentication'}],
+      });
+    } catch (err) {}
+  }, [userInfo.error]);
 
   return (
     <View style={styles.splashScreenStyle}>
@@ -43,4 +80,14 @@ const Component = ({navigation}) => {
   );
 };
 
-export default Component;
+function mapStatesToProps(state) {
+  return {
+    userInfo: state.userInformation,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  authTokenRequest: bindActionCreators(authTokenRequest, dispatch),
+});
+
+export default connect(mapStatesToProps, mapDispatchToProps)(Component);

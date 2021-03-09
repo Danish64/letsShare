@@ -8,12 +8,14 @@ import {
 } from 'res/UniversalComponents/Forms.js';
 import {
   ShareActionAreaHeadingText,
+  TextInputErrorMessage,
   BodyTextBold,
 } from 'res/UniversalComponents/Text.js';
 
 import * as Yup from 'yup';
 import {useRoute} from '@react-navigation/native';
 import useDidMountEffect from '../../../../services/CustomHooks/useDidMountEffect';
+import {useNavigation} from '@react-navigation/native';
 
 //For Redux
 import {connect} from 'react-redux';
@@ -23,10 +25,12 @@ import {loginRequest} from '../../../../ducks/actions';
 
 const Component = ({loginRequest, userInfo}) => {
   const route = useRoute();
+  const navigation = useNavigation();
   // console.log('Checking route.params in password Screen', route.params);
   const {email} = route.params;
-
   const [password, setPassword] = useState('');
+  const [showPasswordError, setShowPasswordError] = useState(false);
+  const [authLoading, setAuthLoading] = useState(false);
 
   //useEffects for life cycles
 
@@ -35,6 +39,7 @@ const Component = ({loginRequest, userInfo}) => {
       if (password.length > 0) {
         const credentials = {email: email, password: password};
         // console.log(credentials);
+        setAuthLoading(true);
         loginRequest(credentials);
       }
     } catch (err) {
@@ -43,10 +48,24 @@ const Component = ({loginRequest, userInfo}) => {
   }, [password]);
 
   useDidMountEffect(() => {
+    setAuthLoading(false);
     try {
-      console.log('User Object After Login Password Screen-> ', userInfo.user);
+      // console.log('User Object After Login Password Screen-> ', userInfo.user);
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'Home'}],
+      });
     } catch (err) {}
   }, [userInfo.user]);
+
+  useDidMountEffect(() => {
+    setAuthLoading(false);
+
+    try {
+      // console.log('Error After Login Password Screen-> ', userInfo.error);
+      setShowPasswordError(true);
+    } catch (err) {}
+  }, [userInfo.error]);
 
   //useEffects Ends
 
@@ -56,6 +75,7 @@ const Component = ({loginRequest, userInfo}) => {
 
   const submitHandler = (values) => {
     // console.log('Checking Values', values);
+    setShowPasswordError(false);
     setPassword(values.password);
     // navigation.reset({
     //   index: 0,
@@ -80,8 +100,11 @@ const Component = ({loginRequest, userInfo}) => {
             name="password"
             secureTextEntry
           />
+          {showPasswordError && (
+            <TextInputErrorMessage>Invalid password !</TextInputErrorMessage>
+          )}
           <View style={styles.continueButton}>
-            <Submit title="Login" />
+            <Submit title="Login" loading={authLoading} />
           </View>
         </Form>
       </View>
