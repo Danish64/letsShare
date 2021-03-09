@@ -12,7 +12,7 @@ import styles from './style';
 
 //Third Party Exports Ends
 
-const Component = ({data, isRecentlyShared, navigation, screen}) => {
+const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
   //to use styles -> {styles.propertyName}'
   // console.log(data)
   // const navigation = useNavigation();
@@ -27,12 +27,15 @@ const Component = ({data, isRecentlyShared, navigation, screen}) => {
           description={item.description}
           price={item.price}
           fare={item.fare}
+          startLocation={item.startLocation}
           destinationLocation={item.destinationLocation}
           seatsAvailable={item.seatsAvailable}
           location={item.location}
           pickupLocation={item.pickupLocation}
           onPress={() => {
-            navigation.navigate(screen, {item: item});
+
+            onPress ? onPress : navigation.navigate(screen, {item: item});
+
           }}
         />
       )}

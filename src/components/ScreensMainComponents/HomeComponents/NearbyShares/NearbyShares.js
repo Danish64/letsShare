@@ -26,8 +26,10 @@ const Component = (navigation) => {
       fare: '200',
       seatsAvailable: '2',
       startLocation: {
+        data: {
+          description: 'Khanah Pul, Rawalpindi',
+        },
         details: {
-          description: 'KRL Road, Rawalpindi to G11/4, Islamabad',
           geometry: {
             location: {
               lat: 24.8307323,
@@ -37,8 +39,10 @@ const Component = (navigation) => {
         },
       },
       destinationLocation: {
+        data: {
+          description: 'COMSATS University, Islamabad',
+        },
         details: {
-          description: 'Home location',
           geometry: {
             location: {
               lat: 24.8307323,
@@ -47,17 +51,16 @@ const Component = (navigation) => {
           },
         },
       },
-      listFor: '2',
     },
 
     {
-      id: 2,
+      id: '2',
       title: 'Book',
       quantity: '1',
       description: ' A Silent Patient',
       location: 'G11/3,Islamabad to G13/1,Islamabad',
       pickupLocation: {
-        details: {
+        data: {
           description: 'Rawal Town, Islamabad',
           geometry: {
             location: {
@@ -73,14 +76,14 @@ const Component = (navigation) => {
     },
 
     {
-      id: 3,
+      id: '3',
       title: 'Bottle',
       quantity: '1',
       description: 'Plastic water bottle',
       image: shareGoods,
       location: 'G11/3,Islamabad to G13/1,Islamabad',
       pickupLocation: {
-        details: {
+        data: {
           description: 'Saddar, Rawalpindi',
           geometry: {
             location: {
@@ -95,14 +98,14 @@ const Component = (navigation) => {
     },
 
     {
-      id: 4,
+      id: '4',
       title: 'Living Space',
       quantity: '1',
       description: '2 Bedroom Flat',
       image: shareGoods,
       location: 'G11/3,Islamabad to G13/1,Islamabad',
       pickupLocation: {
-        details: {
+        data: {
           description: 'Warda Hamna Residencia, g11/3,Islamabad',
           geometry: {
             location: {
@@ -127,6 +130,9 @@ const Component = (navigation) => {
           navigation={navigation}
           data={data}
           screen="RecentlySharedScreen"
+          onPress={() => {
+            console.log('Nearby Shared Item Pressed');
+          }}
         />
       </View>
     </View>

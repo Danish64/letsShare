@@ -35,16 +35,30 @@ export default StyleSheet.create({
   },
   categoryButtonsArea: {
     width: '100%',
-    height: mvs(220, 0.7),
+    height: mvs(150, 0.7),
     marginVertical: mvs(10, 0.6),
     justifyContent: 'center',
   },
   pngImageArea: {
     width: '100%',
-    height: mvs(150, 0.6),
+    height: mvs(200, 0.6),
   },
   imageContainer: {
     width: '100%',
     height: '100%',
+  },
+  mainContainer: {
+    width: '100%',
+    height: mvs(120, 0.6),
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  itemContainer: {
+    width: '100%',
+    height: mvs(120, 0.6),
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

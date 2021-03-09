@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, TouchableOpacity, Text, Image} from 'react-native';
 import styles from './style';
-import {SubtitleTextBlack} from '../../../../res/UniversalComponents/Text';
+import {SubtitleTextBlack} from 'res/UniversalComponents/Text';
 import {TextIcon} from 'res/UniversalComponents/TextIcon.js';
 
 const Component = ({
@@ -24,14 +24,13 @@ const Component = ({
         <View style={styles.detailsContainer}>
           {title && <SubtitleTextBlack>{title}</SubtitleTextBlack>}
           {rideName && <SubtitleTextBlack>{rideName}</SubtitleTextBlack>}
-          <View>
+          <View style={styles.subContainer}>
             {description && <Text>{description}</Text>}
             {seatsAvailable && (
               <TextIcon flexDirection="row" iconName={'people-outline'}>
                 {seatsAvailable}
               </TextIcon>
             )}
-
             {price && (
               <TextIcon flexDirection="row" iconName={'cash-outline'}>
                 {price}
@@ -42,10 +41,12 @@ const Component = ({
                 {fare}
               </TextIcon>
             )}
-            {pickupLocation && (
+            {pickupLocation ? (
               <TextIcon flexDirection="row" iconName={'navigate-outline'}>
-                {pickupLocation.details.description}
+                {pickupLocation.data.description}
               </TextIcon>
+            ) : (
+              <Text></Text>
             )}
           </View>
         </View>

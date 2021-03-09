@@ -73,8 +73,8 @@ const Component = ({onSelectItem, navigation, ...otherProps}) => {
     const captureImage = async (type) => {
       let options = {
         mediaType: type,
-        maxWidth: 300,
-        maxHeight: 550,
+        maxWidth: 500,
+        maxHeight: 500,
         quality: 1,
         // videoQuality: 'low',
         // durationLimit: 30, //Video max duration in seconds
@@ -108,6 +108,7 @@ const Component = ({onSelectItem, navigation, ...otherProps}) => {
           console.log('fileName -> ', response.fileName);
           setFilePath(response);
           onSelectItem(response);
+          console.log(response);
           setbusy(false);
         });
       }
@@ -116,7 +117,7 @@ const Component = ({onSelectItem, navigation, ...otherProps}) => {
     const chooseFile = (type) => {
       let options = {
         mediaType: type,
-        maxWidth: 300,
+        maxWidth: 500,
         maxHeight: 550,
         quality: 1,
       };
@@ -185,7 +186,7 @@ const Component = ({onSelectItem, navigation, ...otherProps}) => {
               onPress={() => {
                   chooseFile('photo');
                   setModalVisible(false);
-                  onSelectItem(filePath.uri);
+                  // onSelectItem(filePath.uri);
                   // onSelectItem({uri: filePath.uri});
                   }}>
               <SubtitleTextBlack>Choose from Gallary</SubtitleTextBlack>

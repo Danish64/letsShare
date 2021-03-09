@@ -12,7 +12,7 @@ import styles from './style';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {ShareButton} from '../../../../res/UniversalComponents/Button';
 import TestCaseImage from 'res/images/ModulesImages/GeneralImages/newEntry.png';
-import { colors } from 'react-native-elements';
+import {colors} from 'react-native-elements';
 
 //Native Exports Ends Here
 //Third Party Exports Starts
@@ -31,36 +31,34 @@ const Component = ({
   rideType,
   fare,
   startLocation,
-  onPress
+  destinationLocation,
+  onPress,
 }) => {
   //to use styles -> {styles.propertyName}
   return (
-    <TouchableOpacity
-      onPress={onPress}>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.shareItemContainer}>
         {/* <View style={styles.imageContainer}>
           <Image resizeMode="center" style={styles.imageStyle} source={image} />
         </View> */}
         <View style={styles.subContainer1}>
-            <View style={styles.imageContainer}>
-                <Image source={image} style={styles.image}/>
-            </View>
+          <View style={styles.imageContainer}>
+            <Image source={image} style={styles.image} />
+          </View>
         </View>
-        
 
         <View style={styles.descriptionStyle}>
           <View style={styles.titleContainer}>
             {title && (
               <RecentlySharedTitleText numberOfLines={1}>
-              {title}
-            </RecentlySharedTitleText>
+                {title}
+              </RecentlySharedTitleText>
             )}
             {rideType && (
               <RecentlySharedTitleText numberOfLines={1}>
-              {rideType}
-            </RecentlySharedTitleText>
+                {rideType}
+              </RecentlySharedTitleText>
             )}
-            
           </View>
           <View style={styles.subtitleContainer}>
             <View style={styles.separator} />
@@ -89,14 +87,14 @@ const Component = ({
             <View style={styles.separator} />
           </View>
           <View style={styles.locationStyle}>
-            {startLocation && (
+            {destinationLocation && (
               <TextIcon flexDirection="row" iconName={'navigate-outline'}>
-                {startLocation.details.description}
+                {destinationLocation.data.description}
               </TextIcon>
             )}
             {pickupLocation && (
               <TextIcon flexDirection="row" iconName={'navigate-outline'}>
-                {pickupLocation.details.description}
+                {pickupLocation.data.description}
               </TextIcon>
             )}
           </View>

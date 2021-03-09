@@ -56,15 +56,15 @@ const Component = ({navigation, data}) => {
 
                 <View style={styles.locationBody}>
                     <BodyTextBold>Location:</BodyTextBold>
-                    <BodyTextBlack>{data.pickupLocation.description}</BodyTextBlack>
+                    <BodyTextBlack>{data.pickupLocation.data.description}</BodyTextBlack>
                 </View>
                 <View style={styles.locationContainer}>
                     <MapView
                         provider={PROVIDER_GOOGLE} 
                         style={styles.map}
                         region={{
-                            latitude: 24.83073230,
-                            longitude: 67.10113298,
+                            latitude: data.pickupLocation.details.geometry.location.lat,
+                            longitude: data.pickupLocation.details.geometry.location.lng,
                             latitudeDelta: 0.0922,
                             longitudeDelta: 0.0421,
                         }}               

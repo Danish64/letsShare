@@ -1,8 +1,9 @@
 import React from 'react';
 import {View, KeyboardAvoidingView, TextInput, Text} from 'react-native';
+import * as Yup from 'yup';
+
 import styles from './style';
 import {
-
   FormByFormik as Form,
   StepperButtonInputField,
   BaselineFormField as FormField,
@@ -12,6 +13,13 @@ import {
   FormLocation,
 } from '../../../../res/UniversalComponents/Forms';
 import {shareRidesData} from 'res/constants/dummyData';
+
+const validationSchema = Yup.object().shape({
+  fare: Yup.string().required().min(3).max(5).label('Fare'),
+  seatsAvailable: Yup.string().required().label('Available Seats'),
+  departureDate: Yup.string().required().label('Departure Date'),
+  departureTime: Yup.string().required().label('Departure Time'),
+});
 
 const Component = ({navigation, Data}) => {
   const submitForm = (values) => {
@@ -31,7 +39,6 @@ const Component = ({navigation, Data}) => {
       listFor: values.listFor,
       seatsAvailable: values.seatsAvailable,
     };
-    // console.log(newData);
     updateRides(newData);
   };
 
@@ -54,10 +61,9 @@ const Component = ({navigation, Data}) => {
             seatsAvailable: '',
           }}
           onSubmit={(values) => {
-            // console.log(values);
-            // console.log(Data);
             submitForm(values);
-          }}>
+          }}
+          validationSchema={validationSchema}>
           {/* Input Fare */}
           <FormField
             title="Fare"
