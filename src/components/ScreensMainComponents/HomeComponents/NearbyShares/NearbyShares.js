@@ -27,7 +27,9 @@ const Component = (navigation) => {
       seatsAvailable: '2',
       startLocation: {
         data: {
-          description: 'KRL Road, Rawalpindi to G11/4, Islamabad',
+          description: 'Khanah Pul, Rawalpindi',
+        },
+        details: {
           geometry: {
             location: {
               lat: 24.8307323,
@@ -38,7 +40,9 @@ const Component = (navigation) => {
       },
       destinationLocation: {
         data: {
-          description: 'Home location',
+          description: 'COMSATS University, Islamabad',
+        },
+        details: {
           geometry: {
             location: {
               lat: 24.8307323,
@@ -47,7 +51,6 @@ const Component = (navigation) => {
           },
         },
       },
-      listFor: '2',
     },
 
     {
@@ -127,6 +130,9 @@ const Component = (navigation) => {
           navigation={navigation}
           data={data}
           screen="RecentlySharedScreen"
+          onPress={() => {
+            console.log('Nearby Shared Item Pressed');
+          }}
         />
       </View>
     </View>
