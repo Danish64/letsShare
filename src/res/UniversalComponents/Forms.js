@@ -18,6 +18,7 @@ import {
   LandscapeButtonPrimary,
   StepperButton,
 } from 'res/UniversalComponents/Button.js';
+
 import {ActionButtonBlack} from 'res/UniversalComponents/ActionButtons.js';
 
 import {
@@ -216,9 +217,9 @@ export const SubmitButton = ({title, loading}) => {
   } = useFormikContext();
 
   return (
-    <LandscapeButtonPrimary onPress={handleSubmit}>
+    <ActionButtonBlack onPress={handleSubmit} loading={loading}>
       {title}
-    </LandscapeButtonPrimary>
+    </ActionButtonBlack>
   );
 };
 

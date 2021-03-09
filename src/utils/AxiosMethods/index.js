@@ -39,6 +39,23 @@ export const doPostWithTokenResponse = (url, data) => {
   );
 };
 
+export const doGetWithTokenInHeader = (url, token) => {
+  // console.log(`doGetWithTokenInHeader ${url} and Token ${token}`);
+  const endPoint = baseURL + url;
+  return new Promise((resolve, reject) =>
+    axios(endPoint, {
+      headers: {
+        'x-auth-token': token,
+      },
+    })
+      .then((result) => {
+        // console.log('Result from api in doGetWithTokenInHeader', result);
+        resolve(result);
+      })
+      .catch((error) => reject(error)),
+  );
+};
+
 export const doPostAws = (data, url) =>
   new Promise((resolve) =>
     axios({

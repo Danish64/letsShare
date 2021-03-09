@@ -8,7 +8,9 @@ import {ScrollView, View} from 'react-native';
 
 const Component = (props) => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="always">
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      keyboardShouldPersistTaps="always">
       {props.children}
     </ScrollView>
   );

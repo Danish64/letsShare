@@ -26,15 +26,17 @@ const Component = ({data, isRecentlyShared, navigation, screen}) => {
           description={item.description}
           price={item.price}
           fare={item.fare}
-          startLocation={item.startLocation}
+          destinationLocation={item.destinationLocation}
           seatsAvailable={item.seatsAvailable}
           location={item.location}
-          pickupLocation= {item.pickupLocation}
-          onPress={() => {navigation.navigate(screen, { item: item })}}
+          pickupLocation={item.pickupLocation}
+          onPress={() => {
+            navigation.navigate(screen, {item: item});
+          }}
         />
       )}
       style={styles.FlatListStyle}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.id.toString()}
       horizontal
       showsHorizontalScrollIndicator={false}
     />
