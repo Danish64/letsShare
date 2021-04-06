@@ -47,8 +47,8 @@ const userInformation = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-
-        message: 'Registered Sucessfull',
+        message: 'Registered Successfully',
+        user: action.data.data.data,
       };
     case SIGNUP_FALIURE:
       return {

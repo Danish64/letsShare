@@ -12,6 +12,7 @@ import {
 import {
   authorizeUser,
   authorizeTokenUser,
+  authorizeRegisterUser,
 } from '../../../services/AuthenticationServices';
 import {storeAuthToken} from '../../../utils/AsyncStorageUtilities';
 function* loginRequest(obj) {
@@ -32,15 +33,16 @@ function* loginRequest(obj) {
 }
 
 function* signupRequest(obj) {
-  console.log('SignUp Generator Function running');
-  //   const response = yield doPost(obj.data, 'url');
-  //   console.log('Sign up Api response', response);
-  const response = {status: 'Success Code', id: 1};
+  // console.log('SignUp Generator Function running', obj.data);
+  const response = yield authorizeRegisterUser(obj.data);
+  const {data, token} = response;
+  console.log('Data in Generator Function Signup', response.data);
+  // console.log('token in Generator Function Signup', token);
+  // Store the token
+  storeAuthToken(response.token);
 
-  if (response.status === 'Success Code') {
+  if (response.data.data) {
     yield put(signupSuccess(response));
-  } else if (response.status === 'Failure Code') {
-    yield put(signupFaliure(response));
   } else {
     yield put(signupFaliure(response));
   }

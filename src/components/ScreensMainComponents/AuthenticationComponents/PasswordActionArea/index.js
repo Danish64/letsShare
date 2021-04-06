@@ -74,13 +74,8 @@ const Component = ({loginRequest, userInfo}) => {
   });
 
   const submitHandler = (values) => {
-    // console.log('Checking Values', values);
     setShowPasswordError(false);
     setPassword(values.password);
-    // navigation.reset({
-    //   index: 0,
-    //   routes: [{name: 'Home'}],
-    // });
   };
 
   return (

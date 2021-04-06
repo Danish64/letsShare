@@ -1,16 +1,23 @@
 import React from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, Button} from 'react-native';
 import {
   SubtitleTextCapitalizedBold,
   BodyText,
 } from 'res/UniversalComponents/Text.js';
+import {clearAll} from '../../../../utils/AsyncStorageUtilities';
+
 import {TextButton} from 'res/UniversalComponents/Button.js';
 import {useNavigation} from '@react-navigation/native';
 import styles from './style';
+
 //For Redux
 import {connect} from 'react-redux';
 
-const Component = ({userInfo}) => {
+const Component = ({userInfo, navigation}) => {
+  const logout = () => {
+    clearAll();
+    // implement navigate to login Screen
+  };
   let user = userInfo.user;
 
   console.log('UserInfo in introHeader Component', userInfo.user);
@@ -31,6 +38,7 @@ const Component = ({userInfo}) => {
           }}>
           See Profile
         </TextButton>
+        <Button title="Logout" onPress={logout} />
       </View>
     </View>
   );

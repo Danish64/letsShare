@@ -4,6 +4,8 @@ import IntroHeader from '../../../components/ScreensMainComponents/UserManagemen
 import SettingsRow from '../../../components/ScreensMainComponents/UserManagementComponets/SettingsRow';
 import {connect} from 'react-redux';
 
+import {SubmitButton as ButtonBlack} from 'res/UniversalComponents/Forms.js';
+
 const Component = ({navigation, userInfo}) => (
   <ScrollViewContainer>
     <IntroHeader />
@@ -50,9 +52,9 @@ const Component = ({navigation, userInfo}) => (
       itemName="Spaces Availed"
       itemValue={userInfo.user.availedAssets.availedGoods.length}
     />
-    <SettingsRow itemName="Review" />
+    {/* <SettingsRow itemName="Review" />
     <SettingsRow itemValue={userInfo.user.reviews[0].review} />
-    <SettingsRow />
+    <SettingsRow /> */}
 
     <SettingsRow itemName="App Version" itemValue="v 1.0.0" />
 

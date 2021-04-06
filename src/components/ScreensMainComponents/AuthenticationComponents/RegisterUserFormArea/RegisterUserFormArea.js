@@ -19,26 +19,90 @@ import {LandscapeButtonBlack} from 'res/UniversalComponents/Button.js';
 import styles from './style';
 import {useFormikContext} from 'formik';
 
-//Native Exports Ends Here
-//Third Party Exports Starts
+import {useRoute} from '@react-navigation/native';
+import useDidMountEffect from '../../../../services/CustomHooks/useDidMountEffect';
+import {useNavigation} from '@react-navigation/native';
 
-//Third Party Exports Ends
+//For Redux
+import {connect, useDispatch} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {loginRequest, signupRequest} from '../../../../ducks/actions';
+import axios from 'axios';
+import {doPost, doPostWithTokenResponse} from '../../../../utils/AxiosMethods';
+// Import Ends
 
-const Component = ({navigation}) => {
-  const [date, setDate] = useState(null);
-
+const Component = ({signupRequest, userInfo}) => {
+  const navigation = useNavigation();
+  const [authLoading, setAuthLoading] = useState(false);
+  const [userData, setUserData] = useState(false);
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required().label('First Name'),
     lastName: Yup.string().required().label('Last Name'),
     email: Yup.string().required().email().label('Email'),
     password: Yup.string().required().min(4).label('Password'),
   });
-  const submitHandler = (values) => {
-    navigation.reset({
-      index: 0,
-      routes: [{name: 'Home'}],
-    });
-    values.myDate = date;
+
+  //useEffects for life cycles
+
+  useDidMountEffect(() => {
+    try {
+      if (userData) {
+        console.log('User Data After Clicking Register', userData);
+        setAuthLoading(true);
+        signupRequest(userData);
+      }
+    } catch (err) {
+      console.log('Register Screen Error', err.message);
+    }
+  }, [userData]);
+
+  useDidMountEffect(() => {
+    setAuthLoading(false);
+    try {
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'Home'}],
+      });
+    } catch (err) {}
+  }, [userInfo.user]);
+
+  //useEffects Ends
+
+  const submitHandler = async (values) => {
+    const name = `${values.firstName} ${values.lastName}`;
+    const user = {
+      name: name,
+      email: values.email,
+      password: values.password,
+      phone: '03354343433',
+      city: 'Islamabad',
+      gender: 'male',
+      homeAddress: {
+        house: '',
+        street: '',
+        province: '',
+      },
+      workAddress: {
+        house: '',
+        street: '',
+        province: '',
+      },
+      sharedAssets: {
+        sharedSpaces: [],
+        sharedRides: [],
+        sharedFoods: [],
+        sharedGoods: [],
+      },
+
+      availedAssets: {
+        availedSpaces: [],
+        availedRides: [],
+        availedFoods: [],
+        availedGoods: [],
+      },
+      reviews: [],
+    };
+    setUserData(user);
   };
 
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -49,11 +113,12 @@ const Component = ({navigation}) => {
 
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
-  };a
+  };
 
   const handleConfirm = (date) => {
     const getDate = moment(date).format('YYYY-MM-DD');
     setDate(getDate);
+    console.log('date in handle confirm', date);
     hideDatePicker();
   };
 
@@ -70,7 +135,7 @@ const Component = ({navigation}) => {
           initialValues={{
             firstName: '',
             lastName: '',
-            myDate: date,
+            // myDate: date,
             email: '',
             password: '',
           }}
@@ -94,20 +159,20 @@ const Component = ({navigation}) => {
                 placeholder="Last Name"
                 name="lastName"
               />
-              <Field
+              {/* <Field
                 value={date}
                 icon="calendar-outline"
                 name="myDate"
                 showDate={showDatePicker}
                 placeholder="Date Of Birth"
-              />
-              <DateTimePickerModal
+              /> */}
+              {/* <DateTimePickerModal
                 isVisible={isDatePickerVisible}
                 mode="date"
                 onConfirm={handleConfirm}
                 onCancel={hideDatePicker}
                 //  date={moment(values.myDate).toDate()}
-              />
+              /> */}
 
               <Field
                 autoCapitalize="none"
@@ -134,7 +199,7 @@ const Component = ({navigation}) => {
                 name="contact"
               /> */}
               <View style={styles.continueButton}>
-                <Submit title="Register" />
+                <Submit title="Register" loading={authLoading} />
               </View>
             </>
           )}
@@ -144,4 +209,16 @@ const Component = ({navigation}) => {
   );
 };
 
-export default Component;
+function mapStatesToProps(state) {
+  return {
+    userInfo: state.userInformation,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  signupRequest: bindActionCreators(signupRequest, dispatch),
+});
+
+export default connect(mapStatesToProps, mapDispatchToProps)(Component);
+
+// export default Component;

@@ -44,10 +44,9 @@ const Component = ({}) => {
       if (checkEmailLoading) {
         setCheckEmailLoading(false);
         if (emailExists) {
-          // console.log('Email EmailLoginActionArea->', email);
           navigation.navigate('PasswordScreen', {email: email});
         } else {
-          // navigation.navigate('RegisterUserScreen');
+          navigation.navigate('RegisterUserScreen');
         }
       }
     } catch (err) {

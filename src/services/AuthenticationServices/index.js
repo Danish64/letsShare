@@ -33,6 +33,19 @@ export const authorizeUser = async (credentials) => {
   } catch (err) {}
 };
 
+export const authorizeRegisterUser = async (credentials) => {
+  const registerV1Url = 'v1/users/registerUser';
+
+  try {
+    const authResponse = await doPostWithTokenResponse(
+      registerV1Url,
+      credentials,
+    );
+    // console.log('Checking Auth Response', authResponse);
+    return authResponse;
+  } catch (err) {}
+};
+
 export const authorizeTokenUser = async (token) => {
   const authTokenV1Url = 'v1/users/loggedInUser';
 
