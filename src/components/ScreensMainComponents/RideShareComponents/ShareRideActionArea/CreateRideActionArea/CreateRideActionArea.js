@@ -17,14 +17,22 @@ import styles from './style';
 import ShareRide from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
 import Choose from 'res/images/ModulesImages/GeneralImages/noData.png';
 
+import {doGet} from '../../../../../utils/AxiosMethods';
+
 import {addRideDummyData} from 'res/constants/dummyData';
 
 //Third Party Exports Ends
 
 const Component = ({navigation}) => {
+  const [addedRides, setAddedRides] = useState(null);
+
   const [data, setData] = useState(addRideDummyData);
   const [view, setView] = useState(false);
   const [item, setItem] = useState({});
+
+  useEffect(() => {
+    doGet('v1/userRides/getUserRides');
+  }, [addedRides]);
 
   useEffect(() => {
     renderItems;
@@ -107,17 +115,23 @@ const Component = ({navigation}) => {
             </View>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={() =>  navigation.navigate('NearbyRideScreen', {item: item})}>
+              onPress={() =>
+                navigation.navigate('NearbyRideScreen', {item: item})
+              }>
               Nearby Ride
             </CategoryOutlinedButton>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={() => navigation.navigate('CityToCityRideScreen', {item: item})}>
+              onPress={() =>
+                navigation.navigate('CityToCityRideScreen', {item: item})
+              }>
               City to City
             </CategoryOutlinedButton>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={() => navigation.navigate('TourRideScreen', {item: item})}>
+              onPress={() =>
+                navigation.navigate('TourRideScreen', {item: item})
+              }>
               Tour Ride
             </CategoryOutlinedButton>
           </View>
