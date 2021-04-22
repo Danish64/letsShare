@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
+
 //Native Exports Ends Here
 //Third Party Exports Starts
 import {
@@ -16,34 +17,59 @@ import {CategoryOutlinedButton} from 'res/UniversalComponents/Button.js';
 import styles from './style';
 import ShareRide from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
 import Choose from 'res/images/ModulesImages/GeneralImages/noData.png';
-
-import {doGet} from '../../../../../utils/AxiosMethods';
+import {useNavigation, useRoute} from '@react-navigation/native';
+// import {useRoute} from '@react-navigation/native';
+import {
+  doGet,
+  doGetCustom,
+  doGetWithTokenInHeader,
+  doPost,
+} from '../../../../../utils/AxiosMethods';
 
 import {addRideDummyData} from 'res/constants/dummyData';
+import {useSelector} from 'react-redux';
+import {Alert} from 'react-native';
 
 //Third Party Exports Ends
 
-const Component = ({navigation}) => {
+const Component = ({}) => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const newRideData = addRideDummyData[0];
+  const state = useSelector((state) => state);
+  const ownerId = state.userInformation.user._id;
   const [addedRides, setAddedRides] = useState(null);
 
-  const [data, setData] = useState(addRideDummyData);
+  const [data, setData] = useState();
   const [view, setView] = useState(false);
   const [item, setItem] = useState({});
 
-  useEffect(() => {
-    doGet('v1/userRides/getUserRides');
-  }, [addedRides]);
+  const getRides = async () => {
+    console.log('OwnerId', ownerId);
+    const data = {
+      ownerId: ownerId,
+    };
+    const result = await doPost('v1/userRides/getUserRides', data);
+    // console.log('Data from Get Rides Api', result.data);
+    const rides = result.data.map((item) => {
+      item.selected = false;
+      return item;
+    });
+    //  console.log(rides);
+    setData(rides);
+  };
 
   useEffect(() => {
+    getRides();
     renderItems;
-  }, [addButton]);
+  }, [addButton, newRideData]);
 
   const renderItems = () => {
-    return data.map((item, index) => {
+    return data?.map((item, index) => {
       return (
         <View key={index}>
           <AddAssetButton
-            onPress={() => selectItem(item.id, item.selected)}
+            onPress={() => selectItem(item._id, item.selected)}
             selected={item.selected}
             iconName="car-outline"
             title={item.rideName}
@@ -57,7 +83,7 @@ const Component = ({navigation}) => {
   const selectItem = (selectedId, selection) => {
     const newData = [
       ...data.map((item) => {
-        if (selectedId === item.id) {
+        if (selectedId === item._id) {
           if (selection === true) {
             setView(false);
             return {
@@ -80,6 +106,7 @@ const Component = ({navigation}) => {
         }
       }),
     ];
+    console.log('Settee Item for Near by screen', item);
     setData(newData);
   };
 

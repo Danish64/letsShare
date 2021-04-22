@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {View, KeyboardAvoidingView, TextInput, Image} from 'react-native';
+import {
+  View,
+  KeyboardAvoidingView,
+  TextInput,
+  Image,
+  Alert,
+} from 'react-native';
 import * as Yup from 'yup';
 
 import styles from './style';
@@ -11,6 +17,8 @@ import {
   FormImagePicker,
 } from 'res/UniversalComponents/Forms';
 import {addRideDummyData} from 'res/constants/dummyData';
+import {useSelector} from 'react-redux';
+import {doPost} from '../../../../utils/AxiosMethods';
 
 //Third Party Exports Ends
 
@@ -30,16 +38,32 @@ const validationSchema = Yup.object().shape({
 // ];
 
 const Component = ({navigation}) => {
+  const state = useSelector((state) => state);
+  const user = state.userInformation.user;
+  console.log(user);
+
   const submitForm = (values) => {
-    values.id = Math.floor(Math.random() * 100) + 1;
-    values.selected = false;
-    const newData = values;
-    updateRides(newData);
+    const newRideData = {
+      ownerId: user._id,
+      rideName: values.rideName,
+      registrationNumber: values.registrationNo,
+      rideType: 'car',
+      ownerContactNumber: values.contactNo,
+    };
+    console.log(newRideData);
+    createRide(newRideData);
+    updateRides(newRideData);
+  };
+
+  const createRide = async (newRideData) => {
+    const result = await doPost('v1/userRides/createRide', newRideData);
+    console.log('Data from Ride Api', result);
+    navigation.navigate('CreateRideScreen', newRideData);
   };
 
   const updateRides = (newData) => {
+    const arrayData = addRideDummyData;
     addRideDummyData.unshift(newData);
-    navigation.navigate('CreateRideScreen', newData);
   };
 
   return (
@@ -51,13 +75,13 @@ const Component = ({navigation}) => {
             registrationNo: '',
             contactNo: '',
             // category: null,
-            selected: null,
+            // selected: null,
             image: [],
-            id: '',
+            // id: '',
           }}
           onSubmit={(values) => {
             submitForm(values);
-            console.log(values);
+            // console.log(values);
           }}
           validationSchema={validationSchema}>
           {/* Input image */}

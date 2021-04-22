@@ -14,26 +14,35 @@ import {
 } from 'res/UniversalComponents/Forms';
 import {shareRidesData} from 'res/constants/dummyData';
 
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {ScrollView} from 'react-native-gesture-handler';
+// import {useRoute} from '@react-navigation/native';
+
 const validationSchema = Yup.object().shape({
   fare: Yup.string().required().min(3).max(5).label('Fare'),
   seatsAvailable: Yup.string().required().label('Available Seats'),
 });
 
-const Component = ({navigation, Data}) => {
+const Component = ({Data}) => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const {item} = route.params;
+  console.log('Data from Create Ride Action Form', route.params.item);
   const submitForm = (values) => {
     // let valID = Math.floor(Math.random() * 100) + 1;
     const newData = {
-      id: Math.floor(Math.random() * 100) + 1,
-      rideName: Data.rideName,
-      registrationNo: Data.registrationNo,
-      contactNumber: Data.contactNumber,
-      rideType: 'Nearby Ride',
-      image: Data.image,
+      // id: Math.floor(Math.random() * 100) + 1,
+      sharerId: item._id,
+      rideName: item.rideName,
+      registrationNo: item.registrationNo,
+      contactNumber: item.contactNumber,
+      rideType: item.rideType,
+      image: '',
       fare: values.fare,
       seatsAvailable: values.seatsAvailable,
       startLocation: values.startLocation,
       destinationLocation: values.destinationLocation,
-      listFor: values.listFor,
+      address: values.address,
     };
     console.log(newData);
     updateRides(newData);
@@ -46,12 +55,13 @@ const Component = ({navigation, Data}) => {
 
   return (
     <KeyboardAvoidingView>
-      <View style={styles.ComponentArea}>
+      <ScrollView style={styles.ComponentArea}>
         <Form
           initialValues={{
             fare: '',
             seatsAvailable: '',
-            listFor: '',
+            startAddress: '',
+            destinationAddress: '',
             startLocation: {},
             destinationLocation: {},
           }}
@@ -67,16 +77,27 @@ const Component = ({navigation, Data}) => {
             placeholder="e.g 500 Rs."
             keyboardType="numeric"
           />
-
           {/* Seats Available: */}
           <StepperButtonInputField
             title="Seats Available:"
             name="seatsAvailable"
           />
-
+          <FormField
+            title="Start Address"
+            maxLength={100}
+            name="startAddress"
+            placeholder="enter complete address"
+            // keyboardType="numeric"
+          />
           {/* Start Location */}
           <FormLocation name="startLocation" title="Start Location" />
-
+          <FormField
+            title="Destination Address"
+            maxLength={100}
+            name="destinationAddress"
+            placeholder="enter complete address"
+            // keyboardType="numeric"
+          />
           {/* destination Location */}
           <FormLocation
             name="destinationLocation"
@@ -91,7 +112,7 @@ const Component = ({navigation, Data}) => {
             <SubmitForm title="Share"></SubmitForm>
           </View>
         </Form>
-      </View>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 };
