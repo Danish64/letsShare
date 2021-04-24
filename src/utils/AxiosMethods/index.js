@@ -12,7 +12,7 @@ export const doGet = (url, data) =>
         // Authorization: 'Bearer ' + data,
         'Content-Type': 'application/json',
       },
-      data: data,
+      // data: data,
     })
       .then((result) => {
         // console.log(result);

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
+import {View, Image, TouchableOpacity, Text, Button} from 'react-native';
 
 //Native Exports Ends Here
 //Third Party Exports Starts
@@ -10,9 +10,14 @@ import {
 } from 'res/UniversalComponents/Text.js';
 
 import HorizontalScrollViewContainer from 'res/UniversalComponents/HorizontalScrollViewContainer';
-import {AddAssetButton} from 'res/UniversalComponents/Button';
+import LoadingIndicator from '../../../../GeneralComponents/LoadingIndicator';
 
-import {CategoryOutlinedButton} from 'res/UniversalComponents/Button.js';
+import {
+  CategoryOutlinedButton,
+  PrimaryButton,
+  AddAssetButton,
+  SelectRideButton,
+} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
 import ShareRide from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
@@ -38,9 +43,12 @@ const Component = ({}) => {
   const newRideData = addRideDummyData[0];
   const state = useSelector((state) => state);
   const ownerId = state.userInformation.user._id;
+  const userId = state.userInformation.user._id;
+  const sharerId = state.userInformation.user._id;
   const [addedRides, setAddedRides] = useState(null);
 
   const [data, setData] = useState();
+  const [createdRides, setCreatedRides] = useState();
   const [view, setView] = useState(false);
   const [item, setItem] = useState({});
 
@@ -58,8 +66,27 @@ const Component = ({}) => {
     //  console.log(rides);
     setData(rides);
   };
+  const getCreatedRides = async () => {
+    console.log('sharerId', sharerId);
+    const data = {
+      sharerId: sharerId,
+    };
+    const result = await doPost(
+      'v1/nearByRideShares/getUserNearByRideShares',
+      data,
+    );
+    console.log('Data from Get Rides Api', result.data);
+    const completeRides = result.data.map((item) => {
+      item.image =
+        '../../../../../res/images/ModulesImages/RideSharingImages/ShareRide.png';
+      return item;
+    });
+    console.log('Completed Rides in Create Ride Action Area', completeRides);
+    setCreatedRides(completeRides);
+  };
 
   useEffect(() => {
+    getCreatedRides();
     getRides();
     renderItems;
   }, [addButton, newRideData]);
@@ -68,10 +95,10 @@ const Component = ({}) => {
     return data?.map((item, index) => {
       return (
         <View key={index}>
-          <AddAssetButton
+          <SelectRideButton
             onPress={() => selectItem(item._id, item.selected)}
             selected={item.selected}
-            iconName="car-outline"
+            iconName={item.rideType}
             title={item.rideName}
             assetName={item.rideName}
           />
@@ -120,6 +147,9 @@ const Component = ({}) => {
     );
   };
 
+  if (!data) {
+    return <LoadingIndicator />;
+  }
   return (
     <>
       {view ? (
@@ -145,21 +175,21 @@ const Component = ({}) => {
               onPress={() =>
                 navigation.navigate('NearbyRideScreen', {item: item})
               }>
-              Nearby Ride
+              Share Nearby Ride
             </CategoryOutlinedButton>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
               onPress={() =>
                 navigation.navigate('CityToCityRideScreen', {item: item})
               }>
-              City to City
+              Share City to City
             </CategoryOutlinedButton>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
               onPress={() =>
                 navigation.navigate('TourRideScreen', {item: item})
               }>
-              Tour Ride
+              Share Tour Ride
             </CategoryOutlinedButton>
           </View>
 
@@ -173,6 +203,15 @@ const Component = ({}) => {
         </View>
       ) : (
         <View style={styles.selectRideArea}>
+          <View style={styles.mySharedRides}>
+            <PrimaryButton
+              onPress={() =>
+                navigation.navigate('SharedRidesScreen', {data: createdRides})
+              }>
+              My Shared Rides
+            </PrimaryButton>
+          </View>
+
           <View style={styles.selectRideTitleText}>
             <ShareActionAreaHeadingText>Select Ride</ShareActionAreaHeadingText>
           </View>

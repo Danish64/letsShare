@@ -12,14 +12,15 @@ const Component = ({navigation, data, screen}) => {
         <AvailRidesListItem
           image={item.image}
           rideName={item.rideName}
-          registrationNo={item.registrationNo}
+          registrationNo={item.registrationNumber}
           fare={item.fare}
+          rideCategory={item.rideCategory}
           startLocation={item.startLocation}
           destinationLocation={item.destinationLocation}
           seatsAvailable={item.seatsAvailable}
           pickupLocation={item.pickupLocation}
           onPress={() => {
-            navigation.navigate(screen, {item: item});
+            navigation.navigate('AvailRideDetail', {item: item});
           }}
         />
       )}

@@ -21,9 +21,18 @@ const Component = ({navigation}) => {
         <ShareActionAreaHeadingText>Avail Ride</ShareActionAreaHeadingText>
       </View>
       <View style={styles.categoriesArea}>
-        <TextImageContainer text="Nearby Rides" onPress={() => navigation.navigate('AvailNearbyRideScreen')}/>
-        <TextImageContainer text="City to City Rides" onPress={() => navigation.navigate('AvailCityToCityRideScreen')}/>
-        <TextImageContainer text="Tour Rides" onPress={() => navigation.navigate('AvailTourRideScreen')}/>
+        <TextImageContainer
+          text=" Avail Nearby Rides"
+          onPress={() => navigation.navigate('AvailNearbyRideScreen')}
+        />
+        <TextImageContainer
+          text="Avail City to City Rides"
+          onPress={() => navigation.navigate('AvailCityToCityRideScreen')}
+        />
+        <TextImageContainer
+          text="Avail Tour Rides"
+          onPress={() => navigation.navigate('AvailTourRideScreen')}
+        />
       </View>
     </View>
   );

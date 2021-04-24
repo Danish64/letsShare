@@ -142,6 +142,7 @@ const Component = ({onSelectItem, title}) => {
           <View style={styles.buttonStyles}>
             <Button title="Set Location" onPress={() => setLocation()}></Button>
           </View>
+          <Button title="Close" onPress={() => setModalVisible(false)}></Button>
         </View>
       </Modal>
     </KeyboardAvoidingView>

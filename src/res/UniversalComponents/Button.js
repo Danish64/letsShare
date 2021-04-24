@@ -2,6 +2,8 @@ import React from 'react';
 import {TouchableOpacity, View, Image} from 'react-native';
 import styles from 'res/styles/index.styles.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import {
   ButtonTextBlack,
   ButtonTextWhite,
@@ -98,6 +100,41 @@ export const OutlinedActionIconButton = (props) => (
       style={styles.buttonIconMargin}
     />
     <ButtonTextBlack>{props.children}</ButtonTextBlack>
+  </TouchableOpacity>
+);
+
+export const SelectRideButton = ({
+  iconName,
+  assetName,
+  onPress,
+  selected,
+  addButton,
+}) => (
+  <TouchableOpacity onPress={onPress}>
+    <View
+      style={selected ? styles.addAssetButtonActive : styles.addAssetButton}>
+      <View style={styles.addAssetButtonCheckMark}>
+        {addButton ? null : (
+          <Ionicons
+            name={selected ? 'checkmark-circle' : 'ellipse-outline'}
+            size={25}
+            color={selected ? Colors.Primary : Colors.BackGroundGrey}
+          />
+        )}
+      </View>
+      <MaterialCommunityIcon
+        name={iconName === 'Bike' ? 'motorbike' : 'car'}
+        color={selected ? Colors.Black : Colors.LightGrey}
+        size={40}
+      />
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        {selected ? (
+          <ButtonTextBlack>{assetName}</ButtonTextBlack>
+        ) : (
+          <ButtonTextLightGrey>{assetName}</ButtonTextLightGrey>
+        )}
+      </View>
+    </View>
   </TouchableOpacity>
 );
 

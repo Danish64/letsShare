@@ -16,19 +16,20 @@ import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import RidesIcon from '../../../../res/images/ModulesImages/RideSharingImages/ShareRide.png';
 
 const Component = ({
+  item,
+  startLocation,
+  destinationLocation,
+  rideCategory,
   onPress,
   image,
   rideName,
   registrationNo,
-  rideCategory,
   fare,
   seatsAvailable,
-  startLocation,
-  destinationLocation,
 }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View style={styles.mainContainer}>
+    <TouchableOpacity key={item._id} onPress={onPress}>
+      <View key={item._id} style={styles.mainContainer}>
         <View
           style={{
             justifyContent: 'center',
@@ -43,18 +44,17 @@ const Component = ({
         <View style={{flexDirection: 'row'}}>
           <View style={styles.rideDetails}>
             <View style={styles.imageContainer}>
-              <Image source={RidesIcon} style={styles.image}></Image>
+              <Image source={RidesIcon} style={styles.image} />
             </View>
 
             {rideName && <CaptionTextPrimary>{rideName}</CaptionTextPrimary>}
+
             {registrationNo && <CaptionText>{registrationNo}</CaptionText>}
           </View>
           <View style={styles.locationDetails}>
             {startLocation && (
               <CaptionText>{startLocation.address}</CaptionText>
             )}
-
-            {/* <View style={styles.verticalSeparator} /> */}
 
             <Icon flexDirection="column" iconName={'pin-outline'}></Icon>
             {destinationLocation && (

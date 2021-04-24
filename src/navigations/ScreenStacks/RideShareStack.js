@@ -12,6 +12,10 @@ import AvailNearbyRideScreen from '../../screens/ModulesScreens/RideShareScreens
 import AvailCityToCityRideScreen from '../../screens/ModulesScreens/RideShareScreens/AvailCityToCityRideScreen';
 import AvailTourRideScreen from '../../screens/ModulesScreens/RideShareScreens/AvailTourRideScreen';
 import LoadingIndicator from '../../components/GeneralComponents/LoadingIndicator';
+import SharedRidesScreen from '../../screens/ModulesScreens/RideShareScreens/SharedRidesScreen';
+import SharedRideDetail from '../../screens/ModulesScreens/RideShareScreens/SharedRideDetail';
+import AvailRideDetail from '../../screens/ModulesScreens/RideShareScreens/AvailRideDetail';
+import BookRideScreen from '../../screens/ModulesScreens/RideShareScreens/BookRideScreen';
 
 const Stack = createStackNavigator();
 
@@ -24,14 +28,33 @@ function RideShareNavigator() {
       <Stack.Screen name="RideShareHome" component={RideShareHomeScreen} />
       <Stack.Screen name="CreateRideScreen" component={CreateRideScreen} />
       <Stack.Screen name="AddRideScreen" component={AddRideScreen} />
-      <Stack.Screen name="CityToCityRideScreen" component={CityToCityRideScreen} />
+      <Stack.Screen
+        name="CityToCityRideScreen"
+        component={CityToCityRideScreen}
+      />
       <Stack.Screen name="NearbyRideScreen" component={NearByRideScreen} />
       <Stack.Screen name="TourRideScreen" component={TourRideScreen} />
-      <Stack.Screen name="RecentlySharedRideScreen" component={RecentlySharedRideScreen} />
-      <Stack.Screen name="AvailNearbyRideScreen" component={AvailNearbyRideScreen} />
-      <Stack.Screen name="AvailCityToCityRideScreen" component={AvailCityToCityRideScreen} />
-      <Stack.Screen name="AvailTourRideScreen" component={AvailTourRideScreen} />
+      <Stack.Screen
+        name="RecentlySharedRideScreen"
+        component={RecentlySharedRideScreen}
+      />
+      <Stack.Screen
+        name="AvailNearbyRideScreen"
+        component={AvailNearbyRideScreen}
+      />
+      <Stack.Screen
+        name="AvailCityToCityRideScreen"
+        component={AvailCityToCityRideScreen}
+      />
+      <Stack.Screen
+        name="AvailTourRideScreen"
+        component={AvailTourRideScreen}
+      />
       <Stack.Screen name="LoadingScreen" component={LoadingIndicator} />
+      <Stack.Screen name="SharedRidesScreen" component={SharedRidesScreen} />
+      <Stack.Screen name="SharedRideDetail" component={SharedRideDetail} />
+      <Stack.Screen name="AvailRideDetail" component={AvailRideDetail} />
+      <Stack.Screen name="BookRideScreen" component={BookRideScreen} />
     </Stack.Navigator>
   );
 }
