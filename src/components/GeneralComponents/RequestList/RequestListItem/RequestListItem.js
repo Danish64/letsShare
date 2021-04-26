@@ -26,16 +26,16 @@ import {
   doPutAws,
 } from '../../../../utils/AxiosMethods';
 
-const Component = ({item, onPress}) => {
+const Component = ({item, onPress, shareId}) => {
   const state = useSelector((state) => state);
-  const shareId = state.userInformation.user._id;
+  const bookingId = state.userInformation.user._id;
   const availerId = item.availerId;
-  const bookingId = item._id;
 
-  console.log('Request List Single user', item);
+  console.log('Booking Item', item);
+
   console.log('Availer Id ', item.availerId);
   console.log('Share Id', shareId);
-  console.log('Booking Id', item._id);
+  console.log('Booking Id', bookingId);
 
   const AcceptRequest = async () => {
     const data = {
