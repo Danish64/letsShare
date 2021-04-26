@@ -16,6 +16,7 @@ import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import RidesIcon from '../../../../res/images/ModulesImages/RideSharingImages/ShareRide.png';
 
 const Component = ({
+  item,
   onPress,
   image,
   rideName,

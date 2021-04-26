@@ -14,7 +14,7 @@ const Component = ({navigation, item}) => {
 
   return (
     <Container>
-      <Header title="My Shared Rides" hasBackIcon navigation={navigation} />
+      <Header title="Ride Detail" hasBackIcon navigation={navigation} />
       <AvailRideItem navigation={navigation} data={route.params.item} />
     </Container>
   );

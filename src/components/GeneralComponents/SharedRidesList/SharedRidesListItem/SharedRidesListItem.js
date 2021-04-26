@@ -14,6 +14,7 @@ import {
 } from 'res/UniversalComponents/Text';
 import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import RidesIcon from '../../../../res/images/ModulesImages/RideSharingImages/ShareRide.png';
+import {Colors} from 'res/constants/Colors.js';
 
 const Component = ({
   item,
@@ -28,17 +29,33 @@ const Component = ({
   seatsAvailable,
 }) => {
   return (
-    <TouchableOpacity key={item._id} onPress={onPress}>
-      <View key={item._id} style={styles.mainContainer}>
+    <TouchableOpacity key={item.key} onPress={onPress}>
+      <View style={styles.mainContainer}>
         <View
           style={{
             justifyContent: 'center',
             alignItems: 'center',
+            flexDirection: 'row',
           }}>
           {rideCategory && (
-            <RecentlySharedTitleText>
-              {rideCategory + ' Ride'}
-            </RecentlySharedTitleText>
+            <View style={{width: '80%', alignItems: 'center'}}>
+              <RecentlySharedTitleText>
+                {rideCategory + ' Ride'}
+              </RecentlySharedTitleText>
+            </View>
+          )}
+          {item.bookings.length === 0 ? (
+            <View />
+          ) : (
+            <View
+              style={{
+                width: '5%',
+                height: 15,
+                // backgroundColor: 'blue',
+                borderRadius: 30,
+                backgroundColor: Colors.Primary,
+              }}
+            />
           )}
         </View>
         <View style={{flexDirection: 'row'}}>

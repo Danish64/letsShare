@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, Image, Button} from 'react-native';
+import {View, Text, Image, Button, ScrollView} from 'react-native';
 import styles from './style';
 import {
   BodyTextBlack,
@@ -10,7 +10,6 @@ import {ShareButton} from 'res/UniversalComponents/Button';
 import ShareCard from '../../../GeneralComponents/ShareCard';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {ScrollView} from 'react-native-gesture-handler';
 import {PrimaryButton} from '../../../../res/UniversalComponents/Button';
 
 const Component = ({navigation, data, onPressBooked}) => {
@@ -145,7 +144,7 @@ const Component = ({navigation, data, onPressBooked}) => {
         </View>
         <View style={{width: 150, alignSelf: 'center'}}>
           <PrimaryButton
-            onPress={navigation.navigate('BookRideScreen', {data: data})}>
+            onPress={() => navigation.navigate('BookRideScreen', {data: data})}>
             Book Ride
           </PrimaryButton>
         </View>

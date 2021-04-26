@@ -80,7 +80,7 @@ export const doPostAws = (data, url) =>
 export const doPutAws = (data, url) =>
   new Promise((resolve) =>
     axios({
-      url: url,
+      url: baseURL + url,
       method: 'PUT',
       //timeout: 1000 * 8,
       headers: {

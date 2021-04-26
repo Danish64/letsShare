@@ -11,6 +11,7 @@ import {
   SubmitButton as SubmitForm,
   FormImagePicker,
   FormLocation,
+  SubmitButtonPrimary,
 } from 'res/UniversalComponents/Forms';
 import {shareRidesData} from 'res/constants/dummyData';
 
@@ -22,7 +23,6 @@ import {useSelector} from 'react-redux';
 // import {useRoute} from '@react-navigation/native';
 
 const validationSchema = Yup.object().shape({
-  fare: Yup.string().required().min(3).max(5).label('Fare'),
   seatsAvailable: Yup.string().required().label('Available Seats'),
 });
 
@@ -55,7 +55,7 @@ const Component = ({data}) => {
   //   const {item} = route.params;
   //   console.log('Data from Create Ride Action Form', route.params.item);
   const submitForm = (values) => {
-    let valID = Math.floor(Math.random() * 100) + 1;
+    // let valID = Math.floor(Math.random() * 100) + 1;
     const newData = {
       // id: Math.floor(Math.random() * 100) + 1,
       //   sharerId: data.sharerId,
@@ -64,7 +64,7 @@ const Component = ({data}) => {
       availerName: user.name,
       availerAddress: 'House 179-C, Street 12, PWD',
       availerPhoneNumber: user.phone,
-      availerMessage: 'Hey! Can you pick me up from g 11 markaz main chowk',
+      availerMessage: values.availerMessage,
       availerSeats: values.seatsAvailable,
       availerPickUpLocation: {
         address: values.startLocation.data.description,
@@ -98,58 +98,53 @@ const Component = ({data}) => {
       <View style={styles.ComponentArea}>
         <Form
           initialValues={{
-            fare: '',
             seatsAvailable: '',
-            startAddress: '',
-            destinationAddress: '',
             startLocation: {},
             destinationLocation: {},
+            availerMessage: '',
           }}
           onSubmit={(values) => {
             submitForm(values);
           }}
           validationSchema={validationSchema}>
-          {/* Input Fare */}
-          <FormField
-            title="Fare"
-            maxLength={100}
-            name="fare"
-            placeholder="e.g 500 Rs."
-            keyboardType="numeric"
-          />
           {/* Seats Available: */}
           <StepperButtonInputField
-            title="Seats Available:"
+            title="Select the no of seats you need:"
             name="seatsAvailable"
           />
-          <FormField
-            title="Start Address"
+          {/* <FormField
+            title="Pick up Address"
             maxLength={100}
             name="startAddress"
-            placeholder="enter complete address"
+            placeholder="Enter Pickup Address"
             // keyboardType="numeric"
-          />
+          /> */}
           {/* Start Location */}
-          <FormLocation name="startLocation" title="startLocation" />
-          <FormField
+          <FormLocation name="startLocation" title="Enter Pickup Location" />
+          {/* <FormField
             title="Destination Address"
             maxLength={100}
             name="destinationAddress"
             placeholder="enter complete address"
             // keyboardType="numeric"
-          />
+          /> */}
           {/* destination Location */}
           <FormLocation
             name="destinationLocation"
-            title="Destination Location"
+            title="Enter DropOff Location Location"
           />
 
-          {/* Input List For:
-          <StepperButtonInputField title="List For(days):" name="listFor" /> */}
+          <FormField
+            title="Message for Sharer (Optional) "
+            maxLength={100}
+            name="availerMessage"
+            placeholder="Enter your message for the sharer"
+            // keyboardType="numeric"
+          />
 
           {/* Submit Button */}
-          <View style={styles.buttonAreastyle}>
-            <SubmitForm title="Request Ride"></SubmitForm>
+          <View style={styles.buttonAreaStyle}>
+            <SubmitButtonPrimary title="Request Ride"></SubmitButtonPrimary>
           </View>
         </Form>
       </View>

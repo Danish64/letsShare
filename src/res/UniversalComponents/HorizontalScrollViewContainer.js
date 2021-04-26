@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {ScrollView, View} from 'react-native';
 
 //Native Exports Ends Here

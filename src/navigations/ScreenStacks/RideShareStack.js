@@ -14,6 +14,7 @@ import AvailTourRideScreen from '../../screens/ModulesScreens/RideShareScreens/A
 import LoadingIndicator from '../../components/GeneralComponents/LoadingIndicator';
 import SharedRidesScreen from '../../screens/ModulesScreens/RideShareScreens/SharedRidesScreen';
 import SharedRideDetail from '../../screens/ModulesScreens/RideShareScreens/SharedRideDetail';
+import BookingRequestsScreen from '../../screens/ModulesScreens/RideShareScreens/BookingRequestsScreen';
 import AvailRideDetail from '../../screens/ModulesScreens/RideShareScreens/AvailRideDetail';
 import BookRideScreen from '../../screens/ModulesScreens/RideShareScreens/BookRideScreen';
 
@@ -53,6 +54,10 @@ function RideShareNavigator() {
       <Stack.Screen name="LoadingScreen" component={LoadingIndicator} />
       <Stack.Screen name="SharedRidesScreen" component={SharedRidesScreen} />
       <Stack.Screen name="SharedRideDetail" component={SharedRideDetail} />
+      <Stack.Screen
+        name="BookingRequestsScreen"
+        component={BookingRequestsScreen}
+      />
       <Stack.Screen name="AvailRideDetail" component={AvailRideDetail} />
       <Stack.Screen name="BookRideScreen" component={BookRideScreen} />
     </Stack.Navigator>

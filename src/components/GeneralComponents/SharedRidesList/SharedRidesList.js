@@ -4,15 +4,14 @@ import styles from './style';
 import {FlatListData} from 'res/constants/dummyData.js';
 import SharedRidesListItem from './SharedRidesListItem';
 
-const Component = ({navigation, data, screen}) => {
-  console.log('Data from New Api, Rola Behn cheki', data);
+const Component = ({navigation, data}) => {
+  console.log('Shared Rides List', data);
   return (
     <FlatList
       data={data ? data : FlatListData}
-      // key={Math.floor(Math.random() * 10)}
       renderItem={({item}) => (
         <SharedRidesListItem
-          key={item._id}
+          key={item.key}
           item={item}
           startLocation={item.startLocation}
           destinationLocation={item.destinationLocation}
@@ -29,7 +28,7 @@ const Component = ({navigation, data, screen}) => {
           seatsAvailable={item.seatsAvailable.toString()}
           image={item.image}
           onPress={() => {
-            navigation.navigate('SharedRideDetail', {item: item});
+            navigation.navigate('BookingRequestsScreen', {item: item});
           }}
         />
       )}

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {View, Image, TouchableOpacity, Text, Button} from 'react-native';
 
 //Native Exports Ends Here
@@ -76,12 +76,13 @@ const Component = ({}) => {
       data,
     );
     console.log('Data from Get Rides Api', result.data);
-    const completeRides = result.data.map((item) => {
+    const completeRides = result.data.map((item, key) => {
       item.image =
         '../../../../../res/images/ModulesImages/RideSharingImages/ShareRide.png';
+      item.key = key;
       return item;
     });
-    console.log('Completed Rides in Create Ride Action Area', completeRides);
+    // console.log('Completed Rides in Create Ride Action Area', completeRides);
     setCreatedRides(completeRides);
   };
 
