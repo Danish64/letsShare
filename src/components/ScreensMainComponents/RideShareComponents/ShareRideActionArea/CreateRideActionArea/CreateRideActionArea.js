@@ -53,21 +53,18 @@ const Component = ({}) => {
   const [item, setItem] = useState({});
 
   const getRides = async () => {
-    console.log('OwnerId', ownerId);
     const data = {
       ownerId: ownerId,
     };
     const result = await doPost('v1/userRides/getUserRides', data);
-    // console.log('Data from Get Rides Api', result.data);
     const rides = result.data.map((item) => {
       item.selected = false;
       return item;
     });
-    //  console.log(rides);
     setData(rides);
   };
+
   const getCreatedRides = async () => {
-    console.log('sharerId', sharerId);
     const data = {
       sharerId: sharerId,
     };
@@ -75,14 +72,10 @@ const Component = ({}) => {
       'v1/nearByRideShares/getUserNearByRideShares',
       data,
     );
-    console.log('Data from Get Rides Api', result.data);
     const completeRides = result.data.map((item, key) => {
-      item.image =
-        '../../../../../res/images/ModulesImages/RideSharingImages/ShareRide.png';
       item.key = key;
       return item;
     });
-    // console.log('Completed Rides in Create Ride Action Area', completeRides);
     setCreatedRides(completeRides);
   };
 
@@ -134,7 +127,6 @@ const Component = ({}) => {
         }
       }),
     ];
-    console.log('Settee Item for Near by screen', item);
     setData(newData);
   };
 

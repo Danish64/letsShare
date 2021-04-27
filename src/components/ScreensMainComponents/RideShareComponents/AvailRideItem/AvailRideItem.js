@@ -12,8 +12,8 @@ import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {PrimaryButton} from '../../../../res/UniversalComponents/Button';
 
-const Component = ({navigation, data, onPressBooked}) => {
-  console.log('Data from Create Ride Action Area to Shared Ride', data);
+const Component = ({navigation, data}) => {
+  // console.log('Data from Create Ride Action Area to Shared Ride', data);
   return (
     <ScrollView>
       <View style={styles.mainContainer}>

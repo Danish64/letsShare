@@ -9,19 +9,12 @@ const Component = ({navigation, data}) => {
   const route = useRoute();
 
   const shareId = data._id;
-  console.log('Share Id', shareId);
-  console.log('Request List item bookings', data.bookings);
+
   return (
     <FlatList
       data={data ? data.bookings : FlatListData}
       renderItem={({item}) => (
-        <RequestListItem
-          shareId={shareId}
-          item={item}
-          onPress={() => {
-            // navigation.navigate('SharedRideDetail', {item: item});
-          }}
-        />
+        <RequestListItem key={data._id} shareId={shareId} item={item} />
       )}
       style={styles.FlatListStyle}
       showsVerticalScrollIndicator={false}

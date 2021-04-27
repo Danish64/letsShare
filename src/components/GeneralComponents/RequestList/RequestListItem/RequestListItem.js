@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, TouchableOpacity, Text, Image} from 'react-native';
 import styles from './style';
 import {
@@ -16,7 +16,10 @@ import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import UserIcon from '../../../../res/images/ModulesImages/GeneralImages/user.png';
 import {Colors} from 'res/constants/Colors.js';
-import {PrimaryButton} from '../../../../res/UniversalComponents/Button';
+import {
+  PrimaryButton,
+  PrimaryButtonDarkGrey,
+} from '../../../../res/UniversalComponents/Button';
 import {useSelector} from 'react-redux';
 import {
   doGet,
@@ -27,34 +30,28 @@ import {
 } from '../../../../utils/AxiosMethods';
 
 const Component = ({item, onPress, shareId}) => {
+  const [isAccepted, setIsAccepted] = useState('');
+
   const state = useSelector((state) => state);
-  const bookingId = state.userInformation.user._id;
-  const availerId = item.availerId;
 
-  console.log('Booking Item', item);
-
-  console.log('Availer Id ', item.availerId);
-  console.log('Share Id', shareId);
-  console.log('Booking Id', bookingId);
+  // console.log('Availer Id ', item.availerId);
+  // console.log('Share Id', shareId);
+  // console.log('Booking Id', item._id);
+  // console.log('Break');
 
   const AcceptRequest = async () => {
     const data = {
-      availerId: availerId,
+      availerId: item.availerId,
       shareId: shareId,
-      bookingId: bookingId,
+      bookingId: item._id,
     };
     const result = await doPutAws(
       data,
       'v1/nearByRideShares/acceptNearByRidesSharesBooking',
     );
+    setIsAccepted(result.status);
 
     console.log('Accept Availer Request API Call Result', result.data);
-    // const rides = result.data.map((item) => {
-    //   item.selected = false;
-    //   return item;
-    // });
-    // //  console.log(rides);
-    // setData(rides);
   };
 
   return (
@@ -85,7 +82,6 @@ const Component = ({item, onPress, shareId}) => {
               style={{
                 width: '20%',
                 height: 15,
-                // backgroundColor: 'blue',
                 borderRadius: 35,
                 backgroundColor: Colors.Failure,
               }}
@@ -93,9 +89,8 @@ const Component = ({item, onPress, shareId}) => {
           ) : (
             <View
               style={{
-                width: '5%',
+                width: '20%',
                 height: 15,
-                // backgroundColor: 'blue',
                 borderRadius: 30,
                 backgroundColor: Colors.Primary,
               }}
@@ -112,9 +107,13 @@ const Component = ({item, onPress, shareId}) => {
       </View>
       <View style={styles.ContactContainer}>
         <View style={styles.acceptButton}>
-          <PrimaryButton onPress={() => AcceptRequest()}>
-            {item.isAccepted ? 'Accepted' : 'Accept Request'}
-          </PrimaryButton>
+          {item.isAccepted ? (
+            <PrimaryButtonDarkGrey>Request Accepted</PrimaryButtonDarkGrey>
+          ) : (
+            <PrimaryButton onPress={() => AcceptRequest()}>
+              Accept Request
+            </PrimaryButton>
+          )}
         </View>
         <View style={styles.callButton}>
           <TouchableOpacity

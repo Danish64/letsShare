@@ -5,7 +5,7 @@ import {FlatListData} from 'res/constants/dummyData.js';
 import AvailRidesListItem from './AvailRidesListItem';
 import LoadingIndicator from '../../../components/GeneralComponents/LoadingIndicator';
 
-const Component = ({navigation, data, screen}) => {
+const Component = ({navigation, data}) => {
   if (!data) {
     return <LoadingIndicator />;
   }
@@ -14,6 +14,8 @@ const Component = ({navigation, data, screen}) => {
       data={data ? data : FlatListData}
       renderItem={({item}) => (
         <AvailRidesListItem
+          key={item._id}
+          itemId={item._id}
           item={item}
           image={item.image}
           rideName={item.rideName}

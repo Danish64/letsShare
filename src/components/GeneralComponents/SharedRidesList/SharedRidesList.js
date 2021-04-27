@@ -5,13 +5,12 @@ import {FlatListData} from 'res/constants/dummyData.js';
 import SharedRidesListItem from './SharedRidesListItem';
 
 const Component = ({navigation, data}) => {
-  console.log('Shared Rides List', data);
   return (
     <FlatList
       data={data ? data : FlatListData}
       renderItem={({item}) => (
         <SharedRidesListItem
-          key={item.key}
+          key={item._id}
           item={item}
           startLocation={item.startLocation}
           destinationLocation={item.destinationLocation}

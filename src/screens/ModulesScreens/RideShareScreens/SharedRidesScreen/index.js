@@ -9,7 +9,6 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 
 const Component = ({navigation}) => {
   const route = useRoute();
-  console.log('Shared Rides data', route.params.data);
 
   return (
     <Container>

@@ -55,17 +55,20 @@ export default StyleSheet.create({
   },
 
   acceptButton: {
-    width: '60%',
+    width: '65%',
     height: 50,
+    justifyContent: 'center',
+    textAlign: 'center',
+    alignItems: 'center',
   },
   callButton: {
-    width: '20%',
+    width: '15%',
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
   },
   chatButton: {
-    width: '20%',
+    width: '15%',
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',

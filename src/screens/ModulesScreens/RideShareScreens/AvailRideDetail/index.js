@@ -10,7 +10,7 @@ import {useSelector} from 'react-redux';
 
 const Component = ({navigation, item}) => {
   const route = useRoute();
-  //console.log('Avail Ride Detail Screen', route.params.item);
+  // console.log('Avail Ride Detail Screen', route.params.item);
 
   return (
     <Container>
