@@ -3,17 +3,19 @@ let baseURL = 'https://letusshare.herokuapp.com/api/';
 
 /* Basic Axios Request*/
 
-export const doGet = (url) =>
+export const doGet = (url, data) =>
   new Promise((resolve, reject) =>
     axios({
-      url: baseUrl + url,
+      url: baseURL + url,
       method: 'GET',
       headers: {
-        // Authorization: "Bearer " + token
+        // Authorization: 'Bearer ' + data,
+        'Content-Type': 'application/json',
       },
+      // data: data,
     })
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         resolve(result);
       })
       .catch((error) => reject(error)),
@@ -78,7 +80,7 @@ export const doPostAws = (data, url) =>
 export const doPutAws = (data, url) =>
   new Promise((resolve) =>
     axios({
-      url: url,
+      url: baseURL + url,
       method: 'PUT',
       //timeout: 1000 * 8,
       headers: {

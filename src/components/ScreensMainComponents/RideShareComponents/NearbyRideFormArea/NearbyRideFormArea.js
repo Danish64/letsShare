@@ -14,34 +14,60 @@ import {
 } from 'res/UniversalComponents/Forms';
 import {shareRidesData} from 'res/constants/dummyData';
 
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {ScrollView} from 'react-native-gesture-handler';
+import {doPost} from '../../../../utils/AxiosMethods';
+
+// import {useRoute} from '@react-navigation/native';
+
 const validationSchema = Yup.object().shape({
   fare: Yup.string().required().min(3).max(5).label('Fare'),
   seatsAvailable: Yup.string().required().label('Available Seats'),
 });
 
-const Component = ({navigation, Data}) => {
+const Component = ({Data}) => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const {item} = route.params;
+  console.log('Data from Create Ride Action Form', route.params.item);
   const submitForm = (values) => {
     // let valID = Math.floor(Math.random() * 100) + 1;
     const newData = {
-      id: Math.floor(Math.random() * 100) + 1,
-      rideName: Data.rideName,
-      registrationNo: Data.registrationNo,
-      contactNumber: Data.contactNumber,
-      rideType: 'Nearby Ride',
-      image: Data.image,
+      // id: Math.floor(Math.random() * 100) + 1,
+      sharerId: item.ownerId,
+      rideName: item.rideName,
+      registrationNumber: item.registrationNumber,
+      ownerContactNumber: item.ownerContactNumber,
+      rideType: item.rideType,
+      image: '',
       fare: values.fare,
-      seatsAvailable: values.seatsAvailable,
-      startLocation: values.startLocation,
-      destinationLocation: values.destinationLocation,
-      listFor: values.listFor,
+      seatsAvailable: values.seatsAvailable.toString(),
+      startLocation: {
+        address: values.startLocation.data.description,
+        latitude: values.startLocation.details.geometry.location.lat,
+        longitude: values.startLocation.details.geometry.location.lat,
+      },
+      destinationLocation: {
+        address: values.destinationLocation.data.description,
+        latitude: values.destinationLocation.details.geometry.location.lat,
+        longitude: values.destinationLocation.details.geometry.location.lat,
+      },
+      startAddress: values.startAddress,
+      destinationAddress: values.destinationAddress,
     };
     console.log(newData);
-    updateRides(newData);
+    createNearbyRide(newData);
+    // updateRides(newData);
   };
 
-  const updateRides = (newData) => {
-    shareRidesData.push(newData);
-    navigation.navigate('RideShareHome', newData);
+  const createNearbyRide = async (newRideData) => {
+    let data = newRideData;
+    const result = await doPost(
+      'v1/nearByRideShares/createNearByRideShare',
+      data,
+    );
+    console.log('Data from Create Near by Ride Api', result);
+    navigation.navigate('CreateRideScreen', newRideData);
   };
 
   return (
@@ -51,7 +77,8 @@ const Component = ({navigation, Data}) => {
           initialValues={{
             fare: '',
             seatsAvailable: '',
-            listFor: '',
+            startAddress: '',
+            destinationAddress: '',
             startLocation: {},
             destinationLocation: {},
           }}
@@ -67,16 +94,27 @@ const Component = ({navigation, Data}) => {
             placeholder="e.g 500 Rs."
             keyboardType="numeric"
           />
-
           {/* Seats Available: */}
           <StepperButtonInputField
             title="Seats Available:"
             name="seatsAvailable"
           />
-
+          <FormField
+            title="Start Address"
+            maxLength={100}
+            name="startAddress"
+            placeholder="enter complete address"
+            // keyboardType="numeric"
+          />
           {/* Start Location */}
-          <FormLocation name="startLocation" title="Start Location" />
-
+          <FormLocation name="startLocation" title="startLocation" />
+          <FormField
+            title="Destination Address"
+            maxLength={100}
+            name="destinationAddress"
+            placeholder="enter complete address"
+            // keyboardType="numeric"
+          />
           {/* destination Location */}
           <FormLocation
             name="destinationLocation"

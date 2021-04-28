@@ -17,6 +17,7 @@ import {
 import {
   LandscapeButtonPrimary,
   StepperButton,
+  PrimaryButton,
 } from 'res/UniversalComponents/Button.js';
 
 import {ActionButtonBlack} from 'res/UniversalComponents/ActionButtons.js';
@@ -221,6 +222,18 @@ export const SubmitButton = ({title, loading}) => {
       {title}
     </ActionButtonBlack>
   );
+};
+
+export const SubmitButtonPrimary = ({title, loading}) => {
+  const {
+    handleSubmit,
+    resetForm,
+    initialValues,
+    setSubmitting,
+    handleReset,
+  } = useFormikContext();
+
+  return <PrimaryButton onPress={handleSubmit}>{title}</PrimaryButton>;
 };
 
 // export const DatePickerField = ({...props}) => {

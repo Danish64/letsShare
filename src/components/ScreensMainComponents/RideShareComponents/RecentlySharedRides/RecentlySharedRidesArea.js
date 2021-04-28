@@ -18,7 +18,6 @@ import {
   shareRidesData,
 } from 'res/constants/dummyData';
 
-
 //Native Exports Ends Here
 
 const Component = ({navigation}) => {
@@ -30,13 +29,11 @@ const Component = ({navigation}) => {
         <SectionHeadingText>Recently Shared</SectionHeadingText>
       </View>
       <View style={styles.recentlySharedFlatlistArea}>
-
         <HorizontalFlatList
           data={shareRidesData}
           navigation={navigation}
           screen="RecentlySharedRideScreen"
         />
-
       </View>
     </View>
   );

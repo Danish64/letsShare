@@ -4,7 +4,6 @@ import {s, vs, mvs, ms} from 'react-native-size-matters';
 
 export default StyleSheet.create({
   mainContainer: {
-    height: mvs(1000, 0.5),
     width: '100%',
     backgroundColor: Colors.White,
     marginTop: mvs(15, 0.6),

@@ -14,48 +14,64 @@ import {
 } from 'res/UniversalComponents/Text';
 import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import RidesIcon from '../../../../res/images/ModulesImages/RideSharingImages/ShareRide.png';
+import {Colors} from 'res/constants/Colors.js';
 
 const Component = ({
   item,
+  startLocation,
+  destinationLocation,
+  rideCategory,
   onPress,
   image,
   rideName,
   registrationNo,
-  rideCategory,
   fare,
   seatsAvailable,
-  startLocation,
-  destinationLocation,
 }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity key={item.key} onPress={onPress}>
       <View style={styles.mainContainer}>
         <View
           style={{
             justifyContent: 'center',
             alignItems: 'center',
+            flexDirection: 'row',
           }}>
           {rideCategory && (
-            <RecentlySharedTitleText>
-              {rideCategory + ' Ride'}
-            </RecentlySharedTitleText>
+            <View style={{width: '80%', alignItems: 'center'}}>
+              <RecentlySharedTitleText>
+                {rideCategory + ' Ride'}
+              </RecentlySharedTitleText>
+            </View>
+          )}
+          {item.bookings.length === 0 ? (
+            <View />
+          ) : (
+            <View
+              style={{
+                width: '5%',
+                height: 15,
+                // backgroundColor: 'blue',
+                borderRadius: 30,
+                backgroundColor: Colors.Primary,
+              }}
+            />
           )}
         </View>
         <View style={{flexDirection: 'row'}}>
           <View style={styles.rideDetails}>
             <View style={styles.imageContainer}>
-              <Image source={RidesIcon} style={styles.image}></Image>
+              <Image source={RidesIcon} style={styles.image} />
             </View>
 
             {rideName && <CaptionTextPrimary>{rideName}</CaptionTextPrimary>}
+
             {registrationNo && <CaptionText>{registrationNo}</CaptionText>}
           </View>
           <View style={styles.locationDetails}>
             {startLocation && (
               <CaptionText>{startLocation.address}</CaptionText>
             )}
-
-            {/* <View style={styles.verticalSeparator} /> */}
 
             <Icon flexDirection="column" iconName={'pin-outline'}></Icon>
             {destinationLocation && (

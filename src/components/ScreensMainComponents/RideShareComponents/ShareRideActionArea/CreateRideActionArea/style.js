@@ -10,7 +10,12 @@ export default StyleSheet.create({
     marginHorizontal: ms(20, 0.6),
     //backgroundColor: 'pink',
   },
-
+  mySharedRides: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: 20,
+  },
   selectRideTitleText: {
     width: '100%',
     marginBottom: mvs(5, 0.6),

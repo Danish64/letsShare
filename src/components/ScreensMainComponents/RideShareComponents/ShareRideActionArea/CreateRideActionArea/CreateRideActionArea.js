@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {View, Image, TouchableOpacity, Text, Button} from 'react-native';
+
 //Native Exports Ends Here
 //Third Party Exports Starts
 import {
@@ -9,35 +10,89 @@ import {
 } from 'res/UniversalComponents/Text.js';
 
 import HorizontalScrollViewContainer from 'res/UniversalComponents/HorizontalScrollViewContainer';
-import {AddAssetButton} from 'res/UniversalComponents/Button';
+import LoadingIndicator from '../../../../GeneralComponents/LoadingIndicator';
 
-import {CategoryOutlinedButton} from 'res/UniversalComponents/Button.js';
+import {
+  CategoryOutlinedButton,
+  PrimaryButton,
+  AddAssetButton,
+  SelectRideButton,
+} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
 import ShareRide from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
 import Choose from 'res/images/ModulesImages/GeneralImages/noData.png';
+import {useNavigation, useRoute} from '@react-navigation/native';
+// import {useRoute} from '@react-navigation/native';
+import {
+  doGet,
+  doGetCustom,
+  doGetWithTokenInHeader,
+  doPost,
+} from '../../../../../utils/AxiosMethods';
 
 import {addRideDummyData} from 'res/constants/dummyData';
+import {useSelector} from 'react-redux';
+import {Alert} from 'react-native';
 
 //Third Party Exports Ends
 
-const Component = ({navigation}) => {
-  const [data, setData] = useState(addRideDummyData);
+const Component = ({}) => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const newRideData = addRideDummyData[0];
+  const state = useSelector((state) => state);
+  const ownerId = state.userInformation.user._id;
+  const userId = state.userInformation.user._id;
+  const sharerId = state.userInformation.user._id;
+  const [addedRides, setAddedRides] = useState(null);
+
+  const [data, setData] = useState();
+  const [createdRides, setCreatedRides] = useState();
   const [view, setView] = useState(false);
   const [item, setItem] = useState({});
 
+  const getRides = async () => {
+    const data = {
+      ownerId: ownerId,
+    };
+    const result = await doPost('v1/userRides/getUserRides', data);
+    const rides = result.data.map((item) => {
+      item.selected = false;
+      return item;
+    });
+    setData(rides);
+  };
+
+  const getCreatedRides = async () => {
+    const data = {
+      sharerId: sharerId,
+    };
+    const result = await doPost(
+      'v1/nearByRideShares/getUserNearByRideShares',
+      data,
+    );
+    const completeRides = result.data.map((item, key) => {
+      item.key = key;
+      return item;
+    });
+    setCreatedRides(completeRides);
+  };
+
   useEffect(() => {
+    getCreatedRides();
+    getRides();
     renderItems;
-  }, [addButton]);
+  }, [addButton, newRideData]);
 
   const renderItems = () => {
-    return data.map((item, index) => {
+    return data?.map((item, index) => {
       return (
         <View key={index}>
-          <AddAssetButton
-            onPress={() => selectItem(item.id, item.selected)}
+          <SelectRideButton
+            onPress={() => selectItem(item._id, item.selected)}
             selected={item.selected}
-            iconName="car-outline"
+            iconName={item.rideType}
             title={item.rideName}
             assetName={item.rideName}
           />
@@ -49,7 +104,7 @@ const Component = ({navigation}) => {
   const selectItem = (selectedId, selection) => {
     const newData = [
       ...data.map((item) => {
-        if (selectedId === item.id) {
+        if (selectedId === item._id) {
           if (selection === true) {
             setView(false);
             return {
@@ -85,6 +140,9 @@ const Component = ({navigation}) => {
     );
   };
 
+  if (!data) {
+    return <LoadingIndicator />;
+  }
   return (
     <>
       {view ? (
@@ -107,18 +165,24 @@ const Component = ({navigation}) => {
             </View>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={() =>  navigation.navigate('NearbyRideScreen', {item: item})}>
-              Nearby Ride
+              onPress={() =>
+                navigation.navigate('NearbyRideScreen', {item: item})
+              }>
+              Share Nearby Ride
             </CategoryOutlinedButton>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={() => navigation.navigate('CityToCityRideScreen', {item: item})}>
-              City to City
+              onPress={() =>
+                navigation.navigate('CityToCityRideScreen', {item: item})
+              }>
+              Share City to City
             </CategoryOutlinedButton>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={() => navigation.navigate('TourRideScreen', {item: item})}>
-              Tour Ride
+              onPress={() =>
+                navigation.navigate('TourRideScreen', {item: item})
+              }>
+              Share Tour Ride
             </CategoryOutlinedButton>
           </View>
 
@@ -132,6 +196,15 @@ const Component = ({navigation}) => {
         </View>
       ) : (
         <View style={styles.selectRideArea}>
+          <View style={styles.mySharedRides}>
+            <PrimaryButton
+              onPress={() =>
+                navigation.navigate('SharedRidesScreen', {data: createdRides})
+              }>
+              My Shared Rides
+            </PrimaryButton>
+          </View>
+
           <View style={styles.selectRideTitleText}>
             <ShareActionAreaHeadingText>Select Ride</ShareActionAreaHeadingText>
           </View>
