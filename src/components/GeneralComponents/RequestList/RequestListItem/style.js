@@ -55,23 +55,23 @@ export default StyleSheet.create({
   },
 
   acceptButton: {
-    width: '65%',
-    height: 50,
     justifyContent: 'center',
-    textAlign: 'center',
     alignItems: 'center',
+    marginHorizontal: ms(10, 0.3),
   },
   callButton: {
     width: '15%',
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    marginLeft: ms(20, 0.3),
   },
   chatButton: {
     width: '15%',
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    marginLeft: ms(20, 0.3),
   },
   verticalSeparator: {
     width: 2,

@@ -29,7 +29,7 @@ const Component = ({
   seatsAvailable,
 }) => {
   return (
-    <TouchableOpacity key={item.key} onPress={onPress}>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.mainContainer}>
         <View
           style={{

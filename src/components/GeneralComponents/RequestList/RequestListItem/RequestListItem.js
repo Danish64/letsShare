@@ -108,10 +108,10 @@ const Component = ({item, onPress, shareId}) => {
       <View style={styles.ContactContainer}>
         <View style={styles.acceptButton}>
           {item.isAccepted ? (
-            <PrimaryButtonDarkGrey>Request Accepted</PrimaryButtonDarkGrey>
+            <PrimaryButtonDarkGrey>Accepted</PrimaryButtonDarkGrey>
           ) : (
             <PrimaryButton onPress={() => AcceptRequest()}>
-              Accept Request
+              Accept
             </PrimaryButton>
           )}
         </View>
