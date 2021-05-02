@@ -23,7 +23,7 @@ import {doPost} from '../../../../utils/AxiosMethods';
 //Third Party Exports Ends
 
 const validationSchema = Yup.object().shape({
-  rideName: Yup.string().required().min(3).max(15).label('Ride Name'),
+  rideName: Yup.string().required().min(5).max(15).label('Ride Name'),
   registrationNo: Yup.string()
     .required()
     .min(4)
@@ -32,10 +32,10 @@ const validationSchema = Yup.object().shape({
   contactNo: Yup.string().required().min(11).label('Contact No'),
 });
 
-// const categories = [
-//   {label: 'Car', value: 1},
-//   {label: 'Bike', value: 2},
-// ];
+const categories = [
+  {label: 'Car', value: 1},
+  {label: 'Bike', value: 2},
+];
 
 const Component = ({navigation}) => {
   const state = useSelector((state) => state);
@@ -47,23 +47,16 @@ const Component = ({navigation}) => {
       ownerId: user._id,
       rideName: values.rideName,
       registrationNumber: values.registrationNo,
-      rideType: 'car',
+      rideType: values.rideType.label,
       ownerContactNumber: values.contactNo,
     };
-    console.log(newRideData);
     createRide(newRideData);
-    updateRides(newRideData);
   };
 
   const createRide = async (newRideData) => {
     const result = await doPost('v1/userRides/createRide', newRideData);
     console.log('Data from Ride Api', result);
     navigation.navigate('CreateRideScreen', newRideData);
-  };
-
-  const updateRides = (newData) => {
-    const arrayData = addRideDummyData;
-    addRideDummyData.unshift(newData);
   };
 
   return (
@@ -74,10 +67,8 @@ const Component = ({navigation}) => {
             rideName: '',
             registrationNo: '',
             contactNo: '',
-            // category: null,
-            // selected: null,
+            rideType: '',
             image: [],
-            // id: '',
           }}
           onSubmit={(values) => {
             submitForm(values);
@@ -111,13 +102,13 @@ const Component = ({navigation}) => {
             name="contactNo"
             placeholder="Enter Contact No. e.g; 03367676767"
           />
-          {/* <FormPicker
-            heading="Choose Category"
-            name="category"
+          <FormPicker
+            heading="Choose Ride Type"
+            name="rideType"
             icon="keypad-outline"
             items={categories}
-            placeholder="Category"
-          /> */}
+            placeholder="Choose Ride Type"
+          />
 
           {/* Submit Form */}
           <View style={styles.submitButtonArea}>

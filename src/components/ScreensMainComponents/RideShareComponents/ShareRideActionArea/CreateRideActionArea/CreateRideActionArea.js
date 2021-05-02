@@ -57,7 +57,8 @@ const Component = ({}) => {
       ownerId: ownerId,
     };
     const result = await doPost('v1/userRides/getUserRides', data);
-    const rides = result.data.map((item) => {
+    const rides = result.data.map((item, index) => {
+      item.key = index;
       item.selected = false;
       return item;
     });
@@ -72,8 +73,8 @@ const Component = ({}) => {
       'v1/nearByRideShares/getUserNearByRideShares',
       data,
     );
-    const completeRides = result.data.map((item, key) => {
-      item.key = key;
+    const completeRides = result.data.map((item, index) => {
+      item.key = index;
       return item;
     });
     setCreatedRides(completeRides);
@@ -82,7 +83,7 @@ const Component = ({}) => {
   useEffect(() => {
     getCreatedRides();
     getRides();
-    renderItems;
+    renderItems();
   }, [addButton, newRideData]);
 
   const renderItems = () => {

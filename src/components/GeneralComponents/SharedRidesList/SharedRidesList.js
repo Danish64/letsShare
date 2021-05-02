@@ -3,8 +3,12 @@ import {FlatList, View} from 'react-native';
 import styles from './style';
 import {FlatListData} from 'res/constants/dummyData.js';
 import SharedRidesListItem from './SharedRidesListItem';
+import LoadingIndicator from '../LoadingIndicator';
 
 const Component = ({navigation, data}) => {
+  if (!data) {
+    return <LoadingIndicator />;
+  }
   return (
     <FlatList
       data={data ? data : FlatListData}

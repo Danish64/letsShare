@@ -29,7 +29,7 @@ const Component = ({Data}) => {
   const navigation = useNavigation();
   const route = useRoute();
   const {item} = route.params;
-  console.log('Data from Create Ride Action Form', route.params.item);
+  // console.log('Data from Create Ride Action Form', route.params.item);
   const submitForm = (values) => {
     // let valID = Math.floor(Math.random() * 100) + 1;
     const newData = {
@@ -55,9 +55,8 @@ const Component = ({Data}) => {
       startAddress: values.startAddress,
       destinationAddress: values.destinationAddress,
     };
-    console.log(newData);
+    // console.log(newData);
     createNearbyRide(newData);
-    // updateRides(newData);
   };
 
   const createNearbyRide = async (newRideData) => {
@@ -66,7 +65,7 @@ const Component = ({Data}) => {
       'v1/nearByRideShares/createNearByRideShare',
       data,
     );
-    console.log('Data from Create Near by Ride Api', result);
+    // console.log('Data from Create Near by Ride Api', result);
     navigation.navigate('CreateRideScreen', newRideData);
   };
 

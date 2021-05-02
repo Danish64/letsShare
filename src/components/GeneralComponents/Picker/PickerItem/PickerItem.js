@@ -16,13 +16,9 @@ import styles from './style';
 const Component = ({navigation, label, onPress}) => {
   return (
     <View style={styles.centeredView}>
-      <View style={styles.modalView}>
-        <View style={styles.itemView}>
-          <TouchableOpacity onPress={onPress}>
-            <SubtitleTextBlack>{label}</SubtitleTextBlack>
-          </TouchableOpacity>
-        </View>
-      </View>
+      <TouchableOpacity onPress={onPress} style={styles.modalView}>
+        <SubtitleTextBlack>{label}</SubtitleTextBlack>
+      </TouchableOpacity>
     </View>
   );
 };

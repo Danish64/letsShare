@@ -16,8 +16,6 @@ export default StyleSheet.create({
     borderRadius: ms(15, 0.6),
     padding: ms(25, 0.6),
     alignItems: 'center',
-    // borderWidth: 1,
-    // borderColor: Colors.Primary,
     shadowColor: Colors.Black,
     shadowOffset: {
       width: 0,
