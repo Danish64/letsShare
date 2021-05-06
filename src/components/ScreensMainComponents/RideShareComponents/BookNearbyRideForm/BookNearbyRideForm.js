@@ -50,7 +50,7 @@ const Component = ({data}) => {
       availerAddress: values.startLocation.data.description,
       availerPhoneNumber: user.phone,
       availerMessage: values.availerMessage,
-      availerSeats: values.seatsAvailable,
+      availerSeats: values.seatsAvailable.toString(),
       availerPickUpLocation: {
         address: values.startLocation.data.description,
         latitude: values.startLocation.details.geometry.location.lat,

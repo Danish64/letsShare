@@ -12,7 +12,7 @@ import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {PrimaryButton} from '../../../../res/UniversalComponents/Button';
 
-const Component = ({navigation, data}) => {
+const Component = ({navigation, data, listFor}) => {
   // console.log('Data from Create Ride Action Area to Shared Ride', data);
   return (
     <ScrollView>
@@ -133,18 +133,15 @@ const Component = ({navigation, data}) => {
           ) : (
             <Text></Text>
           )}
-          {data.listFor ? (
-            <View style={styles.detailsSection}>
-              <BodyTextBold>List for:</BodyTextBold>
-              <BodyTextBlack>{data.listFor}</BodyTextBlack>
-            </View>
-          ) : (
-            <Text></Text>
-          )}
         </View>
         <View style={{width: 150, alignSelf: 'center'}}>
           <PrimaryButton
-            onPress={() => navigation.navigate('BookRideScreen', {data: data})}>
+            onPress={() =>
+              navigation.navigate('BookRideScreen', {
+                data: data,
+                listFor: listFor,
+              })
+            }>
             Book Ride
           </PrimaryButton>
         </View>

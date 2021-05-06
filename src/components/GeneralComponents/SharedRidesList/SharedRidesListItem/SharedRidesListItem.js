@@ -38,7 +38,7 @@ const Component = ({
             flexDirection: 'row',
           }}>
           {rideCategory && (
-            <View style={{width: '80%', alignItems: 'center'}}>
+            <View style={{width: '80%', alignItems: 'center', paddingTop: 10}}>
               <RecentlySharedTitleText>
                 {rideCategory + ' Ride'}
               </RecentlySharedTitleText>
@@ -51,7 +51,6 @@ const Component = ({
               style={{
                 width: '5%',
                 height: 15,
-                // backgroundColor: 'blue',
                 borderRadius: 30,
                 backgroundColor: Colors.Primary,
               }}

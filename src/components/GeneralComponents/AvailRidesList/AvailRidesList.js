@@ -5,7 +5,7 @@ import {FlatListData} from 'res/constants/dummyData.js';
 import AvailRidesListItem from './AvailRidesListItem';
 import LoadingIndicator from '../../../components/GeneralComponents/LoadingIndicator';
 
-const Component = ({navigation, data}) => {
+const Component = ({navigation, data, listFor}) => {
   if (!data) {
     return <LoadingIndicator />;
   }
@@ -26,7 +26,12 @@ const Component = ({navigation, data}) => {
           destinationLocation={item.destinationLocation}
           seatsAvailable={item.seatsAvailable}
           pickupLocation={item.pickupLocation}
-          onPress={() => navigation.navigate('AvailRideDetail', {item: item})}
+          onPress={() =>
+            navigation.navigate('AvailRideDetail', {
+              item: item,
+              listFor: listFor,
+            })
+          }
         />
       )}
       style={styles.FlatListStyle}

@@ -34,11 +34,6 @@ const Component = ({item, onPress, shareId}) => {
 
   const state = useSelector((state) => state);
 
-  // console.log('Availer Id ', item.availerId);
-  // console.log('Share Id', shareId);
-  // console.log('Booking Id', item._id);
-  // console.log('Break');
-
   const AcceptRequest = async () => {
     const data = {
       availerId: item.availerId,

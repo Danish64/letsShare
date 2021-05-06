@@ -8,14 +8,17 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {doPost} from '../../../../utils/AxiosMethods';
 import {useSelector} from 'react-redux';
 
-const Component = ({navigation, item}) => {
+const Component = ({navigation, item, listFor}) => {
   const route = useRoute();
-  // console.log('Avail Ride Detail Screen', route.params.item);
 
   return (
     <Container>
       <Header title="Ride Detail" hasBackIcon navigation={navigation} />
-      <AvailRideItem navigation={navigation} data={route.params.item} />
+      <AvailRideItem
+        listFor={route.params.listFor}
+        navigation={navigation}
+        data={route.params.item}
+      />
     </Container>
   );
 };
