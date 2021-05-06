@@ -8,6 +8,9 @@ export default StyleSheet.create({
     height: mvs(300, 0.7),
     marginTop: mvs(40, 0.6),
   },
+  enterPasswordText: {
+    marginHorizontal: ms(30, 0.5),
+  },
   loginOrSignupTitleText: {
     marginTop: mvs(50, 0.6),
     marginHorizontal: ms(25, 0.6),

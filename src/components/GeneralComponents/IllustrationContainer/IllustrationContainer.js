@@ -8,11 +8,11 @@ import {Colors} from 'res/constants/Colors';
 
 //Third Party Exports Ends
 
-const Component = ({navigation, illustration}) => {
+const Component = ({navigation, illustration, style}) => {
   return (
     <View style={styles.illustrationContainer}>
       <Image
-        style={styles.imageStyle}
+        style={[styles.imageStyle, style]}
         resizeMode="cover"
         source={illustration}
       />

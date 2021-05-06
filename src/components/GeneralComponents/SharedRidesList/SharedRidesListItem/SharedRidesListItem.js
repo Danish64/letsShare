@@ -63,10 +63,20 @@ const Component = ({
             <View style={styles.imageContainer}>
               <Image source={RidesIcon} style={styles.image} />
             </View>
-
-            {rideName && <CaptionTextPrimary>{rideName}</CaptionTextPrimary>}
-
-            {registrationNo && <CaptionText>{registrationNo}</CaptionText>}
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              {rideName && <CaptionTextPrimary>{rideName}</CaptionTextPrimary>}
+            </View>
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              {registrationNo && <CaptionText>{registrationNo}</CaptionText>}
+            </View>
           </View>
           <View style={styles.locationDetails}>
             {startLocation && (

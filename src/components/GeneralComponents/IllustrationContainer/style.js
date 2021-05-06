@@ -7,7 +7,7 @@ export default StyleSheet.create({
     width: '100%',
     height: mvs(180, 0.6),
     justifyContent: 'center',
-    backgroundColor: 'lightblue',
+    alignItems: 'center',
   },
   imageStyle: {
     width: '100%',

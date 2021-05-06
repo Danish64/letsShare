@@ -1,20 +1,55 @@
 import React from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, View, Text} from 'react-native';
 import styles from './style';
 import {FlatListData} from 'res/constants/dummyData.js';
 import SharedRidesListItem from './SharedRidesListItem';
+import IllustrationContainer from '../../GeneralComponents/IllustrationContainer';
+import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
+import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
 import LoadingIndicator from '../LoadingIndicator';
+import {useIsFocused} from '@react-navigation/native';
 
 const Component = ({navigation, data}) => {
+  useIsFocused();
+  const listEmptyComponent = () => {
+    return (
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: 100,
+        }}>
+        <IllustrationContainer
+          style={{width: 300, height: 300}}
+          illustration={Illustration}
+        />
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: 60,
+          }}>
+          <ButtonTextLightGrey>
+            You have not shared any ride
+          </ButtonTextLightGrey>
+        </View>
+      </View>
+    );
+  };
+
   if (!data) {
-    return <LoadingIndicator />;
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <LoadingIndicator />
+      </View>
+    );
   }
   return (
     <FlatList
       data={data ? data : FlatListData}
+      ListEmptyComponent={listEmptyComponent}
       renderItem={({item}) => (
         <SharedRidesListItem
-          key={item._id}
           item={item}
           startLocation={item.startLocation}
           destinationLocation={item.destinationLocation}
@@ -37,7 +72,7 @@ const Component = ({navigation, data}) => {
       )}
       style={styles.FlatListStyle}
       keyExtractor={(item) => item.id}
-      showsVerticalScrollIndicator={false}
+      showsVerticalScrollIndicator={true}
     />
   );
 };

@@ -12,13 +12,9 @@ import {
   FormImagePicker,
   FormLocation,
 } from 'res/UniversalComponents/Forms';
-import {shareRidesData} from 'res/constants/dummyData';
 
 import {useNavigation, useRoute} from '@react-navigation/native';
-import {ScrollView} from 'react-native-gesture-handler';
 import {doPost} from '../../../../utils/AxiosMethods';
-
-// import {useRoute} from '@react-navigation/native';
 
 const validationSchema = Yup.object().shape({
   fare: Yup.string().required().min(3).max(5).label('Fare'),
@@ -29,11 +25,9 @@ const Component = ({Data}) => {
   const navigation = useNavigation();
   const route = useRoute();
   const {item} = route.params;
-  // console.log('Data from Create Ride Action Form', route.params.item);
+
   const submitForm = (values) => {
-    // let valID = Math.floor(Math.random() * 100) + 1;
     const newData = {
-      // id: Math.floor(Math.random() * 100) + 1,
       sharerId: item.ownerId,
       rideName: item.rideName,
       registrationNumber: item.registrationNumber,
@@ -55,7 +49,6 @@ const Component = ({Data}) => {
       startAddress: values.startAddress,
       destinationAddress: values.destinationAddress,
     };
-    // console.log(newData);
     createNearbyRide(newData);
   };
 
@@ -65,7 +58,6 @@ const Component = ({Data}) => {
       'v1/nearByRideShares/createNearByRideShare',
       data,
     );
-    // console.log('Data from Create Near by Ride Api', result);
     navigation.navigate('CreateRideScreen', newRideData);
   };
 
@@ -119,9 +111,6 @@ const Component = ({Data}) => {
             name="destinationLocation"
             title="Destination Location"
           />
-
-          {/* Input List For:
-          <StepperButtonInputField title="List For(days):" name="listFor" /> */}
 
           {/* Submit Button */}
           <View style={styles.buttonAreastyle}>
