@@ -22,8 +22,7 @@ import {
 import styles from './style';
 import ShareRide from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
 import Choose from 'res/images/ModulesImages/GeneralImages/noData.png';
-import {useNavigation, useRoute} from '@react-navigation/native';
-// import {useRoute} from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 import {
   doGet,
   doGetCustom,
@@ -31,21 +30,16 @@ import {
   doPost,
 } from '../../../../../utils/AxiosMethods';
 
-import {addRideDummyData} from 'res/constants/dummyData';
 import {useSelector} from 'react-redux';
-import {Alert} from 'react-native';
 
 //Third Party Exports Ends
 
-const Component = ({}) => {
-  const navigation = useNavigation();
-  const route = useRoute();
-  const newRideData = addRideDummyData[0];
+const Component = ({navigation}) => {
   const state = useSelector((state) => state);
   const ownerId = state.userInformation.user._id;
   const userId = state.userInformation.user._id;
   const sharerId = state.userInformation.user._id;
-  const [addedRides, setAddedRides] = useState(null);
+  // console.log(userId);
 
   const [data, setData] = useState();
   const [createdRides, setCreatedRides] = useState();
@@ -79,12 +73,13 @@ const Component = ({}) => {
     });
     setCreatedRides(completeRides);
   };
+  const isFocused = useIsFocused();
 
   useEffect(() => {
-    getCreatedRides();
     getRides();
     renderItems();
-  }, [addButton, newRideData]);
+    getCreatedRides();
+  }, [addButton, isFocused]);
 
   const renderItems = () => {
     return data?.map((item, index) => {

@@ -80,7 +80,9 @@ const Component = ({loginRequest, userInfo}) => {
 
   return (
     <View style={styles.emailLoginComponentArea}>
-      <ShareActionAreaHeadingText>Enter Password </ShareActionAreaHeadingText>
+      <View style={styles.enterPasswordText}>
+        <ShareActionAreaHeadingText>Enter Password </ShareActionAreaHeadingText>
+      </View>
 
       <View style={styles.emailInputArea}>
         <Form

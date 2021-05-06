@@ -1,2 +1,2 @@
-import AvailCityToCityRide from './AvailCityToCityRide';
-export default AvailCityToCityRide;
+import Component from './AvailCityToCityRide';
+export default Component;

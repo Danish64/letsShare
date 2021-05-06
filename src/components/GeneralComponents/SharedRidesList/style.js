@@ -6,5 +6,6 @@ export default StyleSheet.create({
   FlatListStyle: {
     paddingLeft: ms(18, 0.6),
     width: '100%',
+    marginVertical: 20,
   },
 });

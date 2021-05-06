@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, KeyboardAvoidingView, TextInput, Text} from 'react-native';
 import * as Yup from 'yup';
-
 import styles from './style';
+
 import {
   FormByFormik as Form,
   StepperButtonInputField,
@@ -12,7 +12,9 @@ import {
   FormImagePicker,
   FormLocation,
 } from '../../../../res/UniversalComponents/Forms';
-import {shareRidesData} from 'res/constants/dummyData';
+
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {doPost} from '../../../../utils/AxiosMethods';
 
 const validationSchema = Yup.object().shape({
   fare: Yup.string().required().min(3).max(5).label('Fare'),
@@ -21,30 +23,47 @@ const validationSchema = Yup.object().shape({
   departureTime: Yup.string().required().label('Departure Time'),
 });
 
-const Component = ({navigation, Data}) => {
+const Component = ({Data}) => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const {item} = route.params;
+
   const submitForm = (values) => {
-    let valID = Math.floor(Math.random() * 100) + 1;
     const newData = {
-      id: valID,
-      rideName: Data.rideName,
-      registrationNo: Data.registrationNo,
-      contactNumber: Data.contactNumber,
-      rideType: 'City to City Ride',
-      image: Data.image,
+      sharerId: item.ownerId,
+      rideName: item.rideName,
+      registrationNumber: item.registrationNumber,
+      rideType: item.rideType,
+      ownerContactNumber: item.ownerContactNumber,
+      ridePictures: [],
+      startLocation: {
+        address: values.startLocation.data.description,
+        latitude: values.startLocation.details.geometry.location.lat,
+        longitude: values.startLocation.details.geometry.location.lat,
+      },
+      destinationLocation: {
+        address: values.destinationLocation.data.description,
+        latitude: values.destinationLocation.details.geometry.location.lat,
+        longitude: values.destinationLocation.details.geometry.location.lat,
+      },
       fare: values.fare,
+      seatsAvailable: values.seatsAvailable.toString(),
       departureDate: values.departureDate,
       departureTime: values.departureTime,
-      startLocation: values.startLocation,
-      destinationLocation: values.destinationLocation,
-      listFor: values.listFor,
-      seatsAvailable: values.seatsAvailable,
+      routeInfo: values.routeInfo,
+      booking: [],
     };
-    updateRides(newData);
+    createCityToCityRide(newData);
   };
 
-  const updateRides = (newData) => {
-    shareRidesData.push(newData);
-    navigation.navigate('RideShareHome', newData);
+  const createCityToCityRide = async (newRideData) => {
+    let data = newRideData;
+    const result = await doPost(
+      'v1/cityToCityRideShares/createCityToCityRideShare',
+      data,
+    );
+    console.log('Data from Create Near by Ride Api', result);
+    navigation.navigate('CreateRideScreen', newRideData);
   };
 
   return (
@@ -53,12 +72,12 @@ const Component = ({navigation, Data}) => {
         <Form
           initialValues={{
             fare: '',
-            listFor: '',
+            seatsAvailable: '',
             departureDate: '',
             departureTime: '',
             startLocation: {},
             destinationLocation: {},
-            seatsAvailable: '',
+            routeInfo: '',
           }}
           onSubmit={(values) => {
             submitForm(values);
@@ -81,7 +100,7 @@ const Component = ({navigation, Data}) => {
           {/* Departure Date */}
           <FormField
             title="Departure Date"
-            maxLength={100}
+            maxLength={30}
             name="departureDate"
             placeholder="e.g 30th March, 2021"
           />
@@ -89,7 +108,7 @@ const Component = ({navigation, Data}) => {
           {/* Departure Time */}
           <FormField
             title="Departure Time"
-            maxLength={100}
+            maxLength={15}
             name="departureTime"
             placeholder="e.g 5pm"
           />
@@ -103,8 +122,13 @@ const Component = ({navigation, Data}) => {
             title="Destination Location"
           />
 
-          {/* Input List For:
-          <StepperButtonInputField title="List For(days):" name="listFor" /> */}
+          {/* Route Info */}
+          <FormField
+            title="Route Information"
+            maxLength={15}
+            name="routeInfo"
+            placeholder="e.g GT Road route meets my requirement"
+          />
 
           {/* Submit Button */}
           <View style={styles.buttonAreastyle}>

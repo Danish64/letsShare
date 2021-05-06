@@ -12,10 +12,10 @@ import NearbyRideFormArea from '../../../../../components/ScreensMainComponents/
 const Component = ({navigation, route}) => {
   //  console.log('RideShareScreen', navigation);
   return (
-    <Container>    
+    <Container>
       <Header navigation={navigation} hasBackIcon title="Nearby Ride" />
       <ScrollViewContainer>
-        <NearbyRideFormArea navigation={navigation} Data={route.params.item}/>
+        <NearbyRideFormArea navigation={navigation} Data={route.params.item} />
       </ScrollViewContainer>
     </Container>
   );

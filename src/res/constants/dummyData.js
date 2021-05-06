@@ -19,7 +19,7 @@ export const addRideDummyData = [
     rideName: 'Alto VXR',
     registrationNo: 'LES-2010',
     contactNumber: '03345654654',
-    rideCategory: null,
+    rideType: 'Car',
     image: shareRide,
     selected: false,
   },

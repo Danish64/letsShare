@@ -13,7 +13,9 @@ import styles from './style';
 //For Redux
 import {connect} from 'react-redux';
 
-const Component = ({userInfo, navigation}) => {
+const Component = ({userInfo}) => {
+  const navigation = useNavigation();
+
   const logout = () => {
     clearAll();
     // implement navigate to login Screen

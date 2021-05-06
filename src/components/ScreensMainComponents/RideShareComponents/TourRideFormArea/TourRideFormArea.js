@@ -12,42 +12,59 @@ import {
   FormImagePicker,
   FormLocation,
 } from 'res/UniversalComponents/Forms';
-import {shareRidesData} from 'res/constants/dummyData';
+
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {doPost} from '../../../../utils/AxiosMethods';
 
 const validationSchema = Yup.object().shape({
   fare: Yup.string().required().min(3).max(5).label('Fare'),
   seatsAvailable: Yup.string().required().label('Available Seats'),
   departureDate: Yup.string().required().label('Departure Date'),
+  returnDate: Yup.string().required().label('Return Date'),
   departureTime: Yup.string().required().label('Departure Time'),
+  tourDays: Yup.string().required().min(1).max(2).label('Tour Days'),
 });
 
-const Component = ({navigation, Data}) => {
+const Component = ({Data}) => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const {item} = route.params;
+
   const submitForm = (values) => {
-    let valID = Math.floor(Math.random() * 100) + 1;
     const newData = {
-      id: valID,
-      rideName: Data.rideName,
-      registrationNo: Data.registrationNo,
-      contactNumber: Data.contactNumber,
-      rideType: 'Tour Ride',
-      image: Data.image,
+      sharerId: item.ownerId,
+      rideName: item.rideName,
+      registrationNumber: item.registrationNumber,
+      rideType: item.rideType,
+      ownerContactNumber: item.ownerContactNumber,
+      ridePictures: [],
+      startLocation: {
+        address: values.startLocation.data.description,
+        latitude: values.startLocation.details.geometry.location.lat,
+        longitude: values.startLocation.details.geometry.location.lat,
+      },
+      destinationLocation: {
+        address: values.destinationLocation.data.description,
+        latitude: values.destinationLocation.details.geometry.location.lat,
+        longitude: values.destinationLocation.details.geometry.location.lat,
+      },
       fare: values.fare,
+      seatsAvailable: values.seatsAvailable.toString(),
       departureDate: values.departureDate,
+      returnDate: values.returnDate,
       departureTime: values.departureTime,
-      startLocation: values.startLocation,
-      destinationLocation: values.destinationLocation,
-      listFor: values.listFor,
-      seatsAvailable: values.seatsAvailable,
+      tourInfo: values.tourInfo,
+      tourDays: values.tourDays,
+      booking: [],
     };
-    // console.log(newData);
-    updateRides(newData);
+    createTourRide(newData);
   };
 
-  const updateRides = (newData) => {
-    shareRidesData.push(newData);
-    // console.log(NearbyRides);
-    navigation.navigate('RideShareHome', newData);
-    console.warn('Shared Successfuly');
+  const createTourRide = async (newRideData) => {
+    let data = newRideData;
+    const result = await doPost('v1/tourRideShares/createTourRideShare', data);
+    console.log('Data from Create Near by Ride Api', result);
+    navigation.navigate('CreateRideScreen', newRideData);
   };
 
   return (
@@ -55,13 +72,15 @@ const Component = ({navigation, Data}) => {
       <View style={styles.ComponentArea}>
         <Form
           initialValues={{
-            fare: '',
-            listFor: '',
-            departureDate: '',
-            departureTime: '',
             startLocation: {},
             destinationLocation: {},
+            fare: '',
             seatsAvailable: '',
+            departureDate: '',
+            returnDate: '',
+            departureTime: '',
+            tourInfo: '',
+            tourDays: '',
           }}
           onSubmit={(values) => {
             submitForm(values);
@@ -86,7 +105,14 @@ const Component = ({navigation, Data}) => {
             title="Departure Date"
             maxLength={100}
             name="departureDate"
-            placeholder="e.g 30th March, 2021"
+            placeholder="e.g March 30, 2021"
+          />
+          {/* Return Date */}
+          <FormField
+            title="Return Date"
+            maxLength={50}
+            name="returnDate"
+            placeholder="e.g April 4, 2021"
           />
 
           {/* Departure Time */}
@@ -97,6 +123,23 @@ const Component = ({navigation, Data}) => {
             placeholder="e.g 5pm"
           />
 
+          {/* Tour Info */}
+          <FormField
+            title="Tour Info"
+            maxLength={100}
+            name="tourInfo"
+            placeholder="e.g It will be a 6 days tour"
+          />
+
+          {/* Tour Days */}
+          <FormField
+            title="Tour Days"
+            keyboardType="numeric"
+            maxLength={2}
+            name="tourDays"
+            placeholder="e.g 6 "
+          />
+
           {/* Start Location */}
           <FormLocation name="startLocation" title="Start Location" />
 
@@ -105,9 +148,6 @@ const Component = ({navigation, Data}) => {
             name="destinationLocation"
             title="Destination Location"
           />
-
-          {/* Input List For: */}
-          {/* <StepperButtonInputField title="List For(days):" name="listFor" /> */}
 
           {/* Submit Button */}
           <View style={styles.buttonAreastyle}>

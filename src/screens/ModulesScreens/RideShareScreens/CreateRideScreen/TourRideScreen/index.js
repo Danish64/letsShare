@@ -13,10 +13,10 @@ const Component = ({navigation, route}) => {
   //  console.log('RideShareScreen', navigation);
   return (
     <Container>
-        <Header navigation={navigation} hasBackIcon title="Tour Ride" />
-        <ScrollViewContainer>
-          <TourRideFormArea navigation={navigation} Data={route.params.item}/>
-        </ScrollViewContainer>
+      <Header navigation={navigation} hasBackIcon title="Tour Ride" />
+      <ScrollViewContainer>
+        <TourRideFormArea navigation={navigation} Data={route.params.item} />
+      </ScrollViewContainer>
     </Container>
   );
 };
