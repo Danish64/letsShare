@@ -20,6 +20,7 @@ const Component = ({navigation}) => {
   };
   return (
     <AvailRidesList
+      listFor="AvailTourRide"
       data={data}
       navigation={navigation}
       //screen="RecentlySharedRideScreen"

@@ -5,14 +5,39 @@ import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer';
 
 import Header from '../../../../components/GeneralComponents/Header';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import BookRideForm from '../../../../components/ScreensMainComponents/RideShareComponents/BookRideForm';
+import BookNearbyRideForm from '../../../../components/ScreensMainComponents/RideShareComponents/BookNearbyRideForm';
+import BookCityToCityRideForm from '../../../../components/ScreensMainComponents/RideShareComponents/BookCityToCityRideForm';
+import BookTourRideForm from '../../../../components/ScreensMainComponents/RideShareComponents/BookTourRideForm';
+
 import {ScrollView} from 'react-native-gesture-handler';
 
-const Component = ({navigation, route}) => {
+const Component = ({navigation, route, listFor}) => {
+  const formCategory = route.params.listFor;
+
+  if (formCategory === 'AvailCityToCityRide') {
+    return (
+      <ScrollViewContainer>
+        <Header title="Request Booking" hasBackIcon navigation={navigation} />
+        <BookCityToCityRideForm
+          navigation={navigation}
+          data={route.params.data}
+        />
+      </ScrollViewContainer>
+    );
+  }
+  if (formCategory === 'AvailTourRide') {
+    return (
+      <ScrollViewContainer>
+        <Header title="Request Booking" hasBackIcon navigation={navigation} />
+        <BookTourRideForm navigation={navigation} data={route.params.data} />
+      </ScrollViewContainer>
+    );
+  }
+
   return (
     <ScrollViewContainer>
-      <Header title="Book Ride" hasBackIcon navigation={navigation} />
-      <BookRideForm navigation={navigation} data={route.params.data} />
+      <Header title="Request Booking" hasBackIcon navigation={navigation} />
+      <BookNearbyRideForm navigation={navigation} data={route.params.data} />
     </ScrollViewContainer>
   );
 };

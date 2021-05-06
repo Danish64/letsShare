@@ -42,7 +42,7 @@ const Component = ({navigation}) => {
   // console.log(userId);
 
   const [data, setData] = useState();
-  const [createdRides, setCreatedRides] = useState();
+  const [userAllRides, setUserAllRides] = useState();
   const [view, setView] = useState(false);
   const [item, setItem] = useState({});
 
@@ -59,26 +59,23 @@ const Component = ({navigation}) => {
     setData(rides);
   };
 
-  const getCreatedRides = async () => {
+  const getUserAllRides = async () => {
     const data = {
       sharerId: sharerId,
     };
-    const result = await doPost(
-      'v1/nearByRideShares/getUserNearByRideShares',
-      data,
-    );
-    const completeRides = result.data.map((item, index) => {
+    const result = await doPost('v1/userRideShares', data);
+    const allSharedRides = result.data.map((item, index) => {
       item.key = index;
       return item;
     });
-    setCreatedRides(completeRides);
+    setUserAllRides(allSharedRides);
   };
   const isFocused = useIsFocused();
 
   useEffect(() => {
     getRides();
     renderItems();
-    getCreatedRides();
+    getUserAllRides();
   }, [addButton, isFocused]);
 
   const renderItems = () => {
@@ -195,7 +192,7 @@ const Component = ({navigation}) => {
           <View style={styles.mySharedRides}>
             <PrimaryButton
               onPress={() =>
-                navigation.navigate('SharedRidesScreen', {data: createdRides})
+                navigation.navigate('SharedRidesScreen', {data: userAllRides})
               }>
               My Shared Rides
             </PrimaryButton>

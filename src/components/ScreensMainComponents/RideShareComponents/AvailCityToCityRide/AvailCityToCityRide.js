@@ -23,6 +23,7 @@ const Component = ({navigation}) => {
   };
   return (
     <AvailRidesList
+      listFor="AvailCityToCityRide"
       data={data}
       navigation={navigation}
       //screen="RecentlySharedRideScreen"
