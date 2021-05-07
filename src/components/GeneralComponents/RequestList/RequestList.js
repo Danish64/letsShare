@@ -13,6 +13,8 @@ import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
 const Component = ({navigation, data}) => {
   const route = useRoute();
   const shareId = data._id;
+  const rideCategory = data.rideCategory;
+  console.log('Ride Category', rideCategory);
 
   const listEmptyComponent = () => {
     return (
@@ -49,7 +51,12 @@ const Component = ({navigation, data}) => {
       data={data ? data.bookings : FlatListData}
       ListEmptyComponent={listEmptyComponent}
       renderItem={({item}) => (
-        <RequestListItem key={data._id} shareId={shareId} item={item} />
+        <RequestListItem
+          key={data._id}
+          shareId={shareId}
+          rideCategory={rideCategory}
+          item={item}
+        />
       )}
       style={styles.FlatListStyle}
       showsVerticalScrollIndicator={false}
