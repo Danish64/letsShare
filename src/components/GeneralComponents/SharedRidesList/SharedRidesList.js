@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {FlatList, View, Text} from 'react-native';
 import styles from './style';
 import {FlatListData} from 'res/constants/dummyData.js';
@@ -7,10 +7,9 @@ import IllustrationContainer from '../../GeneralComponents/IllustrationContainer
 import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
 import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
 import LoadingIndicator from '../LoadingIndicator';
-import {useIsFocused} from '@react-navigation/native';
 
 const Component = ({navigation, data}) => {
-  useIsFocused();
+  console.log('Data in My Shared Rides Screen', data);
   const listEmptyComponent = () => {
     return (
       <View

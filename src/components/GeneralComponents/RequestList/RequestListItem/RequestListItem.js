@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, TouchableOpacity, Text, Image} from 'react-native';
 import styles from './style';
 import {
@@ -28,13 +28,31 @@ import {
   doPost,
   doPutAws,
 } from '../../../../utils/AxiosMethods';
+import {useIsFocused} from '@react-navigation/native';
 
-const Component = ({item, onPress, shareId}) => {
+const Component = ({item, onPress, rideCategory, shareId}) => {
   const [isAccepted, setIsAccepted] = useState('');
 
   const state = useSelector((state) => state);
+  const isFocused = useIsFocused();
 
-  const AcceptRequest = async () => {
+  useEffect(() => {
+    isFocused;
+  }, [isAccepted]);
+
+  const AcceptRequest = (rideCategory) => {
+    if (rideCategory === 'Nearby') {
+      AcceptNearbyRideRequest();
+    }
+    if (rideCategory === 'CityToCity') {
+      AcceptCityToCityRideRequest();
+    }
+    if (rideCategory === 'TourRide') {
+      AcceptTourRideRequest();
+    }
+  };
+
+  const AcceptNearbyRideRequest = async () => {
     const data = {
       availerId: item.availerId,
       shareId: shareId,
@@ -43,6 +61,36 @@ const Component = ({item, onPress, shareId}) => {
     const result = await doPutAws(
       data,
       'v1/nearByRideShares/acceptNearByRidesSharesBooking',
+    );
+    setIsAccepted(result.status);
+
+    console.log('Accept Availer Request API Call Result', result.data);
+  };
+
+  const AcceptCityToCityRideRequest = async () => {
+    const data = {
+      availerId: item.availerId,
+      shareId: shareId,
+      bookingId: item._id,
+    };
+    const result = await doPutAws(
+      data,
+      'v1/cityToCityRideShares/acceptCityToCityRideSharesBooking',
+    );
+    setIsAccepted(result.status);
+
+    console.log('Accept Availer Request API Call Result', result.data);
+  };
+
+  const AcceptTourRideRequest = async () => {
+    const data = {
+      availerId: item.availerId,
+      shareId: shareId,
+      bookingId: item._id,
+    };
+    const result = await doPutAws(
+      data,
+      'v1/tourRideShares/acceptTourRideSharesBooking',
     );
     setIsAccepted(result.status);
 
@@ -105,7 +153,7 @@ const Component = ({item, onPress, shareId}) => {
           {item.isAccepted ? (
             <PrimaryButtonDarkGrey>Accepted</PrimaryButtonDarkGrey>
           ) : (
-            <PrimaryButton onPress={() => AcceptRequest()}>
+            <PrimaryButton onPress={() => AcceptRequest(rideCategory)}>
               Accept
             </PrimaryButton>
           )}

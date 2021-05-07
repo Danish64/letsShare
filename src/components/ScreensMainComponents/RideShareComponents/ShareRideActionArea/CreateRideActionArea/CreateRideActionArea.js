@@ -73,10 +73,10 @@ const Component = ({navigation}) => {
   const isFocused = useIsFocused();
 
   useEffect(() => {
+    getUserAllRides();
     getRides();
     renderItems();
-    getUserAllRides();
-  }, [addButton, isFocused]);
+  }, [isFocused]);
 
   const renderItems = () => {
     return data?.map((item, index) => {
