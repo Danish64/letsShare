@@ -6,7 +6,6 @@ export default StyleSheet.create({
   mainContainer: {
     width: '100%',
     backgroundColor: Colors.White,
-    marginTop: mvs(15, 0.6),
     marginBottom: mvs(15, 0.6),
   },
   subContainer1: {
@@ -15,57 +14,53 @@ export default StyleSheet.create({
     width: '100%',
     height: mvs(200, 0.6),
   },
-  imageContainer: {
-    width: '100%',
-    height: '100%',
+  categoryTitleText: {
+    marginVertical: mvs(10, 0.3),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  image: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'contain',
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: ms(40, 0.6),
+    marginBottom: mvs(3, 0.2),
   },
+  rowSeparator: {
+    height: 1,
+    flexDirection: 'row',
+    width: 300,
+    backgroundColor: Colors.SearchBarWhite,
+    alignSelf: 'center',
+  },
+
   subContainer2: {
     width: '100%',
-    //alignItems: 'center',
     paddingLeft: mvs(10, 0.6),
     paddingRight: mvs(10, 0.6),
     marginTop: mvs(10, 0.6),
     marginBottom: mvs(10, 0.6),
   },
-  titleSection: {
-    padding: mvs(5, 0.6),
+
+  locationBody: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginVertical: mvs(10, 0.5),
   },
-  descriptionSection: {
-    padding: mvs(5, 0.6),
-    backgroundColor: Colors.BackgroundWhite,
-  },
-  detailsSection: {
-    padding: mvs(5, 0.6),
-  },
-  locationSection: {
-    width: '100%',
-    // height: mvs(220, 0.6),
-    // justifyContent: 'space-between',
-  },
-  locationBody: {
-    width: '100%',
-    // height: '30%',
-  },
+
   locationContainer: {
-    // ...StyleSheet.absoluteFillObject,
-    height: mvs(160, 0.6),
-    width: '100%',
-    marginTop: mvs(5, 0.6),
+    height: mvs(150, 0.6),
+    marginHorizontal: ms(12, 0.5),
+    borderWidth: 2,
+    borderRadius: 5,
+    elevation: 2,
+    borderColor: Colors.LightGrey,
   },
-  setLocationContainer: {
-    padding: 10,
-    height: '100%',
-  },
+
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  bookRideButtonView: {
+    marginHorizontal: ms(20, 0.5),
+    marginVertical: mvs(10, 0.5),
   },
 });

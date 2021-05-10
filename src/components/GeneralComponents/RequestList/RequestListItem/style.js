@@ -37,7 +37,6 @@ export default StyleSheet.create({
     height: mvs(100, 0.7),
     justifyContent: 'center',
     paddingHorizontal: ms(10, 0.6),
-    alignItems: 'center',
   },
 
   otherDetail: {

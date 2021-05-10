@@ -36,9 +36,11 @@ const Component = ({
             alignItems: 'center',
           }}>
           {rideCategory && (
-            <RecentlySharedTitleText>
-              {rideCategory + ' Ride'}
-            </RecentlySharedTitleText>
+            <View style={{width: '80%', alignItems: 'center', paddingTop: 10}}>
+              <RecentlySharedTitleText>
+                {rideCategory + ' Ride'}
+              </RecentlySharedTitleText>
+            </View>
           )}
         </View>
         <View style={{flexDirection: 'row'}}>
