@@ -14,7 +14,6 @@ const Component = ({navigation, data}) => {
   const route = useRoute();
   const shareId = data._id;
   const rideCategory = data.rideCategory;
-  console.log('Ride Category', rideCategory);
 
   const listEmptyComponent = () => {
     return (

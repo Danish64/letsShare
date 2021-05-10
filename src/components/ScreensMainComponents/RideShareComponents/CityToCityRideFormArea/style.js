@@ -10,13 +10,6 @@ export default StyleSheet.create({
     //backgroundColor: 'pink',
   },
   buttonAreastyle: {
-    width: '100%',
-    height: mvs(100, 0.7),
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
     marginHorizontal: ms(10, 0.6),
-    backgroundColor: Colors.White,
-    borderWidth: ms(0),
   },
 });

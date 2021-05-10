@@ -265,6 +265,9 @@ export default StyleSheet.create({
   buttonPrimary: {
     ...buttonProperties,
     backgroundColor: Colors.Primary,
+    alignItems: 'center',
+    paddingVertical: vs(15),
+    justifyContent: 'center',
   },
   buttonPrimaryWhite: {
     ...buttonProperties,

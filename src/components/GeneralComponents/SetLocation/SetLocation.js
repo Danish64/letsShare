@@ -7,7 +7,6 @@ import {
   Text,
   Modal,
   TouchableOpacity,
-  Button,
   Image,
   Alert,
 } from 'react-native';
@@ -28,6 +27,7 @@ import shareGoods from '../../../res/images/ModulesImages/GoodsSharingImages/sha
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Colors} from 'res/constants/Colors.js';
+import {ActionButtonBlack as Button} from 'res/UniversalComponents/ActionButtons.js';
 
 const Component = ({onSelectItem, title}) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -140,9 +140,11 @@ const Component = ({onSelectItem, title}) => {
             }}
           />
           <View style={styles.buttonStyles}>
-            <Button title="Set Location" onPress={() => setLocation()}></Button>
+            <Button onPress={() => setLocation()}>Set Location</Button>
           </View>
-          <Button title="Close" onPress={() => setModalVisible(false)}></Button>
+          <View style={styles.buttonStyles}>
+            <Button onPress={() => setModalVisible(false)}>Close</Button>
+          </View>
         </View>
       </Modal>
     </KeyboardAvoidingView>

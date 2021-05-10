@@ -80,19 +80,18 @@ const Component = ({data}) => {
             submitForm(values);
           }}
           validationSchema={validationSchema}>
-          {/* Seats Available: */}
-          <StepperButtonInputField
-            title="Select the no of seats you need:"
-            name="seatsAvailable"
-          />
-
           {/* Start Location */}
           <FormLocation name="startLocation" title="Enter Pickup Location" />
 
           {/* destination Location */}
           <FormLocation
             name="destinationLocation"
-            title="Enter DropOff Location Location"
+            title="Enter DropOff Location"
+          />
+          {/* Seats Available: */}
+          <StepperButtonInputField
+            title="Select the no of seats you need:"
+            name="seatsAvailable"
           />
 
           <FormField
@@ -105,7 +104,7 @@ const Component = ({data}) => {
 
           {/* Submit Button */}
           <View style={styles.buttonAreaStyle}>
-            <SubmitButtonPrimary title="Request Ride"></SubmitButtonPrimary>
+            <SubmitButtonPrimary title="Send Booking Request"></SubmitButtonPrimary>
           </View>
         </Form>
       </View>

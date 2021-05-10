@@ -31,14 +31,15 @@ import {
 import {useIsFocused} from '@react-navigation/native';
 
 const Component = ({item, onPress, rideCategory, shareId}) => {
-  const [isAccepted, setIsAccepted] = useState('');
-
-  const state = useSelector((state) => state);
+  const [status, setStatus] = useState('');
   const isFocused = useIsFocused();
+  console.log(status);
 
   useEffect(() => {
     isFocused;
-  }, [isAccepted]);
+  }, [status]);
+
+  const state = useSelector((state) => state);
 
   const AcceptRequest = (rideCategory) => {
     if (rideCategory === 'Nearby') {
@@ -62,7 +63,7 @@ const Component = ({item, onPress, rideCategory, shareId}) => {
       data,
       'v1/nearByRideShares/acceptNearByRidesSharesBooking',
     );
-    setIsAccepted(result.status);
+    setStatus(result.status);
 
     console.log('Accept Availer Request API Call Result', result.data);
   };
@@ -77,7 +78,7 @@ const Component = ({item, onPress, rideCategory, shareId}) => {
       data,
       'v1/cityToCityRideShares/acceptCityToCityRideSharesBooking',
     );
-    setIsAccepted(result.status);
+    setStatus(result.status);
 
     console.log('Accept Availer Request API Call Result', result.data);
   };
@@ -92,7 +93,7 @@ const Component = ({item, onPress, rideCategory, shareId}) => {
       data,
       'v1/tourRideShares/acceptTourRideSharesBooking',
     );
-    setIsAccepted(result.status);
+    setStatus(result.status);
 
     console.log('Accept Availer Request API Call Result', result.data);
   };
@@ -111,22 +112,30 @@ const Component = ({item, onPress, rideCategory, shareId}) => {
         </View>
         <View style={styles.locationDetails}>
           {item.availerPickUpLocation && (
-            <CaptionText>{item.availerPickUpLocation.address}</CaptionText>
+            <>
+              <CaptionTextPrimary>Pickup Location</CaptionTextPrimary>
+              <CaptionText>{item.availerPickUpLocation.address}</CaptionText>
+            </>
+          )}
+          {item.availerDropOffLocation && (
+            <Icon flexDirection="column" iconName={'pin-outline'}></Icon>
           )}
 
-          <Icon flexDirection="column" iconName={'pin-outline'}></Icon>
           {item.availerDropOffLocation && (
-            <CaptionText>{item.availerDropOffLocation.address}</CaptionText>
+            <>
+              <CaptionTextPrimary>DropOff Location</CaptionTextPrimary>
+              <CaptionText>{item.availerDropOffLocation.address}</CaptionText>
+            </>
           )}
         </View>
         <View style={styles.otherDetail}>
-          {item.isAccepted === false ? (
+          {item.status === true || status == '200' ? (
             <View
               style={{
                 width: '20%',
                 height: 15,
                 borderRadius: 35,
-                backgroundColor: Colors.Failure,
+                backgroundColor: Colors.Primary,
               }}
             />
           ) : (
@@ -135,7 +144,7 @@ const Component = ({item, onPress, rideCategory, shareId}) => {
                 width: '20%',
                 height: 15,
                 borderRadius: 30,
-                backgroundColor: Colors.Primary,
+                backgroundColor: Colors.Failure,
               }}
             />
           )}
@@ -150,7 +159,7 @@ const Component = ({item, onPress, rideCategory, shareId}) => {
       </View>
       <View style={styles.ContactContainer}>
         <View style={styles.acceptButton}>
-          {item.isAccepted ? (
+          {item.status === true || status == '200' ? (
             <PrimaryButtonDarkGrey>Accepted</PrimaryButtonDarkGrey>
           ) : (
             <PrimaryButton onPress={() => AcceptRequest(rideCategory)}>
@@ -165,7 +174,11 @@ const Component = ({item, onPress, rideCategory, shareId}) => {
             }}>
             <Ionicons
               name="call"
-              color={item.isAccepted ? Colors.Primary : Colors.LightGrey}
+              color={
+                item.status || status == '200'
+                  ? Colors.Primary
+                  : Colors.LightGrey
+              }
               size={30}
             />
           </TouchableOpacity>
@@ -177,7 +190,11 @@ const Component = ({item, onPress, rideCategory, shareId}) => {
             }}>
             <Ionicons
               name="chatbox"
-              color={item.isAccepted ? Colors.Primary : Colors.LightGrey}
+              color={
+                item.status || status == '200'
+                  ? Colors.Primary
+                  : Colors.LightGrey
+              }
               size={30}
             />
           </TouchableOpacity>

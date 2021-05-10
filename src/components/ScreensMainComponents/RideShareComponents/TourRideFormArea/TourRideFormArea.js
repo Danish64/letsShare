@@ -151,7 +151,7 @@ const Component = ({Data}) => {
 
           {/* Submit Button */}
           <View style={styles.buttonAreastyle}>
-            <SubmitForm title="Share"></SubmitForm>
+            <SubmitForm title="Share Ride"></SubmitForm>
           </View>
         </Form>
       </View>

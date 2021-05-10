@@ -9,14 +9,38 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import IllustrationContainer from '../../../../components/GeneralComponents/IllustrationContainer';
 import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
 import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
+import {useIsFocused} from '@react-navigation/native';
+import {doPost} from '../../../../utils/AxiosMethods';
+import {useSelector} from 'react-redux';
 
 const Component = ({navigation}) => {
+  const state = useSelector((state) => state);
+  const sharerId = state.userInformation.user._id;
+
+  const isFocused = useIsFocused();
   const route = useRoute();
+
+  useEffect(() => {
+    getUserAllRides();
+  }, [isFocused]);
+
+  const [userAllRides, setUserAllRides] = useState();
+  const getUserAllRides = async () => {
+    const data = {
+      sharerId: sharerId,
+    };
+    const result = await doPost('v1/userRideShares', data);
+    const allSharedRides = result.data.map((item, index) => {
+      item.key = index;
+      return item;
+    });
+    setUserAllRides(allSharedRides);
+  };
 
   return (
     <Container>
       <Header title="My Shared Rides" hasBackIcon navigation={navigation} />
-      <SharedRidesList navigation={navigation} data={route.params.data} />
+      <SharedRidesList navigation={navigation} data={userAllRides} />
     </Container>
   );
 };

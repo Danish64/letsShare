@@ -11,8 +11,7 @@ export default StyleSheet.create({
     //backgroundColor: 'pink',
   },
   buttonAreaStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
+    marginHorizontal: ms(20, 0.5),
+    marginVertical: mvs(5, 0.5),
   },
 });
