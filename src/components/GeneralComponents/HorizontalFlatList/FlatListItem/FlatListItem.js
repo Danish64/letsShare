@@ -7,11 +7,13 @@ import {
   RecentlySharedSubtitleText,
 } from 'res/UniversalComponents/Text.js';
 import DummyImage from 'res/images/DummyImages/testImage.jpg';
-import {TextIcon} from 'res/UniversalComponents/TextIcon.js';
+import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import styles from './style';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {ShareButton} from '../../../../res/UniversalComponents/Button';
 import TestCaseImage from 'res/images/ModulesImages/GeneralImages/newEntry.png';
+import RideImage from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
+
 import {colors} from 'react-native-elements';
 
 //Native Exports Ends Here
@@ -20,14 +22,17 @@ import {colors} from 'react-native-elements';
 //Third Party Exports Ends
 
 const Component = ({
-  id,
+  key,
+  itemId,
+  item,
   title,
-  image,
   description,
   price,
-  seatsAvailable,
   location,
+  seatsAvailable,
+  image,
   pickupLocation,
+  rideCategory,
   rideType,
   fare,
   startLocation,
@@ -43,17 +48,26 @@ const Component = ({
         </View> */}
         <View style={styles.subContainer1}>
           <View style={styles.imageContainer}>
-            <Image source={image} style={styles.image} />
+            {rideCategory ? (
+              <Image source={RideImage} style={styles.image} />
+            ) : (
+              <Image source={image} style={styles.image} />
+            )}
           </View>
         </View>
 
         <View style={styles.descriptionStyle}>
           <View style={styles.titleContainer}>
-            {title && (
+            {rideCategory ? (
+              <RecentlySharedTitleText numberOfLines={1}>
+                {rideCategory}
+              </RecentlySharedTitleText>
+            ) : (
               <RecentlySharedTitleText numberOfLines={1}>
                 {title}
               </RecentlySharedTitleText>
             )}
+
             {rideType && (
               <RecentlySharedTitleText numberOfLines={1}>
                 {rideType}
@@ -87,14 +101,17 @@ const Component = ({
             <View style={styles.separator} />
           </View>
           <View style={styles.locationStyle}>
+            {startLocation && (
+              <TextIcon flexDirection="row">{startLocation.address}</TextIcon>
+            )}
             {destinationLocation && (
-              <TextIcon flexDirection="row" iconName={'navigate-outline'}>
-                {destinationLocation.data.description}
+              <TextIcon iconName={'pin-outline'} flexDirection="column">
+                {destinationLocation.address}
               </TextIcon>
             )}
             {pickupLocation && (
               <TextIcon flexDirection="row" iconName={'navigate-outline'}>
-                {pickupLocation.data.description}
+                {pickupLocation.address}
               </TextIcon>
             )}
           </View>

@@ -21,13 +21,6 @@ const Component = ({navigation}) => {
     );
     setData(result.data);
   };
-  return (
-    <AvailRidesList
-      listFor="AvailCityToCityRide"
-      data={data}
-      navigation={navigation}
-      //screen="RecentlySharedRideScreen"
-    />
-  );
+  return <AvailRidesList data={data} navigation={navigation} />;
 };
 export default Component;

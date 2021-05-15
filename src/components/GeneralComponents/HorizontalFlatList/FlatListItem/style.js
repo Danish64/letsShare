@@ -7,7 +7,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    height: '50%',
+    height: '40%',
   },
   imageContainer: {
     width: '100%',
@@ -63,10 +63,9 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   locationStyle: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginVertical: mvs(5, 0.6),
-    width: '90%',
   },
 
   titleContainer: {

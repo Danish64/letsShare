@@ -18,11 +18,12 @@ export default StyleSheet.create({
     marginHorizontal: ms(20, 0.6),
   },
   recentlySharedFlatlistArea: {
-    width: '100%',
+    width: '90%',
     height: '100%',
     marginBottom: mvs(5, 0.6),
     paddingBottom: ms(10, 0.6),
     paddingEnd: ms(10, 0.5),
     paddingStart: ms(10, 0.6),
+    marginHorizontal: ms(10, 0.5),
   },
 });
