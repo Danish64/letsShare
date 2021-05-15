@@ -5,7 +5,7 @@ import {FlatListData} from 'res/constants/dummyData.js';
 import AvailRidesListItem from './AvailRidesListItem';
 import LoadingIndicator from '../../../components/GeneralComponents/LoadingIndicator';
 
-const Component = ({navigation, data, listFor}) => {
+const Component = ({navigation, data}) => {
   if (!data) {
     return <LoadingIndicator />;
   }
@@ -29,7 +29,6 @@ const Component = ({navigation, data, listFor}) => {
           onPress={() =>
             navigation.navigate('AvailRideDetail', {
               item: item,
-              listFor: listFor,
             })
           }
         />

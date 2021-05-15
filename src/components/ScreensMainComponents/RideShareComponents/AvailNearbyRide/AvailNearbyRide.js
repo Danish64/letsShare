@@ -18,13 +18,6 @@ const Component = ({navigation}) => {
     const result = await doPost('v1/nearByRideShares/getAllNearByRides', data);
     setData(result.data);
   };
-  return (
-    <AvailRidesList
-      listFor="AvailNearbyRide"
-      data={data}
-      navigation={navigation}
-      //screen="RecentlySharedRideScreen"
-    />
-  );
+  return <AvailRidesList data={data} navigation={navigation} />;
 };
 export default Component;

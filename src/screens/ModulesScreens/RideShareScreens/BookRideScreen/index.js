@@ -14,7 +14,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 const Component = ({navigation, route, listFor}) => {
   const formCategory = route.params.listFor;
 
-  if (formCategory === 'AvailCityToCityRide') {
+  if (formCategory === 'CityToCity') {
     return (
       <ScrollViewContainer>
         <Header title="Request Booking" hasBackIcon navigation={navigation} />
@@ -25,7 +25,7 @@ const Component = ({navigation, route, listFor}) => {
       </ScrollViewContainer>
     );
   }
-  if (formCategory === 'AvailTourRide') {
+  if (formCategory === 'TourRide') {
     return (
       <ScrollViewContainer>
         <Header title="Request Booking" hasBackIcon navigation={navigation} />

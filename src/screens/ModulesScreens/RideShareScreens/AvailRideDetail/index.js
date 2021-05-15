@@ -7,15 +7,18 @@ import AvailRideItem from '../../../../components/ScreensMainComponents/RideShar
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {doPost} from '../../../../utils/AxiosMethods';
 import {useSelector} from 'react-redux';
+import {cos} from 'react-native-reanimated';
 
-const Component = ({navigation, item, listFor}) => {
+const Component = ({navigation, item}) => {
   const route = useRoute();
+  const listFor = route.params.item.rideCategory;
+  console.log(listFor);
 
   return (
     <Container>
       <Header title="Ride Detail" hasBackIcon navigation={navigation} />
       <AvailRideItem
-        listFor={route.params.listFor}
+        listFor={listFor}
         navigation={navigation}
         data={route.params.item}
       />

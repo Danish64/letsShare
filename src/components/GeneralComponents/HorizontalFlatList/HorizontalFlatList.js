@@ -5,6 +5,7 @@ import FlatListItem from '../../GeneralComponents/HorizontalFlatList/FlatListIte
 import {useNavigation} from '@react-navigation/native';
 import {FlatListData} from 'res/constants/dummyData.js';
 import {HeadingText, GroupLabelText} from 'res/UniversalComponents/Text.js';
+import LoadingIndicator from '../../GeneralComponents/LoadingIndicator';
 
 import styles from './style';
 //Native Exports Ends Here
@@ -13,24 +14,28 @@ import styles from './style';
 //Third Party Exports Ends
 
 const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
-  //to use styles -> {styles.propertyName}'
-  // console.log(data)
-  // const navigation = useNavigation();
+  if (!data) {
+    return <LoadingIndicator />;
+  }
+
   return (
     <FlatList
       data={data ? data : FlatListData}
       renderItem={({item}) => (
         <FlatListItem
           title={item.title}
-          rideType={item.rideType}
-          image={item.image}
           description={item.description}
           price={item.price}
+          location={item.location}
+          key={item._id}
+          itemId={item._id}
+          item={item}
+          image={item.image}
           fare={item.fare}
+          rideCategory={item.rideCategory}
           startLocation={item.startLocation}
           destinationLocation={item.destinationLocation}
           seatsAvailable={item.seatsAvailable}
-          location={item.location}
           pickupLocation={item.pickupLocation}
           onPress={() => {
             onPress ? onPress : navigation.navigate(screen, {item: item});
@@ -38,7 +43,6 @@ const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
         />
       )}
       style={styles.FlatListStyle}
-      keyExtractor={(item) => item.id.toString()}
       horizontal
       showsHorizontalScrollIndicator={false}
     />
