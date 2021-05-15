@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList/';
-import DRCaseImage from 'res/images/ModulesImages/GeneralImages/myLocation.png';
-import CTCCaseImage from 'res/images/ModulesImages/RideSharingImages/orderRide.png';
 
 import {doGet, doPost, doPostWithoutBody} from '../../../../utils/AxiosMethods';
 import {useSelector} from 'react-redux';
@@ -13,13 +11,6 @@ import {
   SectionHeadingText,
 } from 'res/UniversalComponents/Text.js';
 import styles from './style';
-
-import {
-  NearbyRides,
-  CityToCityRides,
-  TourRides,
-  shareRidesData,
-} from 'res/constants/dummyData';
 
 //Native Exports Ends Here
 

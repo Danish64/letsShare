@@ -14,38 +14,22 @@ const Component = () => {
     {
       id: '1',
       rideName: 'Honda Civic',
-      rideType: 'Nearby Ride',
+      rideType: 'Car',
       registrationNo: 'ABC-6574',
       contactNumber: '03345656568',
-      rideCategory: 'car',
+      rideCategory: 'Nearby',
       image: shareRide,
       fare: '200',
       seatsAvailable: '2',
       startLocation: {
-        data: {
-          description: 'Khanah Pul, Rawalpindi',
-        },
-        details: {
-          geometry: {
-            location: {
-              lat: 24.8307323,
-              lng: 67.10113298,
-            },
-          },
-        },
+        address: 'G11/4, Islamabad',
+        lat: 24.8307323,
+        lng: 67.10113298,
       },
       destinationLocation: {
-        data: {
-          description: 'COMSATS University, Islamabad',
-        },
-        details: {
-          geometry: {
-            location: {
-              lat: 24.8307323,
-              lng: 67.10113298,
-            },
-          },
-        },
+        address: 'Comsats University, Islamabad',
+        lat: 24.8307323,
+        lng: 67.10113298,
       },
     },
 
@@ -56,15 +40,9 @@ const Component = () => {
       description: ' A Silent Patient',
       location: 'G11/3,Islamabad to G13/1,Islamabad',
       pickupLocation: {
-        data: {
-          description: 'Rawal Town, Islamabad',
-          geometry: {
-            location: {
-              lat: 24.8307323,
-              lng: 67.10113298,
-            },
-          },
-        },
+        address: 'G11/4, Islamabad',
+        lat: 24.8307323,
+        lng: 67.10113298,
       },
       image: shareGoods,
       PickupTime: '10AM to 5PM',
@@ -79,15 +57,9 @@ const Component = () => {
       image: shareGoods,
       location: 'G11/3,Islamabad to G13/1,Islamabad',
       pickupLocation: {
-        data: {
-          description: 'Saddar, Rawalpindi',
-          geometry: {
-            location: {
-              lat: 24.8307323,
-              lng: 67.10113298,
-            },
-          },
-        },
+        address: 'G11/4, Islamabad',
+        lat: 24.8307323,
+        lng: 67.10113298,
       },
       PickupTime: '10AM to 5PM',
       listFor: '5',
@@ -101,15 +73,9 @@ const Component = () => {
       image: shareGoods,
       location: 'G11/3,Islamabad to G13/1,Islamabad',
       pickupLocation: {
-        data: {
-          description: 'Warda Hamna Residencia, g11/3,Islamabad',
-          geometry: {
-            location: {
-              lat: 24.8307323,
-              lng: 67.10113298,
-            },
-          },
-        },
+        address: 'G11/4, Islamabad',
+        lat: 24.8307323,
+        lng: 67.10113298,
       },
       PickupTime: '10AM to 5PM',
       listFor: '5',

@@ -408,7 +408,7 @@ export const testData = [
     image: shareGoods,
     price: '200 Rs',
     priceIcon: 'cash-outline',
-    seats: '3',
+    seats: '2',
     seatsIcon: 'people-outline',
     route: 'G11/3,Islamabad to G13/1,Islamabad',
     routeIcon: 'navigate-outline',
