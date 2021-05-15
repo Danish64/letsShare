@@ -17,6 +17,7 @@ import SharedRideDetail from '../../screens/ModulesScreens/RideShareScreens/Shar
 import BookingRequestsScreen from '../../screens/ModulesScreens/RideShareScreens/BookingRequestsScreen';
 import AvailRideDetail from '../../screens/ModulesScreens/RideShareScreens/AvailRideDetail';
 import BookRideScreen from '../../screens/ModulesScreens/RideShareScreens/BookRideScreen';
+import AvailedRidesScreen from '../../screens/ModulesScreens/RideShareScreens/AvailedRidesScreen';
 
 const Stack = createStackNavigator();
 
@@ -39,6 +40,7 @@ function RideShareNavigator() {
         name="RecentlySharedRideScreen"
         component={RecentlySharedRideScreen}
       />
+      <Stack.Screen name="AvailedRidesScreen" component={AvailedRidesScreen} />
       <Stack.Screen
         name="AvailNearbyRideScreen"
         component={AvailNearbyRideScreen}

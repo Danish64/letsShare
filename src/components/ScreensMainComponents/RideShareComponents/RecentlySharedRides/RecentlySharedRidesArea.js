@@ -32,7 +32,7 @@ const Component = ({navigation}) => {
         <HorizontalFlatList
           data={shareRidesData}
           navigation={navigation}
-          screen="RecentlySharedRideScreen"
+          screen="AvailRideDetail"
         />
       </View>
     </View>

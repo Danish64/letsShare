@@ -14,6 +14,7 @@ import {
 } from 'res/UniversalComponents/Text';
 import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import RidesIcon from '../../../../res/images/ModulesImages/RideSharingImages/ShareRide.png';
+import style from '../../TextImageContainer/style';
 
 const Component = ({
   item,
@@ -30,16 +31,10 @@ const Component = ({
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.mainContainer}>
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+        <View style={style.subContainer}>
           {rideCategory && (
-            <View style={{width: '80%', alignItems: 'center', paddingTop: 10}}>
-              <RecentlySharedTitleText>
-                {rideCategory + ' Ride'}
-              </RecentlySharedTitleText>
+            <View style={styles.rideCategoryView}>
+              <RecentlySharedTitleText>{rideCategory}</RecentlySharedTitleText>
             </View>
           )}
         </View>
