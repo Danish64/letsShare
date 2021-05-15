@@ -5,12 +5,20 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   availRideComponentArea: {
     width: '90%',
-    height: mvs(350, 0.6),
-
+    height: mvs(420, 0.6),
     marginBottom: mvs(10, 0.6),
     marginVertical: mvs(15, 0.6),
     marginHorizontal: ms(20, 0.6),
-    // backgroundColor: 'grey',
+  },
+  myAvailedRidesButtonView: {
+    width: '100%',
+    alignItems: 'center',
+    marginTop: mvs(10, 0.6),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.BackGroundGrey,
+    height: mvs(70, 0.7),
+    marginVertical: mvs(15, 0.6),
   },
   availRideTitleText: {
     width: '100%',

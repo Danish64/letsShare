@@ -252,6 +252,12 @@ export default StyleSheet.create({
     fontFamily: FONT_AIRBNB_CEREAL_BOLD,
     letterSpacing: ms(0.4),
   },
+  captionTextRed: {
+    fontSize: ms(DEFAULT_CAPTION_TEXT_SIZE),
+    color: Colors.Failure,
+    fontFamily: FONT_AIRBNB_CEREAL_BOLD,
+    letterSpacing: ms(0.4),
+  },
   overlineText: {
     fontSize: ms(DEFAULT_OVERLINE_TEXT_SIZE),
     color: Colors.Black,

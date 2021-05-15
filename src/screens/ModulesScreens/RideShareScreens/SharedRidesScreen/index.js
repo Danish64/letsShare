@@ -29,7 +29,7 @@ const Component = ({navigation}) => {
     const data = {
       sharerId: sharerId,
     };
-    const result = await doPost('v1/userRideShares', data);
+    const result = await doPost('v1/userRides', data);
     const allSharedRides = result.data.map((item, index) => {
       item.key = index;
       return item;

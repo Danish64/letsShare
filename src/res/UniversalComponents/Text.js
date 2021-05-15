@@ -99,6 +99,9 @@ export const CaptionText = (props) => (
 export const CaptionTextPrimary = (props) => (
   <Text style={styles.captionTextPrimary}>{props.children}</Text>
 );
+export const CaptionTextRed = (props) => (
+  <Text style={styles.captionTextRed}>{props.children}</Text>
+);
 export const OverlineText = (props) => (
   <Text style={styles.overlineText}>{props.children}</Text>
 );

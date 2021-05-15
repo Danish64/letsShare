@@ -33,9 +33,7 @@ const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
           location={item.location}
           pickupLocation={item.pickupLocation}
           onPress={() => {
-
             onPress ? onPress : navigation.navigate(screen, {item: item});
-
           }}
         />
       )}
