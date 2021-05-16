@@ -40,7 +40,6 @@ const Component = ({userInfo}) => {
           }}>
           See Profile
         </TextButton>
-        <Button title="Logout" onPress={logout} />
       </View>
     </View>
   );

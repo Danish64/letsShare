@@ -196,6 +196,12 @@ export default StyleSheet.create({
     fontFamily: FONT_AIRBNB_CEREAL_BOLD,
     color: Colors.Black,
   },
+  bodyBoldLargeRed: {
+    ...bodyTextProperties,
+    fontFamily: FONT_AIRBNB_CEREAL_BOOK,
+    fontSize: 18,
+    color: Colors.Red,
+  },
   bodyLight: {
     ...bodyTextProperties,
     fontSize: ms(LIGHT_BODY_TEXT_SIZE),
