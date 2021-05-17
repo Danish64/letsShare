@@ -33,7 +33,7 @@ const Component = ({Data}) => {
       registrationNumber: item.registrationNumber,
       ownerContactNumber: item.ownerContactNumber,
       rideType: item.rideType,
-      image: '',
+      ridePictures: item.ridePictures,
       fare: values.fare,
       seatsAvailable: values.seatsAvailable.toString(),
       startLocation: {

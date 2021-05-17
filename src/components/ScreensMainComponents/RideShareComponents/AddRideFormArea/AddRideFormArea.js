@@ -44,6 +44,7 @@ const Component = ({navigation}) => {
 
   const submitForm = (values) => {
     const newRideData = {
+      ridePictures: values.image,
       ownerId: user._id,
       rideName: values.rideName,
       registrationNumber: values.registrationNo,
@@ -68,9 +69,10 @@ const Component = ({navigation}) => {
             registrationNo: '',
             contactNo: '',
             rideType: '',
-            image: [],
+            image: '',
           }}
           onSubmit={(values) => {
+            console.log('image URL', values.image);
             submitForm(values);
             // console.log(values);
           }}

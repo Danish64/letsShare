@@ -20,15 +20,14 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {PrimaryButton} from '../../../../res/UniversalComponents/Button';
 
 const Component = ({navigation, data, listFor}) => {
+  const imageURL = {uri: data.ridePictures[0]};
   // console.log('Data from Create Ride Action Area to Shared Ride', data);
   return (
     <ScrollView>
       <View style={styles.mainContainer}>
         {data.ridePictures.length > 0 && (
-          <View style={styles.subContainer1}>
-            <View style={styles.imageContainer}>
-              <Image source={data.image} style={styles.image} />
-            </View>
+          <View style={styles.imageContainer}>
+            <Image source={imageURL} style={styles.image} />
           </View>
         )}
 
