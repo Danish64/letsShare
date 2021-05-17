@@ -9,6 +9,7 @@ import AvailWorkingSpaceScreen from '../../screens/ModulesScreens/SpaceShareScre
 import AvailEventSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailEventSpaceScreen';
 import AvailParkingSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailParkingSpaceScreen';
 import AvailStorageSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailStorageSpaceScreen';
+import CreateSpaceShareScreen from '../../screens/ModulesScreens/SpaceShareScreens/CreateSpaceShare';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,10 @@ function SpaceShareNavigator() {
         headerShown: false,
       }}>
       <Stack.Screen name="SpaceShareHome" component={SpaceShareHomeScreen} />
+      <Stack.Screen
+        name="CreateSpaceShare"
+        component={CreateSpaceShareScreen}
+      />
       <Stack.Screen
         name="AvailSpaceDetail"
         component={AvailSpaceDetailScreen}

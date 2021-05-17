@@ -29,7 +29,7 @@ const Component = ({navigation}) => {
 
       <View style={styles.shareSpaceButtonView}>
         <OutlinedActionIconButton
-          onPress={() => console.log('Share Action Area Button Press')}
+          onPress={() => navigation.navigate('CreateSpaceShare')}
           iconName="add-outline">
           Share your space
         </OutlinedActionIconButton>
