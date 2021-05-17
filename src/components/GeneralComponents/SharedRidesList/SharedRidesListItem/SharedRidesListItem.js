@@ -38,7 +38,7 @@ const Component = ({
 }) => {
   return (
     <Swipeable renderRightActions={renderRightAction}>
-      <TouchableHighlight onPress={onPress}>
+      <TouchableOpacity onPress={onPress}>
         <View style={styles.mainContainer}>
           <View
             style={{
@@ -116,7 +116,7 @@ const Component = ({
             </View>
           </View>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     </Swipeable>
   );
 };

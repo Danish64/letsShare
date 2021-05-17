@@ -27,7 +27,7 @@ const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
           description={item.description}
           price={item.price}
           location={item.location}
-          key={item._id}
+          id={item._id}
           itemId={item._id}
           item={item}
           image={item.image}

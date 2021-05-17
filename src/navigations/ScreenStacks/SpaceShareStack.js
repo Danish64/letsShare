@@ -9,6 +9,14 @@ import AvailWorkingSpaceScreen from '../../screens/ModulesScreens/SpaceShareScre
 import AvailEventSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailEventSpaceScreen';
 import AvailParkingSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailParkingSpaceScreen';
 import AvailStorageSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailStorageSpaceScreen';
+import CreateSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/CreateSpaceScreen';
+import SharedSpacesScreen from '../../screens/ModulesScreens/SpaceShareScreens/SharedSpacesScreen';
+import AddSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AddSpaceScreen';
+import ShareLivingSpaceFormScreen from '../../screens/ModulesScreens/SpaceShareScreens/ShareLivingSpaceFormScreen';
+import ShareWorkingSpaceFormScreen from '../../screens/ModulesScreens/SpaceShareScreens/ShareWorkingSpaceFormScreen';
+import ShareEventSpaceFormScreen from '../../screens/ModulesScreens/SpaceShareScreens/ShareEventSpaceFormScreen';
+import ShareParkingSpaceFormScreen from '../../screens/ModulesScreens/SpaceShareScreens/ShareParkingSpaceFormScreen';
+import ShareStorageSpaceFormScreen from '../../screens/ModulesScreens/SpaceShareScreens/ShareStorageSpaceFormScreen';
 
 const Stack = createStackNavigator();
 
@@ -40,6 +48,30 @@ function SpaceShareNavigator() {
       <Stack.Screen
         name="AvailStorageSpace"
         component={AvailStorageSpaceScreen}
+      />
+      <Stack.Screen name="CreateSpace" component={CreateSpaceScreen} />
+      <Stack.Screen name="SharedSpaces" component={SharedSpacesScreen} />
+      <Stack.Screen name="AddSpace" component={AddSpaceScreen} />
+
+      <Stack.Screen
+        name="ShareLivingSpace"
+        component={ShareLivingSpaceFormScreen}
+      />
+      <Stack.Screen
+        name="ShareWorkingSpace"
+        component={ShareWorkingSpaceFormScreen}
+      />
+      <Stack.Screen
+        name="ShareEventSpace"
+        component={ShareEventSpaceFormScreen}
+      />
+      <Stack.Screen
+        name="ShareParkingSpace"
+        component={ShareParkingSpaceFormScreen}
+      />
+      <Stack.Screen
+        name="ShareStorageSpace"
+        component={ShareStorageSpaceFormScreen}
       />
     </Stack.Navigator>
   );
