@@ -111,7 +111,7 @@ const Component = ({navigation}) => {
   const addButton = () => {
     return (
       <AddAssetButton
-        onPress={(DATA) => console.log('Add Space Screen To Be Made')}
+        onPress={(DATA) => navigation.navigate('AddSpace')}
         iconName="add-circle-outline"
         addButton
         assetName="Add"></AddAssetButton>

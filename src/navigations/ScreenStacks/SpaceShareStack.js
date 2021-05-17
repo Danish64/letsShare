@@ -53,7 +53,6 @@ function SpaceShareNavigator() {
         name="AvailStorageSpace"
         component={AvailStorageSpaceScreen}
       />
-      <Stack.Screen name="CreateSpace" component={CreateSpaceScreen} />
       <Stack.Screen name="SharedSpaces" component={SharedSpacesScreen} />
       <Stack.Screen name="AddSpace" component={AddSpaceScreen} />
 
