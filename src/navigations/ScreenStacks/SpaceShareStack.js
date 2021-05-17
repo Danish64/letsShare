@@ -9,7 +9,7 @@ import AvailWorkingSpaceScreen from '../../screens/ModulesScreens/SpaceShareScre
 import AvailEventSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailEventSpaceScreen';
 import AvailParkingSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailParkingSpaceScreen';
 import AvailStorageSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailStorageSpaceScreen';
-import CreateSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/CreateSpaceScreen';
+import CreateSpaceShareScreen from '../../screens/ModulesScreens/SpaceShareScreens/CreateSpaceShare';
 import SharedSpacesScreen from '../../screens/ModulesScreens/SpaceShareScreens/SharedSpacesScreen';
 import AddSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AddSpaceScreen';
 import ShareLivingSpaceFormScreen from '../../screens/ModulesScreens/SpaceShareScreens/ShareLivingSpaceFormScreen';
@@ -27,6 +27,10 @@ function SpaceShareNavigator() {
         headerShown: false,
       }}>
       <Stack.Screen name="SpaceShareHome" component={SpaceShareHomeScreen} />
+      <Stack.Screen
+        name="CreateSpaceShare"
+        component={CreateSpaceShareScreen}
+      />
       <Stack.Screen
         name="AvailSpaceDetail"
         component={AvailSpaceDetailScreen}

@@ -138,6 +138,41 @@ export const SelectRideButton = ({
   </TouchableOpacity>
 );
 
+export const SelectSpaceButton = ({
+  iconName,
+  assetName,
+  onPress,
+  selected,
+  addButton,
+}) => (
+  <TouchableOpacity onPress={onPress}>
+    <View
+      style={selected ? styles.addAssetButtonActive : styles.addAssetButton}>
+      <View style={styles.addAssetButtonCheckMark}>
+        {addButton ? null : (
+          <Ionicons
+            name={selected ? 'checkmark-circle' : 'ellipse-outline'}
+            size={25}
+            color={selected ? Colors.Primary : Colors.BackGroundGrey}
+          />
+        )}
+      </View>
+      <MaterialCommunityIcon
+        name="home-modern"
+        color={selected ? Colors.Black : Colors.LightGrey}
+        size={40}
+      />
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        {selected ? (
+          <ButtonTextBlack>{assetName}</ButtonTextBlack>
+        ) : (
+          <ButtonTextLightGrey>{assetName}</ButtonTextLightGrey>
+        )}
+      </View>
+    </View>
+  </TouchableOpacity>
+);
+
 export const AddAssetButton = ({
   iconName,
   assetName,
