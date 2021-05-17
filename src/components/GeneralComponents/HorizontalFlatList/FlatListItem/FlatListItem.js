@@ -22,7 +22,7 @@ import {colors} from 'react-native-elements';
 //Third Party Exports Ends
 
 const Component = ({
-  key,
+  id,
   itemId,
   item,
   title,
@@ -41,11 +41,8 @@ const Component = ({
 }) => {
   //to use styles -> {styles.propertyName}
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity key={id} onPress={onPress}>
       <View style={styles.shareItemContainer}>
-        {/* <View style={styles.imageContainer}>
-          <Image resizeMode="center" style={styles.imageStyle} source={image} />
-        </View> */}
         <View style={styles.subContainer1}>
           <View style={styles.imageContainer}>
             {rideCategory ? (
