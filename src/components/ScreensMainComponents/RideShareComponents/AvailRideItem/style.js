@@ -8,12 +8,6 @@ export default StyleSheet.create({
     backgroundColor: Colors.White,
     marginBottom: mvs(15, 0.6),
   },
-  subContainer1: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    height: mvs(200, 0.6),
-  },
   categoryTitleText: {
     marginVertical: mvs(10, 0.3),
     justifyContent: 'center',
@@ -62,5 +56,14 @@ export default StyleSheet.create({
   bookRideButtonView: {
     marginHorizontal: ms(20, 0.5),
     marginVertical: mvs(10, 0.5),
+  },
+  imageContainer: {
+    width: '100%',
+    height: mvs(150, 0.6),
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
   },
 });

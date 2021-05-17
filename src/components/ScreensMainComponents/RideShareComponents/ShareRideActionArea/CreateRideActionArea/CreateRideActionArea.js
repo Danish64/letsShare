@@ -40,7 +40,7 @@ const Component = ({navigation}) => {
   const ownerId = state.userInformation.user._id;
   const userId = state.userInformation.user._id;
   const sharerId = state.userInformation.user._id;
-  // console.log(userId);
+  console.log(userId);
 
   const [data, setData] = useState();
   const [view, setView] = useState(false);

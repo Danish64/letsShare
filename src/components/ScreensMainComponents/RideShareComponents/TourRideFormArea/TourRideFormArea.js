@@ -37,7 +37,7 @@ const Component = ({Data}) => {
       registrationNumber: item.registrationNumber,
       rideType: item.rideType,
       ownerContactNumber: item.ownerContactNumber,
-      ridePictures: [],
+      ridePictures: item.ridePictures,
       startLocation: {
         address: values.startLocation.data.description,
         latitude: values.startLocation.details.geometry.location.lat,
