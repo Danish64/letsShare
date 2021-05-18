@@ -129,7 +129,7 @@ const Component = ({item, onPress, rideCategory, shareId}) => {
           )}
         </View>
         <View style={styles.otherDetail}>
-          {item.status === true || status == '200' ? (
+          {item.isAccepted === true || status == '200' ? (
             <View
               style={{
                 width: '20%',
@@ -159,7 +159,7 @@ const Component = ({item, onPress, rideCategory, shareId}) => {
       </View>
       <View style={styles.ContactContainer}>
         <View style={styles.acceptButton}>
-          {item.status === true || status == '200' ? (
+          {item.isAccepted === true || status == '200' ? (
             <PrimaryButtonDarkGrey>Accepted</PrimaryButtonDarkGrey>
           ) : (
             <PrimaryButton onPress={() => AcceptRequest(rideCategory)}>
@@ -175,7 +175,7 @@ const Component = ({item, onPress, rideCategory, shareId}) => {
             <Ionicons
               name="call"
               color={
-                item.status || status == '200'
+                item.isAccepted || status == '200'
                   ? Colors.Primary
                   : Colors.LightGrey
               }
@@ -191,7 +191,7 @@ const Component = ({item, onPress, rideCategory, shareId}) => {
             <Ionicons
               name="chatbox"
               color={
-                item.status || status == '200'
+                item.isAccepted || status == '200'
                   ? Colors.Primary
                   : Colors.LightGrey
               }

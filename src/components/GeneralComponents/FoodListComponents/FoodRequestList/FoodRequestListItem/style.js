@@ -5,7 +5,7 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   mainContainer: {
     width: '90%',
-    height: mvs(150, 0.7),
+    height: mvs(155, 0.7),
     backgroundColor: Colors.White,
     marginTop: mvs(5, 0.6),
     marginBottom: mvs(5, 0.6),
@@ -54,22 +54,19 @@ export default StyleSheet.create({
   },
 
   acceptButton: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: '50%',
     marginHorizontal: ms(10, 0.3),
   },
   callButton: {
     width: '15%',
     height: 50,
     justifyContent: 'center',
-    alignItems: 'center',
     marginLeft: ms(20, 0.3),
   },
   chatButton: {
     width: '15%',
     height: 50,
     justifyContent: 'center',
-    alignItems: 'center',
     marginLeft: ms(20, 0.3),
   },
   verticalSeparator: {

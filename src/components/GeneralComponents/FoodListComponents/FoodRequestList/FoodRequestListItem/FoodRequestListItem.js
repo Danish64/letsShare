@@ -33,7 +33,6 @@ import {useIsFocused} from '@react-navigation/native';
 const Component = ({item, onPress, foodShareType, shareId}) => {
   const [status, setStatus] = useState('');
   const isFocused = useIsFocused();
-  console.log(status);
 
   useEffect(() => {
     isFocused;
@@ -105,25 +104,22 @@ const Component = ({item, onPress, foodShareType, shareId}) => {
           )}
         </View>
         <View style={styles.locationDetails}>
-          {item.availerPickUpLocation && (
+          {item.availerAddress && (
             <>
-              <CaptionTextPrimary>Pickup Location</CaptionTextPrimary>
-              <CaptionText>{item.availerPickUpLocation.address}</CaptionText>
+              <CaptionTextPrimary>Availer Address</CaptionTextPrimary>
+              <CaptionText>{item.availerAddress}</CaptionText>
             </>
           )}
-          {item.availerDropOffLocation && (
-            <Icon flexDirection="column" iconName={'pin-outline'}></Icon>
-          )}
 
-          {item.availerDropOffLocation && (
+          {item.availerQuantity && (
             <>
-              <CaptionTextPrimary>DropOff Location</CaptionTextPrimary>
-              <CaptionText>{item.availerDropOffLocation.address}</CaptionText>
+              <CaptionTextPrimary>Requested Quantity</CaptionTextPrimary>
+              <CaptionText>{item.availerQuantity}</CaptionText>
             </>
           )}
         </View>
         <View style={styles.otherDetail}>
-          {item.status === true || status == '200' ? (
+          {item.isAccepted === true || status == '200' ? (
             <View
               style={{
                 width: '20%',
@@ -153,7 +149,7 @@ const Component = ({item, onPress, foodShareType, shareId}) => {
       </View>
       <View style={styles.ContactContainer}>
         <View style={styles.acceptButton}>
-          {item.status === true || status == '200' ? (
+          {item.isAccepted === true || status == '200' ? (
             <PrimaryButtonDarkGrey>Accepted</PrimaryButtonDarkGrey>
           ) : (
             <PrimaryButton onPress={() => AcceptRequest(foodShareType)}>
@@ -169,7 +165,7 @@ const Component = ({item, onPress, foodShareType, shareId}) => {
             <Ionicons
               name="call"
               color={
-                item.status || status == '200'
+                item.isAccepted || status == '200'
                   ? Colors.Primary
                   : Colors.LightGrey
               }
@@ -185,7 +181,7 @@ const Component = ({item, onPress, foodShareType, shareId}) => {
             <Ionicons
               name="chatbox"
               color={
-                item.status || status == '200'
+                item.isAccepted || status == '200'
                   ? Colors.Primary
                   : Colors.LightGrey
               }
