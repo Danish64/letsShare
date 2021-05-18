@@ -2,9 +2,6 @@ import React, {useState} from 'react';
 import {View, KeyboardAvoidingView, TextInput} from 'react-native';
 import * as Yup from 'yup';
 
-//Native Exports Ends Here
-
-//Third Party Exports Starts
 import styles from './style';
 import {
   FormByFormik as Form,
@@ -13,27 +10,38 @@ import {
   FormPicker,
   SubmitButton as SubmitForm,
   FormImagePicker,
-} from '../../../../res/UniversalComponents/Forms';
-import {FoodList} from '../../../../res/constants/dummyData';
+} from 'res/UniversalComponents/Forms';
+import {FoodList} from 'res/constants/dummyData';
+
+import {useSelector} from 'react-redux';
+import {doPost} from '../../../../utils/AxiosMethods';
 //Third Party Exports Ends
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(3).max(20).label('Title'),
   description: Yup.string().required().min(4).max(100).label('Description'),
+  contactNo: Yup.string().required().min(11).max(13).label('Contact No'),
 });
 
 const Component = ({navigation}) => {
+  const state = useSelector((state) => state);
+  const user = state.userInformation.user;
+
   const submitForm = (values) => {
-    values.id = Math.floor(Math.random() * 100) + 1;
-    values.selected = false;
-    const newData = values;
-    updateRides(newData);
+    const foodItemData = {
+      ownerId: user._id,
+      title: values.title,
+      description: values.description,
+      quantity: values.quantity,
+      images: values.image,
+      ownerContactNumber: values.contactNo,
+    };
+    createFood(foodItemData);
   };
 
-  const updateRides = (newData) => {
-    const arrayData = FoodList;
-    FoodList.unshift(newData);
-    navigation.navigate('CreateFoodScreen', newData);
+  const createFood = async (foodItemData) => {
+    const result = await doPost('v1/userFoods/createFood', foodItemData);
+    navigation.navigate('CreateFoodScreen', foodItemData);
   };
 
   return (
@@ -44,9 +52,8 @@ const Component = ({navigation}) => {
             title: '',
             description: '',
             quantity: '',
-            selected: null,
             image: [],
-            id: '',
+            contactNo: '',
           }}
           onSubmit={(values) => {
             submitForm(values);
@@ -74,9 +81,18 @@ const Component = ({navigation}) => {
           {/* Stepper Button Input -> Quantity */}
           <StepperButtonInputField title="Quantity" name="quantity" />
 
+          {/* Input Sharer Contact No */}
+          <FormField
+            title="Contact"
+            maxLength={13}
+            keyboardType="numeric"
+            name="contactNo"
+            placeholder="Enter Contact No. e.g; 03367676767"
+          />
+
           {/* Submit Form */}
-          <View style={styles.buttonAreastyle}>
-            <SubmitForm title="Add"></SubmitForm>
+          <View style={styles.submitButtonArea}>
+            <SubmitForm title="Add Food Item"></SubmitForm>
           </View>
         </Form>
       </View>

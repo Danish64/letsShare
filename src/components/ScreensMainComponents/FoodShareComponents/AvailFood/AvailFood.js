@@ -21,10 +21,9 @@ const Component = ({navigation}) => {
       <View style={styles.availFoodTitleText}>
         <ShareActionAreaHeadingText>Avail Food</ShareActionAreaHeadingText>
       </View>
-      <TextImageContainer 
-      text="Donated Food" 
-      onPress={() => navigation.navigate('AvailDonatedFoodScreen')}
-      // image={DonateGoods} 
+      <TextImageContainer
+        text="Donated Food"
+        onPress={() => navigation.navigate('AvailDonatedFoodScreen')}
       />
 
       <TextImageContainer
@@ -33,13 +32,11 @@ const Component = ({navigation}) => {
         // image={SellGoods}
       />
 
-        <TextImageContainer
+      <TextImageContainer
         text="Food Stalls"
         // image={SellGoods}
       />
     </View>
-
-    
   );
 };
 

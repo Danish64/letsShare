@@ -18,7 +18,7 @@ const Component = ({userInfo}) => {
 
   const logout = () => {
     clearAll();
-    // implement navigate to login Screen
+    navigation.navigate('Authentication', {screen: 'UserManagerHome'});
   };
   let user = userInfo.user;
 
