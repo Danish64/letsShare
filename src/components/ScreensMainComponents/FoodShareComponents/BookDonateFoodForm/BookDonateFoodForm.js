@@ -13,15 +13,16 @@ import {
   FormLocation,
   SubmitButtonPrimary,
 } from 'res/UniversalComponents/Forms';
+import {shareRidesData} from 'res/constants/dummyData';
 
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {doPost} from '../../../../utils/AxiosMethods';
 import {useSelector} from 'react-redux';
 
-const validationSchema = Yup.object().shape({
-  seatsAvailable: Yup.string().required().label('Available Seats'),
-});
+// const validationSchema = Yup.object().shape({
+//   availerQuantity: Yup.int.().required().label('Available Seats'),
+// });
 
 const Component = ({data}) => {
   const navigation = useNavigation();
@@ -31,37 +32,27 @@ const Component = ({data}) => {
   const shareId = data._id;
   const sharerId = data.sharerId;
 
-  const onPressBookRide = async (newData) => {
-    let data = newData;
+  const onPressSendRequest = async (newData) => {
+    let availerBookingData = newData;
     const result = await doPost(
-      `v1/cityToCityRideShares/createCityToCityRideSharesBooking/${shareId}`,
-      data,
+      `v1/foodShares/createFoodShareBooking/${shareId}`,
+      availerBookingData,
     );
     console.log('Booking Ride Api Call', result);
-    navigation.navigate('RideShareHome');
+    navigation.navigate('FoodShareHome');
   };
 
   const submitForm = (values) => {
     const newData = {
       availerId: user._id,
       availerName: user.name,
-      availerAddress: values.startLocation.data.description,
+      availerAddress: values.availerLocation.data.description,
       availerPhoneNumber: user.phone,
+      availerQuantity: values.availerQuantity,
       availerMessage: values.availerMessage,
-      availerSeats: values.seatsAvailable.toString(),
-      availerPickUpLocation: {
-        address: values.startLocation.data.description,
-        latitude: values.startLocation.details.geometry.location.lat,
-        longitude: values.startLocation.details.geometry.location.lat,
-      },
-      availerDropOffLocation: {
-        address: values.destinationLocation.data.description,
-        latitude: values.destinationLocation.details.geometry.location.lat,
-        longitude: values.destinationLocation.details.geometry.location.lat,
-      },
     };
 
-    onPressBookRide(newData);
+    onPressSendRequest(newData);
   };
 
   return (
@@ -69,27 +60,22 @@ const Component = ({data}) => {
       <View style={styles.ComponentArea}>
         <Form
           initialValues={{
-            seatsAvailable: '',
-            startLocation: {},
-            destinationLocation: {},
+            availerQuantity: '',
             availerMessage: '',
+            availerLocation: {},
           }}
           onSubmit={(values) => {
             submitForm(values);
           }}
-          validationSchema={validationSchema}>
-          {/* Start Location */}
-          <FormLocation name="startLocation" title="Enter Pickup Location" />
+          //   validationSchema={validationSchema}
+        >
+          {/* Availer Location */}
+          <FormLocation name="availerLocation" title="Enter Your Location" />
 
-          {/* destination Location */}
-          <FormLocation
-            name="destinationLocation"
-            title="Enter DropOff Location Location"
-          />
-          {/* Seats Available: */}
+          {/* Availer Quantity: */}
           <StepperButtonInputField
-            title="Select the no of seats you need:"
-            name="seatsAvailable"
+            title="Select the quantity you need:"
+            name="availerQuantity"
           />
 
           <FormField
