@@ -1,2 +1,2 @@
-import AvailDonatedFoodList from './AvailDonatedFood';
-export default AvailDonatedFoodList;
+import AvailDonatedFood from './AvailDonatedFood';
+export default AvailDonatedFood;

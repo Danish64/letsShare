@@ -12,6 +12,8 @@ import DonateFoodScreen from '../../screens/ModulesScreens/FoodShareScreens/Crea
 import SellFoodScreen from '../../screens/ModulesScreens/FoodShareScreens/CreateFoodScreen/SellFoodScreen';
 import MySharedFoodScreen from '../../screens/ModulesScreens/FoodShareScreens/MySharedFoodScreen';
 import FoodBookingRequestsScreen from '../../screens/ModulesScreens/FoodShareScreens/FoodBookingRequestsScreen';
+import AvailFoodDetailScreen from '../../screens/ModulesScreens/FoodShareScreens/AvailFoodDetailScreen';
+import BookFoodScreen from '../../screens/ModulesScreens/FoodShareScreens/BookFoodScreen';
 
 const Stack = createStackNavigator();
 
@@ -42,6 +44,8 @@ function FoodShareNavigator() {
         component={AvailDonatedFoodScreen}
       />
       <Stack.Screen name="AvailFoodStalls" component={AvailFoodStalls} />
+      <Stack.Screen name="AvailFoodDetail" component={AvailFoodDetailScreen} />
+      <Stack.Screen name="BookFood" component={BookFoodScreen} />
     </Stack.Navigator>
   );
 }

@@ -15,10 +15,14 @@ import {
 
 //Third Party Exports Ends
 
-export const TextIcon = ({iconName, flexDirection, children}) => (
+export const TextIcon = ({iconName, flexDirection, children, color}) => (
   <View style={[styles.textIconStyle, {flexDirection: flexDirection}]}>
     <View style={styles.textIconAlign}>
-      <Ionicons name={iconName} color={Colors.LightGrey} size={18} />
+      <Ionicons
+        name={iconName}
+        color={color ? '#006d77' : Colors.LightGrey}
+        size={18}
+      />
     </View>
     <View style={styles.textIconAlign}>
       <IconTextLightGrey>{children}</IconTextLightGrey>

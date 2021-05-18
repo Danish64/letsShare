@@ -6,17 +6,16 @@ import AddFoodFormArea from './AddFoodFormArea';
 import DonateFoodFormArea from './DonateFoodFormArea';
 import SellFoodFormArea from './SellFoodFormArea';
 import AvailFoodList from './AvailFoodList';
-import AvailDonatedFoodList from './AvailDonatedFoodList';
-
+import AvailDonatedFood from './AvailDonatedFood';
 
 export {
-    ShareFoodActionArea, 
-    RecentlySharedFoodsArea, 
-    AvailFoodArea, 
-    CreateFoodActionArea,
-    AddFoodFormArea,
-    DonateFoodFormArea,
-    SellFoodFormArea,
-    AvailFoodList,
-    AvailDonatedFoodList,
+  ShareFoodActionArea,
+  RecentlySharedFoodsArea,
+  AvailFoodArea,
+  CreateFoodActionArea,
+  AddFoodFormArea,
+  DonateFoodFormArea,
+  SellFoodFormArea,
+  AvailFoodList,
+  AvailDonatedFood,
 };
