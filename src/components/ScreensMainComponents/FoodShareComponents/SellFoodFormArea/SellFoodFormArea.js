@@ -17,80 +17,88 @@ import {
   FormLocation,
 } from '../../../../res/UniversalComponents/Forms';
 import SetLocation from '../../../GeneralComponents/SetLocation';
-import {SellFood} from '../../../../res/constants/dummyData';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {doPost} from '../../../../utils/AxiosMethods';
 
 //Third Party Exports Ends
 
 const validationSchema = Yup.object().shape({
-  deliveryInfo: Yup.string().required().min(3).max(20).label('Delivery Info'),
-  price: Yup.string().required().min(2).max(7).label('Price'),
+  pickUpTime: Yup.string().required().min(3).max(20).label('Pickup Time'),
+  listForDays: Yup.string().required().min(1).max(3).label('Listing Days'),
+  deliveryInfo: Yup.string().required().max(100).label('Delivery Info'),
 });
 
 const Component = ({navigation, Data}) => {
+  const route = useRoute();
+  const {item} = route.params;
   const submitForm = (values) => {
-    let valID = Math.floor(Math.random() * 100) + 1;
     const newData = {
-      id: valID,
-      title: Data.title,
-      quantity: Data.quantity,
-      description: Data.description,
-      image: Data.image,
-      pickupLocation: values.location,
+      sharerId: item.ownerId,
+      shareMessage: values.shareMessage,
+      title: item.title,
+      description: item.description,
+      quantity: item.quantity,
+      ownerContactNumber: item.ownerContactNumber,
+      images: item.images,
+      shareType: 'sell',
       deliveryInfo: values.deliveryInfo,
-      price: values.price,
-      listFor: values.listFor,
+      listForDays: values.listForDays,
+      pickUpLocation: {
+        address: values.pickUpLocation.data.description,
+        latitude: values.pickUpLocation.details.geometry.location.lat,
+        longitude: values.pickUpLocation.details.geometry.location.lat,
+      },
+      pickUpTime: values.pickUpTime,
     };
-    console.log(newData);
-    updateRides(newData);
+    createFoodShare(newData);
   };
 
-  const updateRides = (newData) => {
-    SellFood.push(newData);
-    // console.log(SellFood);
-    navigation.navigate('FoodShareHome', newData);
-    console.warn('Shared Successfuly');
+  const createFoodShare = async (sellFoodShare) => {
+    let data = sellFoodShare;
+    const result = await doPost('v1/foodShares/createFoodShare', data);
+    navigation.navigate('CreateFoodScreen', sellFoodShare);
   };
 
   return (
     <KeyboardAvoidingView>
-      <View style={styles.donateFoodComponentArea}>
+      <View style={styles.sellFoodComponentArea}>
         <Form
           initialValues={{
+            shareMessage: '',
             deliveryInfo: '',
-            price: '',
-            listFor: '',
-            location: {},
+            pickUpTime: '',
+            listForDays: '',
+            pickUpLocation: {},
           }}
           onSubmit={(values) => {
             submitForm(values);
           }}
           validationSchema={validationSchema}>
-          {/* Input Delivery Info */}
-          <FormField
-            title="Delivery info"
-            maxLength={500}
-            name="deliveryInfo"
-            placeholder="e.g collection only, shipping available etc."
-          />
+          <FormLocation name="pickUpLocation" title="PickUp Location" />
 
-          {/* Input Price */}
           <FormField
-            title="Price"
+            title="Delivery Information"
             maxLength={100}
-            name="price"
-            placeholder="e.g 500 Rs."
-            keyboardType="numeric"
+            name="deliveryInfo"
+            placeholder="Enter delivery Info"
+          />
+          <FormField
+            title="Pickup Time"
+            maxLength={100}
+            name="pickUpTime"
+            placeholder="10AM to 8PM etc."
           />
 
-          {/* Input Location */}
-          <FormLocation name="location" title="Add Location" />
+          <StepperButtonInputField title="List For(days):" name="listForDays" />
+          <FormField
+            title="Share Message (optional)"
+            maxLength={100}
+            name="shareMessage"
+            placeholder="enter any message for the availer"
+          />
 
-          {/* Input List For: */}
-          <StepperButtonInputField title="List For(days):" name="listFor" />
-
-          {/* Submit Button */}
-          <View style={styles.buttonAreastyle}>
-            <SubmitForm title="Share"></SubmitForm>
+          <View style={styles.buttonAreaStyle}>
+            <SubmitForm title="Share Food"></SubmitForm>
           </View>
         </Form>
       </View>

@@ -15,6 +15,12 @@ import {connect} from 'react-redux';
 const Component = ({userInfo}) => {
   const navigation = useNavigation();
 
+
+  const logout = () => {
+    clearAll();
+    navigation.navigate('Authentication', {screen: 'UserManagerHome'});
+  };
+
   let user = userInfo.user;
 
   console.log('UserInfo in introHeader Component', userInfo.user);

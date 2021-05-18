@@ -10,7 +10,8 @@ import AvailFoodStalls from '../../screens/ModulesScreens/FoodShareScreens/Avail
 import AddFoodScreen from '../../screens/ModulesScreens/FoodShareScreens/CreateFoodScreen/AddFoodScreen';
 import DonateFoodScreen from '../../screens/ModulesScreens/FoodShareScreens/CreateFoodScreen/DonateFoodScreen';
 import SellFoodScreen from '../../screens/ModulesScreens/FoodShareScreens/CreateFoodScreen/SellFoodScreen';
-
+import MySharedFoodScreen from '../../screens/ModulesScreens/FoodShareScreens/MySharedFoodScreen';
+import FoodBookingRequestsScreen from '../../screens/ModulesScreens/FoodShareScreens/FoodBookingRequestsScreen';
 
 const Stack = createStackNavigator();
 
@@ -21,13 +22,25 @@ function FoodShareNavigator() {
         headerShown: false,
       }}>
       <Stack.Screen name="FoodShareHome" component={FoodShareHomeScreen} />
+      <Stack.Screen name="MySharedFood" component={MySharedFoodScreen} />
+      <Stack.Screen
+        name="FoodBookingRequests"
+        component={FoodBookingRequestsScreen}
+      />
+
       <Stack.Screen name="CreateFoodScreen" component={CreateFoodScreen} />
       <Stack.Screen name="AddFoodScreen" component={AddFoodScreen} />
       <Stack.Screen name="DonateFoodScreen" component={DonateFoodScreen} />
       <Stack.Screen name="SellFoodScreen" component={SellFoodScreen} />
-      <Stack.Screen name="RecentlySharedFoodScreen" component={RecentlySharedFoodScreen} />
+      <Stack.Screen
+        name="RecentlySharedFoodScreen"
+        component={RecentlySharedFoodScreen}
+      />
       <Stack.Screen name="AvailFoodScreen" component={AvailFoodScreen} />
-      <Stack.Screen name="AvailDonatedFoodScreen" component={AvailDonatedFoodScreen} />
+      <Stack.Screen
+        name="AvailDonatedFoodScreen"
+        component={AvailDonatedFoodScreen}
+      />
       <Stack.Screen name="AvailFoodStalls" component={AvailFoodStalls} />
     </Stack.Navigator>
   );

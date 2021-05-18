@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Container from 'res/UniversalComponents/Container.js';
 import Header from '../../../../../components/GeneralComponents/Header';
+import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer.js';
+
 import DonateFoodFormArea from '../../../../../components/ScreensMainComponents/FoodShareComponents/DonateFoodFormArea';
 import {ScrollView, View, Text} from 'react-native';
 
@@ -12,10 +14,10 @@ import {ScrollView, View, Text} from 'react-native';
 const Component = ({navigation, route}) => {
   return (
     <Container>
-      <Header hasBackIcon title="Donate Food"  navigation={navigation}/>
-      <DonateFoodFormArea navigation={navigation} Data={route.params.item}/>
-      {/* <Text>{JSON.stringify(route.params.item)}</Text>            */}
-
+      <Header hasBackIcon title="Donate Food" navigation={navigation} />
+      <ScrollViewContainer>
+        <DonateFoodFormArea navigation={navigation} Data={route.params.item} />
+      </ScrollViewContainer>
     </Container>
   );
 };

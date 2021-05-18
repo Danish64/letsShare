@@ -70,17 +70,17 @@ const Component = ({navigation}) => {
   return (
     <Container>
       <Header title="My Availed Rides" hasBackIcon navigation={navigation} />
-      <View style={styles.listHeadingTextView}>
+      {/* <View style={styles.listHeadingTextView}>
         <ShareActionAreaHeadingText>
           Pending Requests
         </ShareActionAreaHeadingText>
       </View>
       <View style={styles.listView}>
         <AvailedRidesList navigation={navigation} data={userAvailedRides} />
-      </View>
+      </View> */}
 
       <View style={styles.listHeadingTextView}>
-        <ShareActionAreaHeadingText>All Bookings</ShareActionAreaHeadingText>
+        <ShareActionAreaHeadingText>My Bookings</ShareActionAreaHeadingText>
       </View>
       <View style={styles.listView}>
         <AvailedRidesList navigation={navigation} data={userAllBookings} />
@@ -95,7 +95,8 @@ const styles = StyleSheet.create({
     marginHorizontal: ms(20, 0.5),
   },
   listView: {
-    height: mvs(250, 0.4),
+    flex: 1,
+    marginVertical: mvs(15, 0.5),
     marginHorizontal: ms(15, 0.5),
     borderRadius: ms(10, 0.6),
     elevation: 3,
