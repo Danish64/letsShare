@@ -2,6 +2,7 @@ import React from 'react';
 import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer.js';
 import IntroHeader from '../../../components/ScreensMainComponents/UserManagementComponets/IntroHeader';
 import SettingsRow from '../../../components/ScreensMainComponents/UserManagementComponets/SettingsRow';
+import LogoutBtnRow from '../../../components/ScreensMainComponents/UserManagementComponets/LogoutBtnRow';
 import {connect} from 'react-redux';
 
 import {SubmitButton as ButtonBlack} from 'res/UniversalComponents/Forms.js';
@@ -55,10 +56,9 @@ const Component = ({navigation, userInfo}) => (
     {/* <SettingsRow itemName="Review" />
     <SettingsRow itemValue={userInfo.user.reviews[0].review} />
     <SettingsRow /> */}
-
     <SettingsRow itemName="App Version" itemValue="v 1.0.0" />
 
-    <SettingsRow />
+    <LogoutBtnRow />
   </ScrollViewContainer>
 );
 function mapStatesToProps(state) {

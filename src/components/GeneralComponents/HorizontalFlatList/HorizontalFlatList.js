@@ -21,13 +21,13 @@ const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
   return (
     <FlatList
       data={data ? data : FlatListData}
+      keyExtractor={(item, index) => item.key}
       renderItem={({item}) => (
         <FlatListItem
           title={item.title}
           description={item.description}
           price={item.price}
           location={item.location}
-          id={item._id}
           itemId={item._id}
           item={item}
           image={item.image}
