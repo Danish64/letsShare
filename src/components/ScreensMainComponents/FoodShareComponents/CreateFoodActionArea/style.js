@@ -24,24 +24,18 @@ export default StyleSheet.create({
     width: '100%',
     marginBottom: mvs(5, 0.6),
     marginTop: mvs(5, 0.6),
-    // backgroundColor: 'grey',
   },
   myFoodListArea: {
     width: '100%',
     height: mvs(140, 0.7),
-    //backgroundColor: 'grey',
     alignItems: 'center',
   },
   selectFoodTypeArea: {
     width: '100%',
-    height: mvs(270, 0.7),
     marginVertical: mvs(10, 0.6),
-    //backgroundColor: 'blue',
   },
   categoryButtonsArea: {
     width: '100%',
-    height: mvs(150, 0.7),
-    marginVertical: mvs(10, 0.6),
     justifyContent: 'center',
   },
   pngImageArea: {

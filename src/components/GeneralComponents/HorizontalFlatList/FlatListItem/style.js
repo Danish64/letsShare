@@ -28,6 +28,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     padding: mvs(15, 0.6),
   },
+  alignCenter: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   shareItemContainer: {
     width: ms(260, 0.6),
     height: mvs(250, 0.7),

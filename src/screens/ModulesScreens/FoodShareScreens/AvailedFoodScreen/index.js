@@ -7,7 +7,7 @@ import Header from '../../../../components/GeneralComponents/Header';
 
 import IllustrationContainer from '../../../../components/GeneralComponents/IllustrationContainer';
 import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
-import AvailedRidesList from '../../../../components/GeneralComponents/AvailedRidesList';
+import AvailedFoodsList from '../../../../components/GeneralComponents/FoodListComponents/AvailedFoodsList';
 
 import {useNavigation, useRoute} from '@react-navigation/native';
 
@@ -24,26 +24,10 @@ const Component = ({navigation}) => {
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    getUserAvailedRides();
     getUserAllBookings();
   }, [isFocused]);
 
-  const [userAvailedRides, setUserAvailedRides] = useState();
   const [userAllBookings, setUserAllBookings] = useState();
-
-  const getUserAvailedRides = async () => {
-    const data = {
-      availerId: availerId,
-      active: true,
-    };
-    const result = await doPost('v1/userRides/userAvailedRides', data);
-    const availedRides = result.data.map((item, index) => {
-      item.key = index;
-      return item;
-    });
-
-    setUserAvailedRides(availedRides);
-  };
 
   // all bookings whether accepted or not
   const getUserAllBookings = async () => {
@@ -63,20 +47,11 @@ const Component = ({navigation}) => {
   return (
     <Container>
       <Header title="My Availed Rides" hasBackIcon navigation={navigation} />
-      {/* <View style={styles.listHeadingTextView}>
-        <ShareActionAreaHeadingText>
-          Pending Requests
-        </ShareActionAreaHeadingText>
-      </View>
-      <View style={styles.listView}>
-        <AvailedRidesList navigation={navigation} data={userAvailedRides} />
-      </View> */}
-
       <View style={styles.listHeadingTextView}>
         <ShareActionAreaHeadingText>My Bookings</ShareActionAreaHeadingText>
       </View>
       <View style={styles.listView}>
-        <AvailedRidesList navigation={navigation} data={userAllBookings} />
+        <AvailedFoodsList navigation={navigation} data={userAllBookings} />
       </View>
     </Container>
   );

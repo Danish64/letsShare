@@ -6,13 +6,8 @@ import {
 import TextImageContainer from '../../../GeneralComponents/TextImageContainer';
 import styles from './style';
 import {View, TouchableOpacity, Text} from 'react-native';
-import DonateGoods from 'res/images/DummyImages/DonateGoods.jpeg';
-import SellGoods from 'res/images/DummyImages/SellGoods.jpeg';
 
-//Native Exports Ends Here
-//Third Party Exports Starts
-
-//Third Party Exports Ends
+import {OutlinedActionIconButton} from 'res/UniversalComponents/Button.js';
 
 const Component = ({navigation}) => {
   //to use styles -> {styles.propertyName}
@@ -21,21 +16,28 @@ const Component = ({navigation}) => {
       <View style={styles.availFoodTitleText}>
         <ShareActionAreaHeadingText>Avail Food</ShareActionAreaHeadingText>
       </View>
-      <TextImageContainer
-        text="Donated Food"
-        onPress={() => navigation.navigate('AvailDonatedFoodScreen')}
-      />
+      <View style={styles.myAvailedFoodButtonView}>
+        <OutlinedActionIconButton
+          iconName="eye"
+          onPress={() => navigation.navigate('AvailedFood')}>
+          My Availed Food
+        </OutlinedActionIconButton>
+      </View>
+      <View style={styles.categoriesArea}>
+        <TextImageContainer
+          text="Donated Food"
+          onPress={() => navigation.navigate('AvailDonatedFood')}
+        />
 
-      <TextImageContainer
-        text="Buy Food"
-        onPress={() => navigation.navigate('AvailFoodScreen')}
-        // image={SellGoods}
-      />
-
-      <TextImageContainer
-        text="Food Stalls"
-        // image={SellGoods}
-      />
+        <TextImageContainer
+          text="Buy Food"
+          onPress={() => navigation.navigate('AvailBuyFood')}
+        />
+        <TextImageContainer
+          text="Food Stall"
+          onPress={() => navigation.navigate('AvailStallFood')}
+        />
+      </View>
     </View>
   );
 };

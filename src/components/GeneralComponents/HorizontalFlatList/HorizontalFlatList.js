@@ -24,19 +24,8 @@ const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
       keyExtractor={(item, index) => item.key}
       renderItem={({item}) => (
         <FlatListItem
-          title={item.title}
-          description={item.description}
-          price={item.price}
-          location={item.location}
-          itemId={item._id}
+          id={item._id}
           item={item}
-          image={item.image}
-          fare={item.fare}
-          rideCategory={item.rideCategory}
-          startLocation={item.startLocation}
-          destinationLocation={item.destinationLocation}
-          seatsAvailable={item.seatsAvailable}
-          pickupLocation={item.pickupLocation}
           onPress={() => {
             onPress ? onPress : navigation.navigate(screen, {item: item});
           }}

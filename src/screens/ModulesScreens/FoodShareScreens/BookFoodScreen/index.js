@@ -6,6 +6,8 @@ import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer';
 import Header from '../../../../components/GeneralComponents/Header';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import BookDonateFoodForm from '../../../../components/ScreensMainComponents/FoodShareComponents/BookDonateFoodForm';
+import BookSellFoodForm from '../../../../components/ScreensMainComponents/FoodShareComponents/BookSellFoodForm';
+import BookStallsFoodForm from '../../../../components/ScreensMainComponents/FoodShareComponents/BookStallsFoodForm';
 
 import {ScrollView} from 'react-native-gesture-handler';
 
@@ -24,8 +26,7 @@ const Component = ({navigation, route, listFor}) => {
     return (
       <ScrollViewContainer>
         <Header title="Request Booking" hasBackIcon navigation={navigation} />
-        <Text>Book Sell Food Form</Text>
-        {/* <BookDonateFoodForm navigation={navigation} data={route.params.data} /> */}
+        <BookSellFoodForm navigation={navigation} data={route.params.data} />
       </ScrollViewContainer>
     );
   }
@@ -33,9 +34,7 @@ const Component = ({navigation, route, listFor}) => {
   return (
     <ScrollViewContainer>
       <Header title="Request Booking" hasBackIcon navigation={navigation} />
-      <Text>Book Stall Food Form</Text>
-
-      {/* <BookDonateFoodForm navigation={navigation} data={route.params.data} /> */}
+      <BookStallsFoodForm navigation={navigation} data={route.params.data} />
     </ScrollViewContainer>
   );
 };
