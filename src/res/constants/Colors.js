@@ -11,4 +11,5 @@ export const Colors = {
   BackGroundGrey: '#F5F5F5',
   light: '#f8f4f4',
   MediumGrey: '#6e6969',
+  Red: '#CC0000',
 };

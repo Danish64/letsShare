@@ -4,7 +4,6 @@ import {
   SubtitleTextCapitalizedBold,
   BodyText,
 } from 'res/UniversalComponents/Text.js';
-import {clearAll} from '../../../../utils/AsyncStorageUtilities';
 
 import {TextButton} from 'res/UniversalComponents/Button.js';
 import {useNavigation} from '@react-navigation/native';
@@ -16,10 +15,12 @@ import {connect} from 'react-redux';
 const Component = ({userInfo}) => {
   const navigation = useNavigation();
 
+
   const logout = () => {
     clearAll();
     navigation.navigate('Authentication', {screen: 'UserManagerHome'});
   };
+
   let user = userInfo.user;
 
   console.log('UserInfo in introHeader Component', userInfo.user);
@@ -40,7 +41,6 @@ const Component = ({userInfo}) => {
           }}>
           See Profile
         </TextButton>
-        <Button title="Logout" onPress={logout} />
       </View>
     </View>
   );
