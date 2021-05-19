@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
-import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList/';
+import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList';
 
 import {doGet, doPost, doPostWithoutBody} from '../../../../utils/AxiosMethods';
 import {useSelector} from 'react-redux';

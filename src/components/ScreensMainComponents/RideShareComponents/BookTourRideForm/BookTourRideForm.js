@@ -19,15 +19,18 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {doPost} from '../../../../utils/AxiosMethods';
 import {useSelector} from 'react-redux';
-
-const validationSchema = Yup.object().shape({
-  seatsAvailable: Yup.string().required().label('Available Seats'),
-});
+import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer';
 
 const Component = ({data}) => {
+  const validationSchema = Yup.object().shape({
+    seatsAvailable: Yup.number()
+      .required()
+      .min(1)
+      .max(data.seatsAvailable)
+      .label('Available Seats'),
+  });
   const navigation = useNavigation();
   const route = useRoute();
-  // console.log('Ride Detail in Book Ride Form ', data);
   const user = useSelector((state) => state.userInformation.user);
 
   const shareId = data._id;
@@ -62,7 +65,7 @@ const Component = ({data}) => {
   };
 
   return (
-    <KeyboardAvoidingView>
+    <ScrollViewContainer>
       <View style={styles.ComponentArea}>
         <Form
           initialValues={{
@@ -97,7 +100,7 @@ const Component = ({data}) => {
           </View>
         </Form>
       </View>
-    </KeyboardAvoidingView>
+    </ScrollViewContainer>
   );
 };
 export default Component;

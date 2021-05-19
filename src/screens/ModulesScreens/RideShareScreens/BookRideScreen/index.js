@@ -16,29 +16,29 @@ const Component = ({navigation, route, listFor}) => {
 
   if (formCategory === 'CityToCity') {
     return (
-      <ScrollViewContainer>
+      <Container>
         <Header title="Request Booking" hasBackIcon navigation={navigation} />
         <BookCityToCityRideForm
           navigation={navigation}
           data={route.params.data}
         />
-      </ScrollViewContainer>
+      </Container>
     );
   }
   if (formCategory === 'TourRide') {
     return (
-      <ScrollViewContainer>
+      <Container>
         <Header title="Request Booking" hasBackIcon navigation={navigation} />
         <BookTourRideForm navigation={navigation} data={route.params.data} />
-      </ScrollViewContainer>
+      </Container>
     );
   }
 
   return (
-    <ScrollViewContainer>
+    <Container>
       <Header title="Request Booking" hasBackIcon navigation={navigation} />
       <BookNearbyRideForm navigation={navigation} data={route.params.data} />
-    </ScrollViewContainer>
+    </Container>
   );
 };
 

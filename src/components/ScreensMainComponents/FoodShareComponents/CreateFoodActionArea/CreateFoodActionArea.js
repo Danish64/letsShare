@@ -173,6 +173,13 @@ const Component = ({navigation}) => {
                 }>
                 Sell
               </CategoryOutlinedButton>
+              <CategoryOutlinedButton
+                iconName="arrow-forward-outline"
+                onPress={() =>
+                  navigation.navigate('StallFoodScreen', {item: item})
+                }>
+                Stall
+              </CategoryOutlinedButton>
             </View>
             <View style={styles.pngImageArea}>
               <Image

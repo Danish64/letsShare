@@ -12,7 +12,6 @@ const Component = ({navigation, route}) => {
       <ScrollViewContainer>
         <RecentlySharedItem navigation={navigation} data={route.params.item} />
       </ScrollViewContainer>
-      {/* <Text>itemId: {JSON.stringify(data)}</Text> */}
     </Container>
   );
 };

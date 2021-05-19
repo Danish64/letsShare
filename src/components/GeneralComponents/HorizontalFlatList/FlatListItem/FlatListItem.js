@@ -13,6 +13,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {ShareButton} from '../../../../res/UniversalComponents/Button';
 import TestCaseImage from 'res/images/ModulesImages/GeneralImages/newEntry.png';
 import RideImage from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
+import FoodImage from 'res/images/ModulesImages/FoodSharingImages/shareFood.png';
 
 import {colors} from 'react-native-elements';
 
@@ -21,94 +22,86 @@ import {colors} from 'react-native-elements';
 
 //Third Party Exports Ends
 
-const Component = ({
-  id,
-  itemId,
-  item,
-  title,
-  description,
-  price,
-  location,
-  seatsAvailable,
-  image,
-  pickupLocation,
-  rideCategory,
-  rideType,
-  fare,
-  startLocation,
-  destinationLocation,
-  onPress,
-}) => {
+const Component = ({id, item, onPress}) => {
   //to use styles -> {styles.propertyName}
   return (
     <TouchableOpacity key={id} onPress={onPress}>
       <View style={styles.shareItemContainer}>
         <View style={styles.subContainer1}>
           <View style={styles.imageContainer}>
-            {rideCategory ? (
+            {item.rideCategory && (
               <Image source={RideImage} style={styles.image} />
-            ) : (
-              <Image source={image} style={styles.image} />
+            )}
+            {item.shareType && (
+              <Image source={FoodImage} style={styles.image} />
             )}
           </View>
         </View>
 
         <View style={styles.descriptionStyle}>
           <View style={styles.titleContainer}>
-            {rideCategory ? (
+            {item.rideCategory ? (
               <RecentlySharedTitleText numberOfLines={1}>
-                {rideCategory}
+                {item.rideCategory}
               </RecentlySharedTitleText>
             ) : (
               <RecentlySharedTitleText numberOfLines={1}>
-                {title}
+                {item.title}
               </RecentlySharedTitleText>
             )}
 
-            {rideType && (
+            {item.rideType && (
               <RecentlySharedTitleText numberOfLines={1}>
-                {rideType}
+                {' ' + item.rideType}
               </RecentlySharedTitleText>
             )}
           </View>
+          <View style={styles.alignCenter}>
+            {item.description && (
+              <TextIcon flexDirection="row">{item.description}</TextIcon>
+            )}
+          </View>
+
           <View style={styles.subtitleContainer}>
             <View style={styles.separator} />
-            {description && (
-              <TextIcon flexDirection="row" iconName={'list-outline'}>
-                {description}
-              </TextIcon>
-            )}
-            {price && (
+
+            {item.price && (
               <TextIcon flexDirection="column" iconName={'cash-outline'}>
-                {price}
+                {item.price}
               </TextIcon>
             )}
-            {fare && (
+            {item.fare && (
               <TextIcon flexDirection="column" iconName={'cash-outline'}>
-                {fare}Rs
+                {item.fare}Rs
               </TextIcon>
             )}
-            {/* {quantity && <TextIcon flexDirection="column">{quantity}</TextIcon>} */}
-            {seatsAvailable && (
+            {item.quantity && (
+              <TextIcon flexDirection="column" iconName={'basket-outline'}>
+                {item.quantity}
+              </TextIcon>
+            )}
+            {item.seatsAvailable && (
               <TextIcon flexDirection="column" iconName={'people-outline'}>
-                {seatsAvailable}
+                {item.seatsAvailable}
               </TextIcon>
             )}
 
             <View style={styles.separator} />
           </View>
           <View style={styles.locationStyle}>
-            {startLocation && (
-              <TextIcon flexDirection="row">{startLocation.address}</TextIcon>
-            )}
-            {destinationLocation && (
-              <TextIcon iconName={'pin-outline'} flexDirection="column">
-                {destinationLocation.address}
+            {item.startLocation && (
+              <TextIcon flexDirection="row">
+                {item.startLocation.address}
               </TextIcon>
             )}
-            {pickupLocation && (
-              <TextIcon flexDirection="row" iconName={'navigate-outline'}>
-                {pickupLocation.address}
+            {item.destinationLocation && (
+              <TextIcon iconName={'pin-outline'} flexDirection="column">
+                {item.destinationLocation.address}
+              </TextIcon>
+            )}
+            {item.pickUpLocation && (
+              <TextIcon flexDirection="row" iconName={'location-outline'}>
+                {item.pickUpLocation.address}
               </TextIcon>
             )}
           </View>
