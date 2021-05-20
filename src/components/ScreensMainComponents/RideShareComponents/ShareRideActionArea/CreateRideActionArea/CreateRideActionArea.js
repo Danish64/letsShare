@@ -94,6 +94,8 @@ const Component = ({navigation}) => {
     });
   };
 
+  
+
   const selectItem = (selectedId, selection) => {
     const newData = [
       ...data.map((item) => {

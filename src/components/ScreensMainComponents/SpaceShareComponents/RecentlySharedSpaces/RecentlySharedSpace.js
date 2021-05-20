@@ -1,14 +1,34 @@
 import React from 'react';
-import {HeadingText, GroupLabelText} from 'res/UniversalComponents/Text.js';
+import {View} from 'react-native';
+import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList/';
 import styles from './style';
-//Native Exports Ends Here
-//Third Party Exports Starts
 
-//Third Party Exports Ends
+import {
+  SectionHeadingText,
+} from 'res/UniversalComponents/Text.js';
 
-const Component = () => {
+import {
+  shareRidesData,
+} from 'res/constants/dummyData';
+
+const Component = ({navigation}) => {
   //to use styles -> {styles.propertyName}
-  return <HeadingText>Recently Shared Spaces</HeadingText>;
+  return (
+    <View style={styles.nearBySharesArea}>
+        <View style={styles.shareSpaceitleText}>
+          <SectionHeadingText>Recently Shared Spaces</SectionHeadingText>
+        </View>
+        <View style={styles.recentlySharedFlatlistArea}>
+
+          <HorizontalFlatList
+            data={shareRidesData}
+            navigation={navigation}
+            screen="RecentlySharedRideScreen"
+          />
+
+        </View>
+      </View>
+  );
 };
 
 export default Component;

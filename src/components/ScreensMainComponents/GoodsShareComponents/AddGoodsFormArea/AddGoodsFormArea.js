@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
-import {View, KeyboardAvoidingView, TextInput} from 'react-native';
+import {View, KeyboardAvoidingView} from 'react-native';
 import * as Yup from 'yup';
 
-//Native Exports Ends Here
-
-//Third Party Exports Starts
 import styles from './style';
 import {
   FormByFormik as Form,
@@ -15,25 +12,48 @@ import {
   FormImagePicker,
 } from '../../../../res/UniversalComponents/Forms';
 import {GoodsList} from '../../../../res/constants/dummyData';
-//Third Party Exports Ends
+import {useSelector} from 'react-redux';
+import {doPost} from '../../../../utils/AxiosMethods';
 
+// Text Fields Validations //
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(3).max(20).label('Title'),
   description: Yup.string().required().min(4).max(100).label('Description'),
+  contactNo: Yup.string().required().min(11).label('Contact No'),
 });
 
 const Component = ({navigation}) => {
+  const state = useSelector((state) => state);
+  const user = state.userInformation.user;
+  
+  // const submitForm = (values) => {
+  //   values.id = Math.floor(Math.random() * 100) + 1;
+  //   values.selected = false;
+  //   const newData = values;
+  //   updateRides(newData);
+  // };
+
+  // const updateRides = (newData) => {
+  //   const arrayData = GoodsList;
+  //   GoodsList.unshift(newData);
+  //   navigation.navigate('CreateGoodsScreen', newData);
+  // };newRideData
+
   const submitForm = (values) => {
-    values.id = Math.floor(Math.random() * 100) + 1;
-    values.selected = false;
-    const newData = values;
-    updateRides(newData);
+    const newGoodsData = {
+      ownerId: user._id,
+      title: values.title,
+      description: values.description,
+      quantity: values.quantity,
+      ownerContactNumber: values.contactNo,
+    };
+    createRide(newGoodsData);
   };
 
-  const updateRides = (newData) => {
-    const arrayData = GoodsList;
-    GoodsList.unshift(newData);
-    navigation.navigate('CreateGoodsScreen', newData);
+  const createRide = async (newGoodsData) => {
+    const result = await doPost('v1/userGoods/createGood', newGoodsData);
+    console.log('Data from Goods Api', result);
+    navigation.navigate('CreateGoodsScreen', newGoodsData);
   };
 
   return (
@@ -44,15 +64,16 @@ const Component = ({navigation}) => {
             title: '',
             description: '',
             quantity: '',
+            contactNo: '',
             selected: null,
             image: [],
             id: '',
           }}
           onSubmit={(values) => {
-            submitForm(values);
-            console.log(values);
+            submitForm(values);           
           }}
           validationSchema={validationSchema}>
+
           {/* Input image */}
           <FormImagePicker name="image" />
 
@@ -72,6 +93,15 @@ const Component = ({navigation}) => {
             placeholder="e.g. 3 bottles of shampoo, 1 half filled..."
           />
 
+          {/* Input Ride Owner Contact No */}
+          <FormField
+            title="Contact"
+            maxLength={13}
+            keyboardType="numeric"
+            name="contactNo"
+            placeholder="Enter Contact No. e.g; 03367676767"
+          />
+
           {/* Stepper Button Input -> Quantity */}
           <StepperButtonInputField title="Quantity" name="quantity" />
 
@@ -79,6 +109,7 @@ const Component = ({navigation}) => {
           <View style={styles.buttonAreastyle}>
             <SubmitForm title="Add"></SubmitForm>
           </View>
+
         </Form>
       </View>
     </KeyboardAvoidingView>
