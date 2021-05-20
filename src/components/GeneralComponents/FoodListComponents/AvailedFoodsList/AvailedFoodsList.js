@@ -12,7 +12,7 @@ import LoadingIndicator from '../../LoadingIndicator';
 import ListItemDeleteAction from '../../ListItemDeleteAction';
 
 const Component = ({navigation, data}) => {
-  console.log('Data in AvailedRidesList', data);
+  console.log('Data in AvailedFoodList', data);
   const listEmptyComponent = () => {
     return (
       <View

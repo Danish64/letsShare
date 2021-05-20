@@ -28,7 +28,7 @@ const Component = ({navigation}) => {
     setDonatedFood(result.data);
   };
   return (
-    <View style={styles.nearBySharesArea}>
+    <View style={styles.recentlySharedFoodArea}>
       <View style={styles.shareFoodTitleText}>
         <SectionHeadingText>Recently Shared</SectionHeadingText>
       </View>
