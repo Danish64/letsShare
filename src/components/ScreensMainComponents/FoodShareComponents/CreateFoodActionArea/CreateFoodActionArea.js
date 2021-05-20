@@ -1,48 +1,82 @@
 import React, {useEffect, useState} from 'react';
 import {View, Image, TouchableOpacity, Text} from 'react-native';
-//Native Exports Ends Here
-//Third Party Exports Starts
+import {useIsFocused} from '@react-navigation/native';
+
 import {
   HeadingText,
   GroupLabelText,
   TextButton,
   ShareActionAreaHeadingText,
   SectionHeadingText,
+  ButtonTextLightGrey,
 } from 'res/UniversalComponents/Text.js';
 
-import HorizontalScrollViewContainer from '../../../../res/UniversalComponents/HorizontalScrollViewContainer';
-import {AddAssetButton} from '../../../../res/UniversalComponents/Button';
+import HorizontalScrollViewContainer from 'res/UniversalComponents/HorizontalScrollViewContainer';
+import LoadingIndicator from '../../../GeneralComponents/LoadingIndicator';
 
-import {CategoryOutlinedButton} from 'res/UniversalComponents/Button.js';
+import {
+  CategoryOutlinedButton,
+  PrimaryButton,
+  AddAssetButton,
+  SelectRideButton,
+  OutlinedActionIconButton,
+} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
-import ScrollViewList from '../../../GeneralComponents/ScrollViewList';
 import ShareFood from 'res/images/ModulesImages/FoodSharingImages/shareFood.png';
+import Choose from 'res/images/ModulesImages/GeneralImages/noData.png';
+
 import {FoodList} from '../../../../res/constants/dummyData';
 
-//Native Exports Ends Here
-//Third Party Exports Starts
+import {
+  doGet,
+  doGetCustom,
+  doGetWithTokenInHeader,
+  doPost,
+} from '../../../../utils/AxiosMethods';
 
-//Third Party Exports Ends
+import {useSelector} from 'react-redux';
 
 const Component = ({navigation}) => {
-  const [data, setData] = useState(FoodList);
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    getUserFoodData();
+    renderItems();
+    setView(false);
+  }, [isFocused]);
+
+  const state = useSelector((state) => state);
+  const ownerId = state.userInformation.user._id;
+  const userId = state.userInformation.user._id;
+  console.log(userId);
+
+  const [data, setData] = useState();
   const [view, setView] = useState(false);
   const [item, setItem] = useState({});
 
-  useEffect(() => {
-    renderItems;
-  }, [addButton]);
+  const getUserFoodData = async () => {
+    const data = {
+      ownerId: ownerId,
+    };
+    const result = await doPost('v1/userFoods/getUserFoods', data);
+    const rides = result.data.map((item, index) => {
+      item.key = index;
+      item.selected = false;
+      return item;
+    });
+    setData(rides);
+  };
 
   // Render Food
   const renderItems = () => {
-    return data.map((item, index) => {
+    return data?.map((item, index) => {
       return (
         <View key={index}>
           <AddAssetButton
-            onPress={() => selectItem(item.id, item.selected)}
+            onPress={() => selectItem(item._id, item.selected)}
             selected={item.selected}
-            iconName="cart-outline"
+            iconName="fast-food-outline"
             title={item.title}
             assetName={item.title}
           />
@@ -54,7 +88,7 @@ const Component = ({navigation}) => {
   const selectItem = (selectedId, selection) => {
     const newData = [
       ...data.map((item) => {
-        if (selectedId === item.id) {
+        if (selectedId === item._id) {
           if (selection === true) {
             setView(false);
             return {
@@ -89,6 +123,10 @@ const Component = ({navigation}) => {
         assetName="Add"></AddAssetButton>
     );
   };
+
+  if (!data) {
+    return <LoadingIndicator />;
+  }
 
   return (
     <>
@@ -125,18 +163,22 @@ const Component = ({navigation}) => {
                 iconName="arrow-forward-outline"
                 onPress={() =>
                   navigation.navigate('DonateFoodScreen', {item: item})
-                  // console.warn('Donate Food Screen')
                 }>
                 Donate
-                {/* <Text>{JSON.stringify(item)}</Text> */}
               </CategoryOutlinedButton>
               <CategoryOutlinedButton
                 iconName="arrow-forward-outline"
                 onPress={() =>
                   navigation.navigate('SellFoodScreen', {item: item})
-                  // console.warn('Sell Food Screen')
                 }>
                 Sell
+              </CategoryOutlinedButton>
+              <CategoryOutlinedButton
+                iconName="arrow-forward-outline"
+                onPress={() =>
+                  navigation.navigate('StallFoodScreen', {item: item})
+                }>
+                Stall
               </CategoryOutlinedButton>
             </View>
             <View style={styles.pngImageArea}>
@@ -149,10 +191,16 @@ const Component = ({navigation}) => {
           </View>
         </View>
       ) : (
-        // Select Food Type
-
+        // This view will be visible before selecting food item
         <View style={styles.createFoodComponentArea}>
           <View style={styles.createdFoodArea}>
+            <View style={styles.mySharedFoodButtonArea}>
+              <OutlinedActionIconButton
+                iconName="eye-outline"
+                onPress={() => navigation.navigate('MySharedFood')}>
+                My Shared Food
+              </OutlinedActionIconButton>
+            </View>
             <View style={styles.myFoodTitleText}>
               <ShareActionAreaHeadingText>
                 Select Food
@@ -166,6 +214,18 @@ const Component = ({navigation}) => {
                     {addButton()}
                   </View>
                 </HorizontalScrollViewContainer>
+              </View>
+              <View style={styles.pngImageArea}>
+                <Image
+                  resizeMode="contain"
+                  source={Choose}
+                  style={styles.imageContainer}
+                />
+              </View>
+              <View style={styles.rideNotSelectedText}>
+                <ButtonTextLightGrey>
+                  You have not selected any Food Item
+                </ButtonTextLightGrey>
               </View>
             </View>
           </View>

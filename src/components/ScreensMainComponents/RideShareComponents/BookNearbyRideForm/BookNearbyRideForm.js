@@ -19,12 +19,17 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {doPost} from '../../../../utils/AxiosMethods';
 import {useSelector} from 'react-redux';
-
-const validationSchema = Yup.object().shape({
-  seatsAvailable: Yup.string().required().label('Available Seats'),
-});
+import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer';
 
 const Component = ({data}) => {
+  const validationSchema = Yup.object().shape({
+    seatsAvailable: Yup.number()
+      .required()
+      .min(1)
+      .max(data.seatsAvailable)
+      .label('Available Seats'),
+  });
+
   const navigation = useNavigation();
   const route = useRoute();
   // console.log('Ride Detail in Book Ride Form ', data);
@@ -67,7 +72,7 @@ const Component = ({data}) => {
   };
 
   return (
-    <KeyboardAvoidingView>
+    <ScrollViewContainer>
       <View style={styles.ComponentArea}>
         <Form
           initialValues={{
@@ -80,19 +85,18 @@ const Component = ({data}) => {
             submitForm(values);
           }}
           validationSchema={validationSchema}>
-          {/* Seats Available: */}
-          <StepperButtonInputField
-            title="Select the no of seats you need:"
-            name="seatsAvailable"
-          />
-
           {/* Start Location */}
           <FormLocation name="startLocation" title="Enter Pickup Location" />
 
           {/* destination Location */}
           <FormLocation
             name="destinationLocation"
-            title="Enter DropOff Location Location"
+            title="Enter DropOff Location"
+          />
+          {/* Seats Available: */}
+          <StepperButtonInputField
+            title="Select the no of seats you need:"
+            name="seatsAvailable"
           />
 
           <FormField
@@ -105,11 +109,11 @@ const Component = ({data}) => {
 
           {/* Submit Button */}
           <View style={styles.buttonAreaStyle}>
-            <SubmitButtonPrimary title="Request Ride"></SubmitButtonPrimary>
+            <SubmitButtonPrimary title="Send Booking Request"></SubmitButtonPrimary>
           </View>
         </Form>
       </View>
-    </KeyboardAvoidingView>
+    </ScrollViewContainer>
   );
 };
 export default Component;

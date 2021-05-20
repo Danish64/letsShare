@@ -1,18 +1,28 @@
 import React from 'react';
 import Container from 'res/UniversalComponents/Container.js';
 import Header from '../../../../components/GeneralComponents/Header';
-import SpaceShareHome from '../../../../components/ContainersComponent/SpaceShareContainer';
+import {
+  ShareSpaceActionArea,
+  RecentlySharedSpaces,
+  RecommendedSpaces,
+  AvailSpacesArea,
+} from '../../../../components/ScreensMainComponents/SpaceShareComponents';
+import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer.js';
 
 const Component = ({navigation}) => {
   return (
     <Container>
       <Header
         title="space share"
-        isSearchAble
+        // isSearchAble
         navigation={navigation}
         // navigateTo="HomeSearchScreen"
       />
-      <SpaceShareHome navigation={navigation} />
+      <ScrollViewContainer>
+        <ShareSpaceActionArea navigation={navigation} />
+        <RecentlySharedSpaces navigation={navigation} />
+        <AvailSpacesArea navigation={navigation} />
+      </ScrollViewContainer>
     </Container>
   );
 };

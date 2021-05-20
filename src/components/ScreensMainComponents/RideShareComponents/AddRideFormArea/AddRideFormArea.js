@@ -13,7 +13,6 @@ import {
   SubmitButton as SubmitForm,
   FormImagePicker,
 } from 'res/UniversalComponents/Forms';
-import {addRideDummyData} from 'res/constants/dummyData';
 import {useSelector} from 'react-redux';
 import {doPost} from '../../../../utils/AxiosMethods';
 
@@ -37,10 +36,10 @@ const categories = [
 const Component = ({navigation}) => {
   const state = useSelector((state) => state);
   const user = state.userInformation.user;
-  console.log(user);
 
   const submitForm = (values) => {
     const newRideData = {
+      ridePictures: values.image,
       ownerId: user._id,
       rideName: values.rideName,
       registrationNumber: values.registrationNo,
@@ -65,11 +64,10 @@ const Component = ({navigation}) => {
             registrationNo: '',
             contactNo: '',
             rideType: '',
-            image: [],
+            image: '',
           }}
           onSubmit={(values) => {
             submitForm(values);
-            // console.log(values);
           }}
           validationSchema={validationSchema}>
           {/* Input image */}

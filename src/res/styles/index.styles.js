@@ -196,6 +196,12 @@ export default StyleSheet.create({
     fontFamily: FONT_AIRBNB_CEREAL_BOLD,
     color: Colors.Black,
   },
+  bodyBoldLargeRed: {
+    ...bodyTextProperties,
+    fontFamily: FONT_AIRBNB_CEREAL_BOOK,
+    fontSize: 18,
+    color: Colors.Red,
+  },
   bodyLight: {
     ...bodyTextProperties,
     fontSize: ms(LIGHT_BODY_TEXT_SIZE),
@@ -252,6 +258,12 @@ export default StyleSheet.create({
     fontFamily: FONT_AIRBNB_CEREAL_BOLD,
     letterSpacing: ms(0.4),
   },
+  captionTextRed: {
+    fontSize: ms(DEFAULT_CAPTION_TEXT_SIZE),
+    color: Colors.Failure,
+    fontFamily: FONT_AIRBNB_CEREAL_BOLD,
+    letterSpacing: ms(0.4),
+  },
   overlineText: {
     fontSize: ms(DEFAULT_OVERLINE_TEXT_SIZE),
     color: Colors.Black,
@@ -265,6 +277,9 @@ export default StyleSheet.create({
   buttonPrimary: {
     ...buttonProperties,
     backgroundColor: Colors.Primary,
+    alignItems: 'center',
+    paddingVertical: vs(15),
+    justifyContent: 'center',
   },
   buttonPrimaryWhite: {
     ...buttonProperties,

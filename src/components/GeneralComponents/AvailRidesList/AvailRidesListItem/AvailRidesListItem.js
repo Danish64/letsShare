@@ -13,7 +13,7 @@ import {
   RecentlySharedSubtitleText,
 } from 'res/UniversalComponents/Text';
 import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
-import RidesIcon from '../../../../res/images/ModulesImages/RideSharingImages/ShareRide.png';
+import RidesIcon from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
 
 const Component = ({
   item,
@@ -30,15 +30,11 @@ const Component = ({
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.mainContainer}>
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+        <View style={styles.subContainer}>
           {rideCategory && (
-            <RecentlySharedTitleText>
-              {rideCategory + ' Ride'}
-            </RecentlySharedTitleText>
+            <View style={styles.rideCategoryView}>
+              <RecentlySharedTitleText>{rideCategory}</RecentlySharedTitleText>
+            </View>
           )}
         </View>
         <View style={{flexDirection: 'row'}}>

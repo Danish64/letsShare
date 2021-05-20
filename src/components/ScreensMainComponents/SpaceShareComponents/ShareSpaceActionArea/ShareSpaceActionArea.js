@@ -17,8 +17,6 @@ import image from 'res/images/DummyImages/shareRide.png';
 //Third Party Exports Ends
 
 const Component = ({navigation}) => {
-  // console.log('RideShareActionArea', navigation);
-  //to use styles -> {styles.propertyName}
   return (
     <View style={styles.shareSpaceComponentArea}>
       <View style={styles.shareSpaceTitleText}>
@@ -29,7 +27,7 @@ const Component = ({navigation}) => {
 
       <View style={styles.shareSpaceButtonView}>
         <OutlinedActionIconButton
-          onPress={() => console.log('Share Action Area Button Press')}
+          onPress={() => navigation.navigate('CreateSpaceShare')}
           iconName="add-outline">
           Share your space
         </OutlinedActionIconButton>

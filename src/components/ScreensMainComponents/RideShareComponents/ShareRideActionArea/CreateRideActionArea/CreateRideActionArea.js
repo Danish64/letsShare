@@ -1,9 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {View, Image, TouchableOpacity, Text, Button} from 'react-native';
+import {View, Image, TouchableOpacity, Text} from 'react-native';
 
 //Native Exports Ends Here
 //Third Party Exports Starts
 import {
+  HeadingText,
+  GroupLabelText,
+  TextButton,
   ShareActionAreaHeadingText,
   SectionHeadingText,
   ButtonTextLightGrey,
@@ -17,6 +20,7 @@ import {
   PrimaryButton,
   AddAssetButton,
   SelectRideButton,
+  OutlinedActionIconButton,
 } from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
@@ -39,10 +43,9 @@ const Component = ({navigation}) => {
   const ownerId = state.userInformation.user._id;
   const userId = state.userInformation.user._id;
   const sharerId = state.userInformation.user._id;
-  // console.log(userId);
+  console.log(userId);
 
   const [data, setData] = useState();
-  const [userAllRides, setUserAllRides] = useState();
   const [view, setView] = useState(false);
   const [item, setItem] = useState({});
 
@@ -59,23 +62,12 @@ const Component = ({navigation}) => {
     setData(rides);
   };
 
-  const getUserAllRides = async () => {
-    const data = {
-      sharerId: sharerId,
-    };
-    const result = await doPost('v1/userRideShares', data);
-    const allSharedRides = result.data.map((item, index) => {
-      item.key = index;
-      return item;
-    });
-    setUserAllRides(allSharedRides);
-  };
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    getUserAllRides();
     getRides();
     renderItems();
+    setView(false);
   }, [isFocused]);
 
   const renderItems = () => {
@@ -192,12 +184,11 @@ const Component = ({navigation}) => {
       ) : (
         <View style={styles.selectRideArea}>
           <View style={styles.mySharedRides}>
-            <PrimaryButton
-              onPress={() =>
-                navigation.navigate('SharedRidesScreen', {data: userAllRides})
-              }>
+            <OutlinedActionIconButton
+              iconName="md-pencil"
+              onPress={() => navigation.navigate('SharedRidesScreen')}>
               My Shared Rides
-            </PrimaryButton>
+            </OutlinedActionIconButton>
           </View>
 
           <View style={styles.selectRideTitleText}>

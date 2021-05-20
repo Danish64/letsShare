@@ -17,37 +17,46 @@ import {
   FormLocation,
 } from '../../../../res/UniversalComponents/Forms';
 import SetLocation from '../../../GeneralComponents/SetLocation';
-import {Food} from '../../../../res/constants/dummyData';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {doPost} from '../../../../utils/AxiosMethods';
 
 //Third Party Exports Ends
 
 const validationSchema = Yup.object().shape({
-  pickupTime: Yup.string().required().min(3).max(20).label('Pickup Time'),
-  listFor: Yup.string().required().min(1).max(3).label('Listing Days'),
+  pickUpTime: Yup.string().required().min(3).max(20).label('Pickup Time'),
+  listForDays: Yup.string().required().min(1).max(3).label('Listing Days'),
+  deliveryInfo: Yup.string().required().max(100).label('Delivery Info'),
 });
 
 const Component = ({navigation, Data}) => {
+  const route = useRoute();
+  const {item} = route.params;
   const submitForm = (values) => {
-    // valID = ;
     const newData = {
-      id: Math.floor(Math.random() * 100) + 1,
-      title: Data.title,
-      quantity: Data.quantity,
-      description: Data.description,
-      image: Data.image,
-      pickupLocation: values.location,
-      pickupTime: values.pickupTime,
-      listFor: values.listFor,
+      sharerId: item.ownerId,
+      shareMessage: values.shareMessage,
+      title: item.title,
+      description: item.description,
+      quantity: item.quantity,
+      ownerContactNumber: item.ownerContactNumber,
+      images: item.images,
+      shareType: 'donate',
+      deliveryInfo: values.deliveryInfo,
+      listForDays: values.listForDays,
+      pickUpLocation: {
+        address: values.pickUpLocation.data.description,
+        latitude: values.pickUpLocation.details.geometry.location.lat,
+        longitude: values.pickUpLocation.details.geometry.location.lat,
+      },
+      pickUpTime: values.pickUpTime,
     };
-    console.log(newData);
-    updateRides(newData);
+    createFoodShare(newData);
   };
 
-  const updateRides = (newData) => {
-    Food.push(newData);
-    console.log(Food);
-    navigation.navigate('FoodShareHome', newData);
-    console.warn('Shared Successfuly');
+  const createFoodShare = async (donateFoodShare) => {
+    let data = donateFoodShare;
+    const result = await doPost('v1/foodShares/createFoodShare', data);
+    navigation.navigate('CreateFoodScreen', donateFoodShare);
   };
 
   return (
@@ -55,27 +64,41 @@ const Component = ({navigation, Data}) => {
       <View style={styles.donateFoodComponentArea}>
         <Form
           initialValues={{
-            pickupTime: '',
-            listFor: '',
-            location: {},
+            shareMessage: '',
+            deliveryInfo: '',
+            pickUpTime: '',
+            listForDays: '',
+            pickUpLocation: {},
           }}
           onSubmit={(values) => {
             submitForm(values);
           }}
           validationSchema={validationSchema}>
+          <FormLocation name="pickUpLocation" title="PickUp Location" />
+
+          <FormField
+            title="Delivery Information"
+            maxLength={100}
+            name="deliveryInfo"
+            placeholder="Enter delivery Info"
+          />
           <FormField
             title="Pickup Time"
             maxLength={100}
-            name="pickupTime"
+            name="pickUpTime"
             placeholder="10AM to 8PM etc."
           />
 
-          <FormLocation name="location" title="Add Location" />
+          <StepperButtonInputField title="List For(days):" name="listForDays" />
+          <FormField
+            title="Share Message (optional)"
+            maxLength={100}
+            name="shareMessage"
+            placeholder="enter any message for the availer"
+          />
 
-          <StepperButtonInputField title="List For(days):" name="listFor" />
-
-          <View style={styles.buttonAreastyle}>
-            <SubmitForm title="Share"></SubmitForm>
+          <View style={styles.buttonAreaStyle}>
+            <SubmitForm title="Share Food"></SubmitForm>
           </View>
         </Form>
       </View>

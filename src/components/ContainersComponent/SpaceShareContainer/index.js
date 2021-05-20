@@ -1,21 +1,9 @@
 import React from 'react';
-import {
-  ShareSpaceActionArea,
-  RecentlySharedSpaces,
-  RecommendedSpaces,
-} from '../../ScreensMainComponents/SpaceShareComponents';
-import {HeadingText} from 'res/UniversalComponents/Text.js';
-import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer.js';
+import {Text} from 'react-native';
 
 const Component = ({navigation}) => {
   //console.log('RideShareContainer', navigation);
-  return (
-    <ScrollViewContainer>
-      <ShareSpaceActionArea navigation={navigation} />
-      <RecentlySharedSpaces navigation={navigation} />
-      <RecommendedSpaces navigation={navigation} />
-    </ScrollViewContainer>
-  );
+  return <Text>NoContainer</Text>;
 };
 
 export default Component;

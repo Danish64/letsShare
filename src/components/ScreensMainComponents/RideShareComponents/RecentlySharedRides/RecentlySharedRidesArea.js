@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
-import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList/';
-import DRCaseImage from 'res/images/ModulesImages/GeneralImages/myLocation.png';
-import CTCCaseImage from 'res/images/ModulesImages/RideSharingImages/orderRide.png';
+import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList';
+
+import {doGet, doPost, doPostWithoutBody} from '../../../../utils/AxiosMethods';
+import {useSelector} from 'react-redux';
 
 import {
   HeadingText,
@@ -11,18 +12,23 @@ import {
 } from 'res/UniversalComponents/Text.js';
 import styles from './style';
 
-import {
-  NearbyRides,
-  CityToCityRides,
-  TourRides,
-  shareRidesData,
-} from 'res/constants/dummyData';
-
 //Native Exports Ends Here
 
 const Component = ({navigation}) => {
-  //to use styles -> {styles.propertyName}
+  useEffect(() => {
+    fetchNearbyRides();
+  }, []);
 
+  const userId = useSelector((state) => state.userInformation.user._id);
+  const [nearbyRides, setNearbyRides] = useState(null);
+
+  const fetchNearbyRides = async () => {
+    let data = {
+      userId: userId,
+    };
+    const result = await doPost('v1/nearByRideShares/getAllNearByRides', data);
+    setNearbyRides(result.data);
+  };
   return (
     <View style={styles.nearBySharesArea}>
       <View style={styles.shareRideTitleText}>
@@ -30,9 +36,9 @@ const Component = ({navigation}) => {
       </View>
       <View style={styles.recentlySharedFlatlistArea}>
         <HorizontalFlatList
-          data={shareRidesData}
+          data={nearbyRides}
           navigation={navigation}
-          screen="RecentlySharedRideScreen"
+          screen="AvailRideDetail"
         />
       </View>
     </View>

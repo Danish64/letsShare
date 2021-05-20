@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import AvailRidesList from '../../../GeneralComponents/AvailRidesList';
 import {doGet, doPost, doPostWithoutBody} from '../../../../utils/AxiosMethods';
 import {useSelector} from 'react-redux';
@@ -21,13 +21,6 @@ const Component = ({navigation}) => {
     );
     setData(result.data);
   };
-  return (
-    <AvailRidesList
-      listFor="AvailCityToCityRide"
-      data={data}
-      navigation={navigation}
-      //screen="RecentlySharedRideScreen"
-    />
-  );
+  return <AvailRidesList data={data} navigation={navigation} />;
 };
 export default Component;

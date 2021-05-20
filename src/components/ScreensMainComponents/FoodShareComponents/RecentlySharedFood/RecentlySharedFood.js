@@ -1,36 +1,43 @@
-import React from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
-import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList/';
+import React, {useState, useEffect} from 'react';
+import {View} from 'react-native';
+import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList';
+
+import {doGet, doPost} from '../../../../utils/AxiosMethods';
+import {useSelector} from 'react-redux';
+
 import {
   HeadingText,
   GroupLabelText,
   SectionHeadingText,
 } from 'res/UniversalComponents/Text.js';
 import styles from './style';
-//Native Exports Ends Here
-//Third Party Exports Starts
-
-
-import {
-  Food,
-  testData} from '../../../../res/constants/dummyData.js';
-
-
-//Third Party Exports Ends
 
 const Component = ({navigation}) => {
-  //to use styles -> {styles.propertyName}
+  useEffect(() => {
+    fetchFoodData();
+  }, []);
 
+  const userId = useSelector((state) => state.userInformation.user._id);
+  const [donatedFood, setDonatedFood] = useState(null);
 
+  const fetchFoodData = async () => {
+    let data = {
+      userId: userId,
+    };
+    const result = await doPost('v1/foodShares/getAllFoodShares', data);
+    setDonatedFood(result.data);
+  };
   return (
     <View style={styles.nearBySharesArea}>
       <View style={styles.shareFoodTitleText}>
         <SectionHeadingText>Recently Shared</SectionHeadingText>
       </View>
       <View style={styles.recentlySharedFlatlistArea}>
-
-        <HorizontalFlatList data={Food} navigation={navigation} screen='RecentlySharedFoodScreen'/>
-
+        <HorizontalFlatList
+          data={donatedFood}
+          navigation={navigation}
+          screen="AvailFoodDetail"
+        />
       </View>
     </View>
   );

@@ -7,7 +7,6 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 
 const Component = ({navigation, item}) => {
   const route = useRoute();
-
   return (
     <Container>
       <Header title="Booking Requests" hasBackIcon navigation={navigation} />

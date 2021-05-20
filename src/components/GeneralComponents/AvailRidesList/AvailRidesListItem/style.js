@@ -15,6 +15,15 @@ export default StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
   },
+  SubContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  rideCategoryView: {
+    width: '100%',
+    alignItems: 'center',
+    paddingTop: 10,
+  },
 
   rideDetails: {
     width: '30%',

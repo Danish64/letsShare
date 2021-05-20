@@ -2,15 +2,15 @@ import React, {useState, useEffect} from 'react';
 import {Text} from 'react-native';
 import Container from '../../../../res/UniversalComponents/Container';
 import Header from '../../../../components/GeneralComponents/Header';
-import AvailDonatedFoodList from '../../../../components/ScreensMainComponents/FoodShareComponents/AvailDonatedFoodList';
+import AvailDonatedFood from '../../../../components/ScreensMainComponents/FoodShareComponents/AvailDonatedFood';
 
 const Component = ({navigation, route}) => {
-    return(
-        <Container>
-            <Header title="Avail Donated Food" hasBackIcon navigation={navigation}/>
-            <AvailDonatedFoodList navigation={navigation} />
-        </Container>
-    );
+  return (
+    <Container>
+      <Header title="Avail Donated Food" hasBackIcon navigation={navigation} />
+      <AvailDonatedFood navigation={navigation} />
+    </Container>
+  );
 };
 
 export default Component;

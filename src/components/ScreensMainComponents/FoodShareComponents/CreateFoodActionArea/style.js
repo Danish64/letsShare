@@ -8,35 +8,34 @@ export default StyleSheet.create({
     height: mvs(630, 0.7),
     marginVertical: mvs(15, 0.6),
     marginHorizontal: ms(20, 0.6),
-    // backgroundColor: 'pink',
+    //backgroundColor: 'pink',
+  },
+  mySharedFoodButtonArea: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: 20,
   },
   createdFoodArea: {
     width: '100%',
-    height: mvs(180, 0.7),
-    // backgroundColor: 'lightyellow',
+    marginVertical: mvs(10, 0.6),
   },
   myFoodTitleText: {
     width: '100%',
     marginBottom: mvs(5, 0.6),
     marginTop: mvs(5, 0.6),
-    // backgroundColor: 'grey',
   },
   myFoodListArea: {
     width: '100%',
     height: mvs(140, 0.7),
-    //backgroundColor: 'grey',
     alignItems: 'center',
   },
   selectFoodTypeArea: {
     width: '100%',
-    height: mvs(270, 0.7),
     marginVertical: mvs(10, 0.6),
-    //backgroundColor: 'blue',
   },
   categoryButtonsArea: {
     width: '100%',
-    height: mvs(150, 0.7),
-    marginVertical: mvs(10, 0.6),
     justifyContent: 'center',
   },
   pngImageArea: {
@@ -60,5 +59,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  rideNotSelectedText: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: mvs(60, 0.6),
   },
 });

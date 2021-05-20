@@ -7,9 +7,10 @@ import IllustrationContainer from '../../GeneralComponents/IllustrationContainer
 import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
 import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
 import LoadingIndicator from '../LoadingIndicator';
+import ListItemDeleteAction from '../../GeneralComponents/ListItemDeleteAction';
 
 const Component = ({navigation, data}) => {
-  console.log('Data in My Shared Rides Screen', data);
+  // console.log('Data in My Shared Rides Screen', data);
   const listEmptyComponent = () => {
     return (
       <View
@@ -67,6 +68,9 @@ const Component = ({navigation, data}) => {
           onPress={() => {
             navigation.navigate('BookingRequestsScreen', {item: item});
           }}
+          renderRightAction={() => (
+            <ListItemDeleteAction onPress={() => console.log('Delete')} />
+          )}
         />
       )}
       style={styles.FlatListStyle}

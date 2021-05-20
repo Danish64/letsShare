@@ -33,7 +33,7 @@ const Component = ({Data}) => {
       registrationNumber: item.registrationNumber,
       ownerContactNumber: item.ownerContactNumber,
       rideType: item.rideType,
-      image: '',
+      ridePictures: item.ridePictures,
       fare: values.fare,
       seatsAvailable: values.seatsAvailable.toString(),
       startLocation: {
@@ -98,7 +98,7 @@ const Component = ({Data}) => {
             // keyboardType="numeric"
           />
           {/* Start Location */}
-          <FormLocation name="startLocation" title="startLocation" />
+          <FormLocation name="startLocation" title="Set Start Location" />
           <FormField
             title="Destination Address"
             maxLength={100}
@@ -109,12 +109,12 @@ const Component = ({Data}) => {
           {/* destination Location */}
           <FormLocation
             name="destinationLocation"
-            title="Destination Location"
+            title="Set Destination Location"
           />
 
           {/* Submit Button */}
-          <View style={styles.buttonAreastyle}>
-            <SubmitForm title="Share"></SubmitForm>
+          <View style={styles.buttonAreaStyle}>
+            <SubmitForm title="Share Ride"></SubmitForm>
           </View>
         </Form>
       </View>

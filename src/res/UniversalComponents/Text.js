@@ -78,6 +78,9 @@ export const BodyTextBlack = (props) => (
 export const BodyTextBold = (props) => (
   <Text style={styles.bodyBold}>{props.children}</Text>
 );
+export const BodyTextBoldLargeRed = (props) => (
+  <Text style={styles.bodyBoldLargeRed}>{props.children}</Text>
+);
 export const BodyTextLight = (props) => (
   <Text style={styles.bodyLight}>{props.children}</Text>
 );
@@ -98,6 +101,9 @@ export const CaptionText = (props) => (
 );
 export const CaptionTextPrimary = (props) => (
   <Text style={styles.captionTextPrimary}>{props.children}</Text>
+);
+export const CaptionTextRed = (props) => (
+  <Text style={styles.captionTextRed}>{props.children}</Text>
 );
 export const OverlineText = (props) => (
   <Text style={styles.overlineText}>{props.children}</Text>
