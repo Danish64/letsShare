@@ -35,18 +35,18 @@ const Component = ({navigation}) => {
       availerId: availerId,
       active: false,
     };
-    const result = await doPost('v1/userRides/userAvailedRides', data);
-    const allRideBookings = result.data.map((item, index) => {
+    const result = await doPost('v1/foodShares/getAllFoodShares', data);
+    const allFoodBookings = result.data.map((item, index) => {
       item.key = index;
       return item;
     });
 
-    setUserAllBookings(allRideBookings);
+    setUserAllBookings(allFoodBookings);
   };
 
   return (
     <Container>
-      <Header title="My Availed Rides" hasBackIcon navigation={navigation} />
+      <Header title="My Availed Foods" hasBackIcon navigation={navigation} />
       <View style={styles.listHeadingTextView}>
         <ShareActionAreaHeadingText>My Bookings</ShareActionAreaHeadingText>
       </View>

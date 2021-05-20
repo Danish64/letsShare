@@ -38,15 +38,22 @@ const Component = ({item, renderRightAction}) => {
               </RecentlySharedTitleText>
             </View>
           )}
-          {item.bookings.length === 0 ? (
-            <View />
-          ) : (
+          {item.isCompleted === true ? (
             <View
               style={{
                 width: 15,
                 height: 15,
                 borderRadius: 15,
                 backgroundColor: Colors.Primary,
+              }}
+            />
+          ) : (
+            <View
+              style={{
+                width: 15,
+                height: 15,
+                borderRadius: 15,
+                backgroundColor: Colors.Failure,
               }}
             />
           )}

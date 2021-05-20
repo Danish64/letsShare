@@ -4,12 +4,15 @@ import {BodyTextBoldLargeRed} from 'res/UniversalComponents/Text.js';
 import {View} from 'react-native';
 import {mvs, ms} from 'react-native-size-matters';
 import {clearAll} from '../../../../utils/AsyncStorageUtilities';
-const logout = () => {
-  clearAll();
-  // implement navigate to login Screen
-};
+import {useNavigation} from '@react-navigation/native';
 
 const Component = () => {
+  const navigation = useNavigation();
+  const logout = () => {
+    clearAll();
+    navigation.navigate('Authentication', {screen: 'UserManagerHome'});
+  };
+
   return (
     <View
       style={{
