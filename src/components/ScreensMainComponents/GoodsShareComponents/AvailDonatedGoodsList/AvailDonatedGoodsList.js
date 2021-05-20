@@ -7,31 +7,26 @@ import {useSelector} from 'react-redux';
 import AvailGoodsList from '../../../GeneralComponents/AvailGoodsList';
 
 const Component = ({navigation}) => {
-    const userId = useSelector((state) => state.userInformation.user._id);
-    const [data, setData] = useState(null);
-    useEffect(() => {
-        fetchDonatedGoods();
-    }, []);
+  const userId = useSelector((state) => state.userInformation.user._id);
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    fetchDonatedGoods();
+  }, []);
 
-    const fetchDonatedGoods = async () => {
-        let data = {
-        userId: userId,
-        };
-        const result = await doPost('v1/goodShares/getAllGoodShares', data);
-        setData(result.data);
+  const fetchDonatedGoods = async () => {
+    let data = {
+      userId: userId,
     };
-        return(
-            // <View>
-            //     <VerticalFlatList data={Goods} navigation={navigation} screen='RecentlySharedScreen'/>
-            // </View>
-            // <Text>{JSON.stringify(data)}</Text>
-            // console.log(JSON.stringify(data))
-            <AvailGoodsList
-            listFor="AvailNearbyRide"
-            data={data}
-            navigation={navigation}
-            // screen="RecentlySharedRideScreen"
-          />
-        )
-}
+    const result = await doPost('v1/goodShares/getAllGoodShares', data);
+    setData(result.data);
+  };
+  return (
+    <AvailGoodsList
+      listFor="AvailNearbyRide"
+      data={data}
+      navigation={navigation}
+      // screen="RecentlySharedRideScreen"
+    />
+  );
+};
 export default Component;

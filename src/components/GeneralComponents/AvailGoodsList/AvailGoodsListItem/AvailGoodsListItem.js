@@ -26,8 +26,8 @@ const Component = ({
   shareType,
   quantity,
   deliveryInfo,
-  pickupTime,
-  pickupLocation,
+  pickUpTime,
+  pickUpLocation,
 }) => {
   return (
     <TouchableOpacity onPress={onPress}>
@@ -37,27 +37,18 @@ const Component = ({
         </View>
         <View style={styles.detailsContainer}>
           {title && <SubtitleTextBlack>{title}</SubtitleTextBlack>}
-          {/* {rideName && <SubtitleTextBlack>{rideName}</SubtitleTextBlack>} */}
           <View style={styles.subContainer}>
             {description && <Text>{description}</Text>}
-            {/* {seatsAvailable && (
-              <TextIcon flexDirection="row" iconName={'people-outline'}>
-                {seatsAvailable}
-              </TextIcon>
-            )} */}
+
             {price && (
               <TextIcon flexDirection="row" iconName={'cash-outline'}>
                 {price}
               </TextIcon>
             )}
-            {/* {fare && (
-              <TextIcon flexDirection="row" iconName={'cash-outline'}>
-                {fare}
-              </TextIcon>
-            )} */}
-            {pickupLocation ? (
+
+            {pickUpLocation ? (
               <TextIcon flexDirection="row" iconName={'navigate-outline'}>
-                {pickupLocation.data.description}
+                {pickUpLocation.Address}
               </TextIcon>
             ) : (
               <Text></Text>
