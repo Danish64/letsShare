@@ -1,43 +1,90 @@
 import React, {useEffect, useState} from 'react';
-import {View, Image, TouchableOpacity, Text} from 'react-native';
-//Native Exports Ends Here
-//Third Party Exports Starts
+import {View, ImageBackground, Image} from 'react-native';
+
 import {
-  HeadingText,
-  GroupLabelText,
-  TextButton,
   ShareActionAreaHeadingText,
   SectionHeadingText,
+  ButtonTextLightGrey,
 } from 'res/UniversalComponents/Text.js';
 
 import HorizontalScrollViewContainer from '../../../../res/UniversalComponents/HorizontalScrollViewContainer';
-import {AddAssetButton} from '../../../../res/UniversalComponents/Button';
+import LoadingIndicator from '../../../GeneralComponents/LoadingIndicator';
 
-import {CategoryOutlinedButton} from 'res/UniversalComponents/Button.js';
+import {
+  CategoryOutlinedButton,
+  PrimaryButton,
+  AddAssetButton,
+  SelectRideButton,
+} from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
-import ScrollViewList from '../../../GeneralComponents/ScrollViewList';
+import {useIsFocused} from '@react-navigation/native';
+
+import {
+  doGet,
+  doGetCustom,
+  doGetWithTokenInHeader,
+  doPost,
+} from '../../../../utils/AxiosMethods';
+
+import {useSelector} from 'react-redux';
+
 import ShareGoods from 'res/images/ModulesImages/GoodsSharingImages/shareGoods.png';
 import {GoodsList} from '../../../../res/constants/dummyData';
 
-//Third Party Exports Ends
 
 const Component = ({navigation}) => {
-  const [data, setData] = useState(GoodsList);
+  const state = useSelector((state) => state);
+  const ownerId = state.userInformation.user._id;
+  const userId = state.userInformation.user._id;
+  const sharerId = state.userInformation.user._id;
+
+  const [data, setData] = useState();
+  const [userAllGoods, setUserAllGoods] = useState();
   const [view, setView] = useState(false);
   const [item, setItem] = useState({});
 
+
+  const getGoods = async () => {
+    const data = {
+      ownerId: ownerId,
+    };
+    const result = await doPost('v1/userGoods/getUserGoods', data);
+    const goods = result.data.map((item, index) => {
+      item.key = index;
+      item.selected = false;
+      return item;
+    });
+    setData(goods);
+  };
+
+  const getUserAllGoods = async () => {
+    const data = {
+      sharerId: sharerId,
+    };
+    const result = await doPost('v1/goodShares/getUserGoodShares', data);
+    const allSharedGoods = result.data.map((item, index) => {
+      item.key = index;
+      return item;
+    });
+    setUserAllGoods(allSharedGoods);
+  };
+
+  const isFocused = useIsFocused();
+
   useEffect(() => {
-    renderItems;
-  }, [addButton]);
+    getUserAllGoods();
+    getGoods();
+    renderItems();
+  }, [isFocused]);
 
   // Render Goods
   const renderItems = () => {
-    return data.map((item, index) => {
+    return data?.map((item, index) => {
       return (
         <View key={index}>
-          <AddAssetButton
-            onPress={() => selectItem(item.id, item.selected)}
+          <SelectRideButton
+            onPress={() => selectItem(item._id, item.selected)}
             selected={item.selected}
             iconName="cart-outline"
             title={item.title}
@@ -48,10 +95,11 @@ const Component = ({navigation}) => {
     });
   };
 
+ 
   const selectItem = (selectedId, selection) => {
     const newData = [
       ...data.map((item) => {
-        if (selectedId === item.id) {
+        if (selectedId === item._id) {
           if (selection === true) {
             setView(false);
             return {
@@ -87,10 +135,15 @@ const Component = ({navigation}) => {
     );
   };
 
+
+  if (!data) {
+    return <LoadingIndicator />;
+  }
   return (
     <>
       {view ? (
         <View style={styles.createGoodsComponentArea}>
+          
           {/* Select Goods Area */}
 
           <View style={styles.createdGoodsArea}>
@@ -148,6 +201,16 @@ const Component = ({navigation}) => {
 
         <View style={styles.createGoodsComponentArea}>
           <View style={styles.createdGoodsArea}>
+
+          <View style={styles.mySharedGoods}>
+            <PrimaryButton
+           onPress={() =>
+            navigation.navigate('SharedGoodsScreen', {data: userAllGoods})
+          }>
+              My Shared Goods
+            </PrimaryButton>
+          </View>
+
             <View style={styles.myGoodsTitleText}>
               <ShareActionAreaHeadingText>
                 Select Goods

@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -16,7 +17,10 @@ import styles from './style';
 import {doGet, doPost} from '../../../../utils/AxiosMethods';
 import {useSelector} from 'react-redux';
 
-//Third Party Exports Ends
+import {
+  SectionHeadingText,
+} from 'res/UniversalComponents/Text.js';
+
 
 const Component = () => {
   const navigation = useNavigation();
@@ -49,6 +53,7 @@ const Component = () => {
         />
       </View>
     </View>
+
   );
 };
 

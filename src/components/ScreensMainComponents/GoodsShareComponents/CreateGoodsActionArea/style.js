@@ -15,6 +15,12 @@ export default StyleSheet.create({
     height: mvs(180, 0.7),
     // backgroundColor: 'lightyellow',
   },
+  mySharedGoods: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: 20,
+  },
   myGoodsTitleText: {
     width: '100%',
     marginBottom: mvs(5, 0.6),

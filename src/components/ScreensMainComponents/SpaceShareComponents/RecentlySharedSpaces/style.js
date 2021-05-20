@@ -3,6 +3,7 @@ import {Colors} from 'res/constants/Colors';
 import {s, vs, ms, mvs} from 'react-native-size-matters';
 
 export default StyleSheet.create({
+
   recentlySharedSpacesArea: {
     width: '100%',
     height: mvs(300, 0.7),

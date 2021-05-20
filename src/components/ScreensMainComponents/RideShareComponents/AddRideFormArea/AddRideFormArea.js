@@ -2,9 +2,6 @@ import React, {useState} from 'react';
 import {
   View,
   KeyboardAvoidingView,
-  TextInput,
-  Image,
-  Alert,
 } from 'react-native';
 import * as Yup from 'yup';
 
@@ -100,6 +97,7 @@ const Component = ({navigation}) => {
             name="contactNo"
             placeholder="Enter Contact No. e.g; 03367676767"
           />
+
           <FormPicker
             heading="Choose Ride Type"
             name="rideType"

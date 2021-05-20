@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {View, Text, Image,  Button } from 'react-native';
 import styles from './style';
 import {BodyTextBlack, BodyTextBold, SubtitleTextBold} from '../../../../res/UniversalComponents/Text';
-import {ShareButton} from '../../../../res/UniversalComponents/Button';
+import {PrimaryButton} from '../../../../res/UniversalComponents/Button';
 import ShareCard from '../../../GeneralComponents/ShareCard';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import image from '../../../../res/images/ModulesImages/FoodSharingImages/shareFood.png'
@@ -35,10 +35,10 @@ const Component = ({navigation, data}) => {
                     <BodyTextBold>Quantity:</BodyTextBold>
                     <BodyTextBlack>{data.quantity}</BodyTextBlack>
                 </View>
-                {data.PickupTime && (
+                {data.pickUpTime && (
                     <View style={styles.detailsSection}>
-                        <BodyTextBold>Pickup Time:</BodyTextBold>
-                        <BodyTextBlack>{data.PickupTime}</BodyTextBlack>
+                        <BodyTextBold>pickUp Time:</BodyTextBold>
+                        <BodyTextBlack>{data.pickUpTime}</BodyTextBlack>
                     </View>
                 )}
                 {data.price && (
@@ -56,29 +56,38 @@ const Component = ({navigation, data}) => {
 
                 <View style={styles.locationBody}>
                     <BodyTextBold>Location:</BodyTextBold>
-                    <BodyTextBlack>{data.pickupLocation.data.description}</BodyTextBlack>
+                    <BodyTextBlack>{data.pickUpLocation.description}</BodyTextBlack>
                 </View>
                 <View style={styles.locationContainer}>
                     <MapView
-                        provider={PROVIDER_GOOGLE} 
-                        style={styles.map}
-                        region={{
-                            latitude: data.pickupLocation.details.geometry.location.lat,
-                            longitude: data.pickupLocation.details.geometry.location.lng,
-                            latitudeDelta: 0.0922,
-                            longitudeDelta: 0.0421,
-                        }}               
-                    >
-                        <Marker
-                        coordinate={{ 
-                            latitude : data.pickupLocation.details.geometry.location.lat, 
-                            longitude :  data.pickupLocation.details.geometry.location.lng, 
-                            }}/>
-
-
+                    provider={PROVIDER_GOOGLE}
+                    style={styles.map}
+                    region={{
+                    latitude: parseFloat(data.pickUpLocation.latitude),
+                    longitude: parseFloat(data.pickUpLocation.longitude),
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                    }}>
+                    <Marker
+                    coordinate={{
+                        latitude: parseFloat(data.pickUpLocation.latitude),
+                        longitude: parseFloat(data.pickUpLocation.longitude),
+                    }}
+                    />
                     </MapView>
                 </View>
             </View>
+            <View style={{width: 150, alignSelf: 'center'}}>
+          <PrimaryButton
+            onPress={() =>
+              navigation.navigate('BookRideScreen', {
+                data: data,
+                listFor: listFor,
+              })
+            }>
+            Book Ride
+          </PrimaryButton>
+        </View>
         </View>
     )
 };

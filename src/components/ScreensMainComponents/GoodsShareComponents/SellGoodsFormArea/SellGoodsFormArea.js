@@ -1,53 +1,59 @@
-import React, {useState} from 'react';
-import {View, KeyboardAvoidingView, TextInput, Text} from 'react-native';
+import React from 'react';
+import {View, KeyboardAvoidingView} from 'react-native';
 import * as Yup from 'yup';
 
-//Native Exports Ends Here
-
-//Third Party Exports Starts
-
 import styles from './style';
+
 import {
   FormByFormik as Form,
   StepperButtonInputField,
   BaselineFormField as FormField,
-  FormPicker,
   SubmitButton as SubmitForm,
-  FormImagePicker,
   FormLocation,
 } from '../../../../res/UniversalComponents/Forms';
-import SetLocation from '../../../GeneralComponents/SetLocation';
 import {SellGoods} from '../../../../res/constants/dummyData';
-
-//Third Party Exports Ends
+import {useNavigation, useRoute} from '@react-navigation/native';
+import {doPost} from '../../../../utils/AxiosMethods';
 
 const validationSchema = Yup.object().shape({
   deliveryInfo: Yup.string().required().min(3).max(20).label('Delivery Info'),
   price: Yup.string().required().min(2).max(7).label('Price'),
 });
 
-const Component = ({navigation, Data}) => {
+const Component = ({Data}) => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const {item} = route.params;
+
   const submitForm = (values) => {
-    let valID = Math.floor(Math.random() * 100) + 1;
     const newData = {
-      id: valID,
-      title: Data.title,
-      quantity: Data.quantity,
-      description: Data.description,
-      image: Data.image,
-      pickupLocation: values.location,
+      sharerId: item.ownerId,
+      title: item.title,
+      quantity: item.quantity,
+      description: item.description,
+      ownerContactNumber: item.ownerContactNumber,
+      image: '',
+      // shareMessage: values.shareMessage,
+      shareType: 'sell',
       deliveryInfo: values.deliveryInfo,
-      price: values.price,
-      listFor: values.listFor,
+      pickupLocation: {
+        address: values.location.data.description,
+        latitude: values.location.details.geometry.location.lat,
+        longitude: values.location.details.geometry.lng,
+      },
+      pickupTime: values.pickupTime,
+      listForDays: values.listFor,
     };
-    console.log(newData);
-    updateRides(newData);
+    updateGoods(newData);
   };
 
-  const updateRides = (newData) => {
-    SellGoods.push(newData);
-    navigation.navigate('GoodsShareHome', newData);
-    console.warn('Shared Successfuly');
+  const updateGoods = async (newGoodsData) => {
+    let data = newGoodsData;
+    const result = await doPost(
+      'v1/goodShares/createGoodShare',
+      data,
+    );
+    navigation.navigate('GoodsShareHome', newGoodsData);
   };
 
   return (
@@ -57,6 +63,7 @@ const Component = ({navigation, Data}) => {
           initialValues={{
             deliveryInfo: '',
             price: '',
+            pickupTime: '',
             listFor: '',
             location: {},
           }}
@@ -80,6 +87,14 @@ const Component = ({navigation, Data}) => {
             placeholder="e.g 500 Rs."
             keyboardType="numeric"
           />
+
+          <FormField
+            title="Pickup Time"
+            maxLength={100}
+            name="pickupTime"
+            placeholder="10AM to 8PM etc."
+          />
+
 
           {/* Input Location */}
           <FormLocation name="location" title="Add Location" />

@@ -9,6 +9,7 @@ import SellGoodsScreen from '../../screens/ModulesScreens/GoodsShareScreens/Crea
 import RecentlySharedScreen from '../../screens/ModulesScreens/GoodsShareScreens/RecentlySharedScreen';
 import AvailDonatedGoodsScreen from '../../screens/ModulesScreens/GoodsShareScreens/AvailDonatedGoodsScreen';
 import AvailGoodsScreen from '../../screens/ModulesScreens/GoodsShareScreens/AvailGoodsScreen';
+import SharedGoodsScreen from '../../screens/ModulesScreens/GoodsShareScreens/SharedGoodsScreen';
 const Stack = createStackNavigator();
 
 function GoodsShareNavigator() {
@@ -25,6 +26,7 @@ function GoodsShareNavigator() {
       <Stack.Screen name="RecentlySharedScreen" component={RecentlySharedScreen} />
       <Stack.Screen name="AvailDonatedGoodsScreen" component={AvailDonatedGoodsScreen} />
       <Stack.Screen name="AvailGoodsScreen" component={AvailGoodsScreen} />
+      <Stack.Screen name="SharedGoodsScreen" component={SharedGoodsScreen} />
     
     </Stack.Navigator>
   );
