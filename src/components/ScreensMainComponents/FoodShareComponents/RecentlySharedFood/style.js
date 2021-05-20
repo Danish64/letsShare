@@ -3,9 +3,9 @@ import {Colors} from 'res/constants/Colors';
 import {s, vs, mvs, ms} from 'react-native-size-matters';
 
 export default StyleSheet.create({
-  nearBySharesArea: {
+  recentlySharedFoodArea: {
     width: '100%',
-    height: mvs(270, 0.7),
+    height: mvs(300, 0.7),
     marginBottom: mvs(20, 0.6),
     marginHorizontal: ms(20, 0.6),
   },
@@ -16,8 +16,12 @@ export default StyleSheet.create({
     alignItems: 'flex-start',
   },
   recentlySharedFlatlistArea: {
-    width: '100%',
+    width: '90%',
     height: '100%',
     marginBottom: mvs(5, 0.6),
+    paddingBottom: ms(10, 0.6),
+    paddingEnd: ms(10, 0.5),
+    paddingStart: ms(10, 0.6),
+    marginHorizontal: ms(10, 0.5),
   },
 });

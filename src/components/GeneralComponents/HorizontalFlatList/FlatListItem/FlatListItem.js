@@ -23,17 +23,20 @@ import {colors} from 'react-native-elements';
 //Third Party Exports Ends
 
 const Component = ({id, item, onPress}) => {
-  //to use styles -> {styles.propertyName}
   return (
     <TouchableOpacity key={id} onPress={onPress}>
       <View style={styles.shareItemContainer}>
         <View style={styles.subContainer1}>
           <View style={styles.imageContainer}>
-            {item.rideCategory && (
-              <Image source={RideImage} style={styles.image} />
+            {item.ridePictures && (
+              <Image
+                source={{uri: item.ridePictures[0]}}
+                style={styles.image}
+              />
             )}
-            {item.shareType && (
-              <Image source={FoodImage} style={styles.image} />
+
+            {item.images && (
+              <Image source={{uri: item.images[0]}} style={styles.image} />
             )}
           </View>
         </View>

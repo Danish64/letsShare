@@ -16,7 +16,7 @@ export default StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
-    resizeMode: 'contain',
+    resizeMode: 'stretch',
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
@@ -43,10 +43,7 @@ export default StyleSheet.create({
     borderRadius: ms(10, 0.7),
     elevation: ms(3),
   },
-  // imageContainer: {
-  //   width: '100%',
-  //   height: '50%',
-  // },
+
   imageStyle: {
     width: '100%',
     height: '100%',
