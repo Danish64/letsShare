@@ -26,7 +26,10 @@ const Component = ({navigation}) => {
     let data = {
       userId: userId,
     };
-    const result = await doPost('v1/nearByRideShares/getAllNearByRides', data);
+    const result = await doPost(
+      'v1/cityToCityRideShares/getAllCityToCityRides',
+      data,
+    );
     setNearbyRides(result.data);
   };
   return (
