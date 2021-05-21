@@ -30,13 +30,24 @@ const Component = ({id, item, onPress}) => {
           <View style={styles.imageContainer}>
             {item.ridePictures && (
               <Image
-                source={{uri: item.ridePictures[0]}}
+                source={
+                  item.ridePictures.length > 0
+                    ? {uri: item.ridePictures[0]}
+                    : require('../../../../res/images/ModulesImages/RideSharingImages/ShareRide.png')
+                }
                 style={styles.image}
               />
             )}
 
             {item.images && (
-              <Image source={{uri: item.images[0]}} style={styles.image} />
+              <Image
+                source={
+                  item.images.length > 0
+                    ? {uri: item.images[0]}
+                    : require('../../../../res/images/ModulesImages/GoodsSharingImages/shareGoods.png')
+                }
+                style={styles.image}
+              />
             )}
           </View>
         </View>
