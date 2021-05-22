@@ -20,7 +20,7 @@ const Component = ({navigation, data}) => {
           image={item.image}
           rideName={item.rideName}
           registrationNo={item.registrationNumber}
-          fare={item.fare}
+          fare={item.fareRate}
           rideCategory={item.rideCategory}
           startLocation={item.startLocation}
           destinationLocation={item.destinationLocation}

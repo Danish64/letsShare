@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   TouchableOpacity,
@@ -22,6 +22,7 @@ import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import RidesIcon from '../../../../res/images/ModulesImages/RideSharingImages/ShareRide.png';
 import {Colors} from 'res/constants/Colors.js';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+import {useIsFocused} from '@react-navigation/native';
 
 const Component = ({
   item,
@@ -36,6 +37,24 @@ const Component = ({
   seatsAvailable,
   renderRightAction,
 }) => {
+  const isFocused = useIsFocused();
+
+  const [fareType, setFareType] = useState(null);
+  const getFareMethod = () => {
+    if (item.fareMethod === 'chargePerKm') {
+      setFareType(' /Km');
+    }
+    if (item.fareMethod === 'chargePerHour') {
+      setFareType(' /hour');
+    }
+    if (item.fareMethod === 'chargePerDP') {
+      setFareType('');
+    }
+  };
+  useEffect(() => {
+    getFareMethod();
+  }, [isFocused]);
+
   return (
     <Swipeable renderRightActions={renderRightAction}>
       <TouchableOpacity onPress={onPress}>
@@ -110,7 +129,7 @@ const Component = ({
 
               {fare && (
                 <TextIcon flexDirection="column" iconName={'cash-outline'}>
-                  {fare}
+                  {'Rs ' + fare + fareType}
                 </TextIcon>
               )}
             </View>

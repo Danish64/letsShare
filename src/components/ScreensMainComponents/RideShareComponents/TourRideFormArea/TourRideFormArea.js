@@ -41,12 +41,12 @@ const Component = ({Data}) => {
       startLocation: {
         address: values.startLocation.data.description,
         latitude: values.startLocation.details.geometry.location.lat,
-        longitude: values.startLocation.details.geometry.location.lat,
+        longitude: values.startLocation.details.geometry.location.lng,
       },
       destinationLocation: {
         address: values.destinationLocation.data.description,
         latitude: values.destinationLocation.details.geometry.location.lat,
-        longitude: values.destinationLocation.details.geometry.location.lat,
+        longitude: values.destinationLocation.details.geometry.location.lng,
       },
       fare: values.fare,
       seatsAvailable: values.seatsAvailable.toString(),

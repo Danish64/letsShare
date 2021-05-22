@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, TouchableOpacity, Text, Image} from 'react-native';
 import styles from './style';
 import {
@@ -14,6 +14,7 @@ import {
 } from 'res/UniversalComponents/Text';
 import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import RidesIcon from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
+import {useIsFocused} from '@react-navigation/native';
 
 const Component = ({
   item,
@@ -27,6 +28,23 @@ const Component = ({
   startLocation,
   destinationLocation,
 }) => {
+  const isFocused = useIsFocused();
+
+  const [fareType, setFareType] = useState(null);
+  const getFareMethod = () => {
+    if (item.fareMethod === 'chargePerKm') {
+      setFareType(' /Km');
+    }
+    if (item.fareMethod === 'chargePerHour') {
+      setFareType(' /hour');
+    }
+    if (item.fareMethod === 'chargePerDP') {
+      setFareType('');
+    }
+  };
+  useEffect(() => {
+    getFareMethod();
+  }, [isFocused]);
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.mainContainer}>
@@ -69,7 +87,7 @@ const Component = ({
 
             {fare && (
               <TextIcon flexDirection="column" iconName={'cash-outline'}>
-                {fare}
+                {'Rs ' + fare + fareType}
               </TextIcon>
             )}
           </View>

@@ -205,6 +205,7 @@ export const FormLocation = ({name, title}) => {
       <SetLocation
         onSelectItem={(data) => setFieldValue(name, data)}
         title={title}
+        value={values[name]}
       />
       <ErrorMessage error={errors[name]} visible={touched[name]} />
     </>

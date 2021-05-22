@@ -57,7 +57,7 @@ const Component = ({data}) => {
       availerPickUpLocation: {
         address: values.startLocation.data.description,
         latitude: values.startLocation.details.geometry.location.lat,
-        longitude: values.startLocation.details.geometry.location.lat,
+        longitude: values.startLocation.details.geometry.location.lng,
       },
     };
 

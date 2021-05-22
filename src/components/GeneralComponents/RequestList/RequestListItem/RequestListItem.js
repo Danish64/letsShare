@@ -33,7 +33,6 @@ import {useIsFocused} from '@react-navigation/native';
 const Component = ({item, onPress, rideCategory, shareId}) => {
   const [status, setStatus] = useState('');
   const isFocused = useIsFocused();
-  console.log(status);
 
   useEffect(() => {
     isFocused;
