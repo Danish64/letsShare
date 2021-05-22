@@ -12,38 +12,24 @@ import {
   FormImagePicker,
   FormLocation,
 } from 'res/UniversalComponents/Forms';
+import {TextInputTitleText} from 'res/UniversalComponents/Text.js';
 
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {doPost} from '../../../../utils/AxiosMethods';
 
 const validationSchema = Yup.object().shape({
-  // totalFare: Yup.string().required().min(3).max(5).label('Total Fare'),
-  seatsAvailable: Yup.number()
-    .required()
-    .min(1)
-    .max(3)
-    .label('Available Seats'),
-  fareMethod: Yup.object().required().nullable().label('Fare Method'),
+  fareRate: Yup.number().required().label('Fare Rate'),
 });
-
-const categories = [
-  {label: 'Charge Per Kilometre', name: 'chargePerKm', value: 1},
-  {label: 'Charge Per Hour', name: 'chargePerHour', value: 2},
-  {
-    label: 'Charge Per Distance Traveled',
-    name: 'chargePerDP',
-    value: 3,
-  },
-];
 
 const Component = ({Data}) => {
   const navigation = useNavigation();
   const route = useRoute();
   const {rideDetail} = route.params;
   const ride = rideDetail;
+  console.log('fare continue screen', ride.fareMethod);
 
   const submitForm = (values) => {
-    const rideDetailContinue = {
+    const newData = {
       sharerId: ride.sharerId,
       rideName: ride.rideName,
       registrationNumber: ride.registrationNumber,
@@ -63,45 +49,54 @@ const Component = ({Data}) => {
       },
       startAddress: ride.startAddress,
       destinationAddress: ride.destinationAddress,
-      seatsAvailable: values.seatsAvailable.toString(),
-      fareMethod: values.fareMethod.name,
+      seatsAvailable: ride.seatsAvailable,
+      fareMethod: ride.fareMethod,
+      fareRate: values.fareRate,
     };
 
-    navigation.navigate('NearbyRideFareContinueScreen', {
-      rideDetail: rideDetailContinue,
-    });
+    createNearbyRide(newData);
+  };
+
+  const createNearbyRide = async (newRideData) => {
+    let data = newRideData;
+    const result = await doPost(
+      'v1/nearByRideShares/createNearByRideShare',
+      data,
+    );
+    console.log(result);
+    navigation.navigate('CreateRideScreen', newRideData);
   };
 
   return (
     <View style={styles.ComponentArea}>
+      {ride.fareMethod === 'chargePerKm' && (
+        <TextInputTitleText>Enter Fare Per KM</TextInputTitleText>
+      )}
+      {ride.fareMethod === 'chargePerHour' && (
+        <TextInputTitleText>Enter Fare Per Hour</TextInputTitleText>
+      )}
+      {ride.fareMethod === 'chargePerDP' && (
+        <TextInputTitleText>Enter Total Fare </TextInputTitleText>
+      )}
+
       <Form
         initialValues={{
-          seatsAvailable: '',
-          fareMethod: '',
+          fareRate: '',
         }}
         onSubmit={(values) => {
           submitForm(values);
         }}
         validationSchema={validationSchema}>
-        {/* Seats Available: */}
-        <StepperButtonInputField
-          title="Total Seats Available:"
-          name="seatsAvailable"
+        <FormField
+          maxLength={4}
+          keyboardType="numeric"
+          name="fareRate"
+          placeholder="Enter Fare Rate in Rs"
         />
-        <View style={{marginBottom: 30}} />
-
-        <FormPicker
-          heading="Choose Fare Method"
-          name="fareMethod"
-          icon="keypad-outline"
-          items={categories}
-          placeholder="Choose Fare Rate Method"
-        />
-        <View style={{marginBottom: 30}} />
 
         {/* Submit Button */}
         <View style={styles.buttonAreaStyle}>
-          <SubmitForm title="Next"></SubmitForm>
+          <SubmitForm title="Share Ride"></SubmitForm>
         </View>
       </Form>
     </View>
