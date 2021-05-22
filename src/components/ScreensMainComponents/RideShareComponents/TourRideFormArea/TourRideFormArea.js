@@ -18,7 +18,7 @@ import {doPost} from '../../../../utils/AxiosMethods';
 
 const validationSchema = Yup.object().shape({
   fare: Yup.string().required().min(3).max(5).label('Fare'),
-  seatsAvailable: Yup.string().required().label('Available Seats'),
+  seatsAvailable: Yup.number().required().min(1).label('Available Seats'),
   departureDate: Yup.string().required().label('Departure Date'),
   returnDate: Yup.string().required().label('Return Date'),
   departureTime: Yup.string().required().label('Departure Time'),

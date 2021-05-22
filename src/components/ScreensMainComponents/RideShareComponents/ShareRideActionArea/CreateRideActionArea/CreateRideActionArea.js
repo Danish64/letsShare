@@ -86,8 +86,6 @@ const Component = ({navigation}) => {
     });
   };
 
-  
-
   const selectItem = (selectedId, selection) => {
     const newData = [
       ...data.map((item) => {
@@ -192,7 +190,13 @@ const Component = ({navigation}) => {
           </View>
 
           <View style={styles.selectRideTitleText}>
-            <ShareActionAreaHeadingText>Select Ride</ShareActionAreaHeadingText>
+            {data.length == 0 ? (
+              <ShareActionAreaHeadingText>Add Ride</ShareActionAreaHeadingText>
+            ) : (
+              <ShareActionAreaHeadingText>
+                Select Ride
+              </ShareActionAreaHeadingText>
+            )}
           </View>
           <View style={styles.scrollViewContainer}>
             <HorizontalScrollViewContainer>

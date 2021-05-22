@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {View, KeyboardAvoidingView, TextInput, Text} from 'react-native';
 import styles from './style';
 import * as Yup from 'yup';
@@ -17,25 +17,26 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {doPost} from '../../../../utils/AxiosMethods';
 
 const validationSchema = Yup.object().shape({
-  fare: Yup.string().required().min(3).max(5).label('Fare'),
-  seatsAvailable: Yup.string().required().label('Available Seats'),
+  startAddress: Yup.string().required().label('Start Address'),
+  destinationAddress: Yup.string().required().label('Destination Address'),
 });
 
 const Component = ({Data}) => {
+  // const ref = useRef(null);
+  // console.log(ref.current.values);
   const navigation = useNavigation();
   const route = useRoute();
   const {item} = route.params;
 
   const submitForm = (values) => {
-    const newData = {
+    const rideDetail = {
       sharerId: item.ownerId,
       rideName: item.rideName,
       registrationNumber: item.registrationNumber,
       ownerContactNumber: item.ownerContactNumber,
       rideType: item.rideType,
       ridePictures: item.ridePictures,
-      fare: values.fare,
-      seatsAvailable: values.seatsAvailable.toString(),
+
       startLocation: {
         address: values.startLocation.data.description,
         latitude: values.startLocation.details.geometry.location.lat,
@@ -49,16 +50,7 @@ const Component = ({Data}) => {
       startAddress: values.startAddress,
       destinationAddress: values.destinationAddress,
     };
-    createNearbyRide(newData);
-  };
-
-  const createNearbyRide = async (newRideData) => {
-    let data = newRideData;
-    const result = await doPost(
-      'v1/nearByRideShares/createNearByRideShare',
-      data,
-    );
-    navigation.navigate('CreateRideScreen', newRideData);
+    navigation.navigate('NearbyRideFareDetailScreen', {rideDetail: rideDetail});
   };
 
   return (
@@ -66,8 +58,6 @@ const Component = ({Data}) => {
       <View style={styles.ComponentArea}>
         <Form
           initialValues={{
-            fare: '',
-            seatsAvailable: '',
             startAddress: '',
             destinationAddress: '',
             startLocation: {},
@@ -77,25 +67,11 @@ const Component = ({Data}) => {
             submitForm(values);
           }}
           validationSchema={validationSchema}>
-          {/* Input Fare */}
-          <FormField
-            title="Fare"
-            maxLength={100}
-            name="fare"
-            placeholder="e.g 500 Rs."
-            keyboardType="numeric"
-          />
-          {/* Seats Available: */}
-          <StepperButtonInputField
-            title="Seats Available:"
-            name="seatsAvailable"
-          />
           <FormField
             title="Start Address"
             maxLength={100}
             name="startAddress"
             placeholder="enter complete address"
-            // keyboardType="numeric"
           />
           {/* Start Location */}
           <FormLocation name="startLocation" title="Set Start Location" />
@@ -104,7 +80,6 @@ const Component = ({Data}) => {
             maxLength={100}
             name="destinationAddress"
             placeholder="enter complete address"
-            // keyboardType="numeric"
           />
           {/* destination Location */}
           <FormLocation
@@ -114,7 +89,7 @@ const Component = ({Data}) => {
 
           {/* Submit Button */}
           <View style={styles.buttonAreaStyle}>
-            <SubmitForm title="Share Ride"></SubmitForm>
+            <SubmitForm title="Next"></SubmitForm>
           </View>
         </Form>
       </View>

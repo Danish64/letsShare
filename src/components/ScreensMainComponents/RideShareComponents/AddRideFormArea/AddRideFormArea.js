@@ -1,8 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  KeyboardAvoidingView,
-} from 'react-native';
+import {View, KeyboardAvoidingView} from 'react-native';
 import * as Yup from 'yup';
 
 import styles from './style';

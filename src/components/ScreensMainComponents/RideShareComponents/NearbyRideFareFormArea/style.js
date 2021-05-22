@@ -10,6 +10,5 @@ export default StyleSheet.create({
   },
   buttonAreaStyle: {
     marginHorizontal: ms(10, 0.6),
-    marginTop: mvs(30, 0.5),
   },
 });
