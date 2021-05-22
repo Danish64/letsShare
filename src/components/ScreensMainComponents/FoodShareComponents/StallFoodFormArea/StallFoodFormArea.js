@@ -23,9 +23,10 @@ import {doPost} from '../../../../utils/AxiosMethods';
 //Third Party Exports Ends
 
 const validationSchema = Yup.object().shape({
-  pickUpTime: Yup.string().required().min(3).max(20).label('Pickup Time'),
+  startTime: Yup.string().required().min(3).max(20).label('Start Time'),
+  endTime: Yup.string().required().min(3).max(20).label('End Time'),
+  date: Yup.string().required().min(3).max(20).label('date'),
   listForDays: Yup.string().required().min(1).max(3).label('Listing Days'),
-  deliveryInfo: Yup.string().required().max(100).label('Delivery Info'),
 });
 
 const Component = ({navigation, Data}) => {
@@ -64,41 +65,42 @@ const Component = ({navigation, Data}) => {
       <View style={styles.sellFoodComponentArea}>
         <Form
           initialValues={{
-            shareMessage: '',
-            deliveryInfo: '',
-            pickUpTime: '',
+            startTime: '',
+            endTime: '',
+            stallLocation: {},
+            date: '',
             listForDays: '',
-            pickUpLocation: {},
           }}
           onSubmit={(values) => {
             submitForm(values);
           }}
           validationSchema={validationSchema}>
-          <FormLocation name="pickUpLocation" title="PickUp Location" />
+          <FormLocation name="stallLocation" title="stall Location" />
 
           <FormField
-            title="Delivery Information"
-            maxLength={100}
-            name="deliveryInfo"
-            placeholder="Enter delivery Info"
-          />
-          <FormField
-            title="Pickup Time"
-            maxLength={100}
-            name="pickUpTime"
-            placeholder="10AM to 8PM etc."
+            title="Start Time"
+            maxLength={10}
+            name="startTime"
+            placeholder="e.g. 10:30 AM "
           />
 
+          <FormField
+            title="End Time"
+            maxLength={10}
+            name="endTime"
+            placeholder="e.g. 6:30 PM "
+          />
+
+          <FormField
+            title="Stall Scheduled Date"
+            maxLength={10}
+            name="date"
+            placeholder="e.g. 06/06/2021 "
+          />
           <StepperButtonInputField title="List For(days):" name="listForDays" />
-          <FormField
-            title="Share Message (optional)"
-            maxLength={100}
-            name="shareMessage"
-            placeholder="enter any message for the availer"
-          />
 
           <View style={styles.buttonAreaStyle}>
-            <SubmitForm title="Share Food"></SubmitForm>
+            <SubmitForm title="Create Stall"></SubmitForm>
           </View>
         </Form>
       </View>

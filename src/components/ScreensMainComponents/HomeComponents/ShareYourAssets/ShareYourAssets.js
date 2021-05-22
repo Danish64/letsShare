@@ -9,9 +9,13 @@ import {
 } from 'res/UniversalComponents/Text.js';
 import styles from './style';
 import HomeMenuIcon from '../../../Icons/HomeMenuIcon';
+import {useNavigation} from '@react-navigation/native';
+
 //Native Exports Ends Here
 
-const Component = (navigation) => {
+const Component = () => {
+  const navigation = useNavigation();
+
   const CardTitle = ({title}) => {
     return (
       <View style={styles.cardTitle}>

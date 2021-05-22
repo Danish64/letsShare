@@ -6,6 +6,8 @@ import CreateRideScreen from '../../screens/ModulesScreens/RideShareScreens/Crea
 import AddRideScreen from '../../screens/ModulesScreens/RideShareScreens/CreateRideScreen/AddRideScreen';
 import CityToCityRideScreen from '../../screens/ModulesScreens/RideShareScreens/CreateRideScreen/CityToCityRideScreen';
 import NearByRideScreen from '../../screens/ModulesScreens/RideShareScreens/CreateRideScreen/NearByRideScreen';
+import NearByRideFareDetailScreen from '../../screens/ModulesScreens/RideShareScreens/CreateRideScreen/NearByRideFareDetailScreen';
+
 import TourRideScreen from '../../screens/ModulesScreens/RideShareScreens/CreateRideScreen/TourRideScreen';
 import RecentlySharedRideScreen from '../../screens/ModulesScreens/RideShareScreens/RecentlySharedRideScreen';
 import AvailNearbyRideScreen from '../../screens/ModulesScreens/RideShareScreens/AvailNearbyRideScreen';
@@ -35,6 +37,11 @@ function RideShareNavigator() {
         component={CityToCityRideScreen}
       />
       <Stack.Screen name="NearbyRideScreen" component={NearByRideScreen} />
+      <Stack.Screen
+        name="NearbyRideFareDetailScreen"
+        component={NearByRideFareDetailScreen}
+      />
+
       <Stack.Screen name="TourRideScreen" component={TourRideScreen} />
       <Stack.Screen
         name="RecentlySharedRideScreen"

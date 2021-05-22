@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import styles from 'res/styles/index.styles.js';
 import {Colors} from 'res/constants/Colors.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -32,9 +32,11 @@ export const FormByFormik = ({
   onSubmit,
   validationSchema,
   children,
+  innerRef,
 }) => {
   return (
     <Formik
+      innerRef={innerRef}
       enableReinitialize
       initialValues={initialValues}
       onSubmit={onSubmit}

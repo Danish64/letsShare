@@ -137,7 +137,7 @@ const Component = ({navigation}) => {
           <View style={styles.createdFoodArea}>
             <View style={styles.myFoodTitleText}>
               <ShareActionAreaHeadingText>
-                Select Food
+                Select Food/Stall
               </ShareActionAreaHeadingText>
             </View>
             <View style={styles.myFoodListArea}>
@@ -202,9 +202,15 @@ const Component = ({navigation}) => {
               </OutlinedActionIconButton>
             </View>
             <View style={styles.myFoodTitleText}>
-              <ShareActionAreaHeadingText>
-                Select Food
-              </ShareActionAreaHeadingText>
+              {data.length == 0 ? (
+                <ShareActionAreaHeadingText>
+                  Add Food/Stall
+                </ShareActionAreaHeadingText>
+              ) : (
+                <ShareActionAreaHeadingText>
+                  Select Food/Stall
+                </ShareActionAreaHeadingText>
+              )}
             </View>
             <View style={styles.myFoodListArea}>
               <View style={styles.mainContainer}>
