@@ -78,7 +78,6 @@ const Component = ({
               label={item.label}
               onPress={() => {
                 setModalVisible(false);
-                //setSelectedCategory(item);
                 onSelectItem(item);
               }}
             />

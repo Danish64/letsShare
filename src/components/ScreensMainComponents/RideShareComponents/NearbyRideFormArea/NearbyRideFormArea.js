@@ -16,14 +16,12 @@ import {
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {doPost} from '../../../../utils/AxiosMethods';
 
-const validationSchema = Yup.object().shape({
-  startAddress: Yup.string().required().label('Start Address'),
-  destinationAddress: Yup.string().required().label('Destination Address'),
-});
+// const validationSchema = Yup.object().shape({
+//   startAddress: Yup.string().required().label('Start Address'),
+//   destinationAddress: Yup.string().required().label('Destination Address'),
+// });
 
 const Component = ({Data}) => {
-  // const ref = useRef(null);
-  // console.log(ref.current.values);
   const navigation = useNavigation();
   const route = useRoute();
   const {item} = route.params;
@@ -47,8 +45,8 @@ const Component = ({Data}) => {
         latitude: values.destinationLocation.details.geometry.location.lat,
         longitude: values.destinationLocation.details.geometry.location.lat,
       },
-      startAddress: values.startAddress,
-      destinationAddress: values.destinationAddress,
+      startAddress: values.startLocation.data.description,
+      destinationAddress: values.destinationLocation.data.description,
     };
     navigation.navigate('NearbyRideFareDetailScreen', {rideDetail: rideDetail});
   };
@@ -66,21 +64,22 @@ const Component = ({Data}) => {
           onSubmit={(values) => {
             submitForm(values);
           }}
-          validationSchema={validationSchema}>
-          <FormField
+          // validationSchema={validationSchema}
+        >
+          {/* <FormField
             title="Start Address"
             maxLength={100}
             name="startAddress"
             placeholder="enter complete address"
-          />
+          /> */}
           {/* Start Location */}
           <FormLocation name="startLocation" title="Set Start Location" />
-          <FormField
+          {/* <FormField
             title="Destination Address"
             maxLength={100}
             name="destinationAddress"
             placeholder="enter complete address"
-          />
+          /> */}
           {/* destination Location */}
           <FormLocation
             name="destinationLocation"
