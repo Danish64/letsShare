@@ -43,7 +43,7 @@ export default StyleSheet.create({
   },
 
   locationDetails: {
-    width: '50%',
+    width: '45%',
     height: mvs(100, 0.7),
     justifyContent: 'center',
     paddingHorizontal: ms(10, 0.6),
@@ -51,7 +51,7 @@ export default StyleSheet.create({
   },
 
   otherDetail: {
-    width: '20%',
+    width: '25%',
     height: mvs(100, 0.7),
     justifyContent: 'center',
     alignItems: 'center',

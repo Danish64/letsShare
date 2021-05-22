@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   TouchableOpacity,
@@ -18,6 +18,7 @@ import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import RidesIcon from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
 import {Colors} from 'res/constants/Colors.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useIsFocused} from '@react-navigation/native';
 
 const Component = ({
   item,
@@ -32,6 +33,23 @@ const Component = ({
   seatsAvailable,
   renderRightAction,
 }) => {
+  const isFocused = useIsFocused();
+
+  const [fareType, setFareType] = useState(null);
+  const getFareMethod = () => {
+    if (item.fareMethod === 'chargePerKm') {
+      setFareType(' /Km');
+    }
+    if (item.fareMethod === 'chargePerHour') {
+      setFareType(' /hour');
+    }
+    if (item.fareMethod === 'chargePerDP') {
+      setFareType('');
+    }
+  };
+  useEffect(() => {
+    getFareMethod();
+  }, [isFocused]);
   return (
     <TouchableHighlight onPress={onPress}>
       <View style={styles.mainContainer}>
@@ -41,7 +59,7 @@ const Component = ({
               <RecentlySharedTitleText>{rideCategory}</RecentlySharedTitleText>
             </View>
           )}
-          {item.isCompleted === true ? (
+          {item.isAccepted === true ? (
             <View style={styles.circlePrimary} />
           ) : (
             <View style={styles.circleRed} />
@@ -80,13 +98,13 @@ const Component = ({
 
             {fare && (
               <TextIcon flexDirection="column" iconName={'cash-outline'}>
-                {fare}
+                {'Rs ' + fare + fareType}
               </TextIcon>
             )}
           </View>
         </View>
         <View style={styles.horizontalSeparator} />
-        {item.isCompleted === true ? (
+        {item.isAccepted === true ? (
           <View style={styles.statusDetail}>
             <View style={styles.acceptedRequestsView}>
               <RecentlySharedSubtitleText>

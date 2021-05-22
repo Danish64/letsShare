@@ -56,12 +56,12 @@ const Component = ({data}) => {
       availerPickUpLocation: {
         address: values.startLocation.data.description,
         latitude: values.startLocation.details.geometry.location.lat,
-        longitude: values.startLocation.details.geometry.location.lat,
+        longitude: values.startLocation.details.geometry.location.lng,
       },
       availerDropOffLocation: {
         address: values.destinationLocation.data.description,
         latitude: values.destinationLocation.details.geometry.location.lat,
-        longitude: values.destinationLocation.details.geometry.location.lat,
+        longitude: values.destinationLocation.details.geometry.location.lng,
       },
     };
 

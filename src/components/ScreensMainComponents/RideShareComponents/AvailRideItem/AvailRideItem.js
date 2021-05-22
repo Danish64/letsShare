@@ -18,9 +18,27 @@ import ShareCard from '../../../GeneralComponents/ShareCard';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {PrimaryButton} from '../../../../res/UniversalComponents/Button';
+import {useIsFocused} from '@react-navigation/native';
 
 const Component = ({navigation, data, listFor}) => {
   const imageURL = {uri: data.ridePictures[0]};
+  const isFocused = useIsFocused();
+
+  const [fareType, setFareType] = useState(null);
+  const getFareMethod = () => {
+    if (data.fareMethod === 'chargePerKm') {
+      setFareType(' /Km');
+    }
+    if (data.fareMethod === 'chargePerHour') {
+      setFareType(' /hour');
+    }
+    if (data.fareMethod === 'chargePerDP') {
+      setFareType('');
+    }
+  };
+  useEffect(() => {
+    getFareMethod();
+  }, [isFocused]);
   // console.log('Data from Create Ride Action Area to Shared Ride', data);
   return (
     <ScrollView>
@@ -53,16 +71,6 @@ const Component = ({navigation, data, listFor}) => {
               {data.registrationNumber}
             </RecentlySharedSubtitleText>
           </View>
-
-          {data.fare && (
-            <View style={styles.row}>
-              <RecentlySharedSubtitleText>Fare:</RecentlySharedSubtitleText>
-              <RecentlySharedSubtitleText>
-                {data.fare}
-              </RecentlySharedSubtitleText>
-            </View>
-          )}
-
           {data.seatsAvailable && (
             <View style={styles.row}>
               <RecentlySharedSubtitleText>
@@ -70,6 +78,23 @@ const Component = ({navigation, data, listFor}) => {
               </RecentlySharedSubtitleText>
               <RecentlySharedSubtitleText>
                 {data.seatsAvailable}
+              </RecentlySharedSubtitleText>
+            </View>
+          )}
+          {data.fareMethod && (
+            <View style={styles.row}>
+              <RecentlySharedSubtitleText>Fare:</RecentlySharedSubtitleText>
+              <RecentlySharedSubtitleText>
+                {data.fareMethod}
+              </RecentlySharedSubtitleText>
+            </View>
+          )}
+
+          {data.fareRate && (
+            <View style={styles.row}>
+              <RecentlySharedSubtitleText>Fare:</RecentlySharedSubtitleText>
+              <RecentlySharedSubtitleText>
+                {'Rs ' + data.fareRate + fareType}
               </RecentlySharedSubtitleText>
             </View>
           )}

@@ -16,10 +16,13 @@ import {
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {doPost} from '../../../../utils/AxiosMethods';
 
-// const validationSchema = Yup.object().shape({
-//   startAddress: Yup.string().required().label('Start Address'),
-//   destinationAddress: Yup.string().required().label('Destination Address'),
-// });
+const validationSchema = Yup.object().shape({
+  startLocation: Yup.object().required().nullable().label('start Location'),
+  destinationLocation: Yup.object()
+    .required()
+    .nullable()
+    .label('Destination Location'),
+});
 
 const Component = ({Data}) => {
   const navigation = useNavigation();
@@ -38,12 +41,12 @@ const Component = ({Data}) => {
       startLocation: {
         address: values.startLocation.data.description,
         latitude: values.startLocation.details.geometry.location.lat,
-        longitude: values.startLocation.details.geometry.location.lat,
+        longitude: values.startLocation.details.geometry.location.lng,
       },
       destinationLocation: {
         address: values.destinationLocation.data.description,
         latitude: values.destinationLocation.details.geometry.location.lat,
-        longitude: values.destinationLocation.details.geometry.location.lat,
+        longitude: values.destinationLocation.details.geometry.location.lng,
       },
       startAddress: values.startLocation.data.description,
       destinationAddress: values.destinationLocation.data.description,
@@ -64,8 +67,7 @@ const Component = ({Data}) => {
           onSubmit={(values) => {
             submitForm(values);
           }}
-          // validationSchema={validationSchema}
-        >
+          validationSchema={validationSchema}>
           {/* <FormField
             title="Start Address"
             maxLength={100}
