@@ -46,7 +46,7 @@ const Component = ({navigation, Data}) => {
       pickUpLocation: {
         address: values.pickUpLocation.data.description,
         latitude: values.pickUpLocation.details.geometry.location.lat,
-        longitude: values.pickUpLocation.details.geometry.location.lat,
+        longitude: values.pickUpLocation.details.geometry.location.lng,
       },
       pickUpTime: values.pickUpTime,
     };
