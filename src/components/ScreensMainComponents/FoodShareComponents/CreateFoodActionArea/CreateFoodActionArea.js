@@ -228,7 +228,7 @@ const Component = ({navigation}) => {
                   style={styles.imageContainer}
                 />
               </View>
-              <View style={styles.rideNotSelectedText}>
+              <View style={styles.foodNotSelectedText}>
                 <ButtonTextLightGrey>
                   You have not selected any Food Item
                 </ButtonTextLightGrey>

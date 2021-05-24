@@ -19,25 +19,12 @@ import {doPost} from '../../../../utils/AxiosMethods';
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(3).max(20).label('Title'),
   description: Yup.string().required().min(4).max(100).label('Description'),
-  contactNo: Yup.string().required().min(11).label('Contact No'),
+  contactNo: Yup.string().required().min(11).max(13).label('Contact No'),
 });
 
 const Component = ({navigation}) => {
   const state = useSelector((state) => state);
   const user = state.userInformation.user;
-  
-  // const submitForm = (values) => {
-  //   values.id = Math.floor(Math.random() * 100) + 1;
-  //   values.selected = false;
-  //   const newData = values;
-  //   updateRides(newData);
-  // };
-
-  // const updateRides = (newData) => {
-  //   const arrayData = GoodsList;
-  //   GoodsList.unshift(newData);
-  //   navigation.navigate('CreateGoodsScreen', newData);
-  // };newRideData
 
   const submitForm = (values) => {
     const newGoodsData = {
@@ -46,6 +33,7 @@ const Component = ({navigation}) => {
       description: values.description,
       quantity: values.quantity,
       ownerContactNumber: values.contactNo,
+      images: values.image,
     };
     createRide(newGoodsData);
   };
@@ -67,13 +55,11 @@ const Component = ({navigation}) => {
             contactNo: '',
             selected: null,
             image: [],
-            id: '',
           }}
           onSubmit={(values) => {
-            submitForm(values);           
+            submitForm(values);
           }}
           validationSchema={validationSchema}>
-
           {/* Input image */}
           <FormImagePicker name="image" />
 
@@ -106,10 +92,9 @@ const Component = ({navigation}) => {
           <StepperButtonInputField title="Quantity" name="quantity" />
 
           {/* Submit Form */}
-          <View style={styles.buttonAreastyle}>
+          <View style={styles.submitButtonArea}>
             <SubmitForm title="Add"></SubmitForm>
           </View>
-
         </Form>
       </View>
     </KeyboardAvoidingView>

@@ -15,7 +15,7 @@ export default StyleSheet.create({
     height: mvs(180, 0.7),
     // backgroundColor: 'lightyellow',
   },
-  mySharedGoods: {
+  mySharedGoodsArea: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
@@ -66,5 +66,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  goodNotSelectedText: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: mvs(60, 0.6),
   },
 });

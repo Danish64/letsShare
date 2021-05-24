@@ -5,7 +5,7 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   mainContainer: {
     width: '90%',
-    height: mvs(130, 0.7),
+    height: mvs(160, 0.7),
     backgroundColor: Colors.White,
     marginTop: mvs(5, 0.6),
     marginBottom: mvs(5, 0.6),
@@ -16,7 +16,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
   },
 
-  rideDetails: {
+  goodDetails: {
     width: '30%',
     height: mvs(100, 0.7),
     justifyContent: 'center',
@@ -34,15 +34,14 @@ export default StyleSheet.create({
   },
 
   locationDetails: {
-    width: '50%',
+    width: '45%',
     height: mvs(100, 0.7),
     justifyContent: 'center',
     paddingHorizontal: ms(10, 0.6),
-    alignItems: 'center',
   },
 
   otherDetail: {
-    width: '20%',
+    width: '25%',
     height: mvs(100, 0.7),
     justifyContent: 'center',
     alignItems: 'center',

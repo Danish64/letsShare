@@ -2,14 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {FlatList, View, Text} from 'react-native';
 import styles from './style';
 import {FlatListData} from 'res/constants/dummyData.js';
-import SharedRidesListItem from './SharedRidesListItem';
-import IllustrationContainer from '../../GeneralComponents/IllustrationContainer';
+import SharedGoodsListItem from './SharedGoodsListItem';
+import IllustrationContainer from '../../../GeneralComponents/IllustrationContainer';
 import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
 import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
-import LoadingIndicator from '../LoadingIndicator';
+import LoadingIndicator from '../../LoadingIndicator';
+import ListItemDeleteAction from '../../ListItemDeleteAction';
 
 const Component = ({navigation, data}) => {
-  console.log('Data in My Shared Goods Screen', data);cd 
+  // console.log('Data in My Shared Rides Screen', data);
   const listEmptyComponent = () => {
     return (
       <View
@@ -29,7 +30,7 @@ const Component = ({navigation, data}) => {
             marginTop: 60,
           }}>
           <ButtonTextLightGrey>
-            You have not shared any goods
+            You have not shared any ride
           </ButtonTextLightGrey>
         </View>
       </View>
@@ -48,25 +49,14 @@ const Component = ({navigation, data}) => {
       data={data ? data : FlatListData}
       ListEmptyComponent={listEmptyComponent}
       renderItem={({item}) => (
-        <SharedRidesListItem
+        <SharedGoodsListItem
           item={item}
-          pickUpLocation={item.pickUpLocation}
-          destinationLocation={item.destinationLocation}
-          ridePicture={item.ridePictures}
-          rideCategory={item.rideCategory}
-          isAvailable={item.isAvailable}
-          userId={item._id}
-          sharerId={item.sharerId}
-          rideName={item.rideName}
-          registrationNo={item.registrationNumber}
-          rideType={item.rideType}
-          ownerContactNumber={item.ownerContactNumber}
-          fare={item.fare}
-          seatsAvailable={item.seatsAvailable.toString()}
-          image={item.image}
           onPress={() => {
-            navigation.navigate('BookingRequestsScreen', {item: item});
+            navigation.navigate('GoodsBookingRequests', {item: item});
           }}
+          renderRightAction={() => (
+            <ListItemDeleteAction onPress={() => console.log('Delete')} />
+          )}
         />
       )}
       style={styles.FlatListStyle}

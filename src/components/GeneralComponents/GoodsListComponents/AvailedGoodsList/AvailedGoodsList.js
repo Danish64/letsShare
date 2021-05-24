@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {FlatList, View, Text} from 'react-native';
 import styles from './style';
 import {FlatListData} from 'res/constants/dummyData.js';
-import AvailFoodListItem from './AvailFoodListItem';
-import LoadingIndicator from '../../LoadingIndicator';
+
+import AvailedGoodsListItem from './AvailedGoodsListItem';
 import IllustrationContainer from '../../IllustrationContainer';
-import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
 import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
 
+import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
+import LoadingIndicator from '../../LoadingIndicator';
+import ListItemDeleteAction from '../../ListItemDeleteAction';
+
 const Component = ({navigation, data}) => {
+  console.log('Data in AvailedGoodsList', data);
   const listEmptyComponent = () => {
     return (
       <View
@@ -27,34 +31,34 @@ const Component = ({navigation, data}) => {
             alignItems: 'center',
             marginTop: 60,
           }}>
-          <ButtonTextLightGrey>No food Available</ButtonTextLightGrey>
+          <ButtonTextLightGrey>Nothing to show</ButtonTextLightGrey>
         </View>
       </View>
     );
   };
 
   if (!data) {
-    return <LoadingIndicator />;
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <LoadingIndicator />
+      </View>
+    );
   }
   return (
     <FlatList
-      ListEmptyComponent={listEmptyComponent}
       data={data ? data : FlatListData}
+      ListEmptyComponent={listEmptyComponent}
       renderItem={({item}) => (
-        <AvailFoodListItem
-          key={item._id}
-          itemId={item._id}
+        <AvailedGoodsListItem
           item={item}
-          onPress={() =>
-            navigation.navigate('AvailFoodDetail', {
-              item: item,
-            })
-          }
+          renderRightAction={() => (
+            <ListItemDeleteAction onPress={() => console.log('Delete')} />
+          )}
         />
       )}
       style={styles.FlatListStyle}
       keyExtractor={(item) => item.id}
-      showsVerticalScrollIndicator={false}
+      showsVerticalScrollIndicator={true}
     />
   );
 };

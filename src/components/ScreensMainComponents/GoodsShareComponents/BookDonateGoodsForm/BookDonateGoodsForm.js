@@ -27,7 +27,6 @@ const Component = ({data}) => {
       .min(1)
       .max(data.quantity)
       .label('Quantity'),
-    availerMessage: Yup.string().required().min(10).label('Message'),
   });
   const navigation = useNavigation();
   const route = useRoute();

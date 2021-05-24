@@ -15,6 +15,7 @@ import {
   PrimaryButton,
   AddAssetButton,
   SelectRideButton,
+  OutlinedActionIconButton,
 } from 'res/UniversalComponents/Button.js';
 
 import styles from './style';
@@ -31,7 +32,7 @@ import {useSelector} from 'react-redux';
 
 import ShareGoods from 'res/images/ModulesImages/GoodsSharingImages/shareGoods.png';
 import {GoodsList} from '../../../../res/constants/dummyData';
-
+import Choose from 'res/images/ModulesImages/GeneralImages/noData.png';
 
 const Component = ({navigation}) => {
   const state = useSelector((state) => state);
@@ -40,10 +41,9 @@ const Component = ({navigation}) => {
   const sharerId = state.userInformation.user._id;
 
   const [data, setData] = useState();
-  const [userAllGoods, setUserAllGoods] = useState();
+  // const [userAllGoods, setUserAllGoods] = useState();
   const [view, setView] = useState(false);
   const [item, setItem] = useState({});
-
 
   const getGoods = async () => {
     const data = {
@@ -58,22 +58,22 @@ const Component = ({navigation}) => {
     setData(goods);
   };
 
-  const getUserAllGoods = async () => {
-    const data = {
-      sharerId: sharerId,
-    };
-    const result = await doPost('v1/goodShares/getUserGoodShares', data);
-    const allSharedGoods = result.data.map((item, index) => {
-      item.key = index;
-      return item;
-    });
-    setUserAllGoods(allSharedGoods);
-  };
+  // const getUserAllGoods = async () => {
+  //   const data = {
+  //     sharerId: sharerId,
+  //   };
+  //   const result = await doPost('v1/goodShares/getUserGoodShares', data);
+  //   const allSharedGoods = result.data.map((item, index) => {
+  //     item.key = index;
+  //     return item;
+  //   });
+  //   setUserAllGoods(allSharedGoods);
+  // };
 
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    getUserAllGoods();
+    // getUserAllGoods();
     getGoods();
     renderItems();
   }, [isFocused]);
@@ -95,7 +95,6 @@ const Component = ({navigation}) => {
     });
   };
 
- 
   const selectItem = (selectedId, selection) => {
     const newData = [
       ...data.map((item) => {
@@ -135,7 +134,6 @@ const Component = ({navigation}) => {
     );
   };
 
-
   if (!data) {
     return <LoadingIndicator />;
   }
@@ -143,13 +141,12 @@ const Component = ({navigation}) => {
     <>
       {view ? (
         <View style={styles.createGoodsComponentArea}>
-          
           {/* Select Goods Area */}
 
           <View style={styles.createdGoodsArea}>
             <View style={styles.myGoodsTitleText}>
               <ShareActionAreaHeadingText>
-                Select Goods
+                Select Good
               </ShareActionAreaHeadingText>
             </View>
             <View style={styles.myGoodsListArea}>
@@ -201,20 +198,24 @@ const Component = ({navigation}) => {
 
         <View style={styles.createGoodsComponentArea}>
           <View style={styles.createdGoodsArea}>
-
-          <View style={styles.mySharedGoods}>
-            <PrimaryButton
-           onPress={() =>
-            navigation.navigate('SharedGoodsScreen', {data: userAllGoods})
-          }>
-              My Shared Goods
-            </PrimaryButton>
-          </View>
+            <View style={styles.mySharedGoodsArea}>
+              <OutlinedActionIconButton
+                iconName="eye-outline"
+                onPress={() => navigation.navigate('SharedGoodsScreen')}>
+                My Shared Goods
+              </OutlinedActionIconButton>
+            </View>
 
             <View style={styles.myGoodsTitleText}>
-              <ShareActionAreaHeadingText>
-                Select Goods
-              </ShareActionAreaHeadingText>
+              {data.length == 0 ? (
+                <ShareActionAreaHeadingText>
+                  Add Good
+                </ShareActionAreaHeadingText>
+              ) : (
+                <ShareActionAreaHeadingText>
+                  Select Good
+                </ShareActionAreaHeadingText>
+              )}
             </View>
             <View style={styles.myGoodsListArea}>
               <View style={styles.mainContainer}>
@@ -224,6 +225,19 @@ const Component = ({navigation}) => {
                     {addButton()}
                   </View>
                 </HorizontalScrollViewContainer>
+              </View>
+
+              <View style={styles.pngImageArea}>
+                <Image
+                  resizeMode="contain"
+                  source={Choose}
+                  style={styles.imageContainer}
+                />
+              </View>
+              <View style={styles.goodNotSelectedText}>
+                <ButtonTextLightGrey>
+                  You have not selected any Item
+                </ButtonTextLightGrey>
               </View>
             </View>
           </View>

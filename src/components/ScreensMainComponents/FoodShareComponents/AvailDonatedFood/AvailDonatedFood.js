@@ -17,7 +17,9 @@ const Component = ({navigation}) => {
       userId: userId,
     };
     const result = await doPost('v1/foodShares/getAllFoodShares', data);
-    setData(result.data);
+    filteredData = result.data.filter((item) => item.shareType == 'donate');
+
+    setData(filteredData);
   };
   return <AvailFoodList data={data} navigation={navigation} />;
 };

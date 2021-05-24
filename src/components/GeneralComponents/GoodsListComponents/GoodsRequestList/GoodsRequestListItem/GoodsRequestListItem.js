@@ -30,7 +30,7 @@ import {
 } from '../../../../../utils/AxiosMethods';
 import {useIsFocused} from '@react-navigation/native';
 
-const Component = ({item, onPress, foodShareType, shareId}) => {
+const Component = ({item, onPress, goodsShareType, shareId}) => {
   const [status, setStatus] = useState('');
   const isFocused = useIsFocused();
 
@@ -48,11 +48,6 @@ const Component = ({item, onPress, foodShareType, shareId}) => {
       console.log('accept availer sell request');
       AcceptSellRequest();
     }
-    if (shareType === 'stall') {
-      console.log('accept availer stall request');
-
-      // AcceptStallRequest();
-    }
   };
 
   const AcceptDonateRequest = async () => {
@@ -61,7 +56,7 @@ const Component = ({item, onPress, foodShareType, shareId}) => {
       shareId: shareId,
       bookingId: item._id,
     };
-    const result = await doPutAws(data, 'v1/foodShares/acceptFoodShareBooking');
+    const result = await doPutAws(data, 'v1/goodShares/acceptGoodShareBooking');
     setStatus(result.status);
 
     console.log('Accept Availer Request API Call Result', result.data);
@@ -73,19 +68,7 @@ const Component = ({item, onPress, foodShareType, shareId}) => {
       shareId: shareId,
       bookingId: item._id,
     };
-    const result = await doPutAws(data, 'v1/foodShares/acceptFoodShareBooking');
-    setStatus(result.status);
-
-    console.log('Accept Availer Request API Call Result', result.data);
-  };
-
-  const AcceptStallRequest = async () => {
-    const data = {
-      availerId: item.availerId,
-      shareId: shareId,
-      bookingId: item._id,
-    };
-    const result = await doPutAws(data, 'Replace URL Here');
+    const result = await doPutAws(data, 'v1/goodShares/acceptGoodShareBooking');
     setStatus(result.status);
 
     console.log('Accept Availer Request API Call Result', result.data);
@@ -146,7 +129,7 @@ const Component = ({item, onPress, foodShareType, shareId}) => {
           {item.isAccepted === true || status == '200' ? (
             <PrimaryButtonDarkGrey>Accepted</PrimaryButtonDarkGrey>
           ) : (
-            <PrimaryButton onPress={() => AcceptRequest(foodShareType)}>
+            <PrimaryButton onPress={() => AcceptRequest(goodsShareType)}>
               Accept
             </PrimaryButton>
           )}
