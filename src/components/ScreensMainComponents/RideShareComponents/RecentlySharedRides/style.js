@@ -5,7 +5,7 @@ import {s, vs, mvs, ms} from 'react-native-size-matters';
 export default StyleSheet.create({
   nearBySharesArea: {
     width: '100%',
-    height: mvs(300, 0.7),
+    height: mvs(380, 0.7),
     marginBottom: mvs(10, 0.6),
     marginVertical: mvs(15, 0.6),
   },

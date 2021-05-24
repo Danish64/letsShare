@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {FlatList, View} from 'react-native';
 import styles from './style';
 import {FlatListData} from 'res/constants/dummyData.js';
@@ -9,11 +9,49 @@ import {useIsFocused} from '@react-navigation/native';
 import IllustrationContainer from '../../GeneralComponents/IllustrationContainer';
 import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
 import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
+import {getDistance, getPreciseDistance} from 'geolib';
+import {useDispatch} from 'react-redux';
 
 const Component = ({navigation, data}) => {
+  const isFocused = useIsFocused();
+  const dispatch = useDispatch();
+
   const route = useRoute();
   const shareId = data._id;
   const rideCategory = data.rideCategory;
+  const fareRate = data.fareRate;
+  const fareMethod = data.fareMethod;
+
+  const [sharerFare, setSharerFare] = useState(null);
+
+  const sharerStartLat = data.startLocation.latitude;
+  const sharerStartLng = data.startLocation.longitude;
+
+  const sharerEndLat = data.destinationLocation.latitude;
+  const sharerEndLng = data.destinationLocation.longitude;
+
+  const dist = getPreciseDistance(
+    {latitude: sharerStartLat, longitude: sharerStartLng},
+    {latitude: sharerEndLat, longitude: sharerEndLng},
+  );
+
+  const distInKm = dist / 1000;
+  const sharerDistance = distInKm;
+
+  useEffect(() => {
+    calculateSharerFare();
+  }, [isFocused]);
+
+  const calculateSharerFare = () => {
+    if (data.fareMethod == 'chargePerKm') {
+      const fare = distInKm * data.fareRate;
+      setSharerFare(fare);
+    }
+    if (data.fareMethod == 'chargePerDP') {
+      const fare = data.fareRate;
+      setSharerFare(fare);
+    }
+  };
 
   const listEmptyComponent = () => {
     return (
@@ -51,6 +89,10 @@ const Component = ({navigation, data}) => {
       ListEmptyComponent={listEmptyComponent}
       renderItem={({item}) => (
         <RequestListItem
+          fareRate={fareRate}
+          fareMethod={fareMethod}
+          sharerFare={sharerFare}
+          sharerDistance={sharerDistance}
           key={data._id}
           shareId={shareId}
           rideCategory={rideCategory}

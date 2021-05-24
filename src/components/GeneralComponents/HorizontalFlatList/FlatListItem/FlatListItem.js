@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {FlatList, View, Text, Image} from 'react-native';
 import {
   HeadingText,
@@ -14,6 +14,7 @@ import {ShareButton} from '../../../../res/UniversalComponents/Button';
 import TestCaseImage from 'res/images/ModulesImages/GeneralImages/newEntry.png';
 import RideImage from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
 import FoodImage from 'res/images/ModulesImages/FoodSharingImages/shareFood.png';
+import {useIsFocused} from '@react-navigation/native';
 
 import {colors} from 'react-native-elements';
 
@@ -23,6 +24,23 @@ import {colors} from 'react-native-elements';
 //Third Party Exports Ends
 
 const Component = ({id, item, onPress}) => {
+  const isFocused = useIsFocused();
+
+  const [fareType, setFareType] = useState(null);
+  const getFareMethod = () => {
+    if (item.fareMethod == 'chargePerKm') {
+      setFareType(' /Km');
+    }
+    if (item.fareMethod == 'chargePerHour') {
+      setFareType(' /hour');
+    }
+    if (item.fareMethod == 'chargePerDP') {
+      setFareType('');
+    }
+  };
+  useEffect(() => {
+    getFareMethod();
+  }, [isFocused]);
   return (
     <TouchableOpacity key={id} onPress={onPress}>
       <View style={styles.shareItemContainer}>
@@ -84,9 +102,9 @@ const Component = ({id, item, onPress}) => {
                 {item.price}
               </TextIcon>
             )}
-            {item.fare && (
+            {item.fareRate && (
               <TextIcon flexDirection="column" iconName={'cash-outline'}>
-                {item.fare}Rs
+                {'Rs ' + item.fareRate + fareType}
               </TextIcon>
             )}
             {item.quantity && (

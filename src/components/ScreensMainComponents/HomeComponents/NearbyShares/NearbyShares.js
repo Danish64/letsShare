@@ -22,8 +22,9 @@ const Component = (navigation) => {
       registrationNo: 'ABC-6574',
       contactNumber: '03345656568',
       rideCategory: 'Nearby',
-      image: shareRide,
-      fare: '200',
+      ridePictures: shareRide,
+      fareRate: '200',
+      fareMethod: 'chargePerKm',
       seatsAvailable: '2',
       startLocation: {
         address: 'G11/4, Islamabad',
@@ -43,13 +44,14 @@ const Component = (navigation) => {
       quantity: '1',
       description: ' A Silent Patient',
       location: 'G11/3,Islamabad to G13/1,Islamabad',
-      pickupLocation: {
+      pickUpLocation: {
         address: 'G11/4, Islamabad',
         lat: 24.8307323,
         lng: 67.10113298,
       },
-      image: shareGoods,
+      images: shareGoods,
       PickupTime: '10AM to 5PM',
+      price: '200',
       listFor: '5',
     },
 
@@ -58,15 +60,16 @@ const Component = (navigation) => {
       title: 'Bottle',
       quantity: '1',
       description: 'Plastic water bottle',
-      image: shareGoods,
+      images: shareGoods,
       location: 'G11/3,Islamabad to G13/1,Islamabad',
-      pickupLocation: {
+      pickUpLocation: {
         address: 'G11/4, Islamabad',
         lat: 24.8307323,
         lng: 67.10113298,
       },
       PickupTime: '10AM to 5PM',
       listFor: '5',
+      price: '300',
     },
 
     {
@@ -74,15 +77,16 @@ const Component = (navigation) => {
       title: 'Living Space',
       quantity: '1',
       description: '2 Bedroom Flat',
-      image: shareGoods,
+      images: shareGoods,
       location: 'G11/3,Islamabad to G13/1,Islamabad',
-      pickupLocation: {
+      pickUpLocation: {
         address: 'G11/4, Islamabad',
         lat: 24.8307323,
         lng: 67.10113298,
       },
       PickupTime: '10AM to 5PM',
       listFor: '5',
+      price: '12000',
     },
   ];
 
