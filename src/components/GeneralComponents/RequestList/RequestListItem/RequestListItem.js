@@ -29,10 +29,65 @@ import {
   doPutAws,
 } from '../../../../utils/AxiosMethods';
 import {useIsFocused} from '@react-navigation/native';
+import {getDistance, getPreciseDistance} from 'geolib';
+import {useDispatch} from 'react-redux';
 
-const Component = ({item, onPress, rideCategory, shareId}) => {
-  const [status, setStatus] = useState('');
+const Component = ({
+  key,
+  item,
+  onPress,
+  rideCategory,
+  shareId,
+  sharerFare,
+  fareRate,
+  fareMethod,
+  sharerDistance,
+}) => {
   const isFocused = useIsFocused();
+  const dispatch = useDispatch();
+
+  const [status, setStatus] = useState(null);
+
+  const [availerFare, setAvailerFare] = useState(null);
+
+  const availerStartLat = item.availerPickUpLocation.latitude;
+  const availerStartLng = item.availerPickUpLocation.longitude;
+
+  const availerEndLat = item.availerDropOffLocation.latitude;
+  const availerEndLng = item.availerDropOffLocation.longitude;
+
+  const dist = getPreciseDistance(
+    {latitude: availerStartLat, longitude: availerStartLng},
+    {latitude: availerEndLat, longitude: availerEndLng},
+  );
+
+  const distInKm = dist / 1000;
+  const availerDistance = distInKm;
+
+  useEffect(() => {
+    calculateAvailerFare();
+  }, [isFocused]);
+
+  const calculateAvailerFare = () => {
+    if (fareMethod == 'chargePerKm') {
+      const fare = distInKm * fareRate;
+      setAvailerFare(fare);
+    }
+    if (fareMethod == 'chargePerDP') {
+      const RatePerKm = fareRate / sharerDistance;
+      const fare = availerDistance / RatePerKm;
+      setAvailerFare(fare);
+    }
+  };
+
+  console.log('FareMethod', fareMethod);
+  console.log('FareRate', fareRate);
+
+  console.log('Sharer Distance in Km', sharerDistance);
+  console.log('sharer Fare', sharerFare);
+
+  console.log('Availer Distance in Km', availerDistance);
+  console.log('Availer fare', availerFare);
 
   useEffect(() => {
     isFocused;
@@ -98,7 +153,7 @@ const Component = ({item, onPress, rideCategory, shareId}) => {
   };
 
   return (
-    <View style={styles.mainContainer}>
+    <View key={key} style={styles.mainContainer}>
       <View style={{flexDirection: 'row'}}>
         <View style={styles.rideDetails}>
           <View style={styles.imageContainer}>

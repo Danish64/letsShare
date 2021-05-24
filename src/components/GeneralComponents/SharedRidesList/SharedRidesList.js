@@ -63,6 +63,7 @@ const Component = ({navigation, data}) => {
           rideType={item.rideType}
           ownerContactNumber={item.ownerContactNumber}
           fare={item.fareRate}
+          fareMethod={item.fareMethod}
           seatsAvailable={item.seatsAvailable.toString()}
           image={item.image}
           onPress={() => {

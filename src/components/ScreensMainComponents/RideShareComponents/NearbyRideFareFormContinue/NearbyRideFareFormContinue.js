@@ -40,12 +40,12 @@ const Component = ({Data}) => {
       startLocation: {
         address: ride.startLocation.address,
         latitude: ride.startLocation.latitude,
-        longitude: ride.startLocation.latitude,
+        longitude: ride.startLocation.longitude,
       },
       destinationLocation: {
         address: ride.destinationLocation.address,
         latitude: ride.destinationLocation.latitude,
-        longitude: ride.destinationLocation.latitude,
+        longitude: ride.destinationLocation.longitude,
       },
       startAddress: ride.startAddress,
       destinationAddress: ride.destinationAddress,
