@@ -18,7 +18,7 @@ import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import RidesIcon from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
 import {Colors} from 'res/constants/Colors.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import ShareFoodIcon from 'res/images/ModulesImages/FoodSharingImages/shareFood.png';
+import ShareGoodsIcon from 'res/images/ModulesImages/GoodsSharingImages/shareGoods.png';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 const Component = ({item, renderRightAction}) => {
@@ -61,7 +61,7 @@ const Component = ({item, renderRightAction}) => {
         <View style={{flexDirection: 'row'}}>
           <View style={styles.foodDetails}>
             <View style={styles.imageContainer}>
-              <Image source={ShareFoodIcon} style={styles.image} />
+              <Image source={ShareGoodsIcon} style={styles.image} />
             </View>
             <View
               style={{
