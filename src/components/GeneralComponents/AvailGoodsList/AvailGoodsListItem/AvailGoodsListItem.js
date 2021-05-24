@@ -11,47 +11,85 @@ import {
   BodyText,
   RecentlySharedTitleText,
   RecentlySharedSubtitleText,
-  SubtitleTextBlack,
 } from 'res/UniversalComponents/Text';
 import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import RidesIcon from '../../../../res/images/ModulesImages/RideSharingImages/ShareRide.png';
+import ShareFoodIcon from 'res/images/ModulesImages/FoodSharingImages/shareFood.png';
 
-const Component = ({
-  item,
-  onPress,
-  image,
-  title,
-  description,
-  price,
-  shareType,
-  quantity,
-  deliveryInfo,
-  pickUpTime,
-  pickUpLocation,
-}) => {
+
+const Component = ({item,onPress}) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.mainContainer}>
-        <View style={styles.imageContainer}>
-          <Image source={image} style={styles.image}></Image>
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'row',
+          }}>
+          {item.shareType && (
+            <View style={{width: '100%', alignItems: 'center', paddingTop: 10}}>
+              <RecentlySharedTitleText>
+                {item.shareType}
+              </RecentlySharedTitleText>
+            </View>
+          )}
         </View>
-        <View style={styles.detailsContainer}>
-          {title && <SubtitleTextBlack>{title}</SubtitleTextBlack>}
-          <View style={styles.subContainer}>
-            {description && <Text>{description}</Text>}
+        <View style={{flexDirection: 'row'}}>
+          <View style={styles.goodsDetails}>
+            <View style={styles.imageContainer}>
+              <Image source={ShareFoodIcon} style={styles.image} />
+            </View>
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              {item.title && (
+                <CaptionTextPrimary>{item.title}</CaptionTextPrimary>
+              )}
+            </View>
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}></View>
+          </View>
+          <View style={styles.locationDetails}>
+            {item.description && (
+              <>
+                <CaptionTextPrimary>Description</CaptionTextPrimary>
+                <CaptionText>{item.description}</CaptionText>
+              </>
+            )}
+            <View style={styles.horizontalSeparator} />
 
-            {price && (
-              <TextIcon flexDirection="row" iconName={'cash-outline'}>
-                {price}
+            {item.pickUpLocation && (
+              <>
+                <CaptionTextPrimary>Pickup Location</CaptionTextPrimary>
+                <CaptionText>{item.pickUpLocation.address}</CaptionText>
+              </>
+            )}
+          </View>
+          <View style={styles.otherDetail}>
+            {item.listForDays && (
+              <TextIcon
+                flexDirection="column"
+                iconName={'today-outline'}
+                color="#006d77">
+                {item.listForDays + ' Day(s)'}
               </TextIcon>
             )}
 
-            {pickUpLocation ? (
-              <TextIcon flexDirection="row" iconName={'navigate-outline'}>
-                {pickUpLocation.Address}
+            <View style={styles.horizontalSeparator} />
+
+            {item.pickUpTime && (
+              <TextIcon
+                flexDirection="column"
+                iconName={'time'}
+                color="#006d77">
+                {item.pickUpTime}
               </TextIcon>
-            ) : (
-              <Text></Text>
             )}
           </View>
         </View>

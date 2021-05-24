@@ -10,6 +10,11 @@ import RecentlySharedScreen from '../../screens/ModulesScreens/GoodsShareScreens
 import AvailDonatedGoodsScreen from '../../screens/ModulesScreens/GoodsShareScreens/AvailDonatedGoodsScreen';
 import AvailGoodsScreen from '../../screens/ModulesScreens/GoodsShareScreens/AvailGoodsScreen';
 import SharedGoodsScreen from '../../screens/ModulesScreens/GoodsShareScreens/SharedGoodsScreen';
+import AvailGoodsDetailScreen from '../../screens/ModulesScreens/GoodsShareScreens/AvailGoodsDetailScreen';
+import BookGoodsScreen from '../../screens/ModulesScreens/GoodsShareScreens/BookGoodsScreen';
+import AvailedGoodsScreen from '../../screens/ModulesScreens/GoodsShareScreens/AvailedGoodsScreen';
+
+
 const Stack = createStackNavigator();
 
 function GoodsShareNavigator() {
@@ -27,6 +32,9 @@ function GoodsShareNavigator() {
       <Stack.Screen name="AvailDonatedGoodsScreen" component={AvailDonatedGoodsScreen} />
       <Stack.Screen name="AvailGoodsScreen" component={AvailGoodsScreen} />
       <Stack.Screen name="SharedGoodsScreen" component={SharedGoodsScreen} />
+      <Stack.Screen name="AvailGoodsDetail" component={AvailGoodsDetailScreen} />
+      <Stack.Screen name="BookGoods" component={BookGoodsScreen} />
+      <Stack.Screen name="AvailedGoods" component={AvailedGoodsScreen} />
     
     </Stack.Navigator>
   );

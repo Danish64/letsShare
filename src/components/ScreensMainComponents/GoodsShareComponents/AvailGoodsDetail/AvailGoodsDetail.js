@@ -1,21 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, Image, Button, ScrollView} from 'react-native';
+import React from 'react';
+import {View, Image, ScrollView} from 'react-native';
 import styles from './style';
 import {
   BodyTextBlack,
-  BodyTextBold,
-  SubtitleTextBold,
-  SubtitleText,
-  CaptionText,
-  CaptionTextPrimary,
-  FormText,
-  BodyTextLight,
-  BodyText,
   RecentlySharedTitleText,
   RecentlySharedSubtitleText,
 } from 'res/UniversalComponents/Text';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import {useNavigation, useRoute} from '@react-navigation/native';
 import {PrimaryButton} from '../../../../res/UniversalComponents/Button';
 
 const Component =  ({navigation, data, listFor}) => {
@@ -124,7 +115,7 @@ const Component =  ({navigation, data, listFor}) => {
         <View style={styles.bookFoodButtonView}>
           <PrimaryButton
             onPress={() =>
-              navigation.navigate('BookFood', {
+              navigation.navigate('BookGoods', {
                 data: data,
                 listFor: listFor,
               })
