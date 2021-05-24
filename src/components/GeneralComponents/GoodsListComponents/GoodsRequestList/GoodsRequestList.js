@@ -1,14 +1,20 @@
 import React from 'react';
-import {FlatList, View, Text} from 'react-native';
+import {FlatList, View} from 'react-native';
 import styles from './style';
 import {FlatListData} from 'res/constants/dummyData.js';
-import AvailFoodListItem from './AvailFoodListItem';
+import GoodsRequestListItem from './GoodsRequestListItem';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import LoadingIndicator from '../../LoadingIndicator';
+import {useIsFocused} from '@react-navigation/native';
 import IllustrationContainer from '../../IllustrationContainer';
-import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
 import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
+import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
 
 const Component = ({navigation, data}) => {
+  const route = useRoute();
+  const shareId = data._id;
+  const goodsShareType = data.shareType;
+
   const listEmptyComponent = () => {
     return (
       <View
@@ -27,7 +33,9 @@ const Component = ({navigation, data}) => {
             alignItems: 'center',
             marginTop: 60,
           }}>
-          <ButtonTextLightGrey>No food Available</ButtonTextLightGrey>
+          <ButtonTextLightGrey>
+            No Booking Request for the shared Item
+          </ButtonTextLightGrey>
         </View>
       </View>
     );
@@ -36,24 +44,20 @@ const Component = ({navigation, data}) => {
   if (!data) {
     return <LoadingIndicator />;
   }
+
   return (
     <FlatList
+      data={data ? data.bookings : FlatListData}
       ListEmptyComponent={listEmptyComponent}
-      data={data ? data : FlatListData}
       renderItem={({item}) => (
-        <AvailFoodListItem
-          key={item._id}
-          itemId={item._id}
+        <GoodsRequestListItem
+          key={data._id}
+          shareId={shareId}
+          goodsShareType={goodsShareType}
           item={item}
-          onPress={() =>
-            navigation.navigate('AvailFoodDetail', {
-              item: item,
-            })
-          }
         />
       )}
       style={styles.FlatListStyle}
-      keyExtractor={(item) => item.id}
       showsVerticalScrollIndicator={false}
     />
   );

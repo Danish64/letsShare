@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native';
 import {s, vs, ms, mvs} from 'react-native-size-matters';
 import Container from 'res/UniversalComponents/Container';
 import Header from '../../../../components/GeneralComponents/Header';
-import AvailedGoodsList from '../../../../components/GeneralComponents/FoodListComponents/AvailedFoodsList';
+import AvailedGoodsList from '../../../../components/GeneralComponents/GoodsListComponents/AvailedGoodsList';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {ShareActionAreaHeadingText} from 'res/UniversalComponents/Text.js';
 import {useIsFocused} from '@react-navigation/native';

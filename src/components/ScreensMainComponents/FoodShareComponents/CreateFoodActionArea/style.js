@@ -60,7 +60,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  rideNotSelectedText: {
+  foodNotSelectedText: {
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: mvs(60, 0.6),

@@ -16,8 +16,9 @@ import {doPost} from '../../../../utils/AxiosMethods';
 
 //Third Party Exports Ends
 const validationSchema = Yup.object().shape({
-  pickupTime: Yup.string().required().min(3).max(20).label('Pickup Time'),
+  pickUpTime: Yup.string().required().min(3).max(20).label('Pickup Time'),
   listFor: Yup.string().required().min(1).max(3).label('Listing Days'),
+  deliveryInfo: Yup.string().required().max(100).label('Delivery Info'),
 });
 
 const Component = ({Data}) => {
@@ -28,20 +29,20 @@ const Component = ({Data}) => {
   const submitForm = (values) => {
     const newData = {
       sharerId: item.ownerId,
+      shareMessage: values.shareMessage,
       title: item.title,
       quantity: item.quantity,
       description: item.description,
       ownerContactNumber: item.ownerContactNumber,
-      image: '',
-      // shareMessage: values.shareMessage,
+      images: item.images,
       shareType: 'donate',
       deliveryInfo: values.deliveryInfo,
-      pickupLocation: {
+      pickUpLocation: {
         address: values.location.data.description,
         latitude: values.location.details.geometry.location.lat,
-        longitude: values.location.details.geometry.lng,
+        longitude: values.location.details.geometry.location.lng,
       },
-      pickupTime: values.pickupTime,
+      pickUpTime: values.pickUpTime,
       listForDays: values.listFor,
     };
     updateGoods(newData);
@@ -49,10 +50,7 @@ const Component = ({Data}) => {
 
   const updateGoods = async (newGoodsData) => {
     let data = newGoodsData;
-    const result = await doPost(
-      'v1/goodShares/createGoodShare',
-      data,
-    );
+    const result = await doPost('v1/goodShares/createGoodShare', data);
     navigation.navigate('GoodsShareHome', newGoodsData);
   };
 
@@ -61,20 +59,22 @@ const Component = ({Data}) => {
       <View style={styles.donateGoodsComponentArea}>
         <Form
           initialValues={{
-            pickupTime: '',
+            pickUpTime: '',
             listFor: '',
             deliveryInfo: '',
             location: {},
+            shareMessage: '',
           }}
           onSubmit={(values) => {
             submitForm(values);
           }}
           validationSchema={validationSchema}>
+          <FormLocation name="location" title="Add Location" />
 
           <FormField
             title="Pickup Time"
             maxLength={100}
-            name="pickupTime"
+            name="pickUpTime"
             placeholder="10AM to 8PM etc."
           />
 
@@ -84,13 +84,17 @@ const Component = ({Data}) => {
             name="deliveryInfo"
             placeholder="I can deliver it in the evening etc."
           />
-
-          <FormLocation name="location" title="Add Location" />
-
           <StepperButtonInputField title="List For(days):" name="listFor" />
 
+          <FormField
+            title="Sharer Message(optional)"
+            maxLength={200}
+            name="shareMessage"
+            placeholder="write your message for the availer"
+          />
+
           {/* <Text>{JSON.stringify(Data)}</Text> */}
-          <View style={styles.buttonAreastyle}>
+          <View style={styles.buttonAreaStyle}>
             <SubmitForm title="Share"></SubmitForm>
           </View>
         </Form>

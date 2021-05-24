@@ -19,7 +19,7 @@ import {
   RecentlySharedSubtitleText,
 } from 'res/UniversalComponents/Text';
 import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
-import ShareFoodIcon from 'res/images/ModulesImages/FoodSharingImages/shareFood.png';
+import ShareGoodsIcon from 'res/images/ModulesImages/GoodsSharingImages/shareGoods.png';
 import {Colors} from 'res/constants/Colors.js';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
@@ -61,9 +61,9 @@ const Component = ({item, renderRightAction, onPress}) => {
             )}
           </View>
           <View style={{flexDirection: 'row'}}>
-            <View style={styles.foodDetails}>
+            <View style={styles.goodDetails}>
               <View style={styles.imageContainer}>
-                <Image source={ShareFoodIcon} style={styles.image} />
+                <Image source={ShareGoodsIcon} style={styles.image} />
               </View>
               <View
                 style={{
@@ -97,6 +97,15 @@ const Component = ({item, renderRightAction, onPress}) => {
               )}
             </View>
             <View style={styles.otherDetail}>
+              {item.price && (
+                <>
+                  <TextIcon flexDirection="column" iconName={'cash-outline'}>
+                    {item.price}
+                  </TextIcon>
+                  <View style={styles.horizontalSeparator} />
+                </>
+              )}
+
               {item.listForDays && (
                 <TextIcon flexDirection="column" iconName={'today-outline'}>
                   {item.listForDays + ' Days'}

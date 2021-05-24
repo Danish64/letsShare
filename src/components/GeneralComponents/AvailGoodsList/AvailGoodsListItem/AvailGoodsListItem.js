@@ -14,10 +14,9 @@ import {
 } from 'res/UniversalComponents/Text';
 import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import RidesIcon from '../../../../res/images/ModulesImages/RideSharingImages/ShareRide.png';
-import ShareFoodIcon from 'res/images/ModulesImages/FoodSharingImages/shareFood.png';
+import ShareGoodsIcon from 'res/images/ModulesImages/GoodsSharingImages/shareGoods.png';
 
-
-const Component = ({item,onPress}) => {
+const Component = ({item, onPress}) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.mainContainer}>
@@ -38,7 +37,7 @@ const Component = ({item,onPress}) => {
         <View style={{flexDirection: 'row'}}>
           <View style={styles.goodsDetails}>
             <View style={styles.imageContainer}>
-              <Image source={ShareFoodIcon} style={styles.image} />
+              <Image source={ShareGoodsIcon} style={styles.image} />
             </View>
             <View
               style={{

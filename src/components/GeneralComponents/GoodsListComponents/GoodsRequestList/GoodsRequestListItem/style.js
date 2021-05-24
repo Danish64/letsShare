@@ -5,7 +5,7 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   mainContainer: {
     width: '90%',
-    height: mvs(160, 0.7),
+    height: mvs(155, 0.7),
     backgroundColor: Colors.White,
     marginTop: mvs(5, 0.6),
     marginBottom: mvs(5, 0.6),
@@ -16,10 +16,9 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
   },
 
-  foodDetails: {
+  rideDetails: {
     width: '30%',
     height: mvs(100, 0.7),
-    justifyContent: 'center',
     alignItems: 'center',
   },
   imageContainer: {
@@ -34,17 +33,41 @@ export default StyleSheet.create({
   },
 
   locationDetails: {
-    width: '45%',
+    width: '50%',
     height: mvs(100, 0.7),
     justifyContent: 'center',
     paddingHorizontal: ms(10, 0.6),
   },
 
   otherDetail: {
-    width: '25%',
+    width: '20%',
     height: mvs(100, 0.7),
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  ContactContainer: {
+    height: 50,
+    width: '100%',
+    flexDirection: 'row',
+    marginHorizontal: ms(5, 0.3),
+  },
+
+  acceptButton: {
+    width: '50%',
+    marginHorizontal: ms(10, 0.3),
+  },
+  callButton: {
+    width: '15%',
+    height: 50,
+    justifyContent: 'center',
+    marginLeft: ms(20, 0.3),
+  },
+  chatButton: {
+    width: '15%',
+    height: 50,
+    justifyContent: 'center',
+    marginLeft: ms(20, 0.3),
   },
   verticalSeparator: {
     width: 2,

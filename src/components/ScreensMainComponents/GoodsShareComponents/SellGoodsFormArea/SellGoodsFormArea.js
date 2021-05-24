@@ -16,8 +16,9 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {doPost} from '../../../../utils/AxiosMethods';
 
 const validationSchema = Yup.object().shape({
-  deliveryInfo: Yup.string().required().min(3).max(20).label('Delivery Info'),
+  deliveryInfo: Yup.string().required().max(100).label('Delivery Info'),
   price: Yup.string().required().min(2).max(7).label('Price'),
+  pickUpTime: Yup.string().required().min(3).max(20).label('Pickup Time'),
 });
 
 const Component = ({Data}) => {
@@ -32,16 +33,17 @@ const Component = ({Data}) => {
       quantity: item.quantity,
       description: item.description,
       ownerContactNumber: item.ownerContactNumber,
-      image: '',
-      // shareMessage: values.shareMessage,
+      images: item.images,
+      shareMessage: values.shareMessage,
       shareType: 'sell',
       deliveryInfo: values.deliveryInfo,
-      pickupLocation: {
+      pickUpLocation: {
         address: values.location.data.description,
         latitude: values.location.details.geometry.location.lat,
-        longitude: values.location.details.geometry.lng,
+        longitude: values.location.details.geometry.location.lng,
       },
-      pickupTime: values.pickupTime,
+      price: values.price,
+      pickUpTime: values.pickUpTime,
       listForDays: values.listFor,
     };
     updateGoods(newData);
@@ -49,10 +51,7 @@ const Component = ({Data}) => {
 
   const updateGoods = async (newGoodsData) => {
     let data = newGoodsData;
-    const result = await doPost(
-      'v1/goodShares/createGoodShare',
-      data,
-    );
+    const result = await doPost('v1/goodShares/createGoodShare', data);
     navigation.navigate('GoodsShareHome', newGoodsData);
   };
 
@@ -63,22 +62,16 @@ const Component = ({Data}) => {
           initialValues={{
             deliveryInfo: '',
             price: '',
-            pickupTime: '',
+            pickUpTime: '',
             listFor: '',
             location: {},
+            shareMessage: '',
           }}
           onSubmit={(values) => {
             submitForm(values);
           }}
           validationSchema={validationSchema}>
-          {/* Input Delivery Info */}
-          <FormField
-            title="Delivery info"
-            maxLength={500}
-            name="deliveryInfo"
-            placeholder="e.g collection only, shipping available etc."
-          />
-
+          <FormLocation name="location" title="Add Location" />
           {/* Input Price */}
           <FormField
             title="Price"
@@ -91,19 +84,29 @@ const Component = ({Data}) => {
           <FormField
             title="Pickup Time"
             maxLength={100}
-            name="pickupTime"
+            name="pickUpTime"
             placeholder="10AM to 8PM etc."
           />
 
-
-          {/* Input Location */}
-          <FormLocation name="location" title="Add Location" />
+          {/* Input Delivery Info */}
+          <FormField
+            title="Delivery info"
+            maxLength={500}
+            name="deliveryInfo"
+            placeholder="e.g collection only, shipping available etc."
+          />
 
           {/* Input List For: */}
           <StepperButtonInputField title="List For(days):" name="listFor" />
+          <FormField
+            title="Sharer Message(optional)"
+            maxLength={200}
+            name="shareMessage"
+            placeholder="write your message for the availer"
+          />
 
           {/* Submit Button */}
-          <View style={styles.buttonAreastyle}>
+          <View style={styles.buttonAreaStyle}>
             <SubmitForm title="Share"></SubmitForm>
           </View>
         </Form>
