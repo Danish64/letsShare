@@ -17,19 +17,9 @@ const Component = ({navigation, data, listFor}) => {
           key={item._id}
           itemId={item._id}
           item={item}
-          image={item.images}
-          title={item.title}
-          description={item.description}
-          quantity={item.quantity}
-          shareType={item.shareType}
-          deliveryInfo={item.deliveryInfo}
-          pickUpTime={item.pickUpTime}
-          pickUpLocation={item.pickUpLocation}
-          price={item.price}
           onPress={() =>
-            navigation.navigate('RecentlySharedScreen', {
+            navigation.navigate('AvailGoodsDetail', {
               item: item,
-              listFor: listFor,
             })
           }
         />

@@ -9,7 +9,7 @@ import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
 import LoadingIndicator from '../LoadingIndicator';
 
 const Component = ({navigation, data}) => {
-  console.log('Data in My Shared Rides Screen', data);
+  console.log('Data in My Shared Goods Screen', data);cd 
   const listEmptyComponent = () => {
     return (
       <View
@@ -29,7 +29,7 @@ const Component = ({navigation, data}) => {
             marginTop: 60,
           }}>
           <ButtonTextLightGrey>
-            You have not shared any ride
+            You have not shared any goods
           </ButtonTextLightGrey>
         </View>
       </View>
@@ -50,7 +50,7 @@ const Component = ({navigation, data}) => {
       renderItem={({item}) => (
         <SharedRidesListItem
           item={item}
-          startLocation={item.startLocation}
+          pickUpLocation={item.pickUpLocation}
           destinationLocation={item.destinationLocation}
           ridePicture={item.ridePictures}
           rideCategory={item.rideCategory}
