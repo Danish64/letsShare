@@ -30,6 +30,8 @@ const Component = ({item, renderRightAction}) => {
             justifyContent: 'center',
             alignItems: 'center',
             flexDirection: 'row',
+            marginTop: 10,
+            marginBottom: 10,
           }}>
           {item.shareType && (
             <View style={{width: '80%', alignItems: 'center', paddingTop: 10}}>
