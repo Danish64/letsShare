@@ -145,30 +145,40 @@ const Component = ({navigation}) => {
             </View>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={
-                () => console.log('Residence Space')
-                // navigation.navigate('NearbyRideScreen', {item: item})
-              }>
+              onPress={() => {
+                navigation.navigate('ShareLivingSpace', {item: item});
+              }}>
               Share Residence Space
             </CategoryOutlinedButton>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={() => console.log('Working Space')}>
+              onPress={() =>
+                navigation.navigate('ShareWorkingSpace', {item: item})
+              }>
               Share Working Space
             </CategoryOutlinedButton>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={() => console.log('Parking Space')}>
+              onPress={() =>
+                // console.log('Parking Space')
+                navigation.navigate('ShareParkingSpace', {item: item})
+              }>
               Share Parking Space
             </CategoryOutlinedButton>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={() => console.log('Storage Space')}>
+              onPress={() =>
+                // console.log('Storage Space')
+                navigation.navigate('ShareStorageSpace', {item: item})
+              }>
               Share Storage Space
             </CategoryOutlinedButton>
             <CategoryOutlinedButton
               iconName="arrow-forward-outline"
-              onPress={() => console.log('Event Space')}>
+              onPress={() =>
+                // console.log('Event Space')
+                navigation.navigate('ShareEventSpace', {item: item})
+              }>
               Share Event Space
             </CategoryOutlinedButton>
           </View>

@@ -37,7 +37,7 @@ export const FormByFormik = ({
   return (
     <Formik
       innerRef={innerRef}
-      enableReinitialize
+      enableReinitialize={true}
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}>
@@ -144,7 +144,14 @@ export const StepperButtonInputField = ({name, title, ...otherProps}) => {
   );
 };
 
-export const FormPicker = ({heading, items, name, placeholder, icon}) => {
+export const FormPicker = ({
+  heading,
+  items,
+  name,
+  placeholder,
+  icon,
+  setState,
+}) => {
   const {errors, setFieldValue, touched, values} = useFormikContext();
 
   return (
@@ -154,6 +161,10 @@ export const FormPicker = ({heading, items, name, placeholder, icon}) => {
         icon={icon}
         item={items}
         onSelectItem={(item) => {
+          // console.log('in the select Item function', item);
+          if (setState) {
+            setState(item.name);
+          }
           setFieldValue(name, item);
         }}
         placeholder={placeholder}
