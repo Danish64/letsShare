@@ -18,7 +18,7 @@ import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {PrimaryButton} from '../../../../res/UniversalComponents/Button';
 
-const Component =  ({navigation, data, listFor}) => {
+const Component = ({navigation, data, listFor}) => {
   const imageURL = {uri: data.images[0]};
   return (
     <ScrollView>
@@ -53,9 +53,11 @@ const Component =  ({navigation, data, listFor}) => {
 
           {data.quantity && (
             <View style={styles.row}>
-              <RecentlySharedSubtitleText>Quantity:</RecentlySharedSubtitleText>
               <RecentlySharedSubtitleText>
-                {data.quantity}
+                {data.shareType == 'stall' ? 'Share Type' : 'Quantity'}
+              </RecentlySharedSubtitleText>
+              <RecentlySharedSubtitleText>
+                {data.shareType == 'stall' ? 'Stall' : data.quantity}
               </RecentlySharedSubtitleText>
             </View>
           )}
@@ -63,13 +65,22 @@ const Component =  ({navigation, data, listFor}) => {
           {data.pickUpTime && (
             <View style={styles.row}>
               <RecentlySharedSubtitleText>
-                Pickup Time:
+                {data.shareType == 'stall' ? 'Start Time' : 'PickUp Time'}
               </RecentlySharedSubtitleText>
               <RecentlySharedSubtitleText>
                 {data.pickUpTime}
               </RecentlySharedSubtitleText>
             </View>
           )}
+          {data.shareType == 'stall' && (
+            <View style={styles.row}>
+              <RecentlySharedSubtitleText>End Time</RecentlySharedSubtitleText>
+              <RecentlySharedSubtitleText>
+                {data.deliveryInfo}
+              </RecentlySharedSubtitleText>
+            </View>
+          )}
+
           {data.listForDays && (
             <View style={styles.row}>
               <RecentlySharedSubtitleText>List For</RecentlySharedSubtitleText>
@@ -82,9 +93,12 @@ const Component =  ({navigation, data, listFor}) => {
           {data.deliveryInfo && (
             <>
               <View style={styles.deliveryInfoView}>
-                <RecentlySharedTitleText>Delivery Info</RecentlySharedTitleText>
+                <RecentlySharedTitleText>
+                  {' '}
+                  {data.shareType == 'stall' ? '' : 'Delivery Info'}
+                </RecentlySharedTitleText>
                 <RecentlySharedSubtitleText>
-                  {data.deliveryInfo}
+                  {data.shareType == 'stall' ? '' : data.deliveryInfo}
                 </RecentlySharedSubtitleText>
               </View>
             </>
@@ -96,7 +110,9 @@ const Component =  ({navigation, data, listFor}) => {
             <View>
               <View style={styles.locationBody}>
                 <RecentlySharedTitleText>
-                  Pickup Location
+                  {data.shareType == 'stall'
+                    ? 'Stall Location'
+                    : 'PickUp Location'}
                 </RecentlySharedTitleText>
                 <BodyTextBlack>{data.pickUpLocation.address}</BodyTextBlack>
               </View>
@@ -121,17 +137,19 @@ const Component =  ({navigation, data, listFor}) => {
             </View>
           )}
         </View>
-        <View style={styles.bookFoodButtonView}>
-          <PrimaryButton
-            onPress={() =>
-              navigation.navigate('BookFood', {
-                data: data,
-                listFor: listFor,
-              })
-            }>
-            Send Booking Request
-          </PrimaryButton>
-        </View>
+        {data.shareType == 'stall' ? null : (
+          <View style={styles.bookFoodButtonView}>
+            <PrimaryButton
+              onPress={() =>
+                navigation.navigate('BookFood', {
+                  data: data,
+                  listFor: listFor,
+                })
+              }>
+              Send Booking Request
+            </PrimaryButton>
+          </View>
+        )}
       </View>
     </ScrollView>
   );

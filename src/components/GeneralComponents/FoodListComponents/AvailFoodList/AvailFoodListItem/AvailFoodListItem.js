@@ -66,7 +66,12 @@ const Component = ({item, onPress}) => {
 
             {item.pickUpLocation && (
               <>
-                <CaptionTextPrimary>Pickup Location</CaptionTextPrimary>
+                <CaptionTextPrimary>
+                  {' '}
+                  {item.shareType == 'stall'
+                    ? 'Stall Location'
+                    : 'Pickup Location'}
+                </CaptionTextPrimary>
                 <CaptionText>{item.pickUpLocation.address}</CaptionText>
               </>
             )}
@@ -89,6 +94,11 @@ const Component = ({item, onPress}) => {
                 iconName={'time'}
                 color="#006d77">
                 {item.pickUpTime}
+              </TextIcon>
+            )}
+            {item.shareType == 'stall' && (
+              <TextIcon flexDirection="column" iconName={'remove-outline'}>
+                {item.deliveryInfo}
               </TextIcon>
             )}
           </View>
