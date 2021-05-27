@@ -10,7 +10,7 @@ import {
   GroupLabelText,
   SectionHeadingText,
 } from 'res/UniversalComponents/Text.js';
-import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList/';
+import RecentlySharedSpacesList from '../../../GeneralComponents/SpaceListComponents/RecentlySharedList';
 import styles from './style';
 
 import {doGet, doPost} from '../../../../utils/AxiosMethods';
@@ -40,7 +40,7 @@ const Component = () => {
         <SectionHeadingText>Recently Shared Spaces</SectionHeadingText>
       </View>
       <View style={styles.recentlySharedSpacesListArea}>
-        <HorizontalFlatList
+        <RecentlySharedSpacesList
           data={recentlySharedSpaces}
           navigation={navigation}
           screen="AvailSpaceDetail"

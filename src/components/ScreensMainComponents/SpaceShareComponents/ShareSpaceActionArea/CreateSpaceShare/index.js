@@ -194,7 +194,9 @@ const Component = ({navigation}) => {
           </View>
 
           <View style={styles.selectRideTitleText}>
-            <ShareActionAreaHeadingText>Select Ride</ShareActionAreaHeadingText>
+            <ShareActionAreaHeadingText>
+              Select Space
+            </ShareActionAreaHeadingText>
           </View>
           <View style={styles.scrollViewContainer}>
             <HorizontalScrollViewContainer>
