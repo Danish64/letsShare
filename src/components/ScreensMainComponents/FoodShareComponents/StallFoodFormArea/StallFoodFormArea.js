@@ -35,21 +35,22 @@ const Component = ({navigation, Data}) => {
   const submitForm = (values) => {
     const newData = {
       sharerId: item.ownerId,
-      shareMessage: values.shareMessage,
       title: item.title,
       description: item.description,
       quantity: item.quantity,
       ownerContactNumber: item.ownerContactNumber,
       images: item.images,
-      shareType: 'sell',
-      deliveryInfo: values.deliveryInfo,
-      listForDays: values.listForDays,
+      shareType: 'stall',
+      price: 'Not Available',
       pickUpLocation: {
-        address: values.pickUpLocation.data.description,
-        latitude: values.pickUpLocation.details.geometry.location.lat,
-        longitude: values.pickUpLocation.details.geometry.location.lng,
+        address: values.stallLocation.data.description,
+        latitude: values.stallLocation.details.geometry.location.lat,
+        longitude: values.stallLocation.details.geometry.location.lng,
       },
-      pickUpTime: values.pickUpTime,
+      pickUpTime: values.startTime,
+      deliveryInfo: values.endTime,
+      shareMessage: values.date,
+      listForDays: values.listForDays,
     };
     createFoodShare(newData);
   };

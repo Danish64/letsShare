@@ -92,7 +92,7 @@ const Component = ({navigation}) => {
 
           {/* Submit Form */}
           <View style={styles.submitButtonArea}>
-            <SubmitForm title="Add Food Item"></SubmitForm>
+            <SubmitForm title="Add Food/Stall"></SubmitForm>
           </View>
         </Form>
       </View>
