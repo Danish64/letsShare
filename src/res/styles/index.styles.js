@@ -106,6 +106,12 @@ export default StyleSheet.create({
     fontSize: ms(SMALL_HEADING_TEXT_SIZE),
     color: Colors.LightGrey,
   },
+  iconTextSmallLightGrey: {
+    ...headingTextProperties,
+    fontFamily: FONT_AIRBNB_CEREAL_BOLD,
+    fontSize: ms(10),
+    color: Colors.LightGrey,
+  },
 
   imageTextBold: {
     fontFamily: FONT_AIRBNB_CEREAL_BLACK,

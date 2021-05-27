@@ -6,8 +6,12 @@ import Header from '../../../../components/GeneralComponents/Header';
 const Component = ({navigation}) => {
   return (
     <Container>
-      <Header title="Avail Living Space" navigation={navigation} hasBackIcon />
-      <Text>Avail Living Space Screen</Text>
+      <Header
+        title="Avail Residence Space"
+        navigation={navigation}
+        hasBackIcon
+      />
+      <Text>Avail Residence Space Screen</Text>
     </Container>
   );
 };

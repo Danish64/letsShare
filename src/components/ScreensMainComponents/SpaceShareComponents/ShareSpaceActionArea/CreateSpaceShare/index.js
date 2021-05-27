@@ -188,7 +188,7 @@ const Component = ({navigation}) => {
           <View style={styles.mySharedRides}>
             <OutlinedActionIconButton
               iconName="md-pencil"
-              onPress={() => console.log('My Spaces')}>
+              onPress={() => navigation.navigate('SharedSpaces')}>
               My Shared Spaces
             </OutlinedActionIconButton>
           </View>

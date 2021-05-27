@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, KeyboardAvoidingView} from 'react-native';
 import * as Yup from 'yup';
 
@@ -31,6 +31,8 @@ const categories = [
 ];
 
 const Component = ({navigation}) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const state = useSelector((state) => state);
   const user = state.userInformation.user;
 
@@ -47,8 +49,11 @@ const Component = ({navigation}) => {
   };
 
   const createRide = async (newRideData) => {
+    setIsLoading(true);
+
     const result = await doPost('v1/userRides/createRide', newRideData);
     console.log('Data from Ride Api', result);
+    setIsLoading(false);
     navigation.navigate('CreateRideScreen', newRideData);
   };
 
@@ -105,7 +110,7 @@ const Component = ({navigation}) => {
 
           {/* Submit Form */}
           <View style={styles.submitButtonArea}>
-            <SubmitForm title="Add Ride"></SubmitForm>
+            <SubmitForm title="Add Ride" loading={isLoading}></SubmitForm>
           </View>
         </Form>
       </View>

@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import SpaceShareHomeScreen from '../../screens/ModulesScreens/SpaceShareScreens/Home';
 import AvailSpaceDetailScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailSpaceDetailScreen';
 import AvailedSpacesScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailedSpacesScreen';
-import AvailLivingSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailLivingSpaceScreen';
+import AvailResidenceSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailResidenceSpaceScreen';
 import AvailWorkingSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailWorkingSpaceScreen';
 import AvailEventSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailEventSpaceScreen';
 import AvailParkingSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/AvailParkingSpaceScreen';
@@ -17,6 +17,7 @@ import ShareWorkingSpaceFormScreen from '../../screens/ModulesScreens/SpaceShare
 import ShareEventSpaceFormScreen from '../../screens/ModulesScreens/SpaceShareScreens/ShareEventSpaceFormScreen';
 import ShareParkingSpaceFormScreen from '../../screens/ModulesScreens/SpaceShareScreens/ShareParkingSpaceFormScreen';
 import ShareStorageSpaceFormScreen from '../../screens/ModulesScreens/SpaceShareScreens/ShareStorageSpaceFormScreen';
+import SpaceBookingRequestsScreen from '../../screens/ModulesScreens/SpaceShareScreens/SpaceBookingRequests';
 
 const Stack = createStackNavigator();
 
@@ -37,8 +38,8 @@ function SpaceShareNavigator() {
       />
       <Stack.Screen name="AvailedSpaces" component={AvailedSpacesScreen} />
       <Stack.Screen
-        name="AvailLivingSpace"
-        component={AvailLivingSpaceScreen}
+        name="AvailResidenceSpace"
+        component={AvailResidenceSpaceScreen}
       />
       <Stack.Screen
         name="AvailWorkingSpace"
@@ -54,6 +55,11 @@ function SpaceShareNavigator() {
         component={AvailStorageSpaceScreen}
       />
       <Stack.Screen name="SharedSpaces" component={SharedSpacesScreen} />
+      <Stack.Screen
+        name="SpaceBookingRequests"
+        component={SpaceBookingRequestsScreen}
+      />
+
       <Stack.Screen name="AddSpace" component={AddSpaceScreen} />
 
       <Stack.Screen

@@ -8,6 +8,7 @@ import {
   RecentlySharedTitleText,
   RecentlySharedSubtitleText,
   IconTextLightGrey,
+  IconTextSmallLightGrey,
 } from 'res/UniversalComponents/Text.js';
 
 //Native Exports Ends Here
@@ -26,6 +27,21 @@ export const TextIcon = ({iconName, flexDirection, children, color}) => (
     </View>
     <View style={styles.textIconAlign}>
       <IconTextLightGrey>{children}</IconTextLightGrey>
+    </View>
+  </View>
+);
+
+export const TextIconSmall = ({iconName, flexDirection, children, color}) => (
+  <View style={[styles.textIconStyle, {flexDirection: flexDirection}]}>
+    <View style={styles.textIconAlign}>
+      <Ionicons
+        name={iconName}
+        color={color ? '#006d77' : Colors.LightGrey}
+        size={18}
+      />
+    </View>
+    <View style={styles.textIconAlign}>
+      <IconTextSmallLightGrey>{children}</IconTextSmallLightGrey>
     </View>
   </View>
 );

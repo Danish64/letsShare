@@ -53,9 +53,9 @@ const Component = ({navigation}) => {
       spaceLocation: {
         address: values.spaceLocation.data.description,
         latitude: values.spaceLocation.details.geometry.location.lat,
-        longitude: values.spaceLocation.details.geometry.location.lat,
+        longitude: values.spaceLocation.details.geometry.location.lng,
       },
-      spacePictures: [],
+      spacePictures: values.image,
     };
     addNewSpace(newSpace);
   };

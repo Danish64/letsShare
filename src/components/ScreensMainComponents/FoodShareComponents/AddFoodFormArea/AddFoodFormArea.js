@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, KeyboardAvoidingView, TextInput} from 'react-native';
 import * as Yup from 'yup';
 
@@ -24,6 +24,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const Component = ({navigation}) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const state = useSelector((state) => state);
   const user = state.userInformation.user;
 
@@ -40,7 +42,9 @@ const Component = ({navigation}) => {
   };
 
   const createFood = async (foodItemData) => {
+    setIsLoading(true);
     const result = await doPost('v1/userFoods/createFood', foodItemData);
+    setIsLoading(false);
     navigation.navigate('CreateFoodScreen', foodItemData);
   };
 
@@ -92,7 +96,7 @@ const Component = ({navigation}) => {
 
           {/* Submit Form */}
           <View style={styles.submitButtonArea}>
-            <SubmitForm title="Add Food/Stall"></SubmitForm>
+            <SubmitForm title="Add Food/Stall" loading={isLoading}></SubmitForm>
           </View>
         </Form>
       </View>

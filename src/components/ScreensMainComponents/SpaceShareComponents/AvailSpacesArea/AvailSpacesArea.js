@@ -24,8 +24,8 @@ const Component = ({navigation}) => {
       </View>
       <View style={styles.categoriesArea}>
         <TextImageContainer
-          text=" Avail Living Space"
-          onPress={() => navigation.navigate('AvailLivingSpace')}
+          text=" Avail Residence Space"
+          onPress={() => navigation.navigate('AvailResidenceSpace')}
         />
         <TextImageContainer
           text="Avail Working Space"

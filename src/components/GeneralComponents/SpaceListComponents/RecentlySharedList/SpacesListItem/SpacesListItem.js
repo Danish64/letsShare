@@ -20,7 +20,6 @@ import {colors} from 'react-native-elements';
 //Third Party Exports Ends
 
 const Component = ({id, item, onPress}) => {
-  console.log('Recently shared space', item.bedFare);
   return (
     <TouchableOpacity key={id} onPress={onPress}>
       <View style={styles.shareItemContainer}>
@@ -61,6 +60,11 @@ const Component = ({id, item, onPress}) => {
             {item.bedFare && (
               <TextIcon flexDirection="column" iconName={'cash-outline'}>
                 {item.bedFare}
+              </TextIcon>
+            )}
+            {item.roomFare && (
+              <TextIcon flexDirection="column" iconName={'cash-outline'}>
+                {item.roomFare}
               </TextIcon>
             )}
 
