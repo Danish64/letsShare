@@ -69,7 +69,7 @@ const Component = ({navigation}) => {
       bookings: [],
     };
     console.log('SpaceDetails', spaceDetail);
-    createResidenceShare();
+    createResidenceShare(spaceDetail);
   };
 
   const createResidenceShare = async (newSpaceData) => {

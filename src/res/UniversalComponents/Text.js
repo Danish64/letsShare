@@ -23,6 +23,9 @@ export const RecentlySharedSubtitleText = (props) => (
 export const IconTextLightGrey = (props) => (
   <Text style={styles.iconTextLightGrey}>{props.children}</Text>
 );
+export const IconTextSmallLightGrey = (props) => (
+  <Text style={styles.iconTextSmallLightGrey}>{props.children}</Text>
+);
 
 export const LogoText = (props) => (
   <Text style={styles.logoText}>{props.children}</Text>

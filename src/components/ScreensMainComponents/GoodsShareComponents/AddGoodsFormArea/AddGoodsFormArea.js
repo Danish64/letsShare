@@ -23,6 +23,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const Component = ({navigation}) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const state = useSelector((state) => state);
   const user = state.userInformation.user;
 
@@ -39,8 +41,11 @@ const Component = ({navigation}) => {
   };
 
   const createRide = async (newGoodsData) => {
+    setIsLoading(true);
+
     const result = await doPost('v1/userGoods/createGood', newGoodsData);
     console.log('Data from Goods Api', result);
+    setIsLoading(false);
     navigation.navigate('CreateGoodsScreen', newGoodsData);
   };
 
@@ -93,7 +98,7 @@ const Component = ({navigation}) => {
 
           {/* Submit Form */}
           <View style={styles.submitButtonArea}>
-            <SubmitForm title="Add"></SubmitForm>
+            <SubmitForm title="Add" loading={isLoading}></SubmitForm>
           </View>
         </Form>
       </View>

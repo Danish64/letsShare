@@ -5,6 +5,8 @@ import HomeStack from '../ScreenStacks/HomeStack';
 import SpaceShareStack from '../ScreenStacks/SpaceShareStack';
 import RideShareStack from '../ScreenStacks/RideShareStack';
 import UtilitiesShareStack from '../ScreenStacks/UtilitiesShareStack';
+import EventStack from '../ScreenStacks/EventShareStack';
+
 import InboxStack from '../ScreenStacks/InboxStack';
 import Utilities from '../../screens/ModulesScreens/UtilitiesScreen';
 import UserManagerStack from '../ScreenStacks/UserManagerStack';
@@ -136,6 +138,30 @@ export default function BottomTabNavigator() {
         })}
       />
       <Tab.Screen
+        name="Event"
+        component={EventStack}
+        options={({route}) => ({
+          tabBarVisible: ((route) => {
+            const routeName =
+              getFocusedRouteNameFromRoute(route) ?? 'EventHomeScreen';
+            if (routeName === 'EventHomeScreen') {
+              return true;
+            }
+            return false;
+          })(route),
+          tabBarIcon: ({focused, color}) => (
+            <BottomTabIcon
+              name="today-outline"
+              color={color}
+              focused={focused}
+            />
+          ),
+          tabBarLabel: ({focused}) => (
+            <TabBarLabel focused={focused} Title="Event" />
+          ),
+        })}
+      />
+      {/* <Tab.Screen
         name="Inbox"
         component={InboxStack}
         options={({route}) => ({
@@ -158,7 +184,7 @@ export default function BottomTabNavigator() {
             <TabBarLabel focused={focused} Title="Inbox" />
           ),
         })}
-      />
+      /> */}
 
       <Tab.Screen
         name="Profile"
