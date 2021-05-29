@@ -14,7 +14,6 @@ const Component = ({navigation, data}) => {
   const route = useRoute();
   const shareId = data._id;
   const foodShareType = data.shareType;
-  const sharerContact = data.ownerContactNumber;
 
   const listEmptyComponent = () => {
     return (
@@ -52,7 +51,7 @@ const Component = ({navigation, data}) => {
       ListEmptyComponent={listEmptyComponent}
       renderItem={({item}) => (
         <FoodRequestListItem
-          ownerContactNumber={'92' + sharerContact.substring(1)}
+          ownerContactNumber={'92' + item.availerPhoneNumber.substring(1)}
           key={data._id}
           shareId={shareId}
           foodShareType={foodShareType}

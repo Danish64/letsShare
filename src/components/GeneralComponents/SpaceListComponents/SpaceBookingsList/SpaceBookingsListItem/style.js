@@ -57,17 +57,11 @@ export default StyleSheet.create({
     width: '50%',
     marginHorizontal: ms(10, 0.3),
   },
-  callButton: {
-    width: '15%',
-    height: 50,
-    justifyContent: 'center',
-    marginLeft: ms(20, 0.3),
-  },
-  chatButton: {
-    width: '15%',
-    height: 50,
-    justifyContent: 'center',
-    marginLeft: ms(20, 0.3),
+  contactIconsView: {
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: '40%',
   },
   verticalSeparator: {
     width: 2,

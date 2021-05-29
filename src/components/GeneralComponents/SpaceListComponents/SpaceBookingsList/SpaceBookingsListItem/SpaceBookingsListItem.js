@@ -1,5 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {View, TouchableOpacity, Text, Image} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  Image,
+  Platform,
+  Linking,
+  Alert,
+  alert,
+} from 'react-native';
 import styles from './style';
 import {
   SubtitleText,
@@ -30,9 +39,16 @@ import {
 } from '../../../../../utils/AxiosMethods';
 import {useIsFocused} from '@react-navigation/native';
 
-const Component = ({item, onPress, goodsShareType, shareId}) => {
+const Component = ({
+  item,
+  onPress,
+  goodsShareType,
+  shareId,
+  availerPhoneNumber,
+}) => {
   const [status, setStatus] = useState('');
   const isFocused = useIsFocused();
+  console.log(item);
 
   useEffect(() => {
     isFocused;
@@ -73,6 +89,55 @@ const Component = ({item, onPress, goodsShareType, shareId}) => {
 
     console.log('Accept Availer Request API Call Result', result.data);
   };
+
+  //=====================================Link Contact Source============
+  const linkingContactPlatform = (linkFor) => {
+    let msg = 'Hey there? ';
+    let phoneWithCountryCode = availerPhoneNumber;
+
+    let mobile =
+      Platform.OS == 'ios' ? phoneWithCountryCode : '+' + phoneWithCountryCode;
+    if (mobile) {
+      if (linkFor == 'WhatsApp') {
+        if (msg) {
+          let url = 'whatsapp://send?text=' + msg + '&phone=' + mobile;
+          Linking.openURL(url)
+            .then((data) => {
+              console.log('WhatsApp Opened');
+            })
+            .catch(() => {
+              alert('Make sure WhatsApp installed on your device');
+            });
+        } else {
+          alert('Please insert message to send');
+        }
+      }
+      if (linkFor == 'SMS') {
+        const separator = Platform.OS === 'ios' ? '&' : '?';
+        let url = `sms:${mobile}${separator}body=${msg}`;
+        Linking.openURL(url)
+          .then((data) => {
+            console.log('Phone Message Opened');
+          })
+          .catch(() => {
+            alert('Failed');
+          });
+      }
+      if (linkFor == 'Call') {
+        let url = `tel:${mobile}`;
+        Linking.openURL(url)
+          .then((data) => {
+            console.log('DialPad Opened');
+          })
+          .catch(() => {
+            alert('Failed');
+          });
+      }
+    } else {
+      alert('Please insert mobile no');
+    }
+  };
+  //==========================================================
 
   return (
     <View style={styles.mainContainer}>
@@ -134,11 +199,8 @@ const Component = ({item, onPress, goodsShareType, shareId}) => {
             </PrimaryButton>
           )}
         </View>
-        <View style={styles.callButton}>
-          <TouchableOpacity
-            onPress={() => {
-              console.log('call Button Pressed');
-            }}>
+        <View style={styles.contactIconsView}>
+          <TouchableOpacity onPress={() => linkingContactPlatform('Call')}>
             <Ionicons
               name="call"
               color={
@@ -149,14 +211,21 @@ const Component = ({item, onPress, goodsShareType, shareId}) => {
               size={30}
             />
           </TouchableOpacity>
-        </View>
-        <View style={styles.chatButton}>
-          <TouchableOpacity
-            onPress={() => {
-              console.log('chat Button Pressed');
-            }}>
+
+          <TouchableOpacity onPress={() => linkingContactPlatform('SMS')}>
             <Ionicons
               name="chatbox"
+              color={
+                item.isAccepted || status == '200'
+                  ? Colors.Primary
+                  : Colors.LightGrey
+              }
+              size={30}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => linkingContactPlatform('WhatsApp')}>
+            <Ionicons
+              name="logo-whatsapp"
               color={
                 item.isAccepted || status == '200'
                   ? Colors.Primary

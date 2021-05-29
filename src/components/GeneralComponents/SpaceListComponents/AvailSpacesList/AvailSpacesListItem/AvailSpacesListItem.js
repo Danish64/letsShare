@@ -72,6 +72,13 @@ const Component = ({item, onPress}) => {
             )}
           </View>
           <View style={styles.otherDetail}>
+            {item.singleShareAbleUnit && (
+              <TextIcon flexDirection="column" iconName={'home-outline'}>
+                {item.singleShareAbleUnit}
+              </TextIcon>
+            )}
+
+            <View style={styles.horizontalSeparator} />
             {item.bedFare && (
               <TextIconSmall flexDirection="column" iconName={'cash-outline'}>
                 {item.bedFare}
