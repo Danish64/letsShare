@@ -50,6 +50,7 @@ const Component = ({navigation, data}) => {
       ListEmptyComponent={listEmptyComponent}
       renderItem={({item}) => (
         <AvailedFoodsListItem
+          ownerContactNumber={'92' + item.ownerContactNumber.substring(1)}
           item={item}
           renderRightAction={() => (
             <ListItemDeleteAction onPress={() => console.log('Delete')} />

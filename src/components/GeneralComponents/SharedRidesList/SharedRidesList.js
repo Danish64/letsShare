@@ -62,7 +62,7 @@ const Component = ({navigation, data}) => {
           registrationNo={item.registrationNumber}
           rideType={item.rideType}
           ownerContactNumber={item.ownerContactNumber}
-          fare={item.fareRate}
+          fare={item.fare}
           fareMethod={item.fareMethod}
           seatsAvailable={item.seatsAvailable.toString()}
           image={item.image}

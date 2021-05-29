@@ -41,13 +41,10 @@ const Component = ({
 
   const [fareType, setFareType] = useState(null);
   const getFareMethod = () => {
-    if (item.fareMethod === 'chargePerKm') {
+    if (item.fareMethod == 'chargePerKm') {
       setFareType(' /Km');
     }
-    if (item.fareMethod === 'chargePerHour') {
-      setFareType(' /hour');
-    }
-    if (item.fareMethod === 'chargePerDP') {
+    if (item.fareMethod == 'chargePerDP') {
       setFareType('');
     }
   };
@@ -127,9 +124,14 @@ const Component = ({
 
               <View style={styles.horizontalSeparator} />
 
-              {fare && (
+              {item.fareRate && (
                 <TextIcon flexDirection="column" iconName={'cash-outline'}>
-                  {'Rs ' + fare + fareType}
+                  {'Rs ' + item.fareRate + fareType}
+                </TextIcon>
+              )}
+              {item.fare && (
+                <TextIcon flexDirection="column" iconName={'cash-outline'}>
+                  {'Rs ' + item.fare}
                 </TextIcon>
               )}
             </View>

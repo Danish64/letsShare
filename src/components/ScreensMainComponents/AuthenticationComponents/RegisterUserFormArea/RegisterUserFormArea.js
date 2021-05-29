@@ -40,6 +40,7 @@ const Component = ({signupRequest, userInfo}) => {
     lastName: Yup.string().required().label('Last Name'),
     email: Yup.string().required().email().label('Email'),
     password: Yup.string().required().min(4).label('Password'),
+    contact: Yup.string().required().min(10).max(13).label('Contact No'),
   });
 
   //useEffects for life cycles
@@ -74,8 +75,8 @@ const Component = ({signupRequest, userInfo}) => {
       name: name,
       email: values.email,
       password: values.password,
-      phone: '03354343433',
-      city: 'Islamabad',
+      phone: values.contact,
+      city: 'Not Provided',
       gender: 'male',
       homeAddress: {
         house: '',
@@ -138,6 +139,7 @@ const Component = ({signupRequest, userInfo}) => {
             // myDate: date,
             email: '',
             password: '',
+            contact: '',
           }}
           onSubmit={submitHandler}
           validationSchema={validationSchema}>
@@ -191,13 +193,14 @@ const Component = ({signupRequest, userInfo}) => {
                 name="password"
                 secureTextEntry
               />
-              {/* <Field
+              <Field
                 autoCapitalize="none"
                 autoCorrect={false}
+                keyboardType="numeric"
                 icon="call-outline"
                 placeholder="Contact No"
                 name="contact"
-              /> */}
+              />
               <View style={styles.continueButton}>
                 <Submit title="Register" loading={authLoading} />
               </View>
