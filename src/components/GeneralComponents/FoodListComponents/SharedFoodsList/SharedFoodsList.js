@@ -29,9 +29,7 @@ const Component = ({navigation, data}) => {
             alignItems: 'center',
             marginTop: 60,
           }}>
-          <ButtonTextLightGrey>
-            You have not shared any ride
-          </ButtonTextLightGrey>
+          <ButtonTextLightGrey>Nothing to show</ButtonTextLightGrey>
         </View>
       </View>
     );

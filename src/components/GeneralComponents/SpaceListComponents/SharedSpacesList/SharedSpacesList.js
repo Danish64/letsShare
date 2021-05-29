@@ -30,7 +30,7 @@ const Component = ({navigation, data}) => {
             marginTop: 60,
           }}>
           <ButtonTextLightGrey>
-            You have not shared any ride
+            You have not shared any Space
           </ButtonTextLightGrey>
         </View>
       </View>
