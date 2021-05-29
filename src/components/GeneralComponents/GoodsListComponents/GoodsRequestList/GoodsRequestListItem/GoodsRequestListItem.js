@@ -44,7 +44,7 @@ const Component = ({
   onPress,
   goodsShareType,
   shareId,
-  ownerContactNumber,
+  availerPhoneNumber,
 }) => {
   const [status, setStatus] = useState('');
   const isFocused = useIsFocused();
@@ -92,7 +92,7 @@ const Component = ({
   //=====================================Link Contact Source============
   const linkingContactPlatform = (linkFor) => {
     let msg = 'Hey there? ';
-    let phoneWithCountryCode = ownerContactNumber;
+    let phoneWithCountryCode = availerPhoneNumber;
 
     let mobile =
       Platform.OS == 'ios' ? phoneWithCountryCode : '+' + phoneWithCountryCode;

@@ -55,6 +55,7 @@ const Component = ({navigation, data}) => {
           shareId={shareId}
           goodsShareType={goodsShareType}
           item={item}
+          availerPhoneNumber={'92' + item.availerPhoneNumber.substring(1)}
         />
       )}
       style={styles.FlatListStyle}

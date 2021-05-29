@@ -14,7 +14,6 @@ const Component = ({navigation, data}) => {
   const route = useRoute();
   const shareId = data._id;
   const goodsShareType = data.shareType;
-  const sharerContact = data.ownerContactNumber;
 
   const listEmptyComponent = () => {
     return (
@@ -54,7 +53,7 @@ const Component = ({navigation, data}) => {
         <GoodsRequestListItem
           key={data._id}
           shareId={shareId}
-          ownerContactNumber={'92' + sharerContact.substring(1)}
+          availerPhoneNumber={'92' + item.availerPhoneNumber.substring(1)}
           goodsShareType={goodsShareType}
           item={item}
         />
