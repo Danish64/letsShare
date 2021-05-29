@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, View} from 'react-native';
 import SpacesListItem from './SpacesListItem';
 import {useNavigation} from '@react-navigation/native';
 import {FlatListData} from 'res/constants/dummyData.js';

@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, View} from 'react-native';
 import HorizontalFlatListItem from './HorizontalFlatListItem';
 import FlatListItem from '../../GeneralComponents/HorizontalFlatList/FlatListItem';
 import {useNavigation} from '@react-navigation/native';
@@ -34,9 +34,7 @@ const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
             justifyContent: 'center',
             alignItems: 'center',
             marginTop: 60,
-          }}>
-          <ButtonTextLightGrey>Nothing to show</ButtonTextLightGrey>
-        </View>
+          }}></View>
       </View>
     );
   };
