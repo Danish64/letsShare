@@ -27,7 +27,7 @@ const Component = ({navigation, data}) => {
             alignItems: 'center',
             marginTop: 60,
           }}>
-          <ButtonTextLightGrey>No food Available</ButtonTextLightGrey>
+          <ButtonTextLightGrey>No Rides Available</ButtonTextLightGrey>
         </View>
       </View>
     );
