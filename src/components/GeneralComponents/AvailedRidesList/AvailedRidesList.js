@@ -61,8 +61,10 @@ const Component = ({navigation, data}) => {
           rideName={item.rideName}
           registrationNo={item.registrationNumber}
           rideType={item.rideType}
-          ownerContactNumber={item.ownerContactNumber}
-          fare={item.fareRate}
+          ownerContactNumber={'92' + item.ownerContactNumber.substring(1)}
+          fare={item.fare}
+          fareRate={item.fareRate}
+          fareMethod={item.fareMethod}
           seatsAvailable={item.seatsAvailable.toString()}
           image={item.image}
           //   onPress={() => {

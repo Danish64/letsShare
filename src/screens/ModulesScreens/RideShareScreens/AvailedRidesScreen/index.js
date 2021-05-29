@@ -34,7 +34,7 @@ const Component = ({navigation}) => {
   const getUserAvailedRides = async () => {
     const data = {
       availerId: availerId,
-      active: true,
+      active: false,
     };
     const result = await doPost('v1/userRides/userAvailedRides', data);
     const availedRides = result.data.map((item, index) => {

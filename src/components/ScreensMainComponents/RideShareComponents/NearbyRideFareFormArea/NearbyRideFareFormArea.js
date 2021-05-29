@@ -28,11 +28,10 @@ const validationSchema = Yup.object().shape({
 
 const categories = [
   {label: 'Charge Per Kilometre', name: 'chargePerKm', value: 1},
-  {label: 'Charge Per Hour', name: 'chargePerHour', value: 2},
   {
     label: 'Charge Per Distance Traveled',
     name: 'chargePerDP',
-    value: 3,
+    value: 2,
   },
 ];
 

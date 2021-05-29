@@ -21,6 +21,7 @@ const Component = ({navigation, data}) => {
   const rideCategory = data.rideCategory;
   const fareRate = data.fareRate;
   const fareMethod = data.fareMethod;
+  const sharerContact = data.ownerContactNumber;
 
   const [sharerFare, setSharerFare] = useState(null);
 
@@ -89,6 +90,7 @@ const Component = ({navigation, data}) => {
       ListEmptyComponent={listEmptyComponent}
       renderItem={({item}) => (
         <RequestListItem
+          ownerContactNumber={'92' + sharerContact.substring(1)}
           fareRate={fareRate}
           fareMethod={fareMethod}
           sharerFare={sharerFare}

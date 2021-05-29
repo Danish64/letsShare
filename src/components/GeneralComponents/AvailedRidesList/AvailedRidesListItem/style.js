@@ -5,10 +5,10 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   mainContainer: {
     width: '94%',
-    height: mvs(190, 0.7),
+    // height: mvs(220, 0.7),
     backgroundColor: Colors.White,
-    marginTop: mvs(5, 0.6),
-    marginBottom: mvs(5, 0.6),
+    marginTop: mvs(10, 0.6),
+    marginBottom: mvs(10, 0.6),
     marginHorizontal: ms(10, 0.6),
     borderRadius: ms(10, 0.7),
     elevation: ms(3),
@@ -31,7 +31,7 @@ export default StyleSheet.create({
 
   rideDetails: {
     width: '30%',
-    height: mvs(100, 0.7),
+    // height: mvs(100, 0.7),
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -48,15 +48,16 @@ export default StyleSheet.create({
 
   locationDetails: {
     width: '50%',
-    height: mvs(100, 0.7),
+    // height: mvs(120, 0.7),
     justifyContent: 'center',
     paddingHorizontal: ms(10, 0.6),
     alignItems: 'center',
+    marginVertical: mvs(5, 0.5),
   },
 
   otherDetail: {
     width: '20%',
-    height: mvs(100, 0.7),
+    // height: mvs(100, 0.7),
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -74,7 +75,8 @@ export default StyleSheet.create({
   },
   statusDetail: {
     width: '100%',
-    height: mvs(60, 0.5),
+    marginVertical: mvs(10, 0.6),
+    // height: mvs(60, 0.5),
     flexDirection: 'row',
   },
   acceptedRequestsView: {

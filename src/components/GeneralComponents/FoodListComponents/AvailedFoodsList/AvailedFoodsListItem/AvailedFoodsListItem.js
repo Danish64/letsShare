@@ -5,6 +5,10 @@ import {
   Text,
   Image,
   TouchableHighlight,
+  Linking,
+  Platform,
+  Alert,
+  alert,
 } from 'react-native';
 import styles from './style';
 import {
@@ -21,7 +25,55 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import ShareFoodIcon from 'res/images/ModulesImages/FoodSharingImages/shareFood.png';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-const Component = ({item, renderRightAction}) => {
+const Component = ({item, renderRightAction, ownerContactNumber}) => {
+  //=====================================Link Contact Source============
+  const linkingContactPlatform = (linkFor) => {
+    let msg = 'Hey there? ';
+    let phoneWithCountryCode = ownerContactNumber;
+
+    let mobile =
+      Platform.OS == 'ios' ? phoneWithCountryCode : '+' + phoneWithCountryCode;
+    if (mobile) {
+      if (linkFor == 'WhatsApp') {
+        if (msg) {
+          let url = 'whatsapp://send?text=' + msg + '&phone=' + mobile;
+          Linking.openURL(url)
+            .then((data) => {
+              console.log('WhatsApp Opened');
+            })
+            .catch(() => {
+              alert('Make sure WhatsApp installed on your device');
+            });
+        } else {
+          alert('Please insert message to send');
+        }
+      }
+      if (linkFor == 'SMS') {
+        const separator = Platform.OS === 'ios' ? '&' : '?';
+        let url = `sms:${mobile}${separator}body=${msg}`;
+        Linking.openURL(url)
+          .then((data) => {
+            console.log('Phone Message Opened');
+          })
+          .catch(() => {
+            alert('Failed');
+          });
+      }
+      if (linkFor == 'Call') {
+        let url = `tel:${mobile}`;
+        Linking.openURL(url)
+          .then((data) => {
+            console.log('DialPad Opened');
+          })
+          .catch(() => {
+            alert('Failed');
+          });
+      }
+    } else {
+      alert('Please insert mobile no');
+    }
+  };
+  //==========================================================
   return (
     <TouchableHighlight>
       <View style={styles.mainContainer}>
@@ -40,7 +92,7 @@ const Component = ({item, renderRightAction}) => {
               </RecentlySharedTitleText>
             </View>
           )}
-          {item.isCompleted === true ? (
+          {item.bookings.length !== 0 ? (
             <View
               style={{
                 width: 15,
@@ -113,7 +165,7 @@ const Component = ({item, renderRightAction}) => {
           </View>
         </View>
         <View style={styles.horizontalSeparator} />
-        {item.isCompleted === true ? (
+        {item.bookings.length !== 0 ? (
           <View style={styles.statusDetail}>
             <View style={styles.acceptedRequestsView}>
               <RecentlySharedSubtitleText>
@@ -124,13 +176,19 @@ const Component = ({item, renderRightAction}) => {
               </View>
             </View>
             <View style={styles.contactView}>
-              <TouchableOpacity
-                onPress={() => console.log('Call Button Pressed')}>
+              <TouchableOpacity onPress={() => linkingContactPlatform('Call')}>
                 <Ionicons name="call" size={30} color={Colors.Primary} />
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => console.log('Chat Button Pressed')}>
+              <TouchableOpacity onPress={() => linkingContactPlatform('SMS')}>
                 <Ionicons name="chatbox" size={30} color={Colors.Primary} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => linkingContactPlatform('WhatsApp')}>
+                <Ionicons
+                  name="logo-whatsapp"
+                  size={30}
+                  color={Colors.Primary}
+                />
               </TouchableOpacity>
             </View>
           </View>

@@ -5,6 +5,10 @@ import {
   Text,
   Image,
   TouchableHighlight,
+  Linking,
+  Platform,
+  Alert,
+  alert,
 } from 'react-native';
 import styles from './style';
 import {
@@ -19,6 +23,7 @@ import RidesIcon from 'res/images/ModulesImages/RideSharingImages/ShareRide.png'
 import {Colors} from 'res/constants/Colors.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useIsFocused} from '@react-navigation/native';
+import {getDistance, getPreciseDistance} from 'geolib';
 
 const Component = ({
   item,
@@ -29,27 +34,156 @@ const Component = ({
   image,
   rideName,
   registrationNo,
+  ownerContactNumber,
   fare,
+  fareRate,
   seatsAvailable,
   renderRightAction,
+  fareMethod,
 }) => {
+  // calculating sharer distance from start to end point
+  const [sharerDistance, setSharerDistance] = useState(null);
+  const [sharerChargesPerKm, setSharerChargesPerKm] = useState(null);
+  const [availerCharges, setAvailerCharges] = useState(null);
+
+  // console.log('Sharer Distance', sharerDistance);
+  // console.log('sharerChargesPerKm', sharerChargesPerKm);
+
+  const calculateSharerDistance = () => {
+    const sharerStartLat = item.startLocation.latitude;
+    const sharerStartLng = item.startLocation.longitude;
+
+    const sharerEndLat = item.destinationLocation.latitude;
+    const sharerEndLng = item.destinationLocation.longitude;
+
+    const sharerDist = getPreciseDistance(
+      {latitude: sharerStartLat, longitude: sharerStartLng},
+      {latitude: sharerEndLat, longitude: sharerEndLng},
+    );
+    const sharerDistKm = sharerDist / 1000;
+    setSharerDistance(sharerDistKm);
+    if (rideCategory == 'Nearby') {
+      console.log('calculate fare here');
+    }
+    if (rideCategory == 'CityToCity') {
+      const sharerChargesPerKm = fare / sharerDistance;
+      setSharerChargesPerKm(sharerChargesPerKm);
+    }
+  };
+
+  //====================================================
   const isFocused = useIsFocused();
 
   const [fareType, setFareType] = useState(null);
-  const getFareMethod = () => {
-    if (item.fareMethod === 'chargePerKm') {
-      setFareType(' /Km');
-    }
-    if (item.fareMethod === 'chargePerHour') {
-      setFareType(' /hour');
-    }
-    if (item.fareMethod === 'chargePerDP') {
-      setFareType('');
+  const [nearbyAvailerFare, setNearbyAvailerFare] = useState(null);
+
+  const calculateAvailerFare = () => {
+    if (rideCategory == 'Nearby' || rideCategory == 'CityToCity') {
+      const availerStartLat = item.bookings[0].availerPickUpLocation.latitude;
+      const availerStartLng = item.bookings[0].availerPickUpLocation.longitude;
+
+      const availerEndLat = item.bookings[0].availerDropOffLocation.latitude;
+      const availerEndLng = item.bookings[0].availerDropOffLocation.longitude;
+
+      const dist = getPreciseDistance(
+        {latitude: availerStartLat, longitude: availerStartLng},
+        {latitude: availerEndLat, longitude: availerEndLng},
+      );
+
+      const availerDistInKm = dist / 1000;
+      const availerDistance = availerDistInKm;
+      console.log('Availer Distance', availerDistance);
+      if (rideCategory == 'Nearby') {
+        setAvailerCharges('100');
+        console.log('calculate fare here');
+      }
+      if (rideCategory == 'CityToCity') {
+        const availerCharges = Math.floor(availerDistance * sharerChargesPerKm);
+        setAvailerCharges(availerCharges);
+      }
+
+      // if (fareMethod == 'chargePerKm') {
+      //   const fare = distInKm * fareRate;
+      //   setNearbyAvailerFare(fare);
+      // }
+      // if (fareMethod == 'chargePerDP') {
+      //   const RatePerKm = fareRate / sharerDistance;
+      //   const fare = availerDistance / RatePerKm;
+      //   setNearbyAvailerFare(fare);
+      // }
     }
   };
+
+  // const getFareMethod = () => {
+  //   if (item.fareMethod === 'chargePerKm') {
+  //     setFareType(' /Km');
+  //   }
+
+  //   if (item.fareMethod === 'chargePerDP') {
+  //     setFareType('');
+  //   } else {
+  //     setFareType('');
+  //   }
+  // };
+
   useEffect(() => {
-    getFareMethod();
+    calculateAvailerFare();
+    calculateSharerDistance();
   }, [isFocused]);
+
+  // useEffect(() => {
+  //   getFareMethod();
+  // }, [isFocused]);
+
+  //=====================================Link Contact Source============
+  const linkingContactPlatform = (linkFor) => {
+    let msg = 'Hey there? ';
+    let phoneWithCountryCode = ownerContactNumber;
+
+    let mobile =
+      Platform.OS == 'ios' ? phoneWithCountryCode : '+' + phoneWithCountryCode;
+    if (mobile) {
+      if (linkFor == 'WhatsApp') {
+        if (msg) {
+          let url = 'whatsapp://send?text=' + msg + '&phone=' + mobile;
+          Linking.openURL(url)
+            .then((data) => {
+              console.log('WhatsApp Opened');
+            })
+            .catch(() => {
+              alert('Make sure WhatsApp installed on your device');
+            });
+        } else {
+          alert('Please insert message to send');
+        }
+      }
+      if (linkFor == 'SMS') {
+        const separator = Platform.OS === 'ios' ? '&' : '?';
+        let url = `sms:${mobile}${separator}body=${msg}`;
+        Linking.openURL(url)
+          .then((data) => {
+            console.log('Phone Message Opened');
+          })
+          .catch(() => {
+            alert('Failed');
+          });
+      }
+      if (linkFor == 'Call') {
+        let url = `tel:${mobile}`;
+        Linking.openURL(url)
+          .then((data) => {
+            console.log('DialPad Opened');
+          })
+          .catch(() => {
+            alert('Failed');
+          });
+      }
+    } else {
+      alert('Please insert mobile no');
+    }
+  };
+  //==========================================================
+
   return (
     <TouchableHighlight onPress={onPress}>
       <View style={styles.mainContainer}>
@@ -59,7 +193,7 @@ const Component = ({
               <RecentlySharedTitleText>{rideCategory}</RecentlySharedTitleText>
             </View>
           )}
-          {item.isAccepted === true ? (
+          {item.bookings[0].isAccepted === true ? (
             <View style={styles.circlePrimary} />
           ) : (
             <View style={styles.circleRed} />
@@ -86,11 +220,19 @@ const Component = ({
             {destinationLocation && (
               <CaptionText>{destinationLocation.address}</CaptionText>
             )}
+            {rideCategory == 'TourRide' ? null : (
+              <View style={{flexDirection: 'row', marginVertical: 10}}>
+                <>
+                  <CaptionTextPrimary>Estimated Fare: </CaptionTextPrimary>
+                  <CaptionText>{availerCharges + ' Rs'}</CaptionText>
+                </>
+              </View>
+            )}
           </View>
           <View style={styles.otherDetail}>
-            {seatsAvailable && (
+            {item.bookings[0].availerSeats && (
               <TextIcon flexDirection="column" iconName={'people-outline'}>
-                {seatsAvailable}
+                {item.bookings[0].availerSeats}
               </TextIcon>
             )}
 
@@ -98,13 +240,18 @@ const Component = ({
 
             {fare && (
               <TextIcon flexDirection="column" iconName={'cash-outline'}>
-                {'Rs ' + fare + fareType}
+                {'Rs ' + fare}
+              </TextIcon>
+            )}
+            {fareRate && (
+              <TextIcon flexDirection="column" iconName={'cash-outline'}>
+                {'Rs ' + fareRate + fareType}
               </TextIcon>
             )}
           </View>
         </View>
         <View style={styles.horizontalSeparator} />
-        {item.isAccepted === true ? (
+        {item.bookings[0].isAccepted === true ? (
           <View style={styles.statusDetail}>
             <View style={styles.acceptedRequestsView}>
               <RecentlySharedSubtitleText>
@@ -115,13 +262,19 @@ const Component = ({
               </View>
             </View>
             <View style={styles.contactView}>
-              <TouchableOpacity
-                onPress={() => console.log('Call Button Pressed')}>
+              <TouchableOpacity onPress={() => linkingContactPlatform('Call')}>
                 <Ionicons name="call" size={30} color={Colors.Primary} />
               </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => console.log('Chat Button Pressed')}>
+              <TouchableOpacity onPress={() => linkingContactPlatform('SMS')}>
                 <Ionicons name="chatbox" size={30} color={Colors.Primary} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => linkingContactPlatform('WhatsApp')}>
+                <Ionicons
+                  name="logo-whatsapp"
+                  size={30}
+                  color={Colors.Primary}
+                />
               </TouchableOpacity>
             </View>
           </View>
