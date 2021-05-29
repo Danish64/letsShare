@@ -5,7 +5,8 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   mainContainer: {
     width: '94%',
-    height: mvs(220, 0.7),
+    //height: mvs(220, 0.7),
+    marginVertical: mvs(15, 0.5),
     backgroundColor: Colors.White,
     marginTop: mvs(5, 0.6),
     marginBottom: mvs(5, 0.6),
@@ -70,6 +71,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.Failure,
   },
   statusDetail: {
+    marginVertical: mvs(15, 0.5),
     width: '100%',
     flexDirection: 'row',
     marginTop: 10,

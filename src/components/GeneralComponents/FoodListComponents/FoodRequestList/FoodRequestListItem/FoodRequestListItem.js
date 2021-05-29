@@ -108,7 +108,7 @@ const Component = ({
 
   //=====================================Link Contact Source============
   const linkingContactPlatform = (linkFor) => {
-    let msg = 'Hey there? ';
+    let msg = 'From Lets Share: Are You Available? ';
     let phoneWithCountryCode = availerPhoneNumber;
 
     let mobile =
