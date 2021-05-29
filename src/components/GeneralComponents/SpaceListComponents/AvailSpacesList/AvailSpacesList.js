@@ -1,21 +1,14 @@
 import React from 'react';
-import {FlatList} from 'react-native';
-import SpacesListItem from './SpacesListItem';
-import {useNavigation} from '@react-navigation/native';
+import {FlatList, View, Text} from 'react-native';
+import styles from './style';
 import {FlatListData} from 'res/constants/dummyData.js';
-import {HeadingText, GroupLabelText} from 'res/UniversalComponents/Text.js';
+import AvailSpacesListItem from './AvailSpacesListItem';
 import LoadingIndicator from '../../LoadingIndicator';
 import IllustrationContainer from '../../IllustrationContainer';
-import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
 import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
+import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
 
-import styles from './style';
-//Native Exports Ends Here
-//Third Party Exports Starts
-
-//Third Party Exports Ends
-
-const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
+const Component = ({navigation, data}) => {
   const listEmptyComponent = () => {
     return (
       <View
@@ -34,34 +27,35 @@ const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
             alignItems: 'center',
             marginTop: 60,
           }}>
-          <ButtonTextLightGrey>No spaces available </ButtonTextLightGrey>
+          <ButtonTextLightGrey>No Space Available</ButtonTextLightGrey>
         </View>
       </View>
     );
   };
+
   if (!data) {
     return <LoadingIndicator />;
   }
-
   return (
     <FlatList
       ListEmptyComponent={listEmptyComponent}
       data={data ? data : FlatListData}
-      keyExtractor={(item, index) => item.key}
       renderItem={({item}) => (
-        <SpacesListItem
-          id={item._id}
+        <AvailSpacesListItem
+          key={item._id}
+          itemId={item._id}
           item={item}
-          onPress={() => {
-            onPress ? onPress : navigation.navigate(screen, {item: item});
-          }}
+          onPress={() =>
+            navigation.navigate('AvailSpaceDetail', {
+              item: item,
+            })
+          }
         />
       )}
       style={styles.FlatListStyle}
-      horizontal
-      showsHorizontalScrollIndicator={false}
+      keyExtractor={(item) => item.id}
+      showsVerticalScrollIndicator={false}
     />
   );
 };
-
 export default Component;
