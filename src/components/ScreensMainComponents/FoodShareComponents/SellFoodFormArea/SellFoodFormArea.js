@@ -26,6 +26,7 @@ const validationSchema = Yup.object().shape({
   pickUpTime: Yup.string().required().min(3).max(20).label('Pickup Time'),
   listForDays: Yup.string().required().min(1).max(3).label('Listing Days'),
   deliveryInfo: Yup.string().required().max(100).label('Delivery Info'),
+  price: Yup.string().required().max(100).label('Price'),
 });
 
 const Component = ({navigation, Data}) => {
@@ -41,6 +42,7 @@ const Component = ({navigation, Data}) => {
       ownerContactNumber: item.ownerContactNumber,
       images: item.images,
       shareType: 'sell',
+      price: values.price,
       deliveryInfo: values.deliveryInfo,
       listForDays: values.listForDays,
       pickUpLocation: {
@@ -69,6 +71,7 @@ const Component = ({navigation, Data}) => {
             pickUpTime: '',
             listForDays: '',
             pickUpLocation: {},
+            price: '',
           }}
           onSubmit={(values) => {
             submitForm(values);
@@ -87,6 +90,12 @@ const Component = ({navigation, Data}) => {
             maxLength={100}
             name="pickUpTime"
             placeholder="10AM to 8PM etc."
+          />
+          <FormField
+            title="Price"
+            maxLength={100}
+            name="price"
+            placeholder="price in Rs"
           />
 
           <StepperButtonInputField title="List For(days):" name="listForDays" />

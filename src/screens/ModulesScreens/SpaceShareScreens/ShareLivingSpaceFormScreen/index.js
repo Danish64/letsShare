@@ -66,6 +66,9 @@ const Component = ({navigation}) => {
       spaceLocation: item.spaceLocation,
       spaceType: item.spaceType,
       spacePictures: item.spacePictures,
+      spaceSpecifications: item.spaceSpecifications,
+      amenity: item.amenity,
+      spaceDescription: item.spaceDescription,
       bookings: [],
     };
     console.log('SpaceDetails', spaceDetail);

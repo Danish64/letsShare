@@ -125,7 +125,6 @@ const Component = ({Data}) => {
           {/* Route Info */}
           <FormField
             title="Route Information"
-            maxLength={15}
             name="routeInfo"
             placeholder="e.g GT Road route meets my requirement"
           />

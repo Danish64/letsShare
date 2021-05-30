@@ -39,13 +39,7 @@ import {
 } from '../../../../../utils/AxiosMethods';
 import {useIsFocused} from '@react-navigation/native';
 
-const Component = ({
-  item,
-  onPress,
-  goodsShareType,
-  shareId,
-  availerPhoneNumber,
-}) => {
+const Component = ({item, onPress, shareId, availerPhoneNumber, spaceType}) => {
   const [status, setStatus] = useState('');
   const isFocused = useIsFocused();
   console.log(item);
@@ -56,35 +50,27 @@ const Component = ({
 
   const state = useSelector((state) => state);
 
-  const AcceptRequest = (shareType) => {
-    if (shareType === 'donate') {
-      AcceptDonateRequest();
-    }
-    if (shareType === 'sell') {
-      console.log('accept availer sell request');
-      AcceptSellRequest();
+  const AcceptRequest = (spaceType) => {
+    if (spaceType === 'Residence') {
+      AcceptResidenceRequest();
+    } else {
+      console.log('remaining Categories');
     }
   };
+  console.log('availerId', item.availerId);
+  console.log('shareId', shareId);
+  console.log('bookingId', item._id);
 
-  const AcceptDonateRequest = async () => {
+  const AcceptResidenceRequest = async () => {
     const data = {
       availerId: item.availerId,
       shareId: shareId,
       bookingId: item._id,
     };
-    const result = await doPutAws(data, 'v1/goodShares/acceptGoodShareBooking');
-    setStatus(result.status);
-
-    console.log('Accept Availer Request API Call Result', result.data);
-  };
-
-  const AcceptSellRequest = async () => {
-    const data = {
-      availerId: item.availerId,
-      shareId: shareId,
-      bookingId: item._id,
-    };
-    const result = await doPutAws(data, 'v1/goodShares/acceptGoodShareBooking');
+    const result = await doPutAws(
+      data,
+      'v1/residenceSpaceShares/acceptResidenceSpaceShareBooking',
+    );
     setStatus(result.status);
 
     console.log('Accept Availer Request API Call Result', result.data);
@@ -140,7 +126,7 @@ const Component = ({
   //==========================================================
 
   return (
-    <View style={styles.mainContainer}>
+    <View key={item._id} style={styles.mainContainer}>
       <View style={{flexDirection: 'row'}}>
         <View style={styles.spaceDetails}>
           <View style={styles.imageContainer}>
@@ -194,7 +180,7 @@ const Component = ({
           {item.isAccepted === true || status == '200' ? (
             <PrimaryButtonDarkGrey>Accepted</PrimaryButtonDarkGrey>
           ) : (
-            <PrimaryButton onPress={() => AcceptRequest(goodsShareType)}>
+            <PrimaryButton onPress={() => AcceptRequest(spaceType)}>
               Accept
             </PrimaryButton>
           )}

@@ -97,7 +97,7 @@ const Component = ({navigation, data, listFor}) => {
               <BodyTextBlack>{data.spaceSpecifications}</BodyTextBlack>
             </View>
           )}
-          {data.amenity && (
+          {data.amenity.length == 1 && (
             <View style={styles.locationBody}>
               <RecentlySharedTitleText>Space Amenities</RecentlySharedTitleText>
               <BodyTextBlack>{data.amenity.join()}</BodyTextBlack>

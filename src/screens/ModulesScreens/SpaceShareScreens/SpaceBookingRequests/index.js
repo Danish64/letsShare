@@ -10,7 +10,7 @@ const Component = ({navigation}) => {
 
   return (
     <Container>
-      <Header title="Avail Working Space" navigation={navigation} hasBackIcon />
+      <Header title="Booking Requests" navigation={navigation} hasBackIcon />
       <SpaceRequestsList navigation={navigation} data={route.params.item} />
     </Container>
   );
