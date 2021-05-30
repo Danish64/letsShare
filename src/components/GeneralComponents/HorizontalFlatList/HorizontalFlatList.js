@@ -4,7 +4,11 @@ import HorizontalFlatListItem from './HorizontalFlatListItem';
 import FlatListItem from '../../GeneralComponents/HorizontalFlatList/FlatListItem';
 import {useNavigation} from '@react-navigation/native';
 import {FlatListData} from 'res/constants/dummyData.js';
-import {HeadingText, GroupLabelText} from 'res/UniversalComponents/Text.js';
+import {
+  HeadingText,
+  GroupLabelText,
+  CaptionTextPrimary,
+} from 'res/UniversalComponents/Text.js';
 import LoadingIndicator from '../../GeneralComponents/LoadingIndicator';
 import IllustrationContainer from '../IllustrationContainer';
 import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
@@ -51,9 +55,14 @@ const Component = ({
 
   return (
     <View>
-      <TouchableOpacity onPress={refreshAction}>
-        <Text>Refresh</Text>
-      </TouchableOpacity>
+      <View style={styles.refreshButtonView}>
+        <TouchableOpacity
+          style={styles.refreshButtonStyle}
+          onPress={refreshAction}>
+          <CaptionTextPrimary>Refresh</CaptionTextPrimary>
+        </TouchableOpacity>
+      </View>
+
       <FlatList
         ListEmptyComponent={listEmptyComponent}
         data={data ? data : FlatListData}

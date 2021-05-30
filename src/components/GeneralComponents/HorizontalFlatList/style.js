@@ -7,4 +7,17 @@ export default StyleSheet.create({
     paddingLeft: ms(18, 0.6),
     width: '100%',
   },
+  refreshButtonView: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  refreshButtonStyle: {
+    flexDirection: 'row',
+    width: 70,
+    borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
 });
