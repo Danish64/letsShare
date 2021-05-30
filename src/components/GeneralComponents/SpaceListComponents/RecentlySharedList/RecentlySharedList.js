@@ -1,9 +1,13 @@
 import React from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, View, Text, TouchableOpacity} from 'react-native';
 import SpacesListItem from './SpacesListItem';
 import {useNavigation} from '@react-navigation/native';
 import {FlatListData} from 'res/constants/dummyData.js';
-import {HeadingText, GroupLabelText} from 'res/UniversalComponents/Text.js';
+import {
+  HeadingText,
+  GroupLabelText,
+  CaptionTextPrimary,
+} from 'res/UniversalComponents/Text.js';
 import LoadingIndicator from '../../LoadingIndicator';
 import IllustrationContainer from '../../IllustrationContainer';
 import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
@@ -15,7 +19,14 @@ import styles from './style';
 
 //Third Party Exports Ends
 
-const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
+const Component = ({
+  data,
+  isRecentlyShared,
+  navigation,
+  screen,
+  onPress,
+  refreshAction,
+}) => {
   const listEmptyComponent = () => {
     return (
       <View
@@ -42,23 +53,32 @@ const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
   }
 
   return (
-    <FlatList
-      ListEmptyComponent={listEmptyComponent}
-      data={data ? data : FlatListData}
-      keyExtractor={(item, index) => item.key}
-      renderItem={({item}) => (
-        <SpacesListItem
-          id={item._id}
-          item={item}
-          onPress={() => {
-            onPress ? onPress : navigation.navigate(screen, {item: item});
-          }}
-        />
-      )}
-      style={styles.FlatListStyle}
-      horizontal
-      showsHorizontalScrollIndicator={false}
-    />
+    <View>
+      <View style={styles.refreshButtonView}>
+        <TouchableOpacity
+          style={styles.refreshButtonStyle}
+          onPress={refreshAction}>
+          <CaptionTextPrimary>Refresh</CaptionTextPrimary>
+        </TouchableOpacity>
+      </View>
+      <FlatList
+        ListEmptyComponent={listEmptyComponent}
+        data={data ? data : FlatListData}
+        keyExtractor={(item, index) => item.key}
+        renderItem={({item}) => (
+          <SpacesListItem
+            id={item._id}
+            item={item}
+            onPress={() => {
+              onPress ? onPress : navigation.navigate(screen, {item: item});
+            }}
+          />
+        )}
+        style={styles.FlatListStyle}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      />
+    </View>
   );
 };
 

@@ -37,7 +37,7 @@ export default StyleSheet.create({
     height: mvs(300, 0.7),
     backgroundColor: Colors.White,
     marginBottom: mvs(15, 0.6),
-    marginTop: mvs(30, 0.5),
+    marginTop: mvs(10, 0.5),
 
     marginRight: ms(20, 0.7),
     borderRadius: ms(10, 0.7),

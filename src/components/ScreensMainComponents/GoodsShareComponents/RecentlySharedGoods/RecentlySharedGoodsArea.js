@@ -35,6 +35,7 @@ const Component = ({navigation}) => {
       </View>
       <View style={styles.recentlySharedFlatlistArea}>
         <HorizontalFlatList
+          refreshAction={fetchGoodsData}
           data={donatedGoods}
           navigation={navigation}
           screen="AvailGoodsDetail"

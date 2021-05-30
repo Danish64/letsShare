@@ -41,6 +41,7 @@ const Component = () => {
       </View>
       <View style={styles.recentlySharedSpacesListArea}>
         <RecentlySharedSpacesList
+          refreshAction={fetchRecentlySharedSpaces}
           data={recentlySharedSpaces}
           navigation={navigation}
           screen="AvailSpaceDetail"
