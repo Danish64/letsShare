@@ -5,7 +5,7 @@ import {s, vs, mvs, ms} from 'react-native-size-matters';
 export default StyleSheet.create({
   recentlySharedFoodArea: {
     width: '100%',
-    height: mvs(300, 0.7),
+    height: mvs(350, 0.7),
     marginBottom: mvs(20, 0.6),
     marginHorizontal: ms(20, 0.6),
   },

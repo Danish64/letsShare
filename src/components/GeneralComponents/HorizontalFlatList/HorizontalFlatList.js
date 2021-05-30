@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, View, Text, TouchableOpacity} from 'react-native';
 import HorizontalFlatListItem from './HorizontalFlatListItem';
 import FlatListItem from '../../GeneralComponents/HorizontalFlatList/FlatListItem';
 import {useNavigation} from '@react-navigation/native';
@@ -16,7 +16,14 @@ import styles from './style';
 
 //Third Party Exports Ends
 
-const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
+const Component = ({
+  data,
+  isRecentlyShared,
+  navigation,
+  screen,
+  onPress,
+  refreshAction,
+}) => {
   const listEmptyComponent = () => {
     return (
       <View
@@ -43,23 +50,28 @@ const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
   }
 
   return (
-    <FlatList
-      ListEmptyComponent={listEmptyComponent}
-      data={data ? data : FlatListData}
-      keyExtractor={(item, index) => item.key}
-      renderItem={({item}) => (
-        <FlatListItem
-          id={item._id}
-          item={item}
-          onPress={() => {
-            onPress ? onPress : navigation.navigate(screen, {item: item});
-          }}
-        />
-      )}
-      style={styles.FlatListStyle}
-      horizontal
-      showsHorizontalScrollIndicator={false}
-    />
+    <View>
+      <TouchableOpacity onPress={refreshAction}>
+        <Text>Refresh</Text>
+      </TouchableOpacity>
+      <FlatList
+        ListEmptyComponent={listEmptyComponent}
+        data={data ? data : FlatListData}
+        keyExtractor={(item, index) => item.key}
+        renderItem={({item}) => (
+          <FlatListItem
+            id={item._id}
+            item={item}
+            onPress={() => {
+              onPress ? onPress : navigation.navigate(screen, {item: item});
+            }}
+          />
+        )}
+        style={styles.FlatListStyle}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      />
+    </View>
   );
 };
 
