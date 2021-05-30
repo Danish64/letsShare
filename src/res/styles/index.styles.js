@@ -213,6 +213,12 @@ export default StyleSheet.create({
     fontSize: ms(LIGHT_BODY_TEXT_SIZE),
     color: Colors.LightGrey,
   },
+  bodyLightCenter: {
+    ...bodyTextProperties,
+    fontSize: ms(LIGHT_BODY_TEXT_SIZE),
+    color: Colors.LightGrey,
+    textAlign: 'center',
+  },
 
   bottomTabText: {
     fontSize: ms(10),
