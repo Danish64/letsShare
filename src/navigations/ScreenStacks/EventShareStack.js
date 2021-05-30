@@ -2,7 +2,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import EventScreen from '../../screens/ModulesScreens/EventsScreens';
-
+import CreateEventScreen from '../../screens/ModulesScreens/EventsScreens/CreateEvent';
 const Stack = createStackNavigator();
 
 function InboxNavigator() {
@@ -13,6 +13,7 @@ function InboxNavigator() {
         headerShown: false,
       }}>
       <Stack.Screen name="EventHomeScreen" component={EventScreen} />
+      <Stack.Screen name="CreateEvent" component={CreateEventScreen} />
     </Stack.Navigator>
   );
 }

@@ -1,9 +1,10 @@
-import React, {useState, useMemo, useContext} from 'react';
+import React from 'react';
+import {LogBox} from 'react-native';
 import LetShare from './src/Letsshare';
 import {Provider} from 'react-redux';
 import store from './src/ducks/store';
-import userInformation from './src/ducks/reducers/userInformation';
 
+LogBox.ignoreAllLogs();
 const App = () => {
   return (
     <Provider store={store}>

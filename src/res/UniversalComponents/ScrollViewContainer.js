@@ -6,6 +6,7 @@ const Component = (props) => {
     <ScrollView
       showsVerticalScrollIndicator={false}
       style={{backgroundColor: 'white'}}
+      nestedScrollEnabled
       keyboardShouldPersistTaps="always">
       {props.children}
     </ScrollView>
