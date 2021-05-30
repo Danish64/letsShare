@@ -87,6 +87,9 @@ export const BodyTextBoldLargeRed = (props) => (
 export const BodyTextLight = (props) => (
   <Text style={styles.bodyLight}>{props.children}</Text>
 );
+export const BodyTextLightCenter = (props) => (
+  <Text style={styles.bodyLightCenter}>{props.children}</Text>
+);
 export const ButtonTextBlack = (props) => (
   <Text style={styles.buttonTextBlack}>{props.children}</Text>
 );

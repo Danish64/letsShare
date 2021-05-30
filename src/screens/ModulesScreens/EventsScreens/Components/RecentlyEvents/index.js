@@ -85,8 +85,8 @@ const Component = ({navigation}) => {
           <EventsItem
             item={item}
             onPress={() => {
-              console.log('To Events Details');
-              // navigation.navigate('BookingRequestsScreen', {item: item});
+              //   console.log('To Events Details');
+              navigation.navigate('EventDetails', {item: item});
             }}
             renderRightAction={() => (
               <ListItemDeleteAction onPress={() => console.log('Delete')} />
