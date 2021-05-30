@@ -22,7 +22,7 @@ import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
 import RidesIcon from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
 import {Colors} from 'res/constants/Colors.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import ShareFoodIcon from 'res/images/ModulesImages/FoodSharingImages/shareFood.png';
+import ShareSpaceIcon from 'res/images/ModulesImages/SpaceSharingImages/spaceShare.png';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 const Component = ({item, renderRightAction, ownerContactNumber}) => {
@@ -85,10 +85,10 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
             marginTop: 10,
             marginBottom: 10,
           }}>
-          {item.shareType && (
+          {item.spaceCategory && (
             <View style={{width: '80%', alignItems: 'center', paddingTop: 10}}>
               <RecentlySharedTitleText>
-                {item.shareType}
+                {item.spaceCategory}
               </RecentlySharedTitleText>
             </View>
           )}
@@ -115,51 +115,42 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
         <View style={{flexDirection: 'row'}}>
           <View style={styles.foodDetails}>
             <View style={styles.imageContainer}>
-              <Image source={ShareFoodIcon} style={styles.image} />
+              <Image source={ShareSpaceIcon} style={styles.image} />
             </View>
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              {item.title && (
-                <CaptionTextPrimary>{item.title}</CaptionTextPrimary>
-              )}
-            </View>
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}></View>
           </View>
           <View style={styles.locationDetails}>
-            {item.description && (
+            {item.spaceSpecifications && (
               <>
-                <CaptionTextPrimary>Description</CaptionTextPrimary>
-                <CaptionText>{item.description}</CaptionText>
+                <CaptionTextPrimary>Specifications</CaptionTextPrimary>
+                <CaptionText>{item.spaceSpecifications}</CaptionText>
               </>
             )}
             <View style={styles.verticalSeparator} />
 
-            {item.pickUpLocation && (
+            {item.spaceLocation && (
               <>
-                <CaptionTextPrimary>Pickup Location</CaptionTextPrimary>
-                <CaptionText>{item.pickUpLocation.address}</CaptionText>
+                <CaptionTextPrimary>Space Location</CaptionTextPrimary>
+                <CaptionText>{item.spaceLocation.address}</CaptionText>
               </>
             )}
           </View>
           <View style={styles.otherDetail}>
-            {item.listForDays && (
-              <TextIcon flexDirection="column" iconName={'today-outline'}>
-                {item.listForDays + ' Days'}
+            <View style={styles.horizontalSeparator} />
+            {item.singleShareAbleUnit && (
+              <TextIcon flexDirection="column" iconName={'home-outline'}>
+                {item.singleShareAbleUnit}
               </TextIcon>
             )}
-
             <View style={styles.horizontalSeparator} />
 
-            {item.pickUpTime && (
-              <TextIcon flexDirection="column" iconName={'time'}>
-                {item.pickUpTime}
+            {item.bedFare && (
+              <TextIcon flexDirection="column" iconName={'cash-outline'}>
+                {item.bedFare}
+              </TextIcon>
+            )}
+            {item.roomFare && (
+              <TextIcon flexDirection="column" iconName={'cash-outline'}>
+                {item.roomFare}
               </TextIcon>
             )}
           </View>

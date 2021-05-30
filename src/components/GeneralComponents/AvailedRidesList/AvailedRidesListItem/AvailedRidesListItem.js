@@ -18,7 +18,11 @@ import {
   RecentlySharedTitleText,
   RecentlySharedSubtitleText,
 } from 'res/UniversalComponents/Text';
-import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
+import {
+  TextIcon,
+  Icon,
+  TextIconSmall,
+} from 'res/UniversalComponents/TextIcon.js';
 import RidesIcon from 'res/images/ModulesImages/RideSharingImages/ShareRide.png';
 import {Colors} from 'res/constants/Colors.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -41,13 +45,31 @@ const Component = ({
   renderRightAction,
   fareMethod,
 }) => {
+  const isFocused = useIsFocused();
+  const [fareType, setFareType] = useState(null);
+
   // calculating sharer distance from start to end point
   const [sharerDistance, setSharerDistance] = useState(null);
   const [sharerChargesPerKm, setSharerChargesPerKm] = useState(null);
   const [availerCharges, setAvailerCharges] = useState(null);
+  const [nearbyAvailerFare, setNearbyAvailerFare] = useState(null);
 
-  // console.log('Sharer Distance', sharerDistance);
-  // console.log('sharerChargesPerKm', sharerChargesPerKm);
+  console.log('Sharer Distance', sharerDistance);
+  console.log('sharerChargesPerKm', sharerChargesPerKm);
+
+  const getFareMethod = () => {
+    if (fareMethod == 'chargePerKm') {
+      setFareType(' /Km');
+    } else {
+      setFareType('');
+    }
+  };
+
+  useEffect(() => {
+    calculateAvailerFare();
+    calculateSharerDistance();
+    getFareMethod();
+  }, [isFocused]);
 
   const calculateSharerDistance = () => {
     const sharerStartLat = item.startLocation.latitude;
@@ -63,7 +85,14 @@ const Component = ({
     const sharerDistKm = sharerDist / 1000;
     setSharerDistance(sharerDistKm);
     if (rideCategory == 'Nearby') {
-      console.log('calculate fare here');
+      if (fareMethod == 'chargePerKm') {
+        const sharerPerKm = fareRate;
+        setSharerChargesPerKm(sharerPerKm);
+      }
+      if (fareMethod == 'chargePerDP') {
+        const sharerPerKm = Math.floor(fareRate / sharerDistKm);
+        setSharerChargesPerKm(sharerPerKm);
+      }
     }
     if (rideCategory == 'CityToCity') {
       const sharerChargesPerKm = fare / sharerDistance;
@@ -72,10 +101,6 @@ const Component = ({
   };
 
   //====================================================
-  const isFocused = useIsFocused();
-
-  const [fareType, setFareType] = useState(null);
-  const [nearbyAvailerFare, setNearbyAvailerFare] = useState(null);
 
   const calculateAvailerFare = () => {
     if (rideCategory == 'Nearby' || rideCategory == 'CityToCity') {
@@ -94,50 +119,25 @@ const Component = ({
       const availerDistance = availerDistInKm;
       console.log('Availer Distance', availerDistance);
       if (rideCategory == 'Nearby') {
-        setAvailerCharges('100');
-        console.log('calculate fare here');
+        if (fareMethod == 'chargePerKm') {
+          const fare = Math.floor(availerDistance * fareRate);
+          setNearbyAvailerFare(fare);
+        }
+        if (fareMethod == 'chargePerDP') {
+          const fare = Math.floor(availerDistance * sharerChargesPerKm);
+          setNearbyAvailerFare(fare);
+        }
       }
       if (rideCategory == 'CityToCity') {
         const availerCharges = Math.floor(availerDistance * sharerChargesPerKm);
-        setAvailerCharges(availerCharges);
+        setAvailerCharges(800);
       }
-
-      // if (fareMethod == 'chargePerKm') {
-      //   const fare = distInKm * fareRate;
-      //   setNearbyAvailerFare(fare);
-      // }
-      // if (fareMethod == 'chargePerDP') {
-      //   const RatePerKm = fareRate / sharerDistance;
-      //   const fare = availerDistance / RatePerKm;
-      //   setNearbyAvailerFare(fare);
-      // }
     }
   };
 
-  // const getFareMethod = () => {
-  //   if (item.fareMethod === 'chargePerKm') {
-  //     setFareType(' /Km');
-  //   }
-
-  //   if (item.fareMethod === 'chargePerDP') {
-  //     setFareType('');
-  //   } else {
-  //     setFareType('');
-  //   }
-  // };
-
-  useEffect(() => {
-    calculateAvailerFare();
-    calculateSharerDistance();
-  }, [isFocused]);
-
-  // useEffect(() => {
-  //   getFareMethod();
-  // }, [isFocused]);
-
   //=====================================Link Contact Source============
   const linkingContactPlatform = (linkFor) => {
-    let msg = 'Hey there? ';
+    let msg = 'From Lets Share: Are You Available? ';
     let phoneWithCountryCode = ownerContactNumber;
 
     let mobile =
@@ -220,7 +220,15 @@ const Component = ({
             {destinationLocation && (
               <CaptionText>{destinationLocation.address}</CaptionText>
             )}
-            {rideCategory == 'TourRide' ? null : (
+            {rideCategory == 'Nearby' && (
+              <View style={{flexDirection: 'row', marginVertical: 10}}>
+                <>
+                  <CaptionTextPrimary>Estimated Fare: </CaptionTextPrimary>
+                  <CaptionText>{nearbyAvailerFare + ' Rs'}</CaptionText>
+                </>
+              </View>
+            )}
+            {rideCategory == 'CityToCity' && (
               <View style={{flexDirection: 'row', marginVertical: 10}}>
                 <>
                   <CaptionTextPrimary>Estimated Fare: </CaptionTextPrimary>
@@ -228,6 +236,14 @@ const Component = ({
                 </>
               </View>
             )}
+            {/* {rideCategory == 'TourRide' ? null : (
+              <View style={{flexDirection: 'row', marginVertical: 10}}>
+                <>
+                  <CaptionTextPrimary>Estimated Fare: </CaptionTextPrimary>
+                  <CaptionText>{availerCharges + ' Rs'}</CaptionText>
+                </>
+              </View>
+            )} */}
           </View>
           <View style={styles.otherDetail}>
             {item.bookings[0].availerSeats && (
@@ -238,15 +254,15 @@ const Component = ({
 
             <View style={styles.horizontalSeparator} />
 
-            {fare && (
-              <TextIcon flexDirection="column" iconName={'cash-outline'}>
-                {'Rs ' + fare}
-              </TextIcon>
+            {rideCategory == 'CityToCity' && (
+              <TextIconSmall flexDirection="column" iconName={'cash-outline'}>
+                {'Rs ' + '1000'}
+              </TextIconSmall>
             )}
             {fareRate && (
-              <TextIcon flexDirection="column" iconName={'cash-outline'}>
+              <TextIconSmall flexDirection="column" iconName={'cash-outline'}>
                 {'Rs ' + fareRate + fareType}
-              </TextIcon>
+              </TextIconSmall>
             )}
           </View>
         </View>

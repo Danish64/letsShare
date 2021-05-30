@@ -49,7 +49,7 @@ const Component = ({navigation}) => {
   const getUserAllBookings = async () => {
     const data = {
       availerId: availerId,
-      active: false,
+      active: true,
     };
     const result = await doPost('v1/userRides/userAvailedRides', data);
     const allRideBookings = result.data.map((item, index) => {

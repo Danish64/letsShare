@@ -80,21 +80,18 @@ const Component = ({navigation, Data}) => {
 
           <FormField
             title="Start Time"
-            maxLength={10}
             name="startTime"
             placeholder="e.g. 10:30 AM "
           />
 
           <FormField
             title="End Time"
-            maxLength={10}
             name="endTime"
             placeholder="e.g. 6:30 PM "
           />
 
           <FormField
             title="Stall Scheduled Date"
-            maxLength={10}
             name="date"
             placeholder="e.g. 06/06/2021 "
           />

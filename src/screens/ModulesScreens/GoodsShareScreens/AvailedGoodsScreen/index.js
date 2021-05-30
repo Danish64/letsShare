@@ -27,9 +27,9 @@ const Component = ({navigation}) => {
   const getUserAllBookings = async () => {
     const data = {
       availerId: availerId,
-      active: false,
+      active: true,
     };
-    const result = await doPost('v1/goodShares/getAllGoodShares', data);
+    const result = await doPost('v1/goodShares/userAvailedGoods/', data);
     const allGoodsBookings = result.data.map((item, index) => {
       item.key = index;
       return item;

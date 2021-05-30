@@ -94,7 +94,6 @@ const Component = ({navigation, data}) => {
           fareMethod={fareMethod}
           sharerFare={sharerFare}
           sharerDistance={sharerDistance}
-          key={data._id}
           shareId={shareId}
           rideCategory={rideCategory}
           item={item}

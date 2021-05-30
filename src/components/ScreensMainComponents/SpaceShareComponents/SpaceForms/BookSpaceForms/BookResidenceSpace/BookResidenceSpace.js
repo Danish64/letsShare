@@ -17,33 +17,30 @@ import {shareRidesData} from 'res/constants/dummyData';
 
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {ScrollView} from 'react-native-gesture-handler';
-import {doPost} from '../../../../utils/AxiosMethods';
+import {doPost} from '../../../../../../utils/AxiosMethods';
 import {useSelector} from 'react-redux';
+import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer';
 
 const Component = ({data}) => {
   const validationSchema = Yup.object().shape({
-    availerQuantity: Yup.number()
-      .required()
-      .min(1)
-      .max(data.quantity)
-      .label('Quantity'),
+    availerMessage: Yup.string().required().min(5).label('Your Message'),
   });
-
   const navigation = useNavigation();
   const route = useRoute();
   const user = useSelector((state) => state.userInformation.user);
+  console.log(data.singleShareAbleUnit);
 
   const shareId = data._id;
   const sharerId = data.sharerId;
 
-  const onPressSendRequest = async (newData) => {
-    let availerBookingData = newData;
+  const onPressBookRide = async (newData) => {
+    let data = newData;
     const result = await doPost(
-      `v1/foodShares/createFoodShareBooking/${shareId}`,
-      availerBookingData,
+      `v1/residenceSpaceShares/createResidenceSpaceShareBooking/${shareId}`,
+      data,
     );
     console.log('Booking Ride Api Call', result);
-    navigation.navigate('FoodShareHome');
+    navigation.navigate('SpaceShareHome');
   };
 
   const submitForm = (values) => {
@@ -52,19 +49,24 @@ const Component = ({data}) => {
       availerName: user.name,
       availerAddress: values.availerLocation.data.description,
       availerPhoneNumber: user.phone,
-      availerQuantity: values.availerQuantity,
       availerMessage: values.availerMessage,
+      isAvailingWhole: values.isAvailingWhole.label,
     };
 
-    onPressSendRequest(newData);
+    onPressBookRide(newData);
   };
 
+  const categories = [
+    {label: 'true', value: 1},
+    {label: 'false', value: 2},
+  ];
+
   return (
-    <KeyboardAvoidingView>
+    <ScrollViewContainer>
       <View style={styles.ComponentArea}>
         <Form
           initialValues={{
-            availerQuantity: '',
+            isAvailingWhole: {},
             availerMessage: '',
             availerLocation: {},
           }}
@@ -72,14 +74,8 @@ const Component = ({data}) => {
             submitForm(values);
           }}
           validationSchema={validationSchema}>
-          {/* Availer Location */}
-          <FormLocation name="availerLocation" title="Enter Your Location" />
-
-          {/* Availer Quantity: */}
-          <StepperButtonInputField
-            title="Select the quantity you need:"
-            name="availerQuantity"
-          />
+          {/* Start Location */}
+          <FormLocation name="availerLocation" title="Enter your Location" />
 
           <FormField
             title="Message for Sharer (Optional) "
@@ -89,13 +85,23 @@ const Component = ({data}) => {
             // keyboardType="numeric"
           />
 
+          {data.singleShareAbleUnit == 'house' && (
+            <FormPicker
+              heading="Choose "
+              name="isAvailingWhole"
+              icon="keypad-outline"
+              items={categories}
+              placeholder="Choose availing option"
+            />
+          )}
+
           {/* Submit Button */}
           <View style={styles.buttonAreaStyle}>
             <SubmitButtonPrimary title="Send Booking Request"></SubmitButtonPrimary>
           </View>
         </Form>
       </View>
-    </KeyboardAvoidingView>
+    </ScrollViewContainer>
   );
 };
 export default Component;

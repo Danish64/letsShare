@@ -18,6 +18,7 @@ import ShareEventSpaceFormScreen from '../../screens/ModulesScreens/SpaceShareSc
 import ShareParkingSpaceFormScreen from '../../screens/ModulesScreens/SpaceShareScreens/ShareParkingSpaceFormScreen';
 import ShareStorageSpaceFormScreen from '../../screens/ModulesScreens/SpaceShareScreens/ShareStorageSpaceFormScreen';
 import SpaceBookingRequestsScreen from '../../screens/ModulesScreens/SpaceShareScreens/SpaceBookingRequests';
+import BookSpaceScreen from '../../screens/ModulesScreens/SpaceShareScreens/BookSpaceScreen';
 
 const Stack = createStackNavigator();
 
@@ -54,6 +55,8 @@ function SpaceShareNavigator() {
         name="AvailStorageSpace"
         component={AvailStorageSpaceScreen}
       />
+      <Stack.Screen name="BookSpace" component={BookSpaceScreen} />
+
       <Stack.Screen name="SharedSpaces" component={SharedSpacesScreen} />
       <Stack.Screen
         name="SpaceBookingRequests"

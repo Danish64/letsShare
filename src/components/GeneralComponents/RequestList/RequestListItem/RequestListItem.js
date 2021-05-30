@@ -42,7 +42,6 @@ import {getDistance, getPreciseDistance} from 'geolib';
 import {useDispatch} from 'react-redux';
 
 const Component = ({
-  key,
   item,
   onPress,
   rideCategory,
@@ -170,7 +169,7 @@ const Component = ({
   //==========================================================
 
   return (
-    <View key={key} style={styles.mainContainer}>
+    <View key={item._id} style={styles.mainContainer}>
       <View style={{flexDirection: 'row'}}>
         <View style={styles.rideDetails}>
           <View style={styles.imageContainer}>

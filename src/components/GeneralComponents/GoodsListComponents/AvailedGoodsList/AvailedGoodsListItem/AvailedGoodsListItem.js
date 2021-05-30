@@ -28,7 +28,7 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 const Component = ({item, renderRightAction, ownerContactNumber}) => {
   //=====================================Link Contact Source============
   const linkingContactPlatform = (linkFor) => {
-    let msg = 'Hey there? ';
+    let msg = 'From Lets Share: Are You Available? ';
     let phoneWithCountryCode = ownerContactNumber;
 
     let mobile =

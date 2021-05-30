@@ -1,20 +1,18 @@
-import React from 'react';
-import {FlatList, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {FlatList, View, Text} from 'react-native';
 import styles from './style';
 import {FlatListData} from 'res/constants/dummyData.js';
-import {useNavigation, useRoute} from '@react-navigation/native';
-import LoadingIndicator from '../../LoadingIndicator';
-import {useIsFocused} from '@react-navigation/native';
+
+import AvailedSpacesListItem from './AvailedSpacesListItem';
 import IllustrationContainer from '../../IllustrationContainer';
 import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
+
 import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
-import SpaceBookingsListItem from './SpaceBookingsListItem';
+import LoadingIndicator from '../../LoadingIndicator';
+import ListItemDeleteAction from '../../ListItemDeleteAction';
 
 const Component = ({navigation, data}) => {
-  const route = useRoute();
-  const shareId = data._id;
-  const spaceType = data.spaceType;
-
+  console.log('Data in AvailedGoodsList', data);
   const listEmptyComponent = () => {
     return (
       <View
@@ -33,33 +31,35 @@ const Component = ({navigation, data}) => {
             alignItems: 'center',
             marginTop: 60,
           }}>
-          <ButtonTextLightGrey>
-            No Booking Request for the shared Item
-          </ButtonTextLightGrey>
+          <ButtonTextLightGrey>Nothing to show</ButtonTextLightGrey>
         </View>
       </View>
     );
   };
 
   if (!data) {
-    return <LoadingIndicator />;
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <LoadingIndicator />
+      </View>
+    );
   }
-
   return (
     <FlatList
-      data={data ? data.bookings : FlatListData}
+      data={data ? data : FlatListData}
       ListEmptyComponent={listEmptyComponent}
       renderItem={({item}) => (
-        <SpaceBookingsListItem
-          key={data._id}
-          shareId={shareId}
-          spaceType={spaceType}
+        <AvailedSpacesListItem
           item={item}
-          availerPhoneNumber={'92' + item.availerPhoneNumber.substring(1)}
+          ownerContactNumber={'92' + item.ownerContactNumber.substring(1)}
+          renderRightAction={() => (
+            <ListItemDeleteAction onPress={() => console.log('Delete')} />
+          )}
         />
       )}
       style={styles.FlatListStyle}
-      showsVerticalScrollIndicator={false}
+      keyExtractor={(item) => item.id}
+      showsVerticalScrollIndicator={true}
     />
   );
 };

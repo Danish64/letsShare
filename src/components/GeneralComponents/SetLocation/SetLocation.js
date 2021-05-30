@@ -11,13 +11,13 @@ import {
   Alert,
 } from 'react-native';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
+import GOOGLE_API_KEY from '../../../res/constants/maps';
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+
 import {
   TextInputTitleText,
   BodyTextLight,
 } from '../../../res/UniversalComponents/Text';
-
-import GOOGLE_API_KEY from '../../../res/constants/maps';
-import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 
 import {ShareButton} from '../../../res/UniversalComponents/Button';
 import {ScrollView} from 'react-native-gesture-handler';

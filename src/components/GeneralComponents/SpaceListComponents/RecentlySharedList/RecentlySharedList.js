@@ -33,9 +33,7 @@ const Component = ({data, isRecentlyShared, navigation, screen, onPress}) => {
             justifyContent: 'center',
             alignItems: 'center',
             marginTop: 60,
-          }}>
-          <ButtonTextLightGrey>No spaces available </ButtonTextLightGrey>
-        </View>
+          }}></View>
       </View>
     );
   };
