@@ -103,9 +103,9 @@ const Component = ({}) => {
           </View>
         </Form>
       </View>
-      <View style={styles.centerContent}>
+      {/* <View style={styles.centerContent}>
         <BodyTextBold>or</BodyTextBold>
-      </View>
+      </View> */}
     </View>
   );
 };

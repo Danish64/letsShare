@@ -69,7 +69,7 @@ const Component = ({
     calculateAvailerFare();
     calculateSharerDistance();
     getFareMethod();
-  }, [isFocused]);
+  }, [isFocused, sharerChargesPerKm]);
 
   const calculateSharerDistance = () => {
     const sharerStartLat = item.startLocation.latitude;
@@ -120,7 +120,7 @@ const Component = ({
       console.log('Availer Distance', availerDistance);
       if (rideCategory == 'Nearby') {
         if (fareMethod == 'chargePerKm') {
-          const fare = Math.floor(availerDistance * fareRate);
+          const fare = Math.floor(availerDistance * item.fareRate);
           setNearbyAvailerFare(fare);
         }
         if (fareMethod == 'chargePerDP') {
@@ -128,9 +128,10 @@ const Component = ({
           setNearbyAvailerFare(fare);
         }
       }
+
       if (rideCategory == 'CityToCity') {
         const availerCharges = Math.floor(availerDistance * sharerChargesPerKm);
-        setAvailerCharges(800);
+        setAvailerCharges(availerCharges);
       }
     }
   };
@@ -256,7 +257,7 @@ const Component = ({
 
             {rideCategory == 'CityToCity' && (
               <TextIconSmall flexDirection="column" iconName={'cash-outline'}>
-                {'Rs ' + '1000'}
+                {'Rs ' + fare}
               </TextIconSmall>
             )}
             {fareRate && (

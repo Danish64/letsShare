@@ -4,6 +4,7 @@ import HorizontalFlatList from '../../../GeneralComponents/HorizontalFlatList';
 
 import {doGet, doPost, doPostWithoutBody} from '../../../../utils/AxiosMethods';
 import {useSelector} from 'react-redux';
+import {useIsFocused} from '@react-navigation/native';
 
 import {
   HeadingText,
@@ -15,20 +16,27 @@ import styles from './style';
 //Native Exports Ends Here
 
 const Component = ({navigation}) => {
+  const isFocused = useIsFocused();
+
   useEffect(() => {
-    fetchNearbyRides();
-  }, []);
+    fetchAllRides();
+  }, [isFocused]);
 
   const userId = useSelector((state) => state.userInformation.user._id);
-  const [nearbyRides, setNearbyRides] = useState(null);
+  console.log('User ID', userId);
+  const [allRides, setAllRides] = useState(null);
 
-  const fetchNearbyRides = async () => {
+  const fetchAllRides = async () => {
     let data = {
       userId: userId,
     };
     const result = await doPost('v1/userRides/getAllRideShares', data);
-    setNearbyRides(result.data);
+    setAllRides(result.data);
   };
+
+  // const Testing = () => {
+  //   console.log('Refresh Pressed');
+  // };
   return (
     <View style={styles.nearBySharesArea}>
       <View style={styles.shareRideTitleText}>
@@ -36,7 +44,8 @@ const Component = ({navigation}) => {
       </View>
       <View style={styles.recentlySharedFlatlistArea}>
         <HorizontalFlatList
-          data={nearbyRides}
+          refreshAction={fetchAllRides}
+          data={allRides}
           navigation={navigation}
           screen="AvailRideDetail"
         />

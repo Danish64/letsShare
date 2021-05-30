@@ -8,10 +8,7 @@ import {useSelector} from 'react-redux';
 import {SectionHeadingText} from 'res/UniversalComponents/Text.js';
 import styles from './style';
 
-
-import {
-  Goods,
-  testData} from '../../../../res/constants/dummyData.js';
+import {Goods, testData} from '../../../../res/constants/dummyData.js';
 
 //Third Party Exports Ends
 
@@ -31,7 +28,6 @@ const Component = ({navigation}) => {
     setDonatedGoods(result.data);
   };
 
-  
   return (
     <View style={styles.recentlySharedGoodsArea}>
       <View style={styles.shareGoodsTitleText}>
