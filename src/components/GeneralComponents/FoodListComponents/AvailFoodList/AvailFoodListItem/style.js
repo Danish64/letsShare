@@ -5,7 +5,6 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   mainContainer: {
     width: '90%',
-    height: mvs(140, 0.7),
     backgroundColor: Colors.White,
     marginTop: mvs(5, 0.6),
     marginBottom: mvs(5, 0.6),
@@ -14,14 +13,13 @@ export default StyleSheet.create({
     elevation: ms(3),
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    paddingVertical: mvs(10, 0.6),
   },
 
   foodDetails: {
     width: '25%',
-    height: mvs(100, 0.7),
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: ms(3, 0.5),
   },
   imageContainer: {
     justifyContent: 'center',
@@ -35,16 +33,15 @@ export default StyleSheet.create({
   },
 
   locationDetails: {
-    width: '50%',
-    height: mvs(100, 0.7),
+    width: '45%',
     justifyContent: 'center',
     paddingHorizontal: ms(10, 0.6),
   },
 
   otherDetail: {
-    width: '25%',
-    height: mvs(100, 0.7),
+    width: '30%',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   verticalSeparator: {
     width: 2,
@@ -53,7 +50,7 @@ export default StyleSheet.create({
   },
 
   horizontalSeparator: {
-    width: '100%',
+    width: '50%',
     height: 1,
     backgroundColor: Colors.light,
     marginVertical: mvs(5, 0.2),

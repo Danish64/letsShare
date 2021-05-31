@@ -40,7 +40,7 @@ const Component = ({item, onPress}) => {
           )}
         </View>
         <View style={{flexDirection: 'row'}}>
-          <View style={styles.foodDetails}>
+          <View style={styles.spaceDetails}>
             <View style={styles.imageContainer}>
               <Image source={SpaceIcon} style={styles.image} />
             </View>

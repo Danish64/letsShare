@@ -35,7 +35,7 @@ export default StyleSheet.create({
   },
   shareItemContainer: {
     width: ms(270, 0.6),
-    height: mvs(300, 0.7),
+    height: mvs(330, 0.7),
     backgroundColor: Colors.White,
     marginTop: mvs(15, 0.6),
     marginBottom: mvs(15, 0.6),
