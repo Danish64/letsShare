@@ -22,7 +22,6 @@ import {doPost} from '../../../../utils/AxiosMethods';
 const Component = ({navigation}) => {
   const route = useRoute();
   const {item} = route.params;
-  console.log('Space Details', item);
 
   const [shareAbleUnit, setShareAbleUnit] = useState('');
   const [isLoading, setIsLoading] = useState(false);

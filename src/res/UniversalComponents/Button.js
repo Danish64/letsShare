@@ -13,6 +13,7 @@ import {
 import {Colors} from 'res/constants/Colors.js';
 import {Text} from 'react-native';
 import {BodyTextLight} from './Text';
+import style from '../../screens/ModulesScreens/EventsScreens/EventDetails/style';
 export const PrimaryButton = (props) => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.buttonPrimary}>
@@ -138,6 +139,59 @@ export const SelectRideButton = ({
   </TouchableOpacity>
 );
 
+export const AssetButtonEvent = ({
+  iconName,
+  assetName,
+  onPress,
+  selected,
+  addButton,
+  MaterialIcon,
+  rideTitle,
+  spaceTitle,
+  goodsTitle,
+  foodTitle,
+  title,
+  item,
+}) => (
+  <TouchableOpacity onPress={onPress}>
+    <View
+      style={selected ? styles.addAssetButtonActive : styles.addAssetButton}>
+      <View style={styles.addAssetButtonCheckMark}>
+        {addButton ? null : (
+          <Ionicons
+            name={selected ? 'checkmark-circle' : 'ellipse-outline'}
+            size={25}
+            color={selected ? Colors.Primary : Colors.BackGroundGrey}
+          />
+        )}
+      </View>
+      <MaterialCommunityIcon
+        name={iconName}
+        color={selected ? Colors.Black : Colors.LightGrey}
+        size={40}
+      />
+
+      {assetName && selected ? (
+        <ButtonTextBlack>{assetName}</ButtonTextBlack>
+      ) : (
+        <ButtonTextLightGrey>{assetName}</ButtonTextLightGrey>
+      )}
+
+      {rideTitle && selected ? (
+        <ButtonTextBlack>{rideTitle}</ButtonTextBlack>
+      ) : (
+        <ButtonTextLightGrey>{rideTitle}</ButtonTextLightGrey>
+      )}
+
+      {spaceTitle && selected ? (
+        <ButtonTextBlack>{spaceTitle}</ButtonTextBlack>
+      ) : (
+        <ButtonTextLightGrey>{spaceTitle}</ButtonTextLightGrey>
+      )}
+    </View>
+  </TouchableOpacity>
+);
+
 export const SelectSpaceButton = ({
   iconName,
   assetName,
@@ -179,6 +233,7 @@ export const AddAssetButton = ({
   onPress,
   selected,
   addButton,
+  MaterialIcon,
 }) => (
   <TouchableOpacity onPress={onPress}>
     <View

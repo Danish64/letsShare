@@ -5,6 +5,8 @@ import EventScreen from '../../screens/ModulesScreens/EventsScreens';
 import CreateEventScreen from '../../screens/ModulesScreens/EventsScreens/CreateEvent';
 import EventDetails from '../../screens/ModulesScreens/EventsScreens/EventDetails';
 import CreateEventSharings from '../../screens/ModulesScreens/EventsScreens/CreateEventSharing';
+import ChooseAssetType from '../../screens/ModulesScreens/EventsScreens/ChooseAssetType';
+
 const Stack = createStackNavigator();
 
 function InboxNavigator() {
@@ -17,6 +19,8 @@ function InboxNavigator() {
       <Stack.Screen name="EventHomeScreen" component={EventScreen} />
       <Stack.Screen name="CreateEvent" component={CreateEventScreen} />
       <Stack.Screen name="EventDetails" component={EventDetails} />
+      <Stack.Screen name="ChooseAssetType" component={ChooseAssetType} />
+
       <Stack.Screen
         name="CreateEventSharings"
         component={CreateEventSharings}
