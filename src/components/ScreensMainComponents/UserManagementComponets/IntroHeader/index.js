@@ -15,7 +15,6 @@ import {connect} from 'react-redux';
 const Component = ({userInfo}) => {
   const navigation = useNavigation();
 
-
   const logout = () => {
     clearAll();
     navigation.navigate('Authentication', {screen: 'UserManagerHome'});
@@ -37,7 +36,7 @@ const Component = ({userInfo}) => {
 
         <TextButton
           onPress={() => {
-            console.log('Add Profile Navigator');
+            navigation.navigate('EditProfile');
           }}>
           See Profile
         </TextButton>
