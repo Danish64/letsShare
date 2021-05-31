@@ -76,7 +76,7 @@ const Component = ({signupRequest, userInfo}) => {
       email: values.email,
       password: values.password,
       phone: values.contact,
-      city: 'Not Provided',
+      city: 'Islamabad',
       gender: 'male',
       homeAddress: {
         house: '',
