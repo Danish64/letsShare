@@ -292,7 +292,7 @@ const Component = ({navigation}) => {
           <View style={styles.bookFoodButtonView}>
             <PrimaryButton
               onPress={() => {
-                navigation.navigate('CreateEventSharings', {
+                navigation.navigate('ChooseAssetType', {
                   data: item,
                 });
               }}>
