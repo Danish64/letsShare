@@ -6,7 +6,7 @@ export default StyleSheet.create({
   mainContainer: {
     width: '90%',
     backgroundColor: Colors.White,
-    marginTop: mvs(5, 0.6),
+    //marginTop: mvs(5, 0.6),
     marginBottom: mvs(5, 0.6),
     marginHorizontal: ms(10, 0.6),
     marginVertical: mvs(10, 0.6),
@@ -14,9 +14,10 @@ export default StyleSheet.create({
     elevation: ms(3),
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    paddingVertical: mvs(5, 0.6),
   },
 
-  foodDetails: {
+  spaceDetails: {
     width: '25%',
     justifyContent: 'center',
     alignItems: 'center',

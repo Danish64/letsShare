@@ -5,7 +5,7 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   recentlySharedSpacesArea: {
     width: '100%',
-    height: mvs(350, 0.7),
+    height: mvs(370, 0.7),
     marginBottom: mvs(10, 0.6),
     marginVertical: mvs(15, 0.6),
   },

@@ -5,7 +5,8 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   availSpacesComponentArea: {
     width: '90%',
-    height: mvs(600, 0.6),
+    height: mvs(620, 0.6),
+    marginTop: mvs(50, 0.6),
     marginBottom: mvs(10, 0.6),
     marginVertical: mvs(15, 0.6),
     marginHorizontal: ms(20, 0.6),
