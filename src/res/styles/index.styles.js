@@ -413,6 +413,31 @@ export default StyleSheet.create({
     // alignItems: 'center',
   },
 
+  //===AssetButtonEvent===============
+  assetButtonEventUnselected: {
+    ...buttonProperties,
+    backgroundColor: Colors.White,
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    borderRadius: ms(20, 0.6),
+    height: mvs(110, 0.6),
+    marginHorizontal: ms(5, 0.6),
+    borderWidth: 3,
+    borderColor: Colors.LightGrey,
+  },
+  assetButtonEventSelected: {
+    ...buttonProperties,
+    backgroundColor: Colors.White,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    borderRadius: ms(20, 0.6),
+    height: mvs(110, 0.6),
+    marginHorizontal: ms(5, 0.6),
+    borderWidth: 3,
+    borderColor: Colors.Primary,
+  },
+  //=================================
+
   //Text Input Styles
 
   outlinedBorderTextInput: {

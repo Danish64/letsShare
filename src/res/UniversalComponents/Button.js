@@ -156,7 +156,11 @@ export const AssetButtonEvent = ({
 }) => (
   <TouchableOpacity onPress={onPress}>
     <View
-      style={selected ? styles.addAssetButtonActive : styles.addAssetButton}>
+      style={
+        selected
+          ? styles.assetButtonEventSelected
+          : styles.assetButtonEventUnselected
+      }>
       <View style={styles.addAssetButtonCheckMark}>
         {addButton ? null : (
           <Ionicons
