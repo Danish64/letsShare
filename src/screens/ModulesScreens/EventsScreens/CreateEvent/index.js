@@ -20,11 +20,22 @@ import {useRoute} from '@react-navigation/native';
 import {doPost} from '../../../../utils/AxiosMethods';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import UserActivityClass from '../../../../utils/UserActivity';
 const Component = ({userInfo, navigation}) => {
   const route = useRoute();
   const [isLoading, setIsLoading] = useState(false);
-
   const user = userInfo.user;
+
+  useEffect(() => {
+    UserActivity.mixpanel.identify(user.email);
+    const eventInfo = {
+      onScreen: 'Events Home',
+      toScreen: 'Create Event',
+      email: user.email,
+    };
+    UserActivity.mixpanel.track('Switching Screens - Create Event', eventInfo);
+    UserActivity.mixpanel.flush();
+  }, []);
 
   const categories = [
     {label: 'Whole House', name: 'house', value: 1},
