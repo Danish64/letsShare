@@ -4,12 +4,29 @@ import Header from '../../../../components/GeneralComponents/Header';
 import {ScrollView, View, Text} from 'react-native';
 import CreateGoodsContainer from '../../../../components/ContainersComponent/GoodsShareContainer/CreateGoodsContainer';
 
-//Native Exports Ends Here
-//Third Party Exports Starts
+import {connect} from 'react-redux';
 
-//Third Party Exports Ends
+import UserActivityClass from '../../../../utils/UserActivity';
 
-const Component = ({navigation}) => {
+import {useSelector} from 'react-redux';
+
+const Component = ({navigation, userInfo}) => {
+  const state = useSelector((state) => state);
+  const user = state.userInformation.user;
+
+  let UserActivity = new UserActivityClass();
+  
+  useEffect(() => {
+    UserActivity.mixpanel.identify(user.email);
+    const eventInfo = {
+      onScreen: 'Goods  Home',
+      toScreen: 'Create Goods Screen',
+      email: user.email,
+    };
+    UserActivity.mixpanel.track('Switching Screens - Create Goods Screen', eventInfo);
+    UserActivity.mixpanel.flush();
+  }, []);
+
   return (
     <Container>
       <Header title="Share Goods" hasBackIcon navigation={navigation}/>
@@ -18,4 +35,11 @@ const Component = ({navigation}) => {
   );
 };
 
-export default Component;
+function mapStatesToProps(state) {
+  return {
+    userInfo: state.userInformation,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => ({});
+export default connect(mapStatesToProps, mapDispatchToProps)(Component);
