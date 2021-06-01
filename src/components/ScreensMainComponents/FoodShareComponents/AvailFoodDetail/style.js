@@ -81,4 +81,18 @@ export default StyleSheet.create({
     height: '100%',
     resizeMode: 'contain',
   },
+  ContactContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    // marginHorizontal: ms(15, 0.3),
+    marginTop: mvs(20, 0.5),
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  contactIconsView: {
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: '40%',
+  },
 });

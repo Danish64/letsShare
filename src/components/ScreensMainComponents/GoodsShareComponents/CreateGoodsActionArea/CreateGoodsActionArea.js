@@ -83,7 +83,7 @@ const Component = ({navigation}) => {
     return data?.map((item, index) => {
       return (
         <View key={index}>
-          <SelectRideButton
+          <AddAssetButton
             onPress={() => selectItem(item._id, item.selected)}
             selected={item.selected}
             iconName="cart-outline"
