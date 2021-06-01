@@ -1,15 +1,26 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Container from 'res/UniversalComponents/Container.js';
 
 import Header from '../../../components/GeneralComponents/Header';
 import FoodShareHome from '../../../components/ContainersComponent/FoodShareContainer';
 
-//Native Exports Ends Here
-//Third Party Exports Starts
+import {connect} from 'react-redux';
 
-//Third Party Exports Ends
+import UserActivityClass from '../../../utils/UserActivity';
 
-const Component = ({navigation}) => {
+const Component = ({navigation, userInfo}) => {
+  let UserActivity = new UserActivityClass();
+
+  useEffect(() => {
+    // console.log('User Info ', userInfo.user);
+    UserActivity.mixpanel.identify(userInfo.user.email);
+    const eventInfo = {
+      screen: 'Goods Home',
+      email: userInfo.user.email,
+    };
+    UserActivity.mixpanel.track('Goods Opened', eventInfo);
+    UserActivity.mixpanel.flush();
+  }, []);
   return (
     <Container>
       <Header hasBackIcon title= "Food Sharing" navigation={navigation} navigateTo="HomeSearchScreen" />
@@ -18,4 +29,11 @@ const Component = ({navigation}) => {
   );
 };
 
-export default Component;
+function mapStatesToProps(state) {
+  return {
+    userInfo: state.userInformation,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => ({});
+export default connect(mapStatesToProps, mapDispatchToProps)(Component);

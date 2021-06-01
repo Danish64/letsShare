@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Container from 'res/UniversalComponents/Container.js';
 import Header from '../../../../../components/GeneralComponents/Header';
 import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer.js';
@@ -6,13 +6,28 @@ import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer.js'
 import SellFoodFormArea from '../../../../../components/ScreensMainComponents/FoodShareComponents/SellFoodFormArea';
 import {ScrollView, View, Text} from 'react-native';
 
-//Native Exports Ends Here
-//Third Party Exports Starts
+import {connect} from 'react-redux';
 
-//Third Party Exports Ends
+import UserActivityClass from '../../../../../utils/UserActivity';
+
+import {useSelector} from 'react-redux';
 
 const Component = ({navigation, route}) => {
-  //  console.log('RideShareScreen', navigation);
+  const state = useSelector((state) => state);
+  const user = state.userInformation.user;
+
+  let UserActivity = new UserActivityClass();
+  
+  useEffect(() => {
+    UserActivity.mixpanel.identify(user.email);
+    const eventInfo = {
+      onScreen: 'Create Food Screen',
+      toScreen: 'Sell Food',
+      email: user.email,
+    };
+    UserActivity.mixpanel.track('Switching Screens - Sell Food', eventInfo);
+    UserActivity.mixpanel.flush();
+  }, []);
   return (
     <Container>
       <Header hasBackIcon title="Sell Food" navigation={navigation} />
@@ -23,4 +38,11 @@ const Component = ({navigation, route}) => {
   );
 };
 
-export default Component;
+function mapStatesToProps(state) {
+  return {
+    userInfo: state.userInformation,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => ({});
+export default connect(mapStatesToProps, mapDispatchToProps)(Component);

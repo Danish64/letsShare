@@ -4,14 +4,29 @@ import Header from '../../../../../components/GeneralComponents/Header';
 import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer.js';
 
 import DonateFoodFormArea from '../../../../../components/ScreensMainComponents/FoodShareComponents/DonateFoodFormArea';
-import {ScrollView, View, Text} from 'react-native';
 
-//Native Exports Ends Here
-//Third Party Exports Starts
+import {connect} from 'react-redux';
 
-//Third Party Exports Ends
+import UserActivityClass from '../../../../../utils/UserActivity';
+
+import {useSelector} from 'react-redux';
 
 const Component = ({navigation, route}) => {
+  const state = useSelector((state) => state);
+  const user = state.userInformation.user;
+
+  let UserActivity = new UserActivityClass();
+  
+  useEffect(() => {
+    UserActivity.mixpanel.identify(user.email);
+    const eventInfo = {
+      onScreen: 'Create Food Screen',
+      toScreen: 'Donate Food',
+      email: user.email,
+    };
+    UserActivity.mixpanel.track('Switching Screens - Donate Food', eventInfo);
+    UserActivity.mixpanel.flush();
+  }, []);
   return (
     <Container>
       <Header hasBackIcon title="Donate Food" navigation={navigation} />
@@ -21,5 +36,11 @@ const Component = ({navigation, route}) => {
     </Container>
   );
 };
+function mapStatesToProps(state) {
+  return {
+    userInfo: state.userInformation,
+  };
+}
 
-export default Component;
+const mapDispatchToProps = (dispatch) => ({});
+export default connect(mapStatesToProps, mapDispatchToProps)(Component);
