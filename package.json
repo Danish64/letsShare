@@ -25,6 +25,7 @@
     "formik": "^2.2.6",
     "geolib": "^3.3.1",
     "lottie-react-native": "^3.5.0",
+    "mixpanel-react-native": "^1.2.3",
     "moment": "^2.29.1",
     "react": "16.13.1",
     "react-native": "0.63.4",
@@ -55,7 +56,6 @@
     "babel-jest": "25.5.1",
     "eslint": "6.8.0",
     "jest": "25.5.4",
-    "metro-react-native-babel-preset": "0.59.0",
     "react-test-renderer": "16.13.1"
   },
   "jest": {

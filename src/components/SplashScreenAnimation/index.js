@@ -11,6 +11,7 @@ import {authTokenRequest} from '../../ducks/actions';
 //For Getting Token
 import {retrieveAuthToken} from '../../utils/AsyncStorageUtilities';
 import useDidMountEffect from '../../services/CustomHooks/useDidMountEffect';
+const UserActivity = require('../../utils/UserActivity');
 
 const Component = ({navigation, authTokenRequest, userInfo}) => {
   const [Loading, setLoading] = useState(true);
@@ -49,7 +50,22 @@ const Component = ({navigation, authTokenRequest, userInfo}) => {
   useDidMountEffect(() => {
     setLoading(false);
     // console.log('Store updated with token', userInfo.user);
+
     try {
+      // const userInfo = {
+      //   $email: userInfo.user.email,
+      // };
+      // UserActivity.setOnLogin(userInfo.user._id, userInfo);
+      // const eventInfo = {
+      //   screen: 'Log In',
+      //   email: userInfo.user.email,
+      // };
+      // UserActivity.trackUserActivity(
+      //   userInfo.user._id,
+      //   'User logs in',
+      //   eventInfo,
+      // );
+
       navigation.reset({
         index: 0,
         routes: [{name: 'Home'}],
