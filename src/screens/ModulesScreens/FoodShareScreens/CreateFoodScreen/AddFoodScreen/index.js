@@ -6,7 +6,7 @@ import AddFoodFormContainer from '../../../../../components/ContainersComponent/
 
 import {connect} from 'react-redux';
 
-import UserActivityClass from '../../../../utils/UserActivity';
+import UserActivityClass from '../../../../../utils/UserActivity';
 
 import {useSelector} from 'react-redux';
 
@@ -15,7 +15,7 @@ const Component = ({navigation}) => {
   const user = state.userInformation.user;
 
   let UserActivity = new UserActivityClass();
-  
+
   useEffect(() => {
     UserActivity.mixpanel.identify(user.email);
     const eventInfo = {
@@ -23,12 +23,15 @@ const Component = ({navigation}) => {
       toScreen: 'Add Food Screen',
       email: user.email,
     };
-    UserActivity.mixpanel.track('Switching Screens - Add Food Screen', eventInfo);
+    UserActivity.mixpanel.track(
+      'Switching Screens - Add Food Screen',
+      eventInfo,
+    );
     UserActivity.mixpanel.flush();
   }, []);
   return (
     <Container>
-      <Header hasBackIcon title="Add Food" navigation={navigation}/>
+      <Header hasBackIcon title="Add Food" navigation={navigation} />
       <AddFoodFormContainer navigation={navigation} />
     </Container>
   );
