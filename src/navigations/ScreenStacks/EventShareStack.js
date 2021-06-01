@@ -19,12 +19,11 @@ function InboxNavigator() {
       <Stack.Screen name="EventHomeScreen" component={EventScreen} />
       <Stack.Screen name="CreateEvent" component={CreateEventScreen} />
       <Stack.Screen name="EventDetails" component={EventDetails} />
-      <Stack.Screen name="ChooseAssetType" component={ChooseAssetType} />
-
       <Stack.Screen
         name="CreateEventSharings"
         component={CreateEventSharings}
       />
+      <Stack.Screen name="ChooseAssetType" component={ChooseAssetType} />
     </Stack.Navigator>
   );
 }

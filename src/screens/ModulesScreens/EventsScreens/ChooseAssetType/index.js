@@ -30,10 +30,13 @@ import Header from '../../../../components/GeneralComponents/Header';
 import Container from 'res/UniversalComponents/Container';
 import {useIsFocused} from '@react-navigation/native';
 import HorizontalScrollViewContainer from '../../../../res/UniversalComponents/HorizontalScrollViewContainer';
+import UserActivityClass from '../../../../utils/UserActivity';
 
 //Third Party Exports Ends
 
 const Component = ({navigation}) => {
+  let UserActivity = new UserActivityClass();
+
   const isFocused = useIsFocused();
   const route = useRoute();
 
@@ -53,6 +56,16 @@ const Component = ({navigation}) => {
 
   const [isLoading, setLoading] = useState(false);
   const [assetType, setAssetType] = useState('');
+
+  useEffect(() => {
+    UserActivity.mixpanel.identify(user.email);
+    const eventInfo = {
+      screen: 'Event Sharings',
+      email: user.email,
+    };
+    UserActivity.mixpanel.track('Create Event Sharings', eventInfo);
+    UserActivity.mixpanel.flush();
+  }, []);
 
   const handleAssetSelection = (name) => {
     setAssetType(name);
