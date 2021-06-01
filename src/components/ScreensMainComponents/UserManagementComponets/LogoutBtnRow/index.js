@@ -10,7 +10,9 @@ const Component = () => {
   const navigation = useNavigation();
   const logout = () => {
     clearAll();
-    navigation.navigate('Authentication', {screen: 'UserManagerHome'});
+    setTimeout(() => {
+      navigation.navigate('Authentication', {screen: 'UserManagerHome'});
+    }, 1500);
   };
 
   return (

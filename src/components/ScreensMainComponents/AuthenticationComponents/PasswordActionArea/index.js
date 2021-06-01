@@ -21,6 +21,7 @@ import {useNavigation} from '@react-navigation/native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {loginRequest} from '../../../../ducks/actions';
+import UserActivity from '../../../../utils/UserActivity';
 // Import Ends
 
 const Component = ({loginRequest, userInfo}) => {
@@ -31,7 +32,7 @@ const Component = ({loginRequest, userInfo}) => {
   const [password, setPassword] = useState('');
   const [showPasswordError, setShowPasswordError] = useState(false);
   const [authLoading, setAuthLoading] = useState(false);
-
+  let UserActivity = new UserActivityClass();
   //useEffects for life cycles
 
   useDidMountEffect(() => {
@@ -50,12 +51,33 @@ const Component = ({loginRequest, userInfo}) => {
   useDidMountEffect(() => {
     setAuthLoading(false);
     try {
-      // console.log('User Object After Login Password Screen-> ', userInfo.user);
+      // console.log('User Object After Login Password Screen-> ', userInfo);
+      console.log('User Object After Login Password Screen-> ', userInfo.user);
+
+      const userInfo = {
+        $email: userInfo.user.email,
+      };
+      UserActivity.mixpanel.identify(userInfo.user.email);
+      UserActivity.mixpanel
+        .getPeople()
+        .set(userInfo)
+        .then((t) => console.log('User Logged In'));
+      const eventInfo = {
+        screen: 'Password',
+        email: userInfo.user.email,
+      };
+      UserActivity.mixpanel.track('Login', eventInfo);
+      UserActivity.mixpanel.flush();
+
+      // UserActivity.trackTimeEvent('User Login');
+
       navigation.reset({
         index: 0,
         routes: [{name: 'Home'}],
       });
-    } catch (err) {}
+    } catch (err) {
+      console.log('Error is ', err);
+    }
   }, [userInfo.user]);
 
   useDidMountEffect(() => {

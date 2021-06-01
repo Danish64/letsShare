@@ -30,6 +30,7 @@ import {loginRequest, signupRequest} from '../../../../ducks/actions';
 import axios from 'axios';
 import {doPost, doPostWithTokenResponse} from '../../../../utils/AxiosMethods';
 // Import Ends
+import UserActivityClass from '../../../../utils/UserActivity';
 
 const Component = ({signupRequest, userInfo}) => {
   const navigation = useNavigation();
@@ -42,6 +43,8 @@ const Component = ({signupRequest, userInfo}) => {
     password: Yup.string().required().min(4).label('Password'),
     contact: Yup.string().required().min(10).max(13).label('Contact No'),
   });
+
+  let UserActivity = new UserActivityClass();
 
   //useEffects for life cycles
 
@@ -59,6 +62,23 @@ const Component = ({signupRequest, userInfo}) => {
 
   useDidMountEffect(() => {
     setAuthLoading(false);
+
+    UserActivity.mixpanel.mixpanel.alias(
+      userInfo.user.email,
+      userInfo.user._id,
+    );
+    UserActivity.mixpanel.mixpanel
+      .getPeople()
+      .set({
+        $name: userInfo.user.name,
+        $email: userInfo.user.email,
+        $city: userInfo.user.city,
+        $created: new Date().toISOString(),
+      })
+      .then((t) => console.log('User Created'));
+    UserActivity.mixpanel.track('User Created', {screen: 'Register User'});
+    UserActivity.mixpanel.flush();
+
     try {
       navigation.reset({
         index: 0,
