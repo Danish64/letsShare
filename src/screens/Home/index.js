@@ -23,7 +23,7 @@ const Component = ({loginRequest, userInfo, navigation}) => {
   }, [userInfo.user]);
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async (remoteMessage) => {
-      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+      // Alert.alert('Notification', JSON.stringify(remoteMessage));
     });
     try {
       messaging()
