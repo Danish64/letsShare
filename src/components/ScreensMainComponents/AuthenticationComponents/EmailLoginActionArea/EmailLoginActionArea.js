@@ -17,16 +17,15 @@ import {AuthContext} from 'res/constants/AuthContext.js';
 import useDidMountEffect from '../../../../services/CustomHooks/useDidMountEffect';
 import {checkUserEmail} from '../../../../services/AuthenticationServices';
 import {useNavigation} from '@react-navigation/native';
-//Native Exports Ends Here
-//Third Party Exports Starts
-
-//Third Party Exports Ends
+import UserActivityClass from '../../../../utils/UserActivity';
 
 const Component = ({}) => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [checkEmailLoading, setCheckEmailLoading] = useState(false);
   const [emailExists, setEmailExists] = useState();
+
+  let UserActivity = new UserActivityClass();
 
   useDidMountEffect(() => {
     try {
@@ -44,13 +43,21 @@ const Component = ({}) => {
       if (checkEmailLoading) {
         setCheckEmailLoading(false);
         if (emailExists) {
+          const eventInfo = {
+            screen: 'Email',
+            email: email,
+          };
+          UserActivity.mixpanel.identify(email);
+          UserActivity.mixpanel.track('User Exists', eventInfo);
+          UserActivity.mixpanel.flush();
+
           navigation.navigate('PasswordScreen', {email: email});
         } else {
           navigation.navigate('RegisterUserScreen');
         }
       }
     } catch (err) {
-      console.log('Auth Screen Error');
+      console.log('Auth Screen Error', err);
     }
   }, [emailExists]);
 
