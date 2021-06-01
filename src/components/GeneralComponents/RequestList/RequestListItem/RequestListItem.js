@@ -29,7 +29,6 @@ import {
   PrimaryButton,
   PrimaryButtonDarkGrey,
 } from '../../../../res/UniversalComponents/Button';
-import {useSelector} from 'react-redux';
 import {
   doGet,
   doGetCustom,
@@ -40,6 +39,10 @@ import {
 import {useIsFocused} from '@react-navigation/native';
 import {getDistance, getPreciseDistance} from 'geolib';
 import {useDispatch} from 'react-redux';
+
+import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
+import UserActivityClass from '../../../../utils/UserActivity';
 
 const Component = ({
   item,
@@ -61,6 +64,7 @@ const Component = ({
   }, [status]);
 
   const state = useSelector((state) => state);
+  const user = state.userInformation.user;
 
   const AcceptRequest = (rideCategory) => {
     if (rideCategory === 'Nearby') {
@@ -128,6 +132,16 @@ const Component = ({
       Platform.OS == 'ios' ? phoneWithCountryCode : '+' + phoneWithCountryCode;
     if (mobile) {
       if (linkFor == 'WhatsApp') {
+        let UserActivity = new UserActivityClass();
+
+        UserActivity.mixpanel.identify(user.email);
+        const eventInfo = {
+          onScreen: 'Ride Booking',
+          toScreen: 'WhatsApp opened',
+          email: user.email,
+        };
+        UserActivity.mixpanel.track('Contact WhatsApp', eventInfo);
+        UserActivity.mixpanel.flush();
         if (msg) {
           let url = 'whatsapp://send?text=' + msg + '&phone=' + mobile;
           Linking.openURL(url)
@@ -279,4 +293,11 @@ const Component = ({
   );
 };
 
-export default Component;
+function mapStatesToProps(state) {
+  return {
+    userInfo: state.userInformation,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => ({});
+export default connect(mapStatesToProps, mapDispatchToProps)(Component);
