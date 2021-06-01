@@ -36,17 +36,31 @@ import {useSelector} from 'react-redux';
 import {doPost} from '../../../../utils/AxiosMethods';
 import {useIsFocused} from '@react-navigation/native';
 import LoadingIndicator from '../../../../components/GeneralComponents/LoadingIndicator';
-
-const Component = ({navigation}) => {
+import {connect} from 'react-redux';
+import UserActivityClass from '../../../../utils/UserActivity';
+const Component = ({navigation, userInfo}) => {
   const route = useRoute();
   const {item} = route.params;
   const imageURL = {uri: item.eventPictures[0]};
-
+  const user = userInfo.user;
   const [eventShares, setEventShares] = useState([]);
   const [loading, setLoading] = useState(false);
 
   //   console.log('In event detail screen', item);
   const isFocused = useIsFocused();
+
+  let UserActivity = new UserActivityClass();
+
+  useEffect(() => {
+    UserActivity.mixpanel.identify(user.email);
+    const eventInfo = {
+      onScreen: 'Events Home',
+      toScreen: 'Event Details',
+      email: user.email,
+    };
+    UserActivity.mixpanel.track('Switching Screens - Event Details', eventInfo);
+    UserActivity.mixpanel.flush();
+  }, []);
 
   useEffect(() => {
     getEventShares();
@@ -305,4 +319,11 @@ const Component = ({navigation}) => {
   );
 };
 
-export default Component;
+function mapStatesToProps(state) {
+  return {
+    userInfo: state.userInformation,
+  };
+}
+
+const mapDispatchToProps = (dispatch) => ({});
+export default connect(mapStatesToProps, mapDispatchToProps)(Component);

@@ -25,6 +25,7 @@ const Component = ({userInfo, navigation}) => {
   const route = useRoute();
   const [isLoading, setIsLoading] = useState(false);
   const user = userInfo.user;
+  let UserActivity = new UserActivityClass();
 
   useEffect(() => {
     UserActivity.mixpanel.identify(user.email);

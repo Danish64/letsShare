@@ -8,7 +8,6 @@ import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer.js'
 import CreateEventActionArea from './Components/ActionArea';
 import EventsList from './Components/RecentlyEvents';
 import {connect} from 'react-redux';
-
 import UserActivityClass from '../../../utils/UserActivity';
 
 const Component = ({navigation, userInfo}) => {
