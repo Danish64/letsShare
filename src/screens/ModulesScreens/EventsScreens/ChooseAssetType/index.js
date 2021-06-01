@@ -10,6 +10,14 @@ import {
   SubmitButton as SubmitForm,
   FormImagePicker,
 } from 'res/UniversalComponents/Forms';
+import {
+  HeadingText,
+  GroupLabelText,
+  TextButton,
+  ShareActionAreaHeadingText,
+  SectionHeadingText,
+  ButtonTextLightGrey,
+} from 'res/UniversalComponents/Text.js';
 
 import {
   AddAssetButton,
@@ -72,18 +80,26 @@ const Component = ({navigation}) => {
     }
   };
 
-  const renderItems = () => {
-    return assetsData?.map((item, index) => {
-      // if (assetType == 'space') {
-      //   setAssetName(item.spaceTitle);
-      // }
-      // if (assetType == 'ride') {
-      //   setAssetName(item.rideName);
-      // }
-      // if (assetType == 'goods' || assetType == 'food') {
-      //   setAssetName(item.title);
-      // }
+  const getAssetName = () => {
+    const assetNames = assetsData?.map(({title}) => title);
+  };
 
+  const renderItems = () => {
+    if (assetsData?.length <= 0) {
+      return (
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginVertical: 5,
+          }}>
+          <ButtonTextLightGrey>
+            No Shareable Asset Available
+          </ButtonTextLightGrey>
+        </View>
+      );
+    }
+    return assetsData?.map((item, index) => {
       return (
         <View key={index}>
           <AssetButtonEvent
