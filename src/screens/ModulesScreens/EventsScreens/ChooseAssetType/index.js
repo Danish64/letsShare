@@ -39,6 +39,7 @@ const Component = ({navigation}) => {
   const [assetsData, setAssetsData] = useState();
   const [assetItem, setAssetItem] = useState({});
   const [assetTitle, setAssetTitle] = useState({});
+  const [assetName, setAssetName] = useState({});
 
   const [view, setView] = useState(false);
 
@@ -73,6 +74,16 @@ const Component = ({navigation}) => {
 
   const renderItems = () => {
     return assetsData?.map((item, index) => {
+      // if (assetType == 'space') {
+      //   setAssetName(item.spaceTitle);
+      // }
+      // if (assetType == 'ride') {
+      //   setAssetName(item.rideName);
+      // }
+      // if (assetType == 'goods' || assetType == 'food') {
+      //   setAssetName(item.title);
+      // }
+
       return (
         <View key={index}>
           <AssetButtonEvent
@@ -83,6 +94,7 @@ const Component = ({navigation}) => {
             spaceTitle={item.spaceTitle}
             rideTitle={item.rideName}
             assetName={item.title}
+            assetType={assetType}
           />
         </View>
       );

@@ -69,7 +69,7 @@ const Component = ({navigation}) => {
     setTimeout(() => {
       setLoading(false);
       setEventShares(sharings);
-    }, 2000);
+    }, 100);
   };
 
   const EventSharingItem = ({item}) => {

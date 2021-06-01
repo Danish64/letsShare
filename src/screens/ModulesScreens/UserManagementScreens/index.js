@@ -17,11 +17,14 @@ const Component = ({navigation, userInfo}) => (
       <IntroHeader />
       <SettingsRow itemName="Email" itemValue={userInfo.user.email} />
       <SettingsRow itemName="Phone" itemValue={userInfo.user.phone} />
-      <SettingsRow itemName="Lives In" itemValue={userInfo.user.city} />
       <SettingsRow
+        itemName="Lives In"
+        itemValue={userInfo.user.homeAddress.street + ',' + userInfo.user.city}
+      />
+      {/* <SettingsRow
         itemName="Works At"
         itemValue={userInfo.user.workAddress.house}
-      />
+      /> */}
       {/* <SettingsRow
         itemName="Spaces Shared"
         itemValue={userInfo.user.sharedAssets.sharedSpaces.length}
