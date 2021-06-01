@@ -22,6 +22,7 @@ export default StyleSheet.create({
     width: '70%',
     height: '70%',
     borderRadius: ms(55, 0.8),
+    resizeMode: 'center',
   },
   introHeaderProfileInfoContainer: {
     width: '70%',

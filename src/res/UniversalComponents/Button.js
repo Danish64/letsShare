@@ -152,6 +152,7 @@ export const AssetButtonEvent = ({
   foodTitle,
   title,
   item,
+  assetType,
 }) => (
   <TouchableOpacity onPress={onPress}>
     <View

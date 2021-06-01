@@ -21,6 +21,7 @@ const Component = ({userInfo}) => {
   };
 
   let user = userInfo.user;
+  const imageURL = {uri: user.profilePicture};
 
   console.log('UserInfo in introHeader Component', userInfo.user);
   return (
@@ -28,7 +29,11 @@ const Component = ({userInfo}) => {
       <View style={styles.introHeaderImageContainer}>
         <Image
           style={styles.introHeaderImageStyle}
-          source={require('res/images/DefaultImages/userDefaultProfilePic.png')}
+          source={
+            user.profilePicture
+              ? imageURL
+              : require('res/images/DefaultImages/userDefaultProfilePic.png')
+          }
         />
       </View>
       <View style={styles.introHeaderProfileInfoContainer}>
@@ -38,7 +43,7 @@ const Component = ({userInfo}) => {
           onPress={() => {
             navigation.navigate('EditProfile');
           }}>
-          See Profile
+          Edit Profile
         </TextButton>
       </View>
     </View>
