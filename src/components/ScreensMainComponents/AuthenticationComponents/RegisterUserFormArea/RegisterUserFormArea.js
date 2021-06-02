@@ -63,19 +63,7 @@ const Component = ({signupRequest, userInfo}) => {
   useDidMountEffect(() => {
     setAuthLoading(false);
 
-    UserActivity.mixpanel.mixpanel.alias(
-      userInfo.user.email,
-      userInfo.user._id,
-    );
-    UserActivity.mixpanel.mixpanel
-      .getPeople()
-      .set({
-        $name: userInfo.user.name,
-        $email: userInfo.user.email,
-        $city: userInfo.user.city,
-        $created: new Date().toISOString(),
-      })
-      .then((t) => console.log('User Created'));
+    UserActivity.mixpanel.alias(userInfo.user.email, userInfo.user._id);
     UserActivity.mixpanel.track('User Created', {screen: 'Register User'});
     UserActivity.mixpanel.flush();
 

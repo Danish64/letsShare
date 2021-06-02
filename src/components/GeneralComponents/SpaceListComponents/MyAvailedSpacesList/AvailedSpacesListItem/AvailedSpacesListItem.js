@@ -153,6 +153,11 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
                 {item.roomFare}
               </TextIcon>
             )}
+            {item.houseFare && (
+              <TextIcon flexDirection="column" iconName={'cash-outline'}>
+                {item.houseFare}
+              </TextIcon>
+            )}
           </View>
         </View>
         <View style={styles.horizontalSeparator} />
