@@ -44,7 +44,11 @@ const Component = ({navigation}) => {
   const submitForm = (values) => {
     let fare = {};
     if (shareAbleUnit === 'house') {
-      fare = {houseFare: values.fare, isAvailingWhole: true};
+      fare = {
+        houseFare: values.fare,
+        isAvailingWhole: true,
+        singleShareAbleUnit: values.singleShareAbleUnit.name,
+      };
     } else if (shareAbleUnit === 'room') {
       fare = {
         roomFare: values.fare,
