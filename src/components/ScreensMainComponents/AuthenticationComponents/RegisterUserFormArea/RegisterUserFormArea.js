@@ -33,6 +33,7 @@ import {doPost, doPostWithTokenResponse} from '../../../../utils/AxiosMethods';
 import UserActivityClass from '../../../../utils/UserActivity';
 
 const Component = ({signupRequest, userInfo}) => {
+  console.log(userInfo);
   const navigation = useNavigation();
   const [authLoading, setAuthLoading] = useState(false);
   const [userData, setUserData] = useState(false);

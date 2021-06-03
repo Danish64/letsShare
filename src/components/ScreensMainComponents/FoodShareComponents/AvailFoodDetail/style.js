@@ -84,7 +84,6 @@ export default StyleSheet.create({
   ContactContainer: {
     width: '100%',
     flexDirection: 'row',
-    // marginHorizontal: ms(15, 0.3),
     marginTop: mvs(20, 0.5),
     justifyContent: 'space-evenly',
     alignItems: 'center',

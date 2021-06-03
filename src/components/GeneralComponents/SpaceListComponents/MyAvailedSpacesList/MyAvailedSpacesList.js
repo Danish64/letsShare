@@ -12,7 +12,6 @@ import LoadingIndicator from '../../LoadingIndicator';
 import ListItemDeleteAction from '../../ListItemDeleteAction';
 
 const Component = ({navigation, data}) => {
-  console.log('Data in AvailedGoodsList', data);
   const listEmptyComponent = () => {
     return (
       <View
