@@ -33,6 +33,14 @@ const Component = ({loginRequest, userInfo, navigation}) => {
       console.log('Error Caught in Notifications pipeline, Home Screen');
     }
 
+    try {
+      messaging()
+        .subscribeToTopic(`${userInfo.user._id}`)
+        .then(() => console.log('Subscribed to Individual topic'));
+    } catch (err) {
+      console.log('Error Caught in Notifications pipeline, Home Screen');
+    }
+
     return unsubscribe;
   }, []);
   return (
