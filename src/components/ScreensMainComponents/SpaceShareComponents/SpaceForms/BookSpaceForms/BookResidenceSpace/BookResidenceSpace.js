@@ -23,7 +23,17 @@ import ScrollViewContainer from 'res/UniversalComponents/ScrollViewContainer';
 
 const Component = ({data}) => {
   const validationSchema = Yup.object().shape({
-    availerMessage: Yup.string().required().min(5).label('Your Message'),
+    // availerMessage: Yup.string().required().min(5).label('Your Message'),
+    availerBeds: Yup.number()
+      .required()
+      .min(1)
+      .max(data.bedsAvailable)
+      .label('Total beds'),
+    availerRooms: Yup.number()
+      .required()
+      .min(1)
+      .max(data.roomsAvailable)
+      .label('Available rooms'),
   });
   const navigation = useNavigation();
   const route = useRoute();
@@ -44,14 +54,28 @@ const Component = ({data}) => {
   };
 
   const submitForm = (values) => {
+    let availerQuantity = {};
+    if (data.singleShareAbleUnit === 'house') {
+      availerQuantity = {isAvailingWhole: true};
+    } else if (data.singleShareAbleUnit === 'room') {
+      availerQuantity = {
+        availerRooms: values.availerRooms,
+      };
+    } else {
+      availerQuantity = {
+        availerBeds: values.availerBeds,
+      };
+    }
+
     const newData = {
+      ...availerQuantity,
       availerId: user._id,
       availerName: user.name,
       availerAddress: values.availerLocation.data.description,
       availerPhoneNumber: user.phone,
       availerMessage: values.availerMessage,
-      isAvailingWhole: values.isAvailingWhole.label,
     };
+    // console.log(newData);
 
     onPressBookRide(newData);
   };
@@ -66,14 +90,16 @@ const Component = ({data}) => {
       <View style={styles.ComponentArea}>
         <Form
           initialValues={{
-            isAvailingWhole: {},
             availerMessage: '',
             availerLocation: {},
+            availerBeds: '',
+            availerRooms: '',
           }}
           onSubmit={(values) => {
             submitForm(values);
           }}
-          validationSchema={validationSchema}>
+          // validationSchema={validationSchema}
+        >
           {/* Start Location */}
           <FormLocation name="availerLocation" title="Enter your Location" />
 
@@ -85,14 +111,26 @@ const Component = ({data}) => {
             // keyboardType="numeric"
           />
 
-          {data.singleShareAbleUnit == 'house' && (
-            <FormPicker
-              heading="Choose "
-              name="isAvailingWhole"
-              icon="keypad-outline"
-              items={categories}
-              placeholder="Choose availing option"
-            />
+          {data.singleShareAbleUnit == 'bed' && (
+            <>
+              <StepperButtonInputField
+                title="Enter your required beds:"
+                name="availerBeds"
+                // placeholder={'Total ' + data.bedsAvailable + 'Beds Available'}
+              />
+              <Text>{'Total ' + data.bedsAvailable + ' beds Available'}</Text>
+            </>
+          )}
+
+          {data.singleShareAbleUnit == 'room' && (
+            <>
+              <StepperButtonInputField
+                title="Enter your required rooms:"
+                name="availerRooms"
+                // placeholder={'Total ' + data.bedsAvailable + 'Beds Available'}
+              />
+              <Text>{'Total ' + data.roomsAvailable + ' rooms Available'}</Text>
+            </>
           )}
 
           {/* Submit Button */}

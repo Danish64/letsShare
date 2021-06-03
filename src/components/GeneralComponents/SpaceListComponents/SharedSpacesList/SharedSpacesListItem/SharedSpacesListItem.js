@@ -28,7 +28,6 @@ import {Colors} from 'res/constants/Colors.js';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 const Component = ({item, renderRightAction, onPress}) => {
-  console.log('space Item', item);
   return (
     <Swipeable renderRightActions={renderRightAction}>
       <TouchableOpacity onPress={onPress}>

@@ -92,7 +92,7 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
               </RecentlySharedTitleText>
             </View>
           )}
-          {item.bookings.length !== 0 ? (
+          {item.bookings[0].isAccepted == true ? (
             <View
               style={{
                 width: 15,
@@ -141,21 +141,23 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
                 {item.singleShareAbleUnit}
               </TextIcon>
             )}
-            {!item.singleShareAbleUnit && (
-              <TextIcon flexDirection="column" iconName={'home-outline'}>
-                {'house'}
-              </TextIcon>
+            {item.bookings[0].availerBeds && (
+              <Text>{'X' + item.bookings[0].availerBeds}</Text>
             )}
+            {item.bookings[0].availerRooms && (
+              <Text>{'X' + item.bookings[0].availerRooms}</Text>
+            )}
+
             <View style={styles.horizontalSeparator} />
 
             {item.bedFare && (
               <TextIcon flexDirection="column" iconName={'cash-outline'}>
-                {item.bedFare}
+                {item.bedFare * item.bookings[0].availerBeds}
               </TextIcon>
             )}
             {item.roomFare && (
               <TextIcon flexDirection="column" iconName={'cash-outline'}>
-                {item.roomFare}
+                {item.roomFare * item.bookings[0].availerRooms}
               </TextIcon>
             )}
             {item.houseFare && (
@@ -166,7 +168,7 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
           </View>
         </View>
         <View style={styles.horizontalSeparator} />
-        {item.bookings.length !== 0 ? (
+        {item.bookings[0].isAccepted == true ? (
           <View style={styles.statusDetail}>
             <View style={styles.acceptedRequestsView}>
               <RecentlySharedSubtitleText>
@@ -200,7 +202,9 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
                 Request Status
               </RecentlySharedSubtitleText>
               <View style={styles.notAcceptedStatusView}>
-                <CaptionTextRed>Not Accepted</CaptionTextRed>
+                <CaptionTextRed>
+                  {item.bookings[0].bookingStatus}
+                </CaptionTextRed>
               </View>
             </View>
           </View>

@@ -79,6 +79,34 @@ const Component = ({navigation, data, listFor}) => {
               </RecentlySharedSubtitleText>
             </View>
           )}
+          {data.houseFare && (
+            <View style={styles.row}>
+              <RecentlySharedSubtitleText>Rent</RecentlySharedSubtitleText>
+              <RecentlySharedSubtitleText>
+                {data.houseFare}
+              </RecentlySharedSubtitleText>
+            </View>
+          )}
+          {data.bedsAvailable && (
+            <View style={styles.row}>
+              <RecentlySharedSubtitleText>
+                Available Beds
+              </RecentlySharedSubtitleText>
+              <RecentlySharedSubtitleText>
+                {data.bedsAvailable}
+              </RecentlySharedSubtitleText>
+            </View>
+          )}
+          {data.roomsAvailable && (
+            <View style={styles.row}>
+              <RecentlySharedSubtitleText>
+                Available rooms
+              </RecentlySharedSubtitleText>
+              <RecentlySharedSubtitleText>
+                {data.roomsAvailable}
+              </RecentlySharedSubtitleText>
+            </View>
+          )}
 
           <View style={styles.rowSeparator} />
           {data.spaceDescription && (
