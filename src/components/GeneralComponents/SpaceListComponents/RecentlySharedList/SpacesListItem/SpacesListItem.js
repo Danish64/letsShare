@@ -67,6 +67,11 @@ const Component = ({id, item, onPress}) => {
                 {item.roomFare}
               </TextIcon>
             )}
+            {item.houseFare && (
+              <TextIcon flexDirection="column" iconName={'cash-outline'}>
+                {item.houseFare}
+              </TextIcon>
+            )}
 
             {item.quantity && (
               <TextIcon flexDirection="column" iconName={'basket-outline'}>

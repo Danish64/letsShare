@@ -89,6 +89,11 @@ const Component = ({item, onPress}) => {
                 {item.roomFare}
               </TextIconSmall>
             )}
+            {item.houseFare && (
+              <TextIconSmall flexDirection="column" iconName={'cash-outline'}>
+                {item.houseFare}
+              </TextIconSmall>
+            )}
           </View>
         </View>
       </View>

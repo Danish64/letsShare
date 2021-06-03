@@ -105,6 +105,11 @@ const Component = ({item, renderRightAction, onPress}) => {
                   {item.singleShareAbleUnit}
                 </TextIcon>
               )}
+              {!item.singleShareAbleUnit && (
+                <TextIcon flexDirection="column" iconName={'home-outline'}>
+                  {'house'}
+                </TextIcon>
+              )}
 
               <View style={styles.horizontalSeparator} />
 
@@ -116,6 +121,11 @@ const Component = ({item, renderRightAction, onPress}) => {
               {item.roomFare && (
                 <TextIconSmall flexDirection="column" iconName={'cash-outline'}>
                   {item.roomFare}
+                </TextIconSmall>
+              )}
+              {item.houseFare && (
+                <TextIconSmall flexDirection="column" iconName={'cash-outline'}>
+                  {item.houseFare}
                 </TextIconSmall>
               )}
             </View>

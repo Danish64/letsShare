@@ -40,7 +40,7 @@ const Component = ({navigation}) => {
 
   return (
     <Container>
-      <Header title="My Availed Goods" hasBackIcon navigation={navigation} />
+      <Header title="My Availed Spaces" hasBackIcon navigation={navigation} />
       <View style={styles.listHeadingTextView}>
         <ShareActionAreaHeadingText>My Bookings</ShareActionAreaHeadingText>
       </View>
