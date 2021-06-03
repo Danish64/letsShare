@@ -65,7 +65,6 @@ const Component = ({signupRequest, userInfo}) => {
     setAuthLoading(false);
 
     UserActivity.mixpanel.alias(userInfo.user.email, userInfo.user._id);
-
     UserActivity.mixpanel.track('User Created', {screen: 'Register User'});
     UserActivity.mixpanel.flush();
 

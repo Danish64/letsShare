@@ -18,21 +18,21 @@ import {useSelector} from 'react-redux';
 
 const Component = () => {
   const navigation = useNavigation();
+  const [recentlySharedSpaces, setRecentlySharedSpaces] = useState(null);
+  const userId = useSelector((state) => state.userInformation.user._id);
+
+  const fetchRecentlySharedSpaces = async () => {
+    let data = {
+      sharerId: userId,
+    };
+
+    const result = await doPost('v1/allSpaces/getAllSpaceShares', data);
+    setRecentlySharedSpaces(result.data);
+  };
 
   useEffect(() => {
     fetchRecentlySharedSpaces();
   }, []);
-
-  const userId = useSelector((state) => state.userInformation.user._id);
-  const [recentlySharedSpaces, setRecentlySharedSpaces] = useState(null);
-
-  const fetchRecentlySharedSpaces = async () => {
-    let data = {
-      userId: userId,
-    };
-    const result = await doPost('v1/allSpaces/getAllSpaceShares', data);
-    setRecentlySharedSpaces(result.data);
-  };
 
   return (
     <View style={styles.recentlySharedSpacesArea}>
