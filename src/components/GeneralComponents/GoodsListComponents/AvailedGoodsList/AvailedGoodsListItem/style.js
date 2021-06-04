@@ -71,7 +71,6 @@ export default StyleSheet.create({
     backgroundColor: Colors.Failure,
   },
   statusDetail: {
-    marginVertical: mvs(15, 0.5),
     width: '100%',
     flexDirection: 'row',
     marginTop: 10,

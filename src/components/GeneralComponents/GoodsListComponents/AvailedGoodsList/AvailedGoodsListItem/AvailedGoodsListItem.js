@@ -24,8 +24,18 @@ import {Colors} from 'res/constants/Colors.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ShareGoodsIcon from 'res/images/ModulesImages/GoodsSharingImages/shareGoods.png';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+import {useSelector} from 'react-redux';
 
 const Component = ({item, renderRightAction, ownerContactNumber}) => {
+  const state = useSelector((state) => state);
+  const userId = state.userInformation.user._id;
+
+  const getUserBooking = (bookings, userId) => {
+    return bookings.filter((item) => item.availerId == userId)[0];
+  };
+
+  let userBooking = getUserBooking(item.bookings, userId);
+  console.log('user Booking', userBooking);
   //=====================================Link Contact Source============
   const linkingContactPlatform = (linkFor) => {
     let msg = 'From Lets Share: Are You Available? ';
@@ -92,7 +102,7 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
               </RecentlySharedTitleText>
             </View>
           )}
-          {item.bookings.length !== 0 ? (
+          {userBooking.isAccepted == true ? (
             <View
               style={{
                 width: 15,
@@ -165,7 +175,48 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
           </View>
         </View>
         <View style={styles.horizontalSeparator} />
-        {item.bookings.length !== 0 ? (
+
+        {userBooking.isAccepted == true ? (
+          <View style={styles.statusDetail}>
+            <View style={styles.acceptedRequestsView}>
+              <RecentlySharedSubtitleText>
+                Request Status
+              </RecentlySharedSubtitleText>
+              <View style={styles.acceptedStatusView}>
+                <CaptionTextPrimary>Accepted</CaptionTextPrimary>
+              </View>
+            </View>
+            <View style={styles.contactView}>
+              <TouchableOpacity onPress={() => linkingContactPlatform('Call')}>
+                <Ionicons name="call" size={30} color={Colors.Primary} />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => linkingContactPlatform('SMS')}>
+                <Ionicons name="chatbox" size={30} color={Colors.Primary} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => linkingContactPlatform('WhatsApp')}>
+                <Ionicons
+                  name="logo-whatsapp"
+                  size={30}
+                  color={Colors.Primary}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+        ) : (
+          <View style={styles.statusDetail}>
+            <View style={styles.pendingRequestsView}>
+              <RecentlySharedSubtitleText>
+                Request Status
+              </RecentlySharedSubtitleText>
+              <View style={styles.notAcceptedStatusView}>
+                <CaptionTextRed>{userBooking.bookingStatus}</CaptionTextRed>
+              </View>
+            </View>
+          </View>
+        )}
+
+        {/* {item.bookings.length !== 0 ? (
           <View style={styles.statusDetail}>
             <View style={styles.acceptedRequestsView}>
               <RecentlySharedSubtitleText>
@@ -203,7 +254,7 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
               </View>
             </View>
           </View>
-        )}
+        )} */}
       </View>
     </TouchableHighlight>
   );

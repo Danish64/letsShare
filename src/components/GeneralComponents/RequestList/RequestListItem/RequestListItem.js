@@ -14,6 +14,7 @@ import {
   SubtitleText,
   CaptionText,
   CaptionTextPrimary,
+  CaptionTextRed,
   FormText,
   BodyTextLight,
   BodyTextBold,
@@ -43,6 +44,7 @@ import {useDispatch} from 'react-redux';
 import {connect} from 'react-redux';
 import {useSelector} from 'react-redux';
 import UserActivityClass from '../../../../utils/UserActivity';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 const Component = ({
   item,
@@ -56,8 +58,10 @@ const Component = ({
   availerPhoneNumber,
 }) => {
   const isFocused = useIsFocused();
+  const navigation = useNavigation();
 
   const [status, setStatus] = useState(null);
+  const [rejectStatus, setRejectStatus] = useState(null);
 
   useEffect(() => {
     isFocused;
@@ -78,6 +82,20 @@ const Component = ({
     }
   };
 
+  const rejectRequest = (rideCategory) => {
+    if (rideCategory === 'Nearby') {
+      rejectNearbyRideRequest();
+    }
+    if (rideCategory === 'CityToCity') {
+      rejectCityToCityRideRequest();
+    }
+    if (rideCategory === 'TourRide') {
+      rejectTourRideRequest();
+    }
+  };
+
+  // Accept Nearby Ride Booking Request
+
   const AcceptNearbyRideRequest = async () => {
     const data = {
       availerId: item.availerId,
@@ -92,6 +110,29 @@ const Component = ({
 
     console.log('Accept Availer Request API Call Result', result.data);
   };
+
+  // Reject Nearby Ride Booking Request
+
+  const rejectNearbyRideRequest = async () => {
+    const data = {
+      availerId: item.availerId,
+      shareId: shareId,
+      bookingId: item._id,
+    };
+    const result = await doPutAws(
+      data,
+      'v1/nearByRideShares/rejectNearByRidesSharesBooking',
+    );
+    setRejectStatus(result.status);
+
+    console.log(
+      'Reject naerby ride booking Request API Call Result',
+      result.data,
+    );
+    navigation.navigate('SharedRidesScreen');
+  };
+
+  // accept city to cit ride booking request
 
   const AcceptCityToCityRideRequest = async () => {
     const data = {
@@ -108,6 +149,29 @@ const Component = ({
     console.log('Accept Availer Request API Call Result', result.data);
   };
 
+  // reject city to city ride booking request
+
+  const rejectCityToCityRideRequest = async () => {
+    const data = {
+      availerId: item.availerId,
+      shareId: shareId,
+      bookingId: item._id,
+    };
+    const result = await doPutAws(
+      data,
+      'v1/cityToCityRideShares/rejectCityToCityRideSharesBooking',
+    );
+    setRejectStatus(result.status);
+
+    console.log(
+      'Reject city to city ride booking Request API Call Result',
+      result.data,
+    );
+    navigation.navigate('SharedRidesScreen');
+  };
+
+  // accept tour ride booking request
+
   const AcceptTourRideRequest = async () => {
     const data = {
       availerId: item.availerId,
@@ -121,6 +185,26 @@ const Component = ({
     setStatus(result.status);
 
     console.log('Accept Availer Request API Call Result', result.data);
+  };
+
+  // reject tour booking ride request
+  const rejectTourRideRequest = async () => {
+    const data = {
+      availerId: item.availerId,
+      shareId: shareId,
+      bookingId: item._id,
+    };
+    const result = await doPutAws(
+      data,
+      'v1/tourRideShares/rejectTourRideSharesBooking',
+    );
+    setRejectStatus(result.status);
+
+    console.log(
+      'Reject tour ride booking Request API Call Result',
+      result.data,
+    );
+    navigation.navigate('SharedRidesScreen');
   };
 
   //=====================================Link Contact Source============
@@ -241,7 +325,79 @@ const Component = ({
           )}
         </View>
       </View>
+
+      {/* new code for reject option  */}
+
+      <View style={styles.respondRequest}>
+        {status == '200' ? null : item.bookingStatus == 'Pending' ? (
+          <>
+            <PrimaryButton onPress={() => AcceptRequest(rideCategory)}>
+              Accept
+            </PrimaryButton>
+            <PrimaryButton onPress={() => rejectRequest(rideCategory)}>
+              Reject
+            </PrimaryButton>
+          </>
+        ) : null}
+        {item.bookingStatus == 'Accepted' || status == '200' ? (
+          <View style={styles.bookingStatus}>
+            <CaptionTextPrimary>Accepted</CaptionTextPrimary>
+          </View>
+        ) : null}
+        {item.bookingStatus == 'Rejected' && (
+          <View style={styles.bookingStatus}>
+            <CaptionTextRed>Rejected</CaptionTextRed>
+          </View>
+        )}
+      </View>
+
       <View style={styles.ContactContainer}>
+        {item.isAccepted == true || status == '200' ? (
+          <View style={styles.contactIconsViewRow}>
+            <TouchableOpacity onPress={() => linkingContactPlatform('Call')}>
+              <Ionicons
+                name="call"
+                color={
+                  item.isAccepted || status == '200'
+                    ? Colors.Primary
+                    : Colors.LightGrey
+                }
+                size={30}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => linkingContactPlatform('SMS')}>
+              <Ionicons
+                name="chatbox"
+                color={
+                  item.isAccepted || status == '200'
+                    ? Colors.Primary
+                    : Colors.LightGrey
+                }
+                size={30}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => linkingContactPlatform('WhatsApp')}>
+              <Ionicons
+                name="logo-whatsapp"
+                color={
+                  item.isAccepted || status == '200'
+                    ? Colors.Primary
+                    : Colors.LightGrey
+                }
+                size={30}
+              />
+            </TouchableOpacity>
+          </View>
+        ) : null}
+      </View>
+
+      {/* new code for reject option ends here */}
+
+      {/* previous code starts here */}
+
+      {/* <View style={styles.ContactContainer}>
         <View style={styles.acceptButton}>
           {item.isAccepted === true || status == '200' ? (
             <PrimaryButtonDarkGrey>Accepted</PrimaryButtonDarkGrey>
@@ -288,7 +444,8 @@ const Component = ({
             />
           </TouchableOpacity>
         </View>
-      </View>
+      </View> */}
+      {/* previous code ends here */}
     </View>
   );
 };

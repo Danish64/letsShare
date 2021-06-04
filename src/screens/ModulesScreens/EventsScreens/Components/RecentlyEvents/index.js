@@ -10,6 +10,8 @@ import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
 import LoadingIndicator from '../../../../../components/GeneralComponents/LoadingIndicator';
 import EventsItem from './EventsItem';
 import ListItemDeleteAction from '../../../../../components/GeneralComponents/ListItemDeleteAction';
+import {doDeleteAws} from '../../../../../utils/AxiosMethods';
+
 const Component = ({navigation}) => {
   const state = useSelector((state) => state);
   const userId = state.userInformation.user._id;
@@ -63,6 +65,14 @@ const Component = ({navigation}) => {
     );
   };
 
+  const handleDelete = async (itemId) => {
+    const data = {
+      id: itemId,
+    };
+    const result = await doDeleteAws(data, 'v1/events/deleteEvent');
+    console.log('Event delete result', result);
+  };
+
   if (loading) {
     return (
       <View
@@ -89,7 +99,7 @@ const Component = ({navigation}) => {
               navigation.navigate('EventDetails', {item: item});
             }}
             renderRightAction={() => (
-              <ListItemDeleteAction onPress={() => console.log('Delete')} />
+              <ListItemDeleteAction onPress={() => handleDelete(item._id)} />
             )}
           />
         )}

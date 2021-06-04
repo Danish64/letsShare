@@ -5,7 +5,6 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   mainContainer: {
     width: '90%',
-    height: mvs(155, 0.7),
     backgroundColor: Colors.White,
     marginTop: mvs(5, 0.6),
     marginBottom: mvs(5, 0.6),
@@ -46,13 +45,6 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
 
-  ContactContainer: {
-    height: 50,
-    width: '100%',
-    flexDirection: 'row',
-    marginHorizontal: ms(5, 0.3),
-  },
-
   acceptButton: {
     width: '50%',
     marginHorizontal: ms(10, 0.3),
@@ -74,5 +66,34 @@ export default StyleSheet.create({
     height: 1,
     backgroundColor: Colors.light,
     marginVertical: mvs(5, 0.2),
+  },
+
+  ContactContainer: {
+    marginVertical: mvs(10, 0.6),
+    //height: 50,
+    width: '100%',
+    flexDirection: 'row',
+    marginHorizontal: ms(5, 0.3),
+  },
+  contactIconsView: {
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: '100%',
+  },
+
+  respondRequest: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  bookingStatus: {
+    marginTop: mvs(5, 0.5),
+    height: mvs(30, 0.5),
+    width: ms(230, 0.5),
+    borderWidth: 1,
+    borderRadius: ms(10, 0.5),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

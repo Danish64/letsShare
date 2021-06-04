@@ -5,7 +5,7 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   mainContainer: {
     width: '90%',
-    height: mvs(220, 0.7),
+    //height: mvs(220, 0.7),
     backgroundColor: Colors.White,
     marginTop: mvs(5, 0.6),
     marginBottom: mvs(5, 0.6),
@@ -14,6 +14,7 @@ export default StyleSheet.create({
     elevation: ms(3),
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    paddingVertical: mvs(10, 0.6),
   },
 
   rideDetails: {
@@ -64,6 +65,27 @@ export default StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     width: '40%',
+  },
+  contactIconsViewRow: {
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: '100%',
+  },
+  respondRequest: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    paddingVertical: mvs(15, 0.6),
+  },
+  bookingStatus: {
+    marginTop: mvs(5, 0.5),
+    height: mvs(30, 0.5),
+    width: ms(230, 0.5),
+    borderWidth: 1,
+    borderRadius: ms(10, 0.5),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   verticalSeparator: {
