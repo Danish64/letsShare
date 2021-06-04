@@ -22,61 +22,70 @@ import {doPost} from '../../../../utils/AxiosMethods';
 const Component = ({navigation}) => {
   const route = useRoute();
   const {item} = route.params;
-  console.log('Space Details', item);
+  // console.log('Working Space Item', item);
 
-  const [shareAbleUnit, setShareAbleUnit] = useState('');
+  // const [shareAbleUnit, setShareAbleUnit] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleShareableUnit = (name) => {
-    // console.log('Handle Shareable Unit', name);
-    setShareAbleUnit(name);
-  };
+  // const handleShareableUnit = (name) => {
+  //   // console.log('Handle Shareable Unit', name);
+  //   setShareAbleUnit(name);
+  // };
 
-  const categories = [
-    {label: 'Whole House', name: 'house', value: 1},
-    {label: 'Rooms', name: 'room', value: 2},
-    {
-      label: 'Bed',
-      name: 'bed',
-      value: 3,
-    },
-  ];
+  // const categories = [
+  //   {label: 'Seat', name: 'seat', value: 1},
+  //   {label: 'Desk', name: 'desk', value: 2},
+  //   {
+  //     label: 'Office',
+  //     name: 'office',
+  //     value: 3,
+  //   },
+  // ];
 
   const submitForm = (values) => {
-    let fare = {};
-    if (shareAbleUnit === 'house') {
-      fare = {houseFare: values.fare, isAvailingWhole: true};
-    } else if (shareAbleUnit === 'room') {
-      fare = {
-        roomFare: values.fare,
-        singleShareAbleUnit: values.singleShareAbleUnit.name,
-      };
-    } else {
-      fare = {
-        bedFare: values.fare,
-        singleShareAbleUnit: values.singleShareAbleUnit.name,
-      };
-    }
+    // let fare = {};
+    // if (shareAbleUnit === 'seat') {
+    //   fare = {
+    //     seatsAvailable: values.quantity,
+    //     seatFare: values.fare,
+    //   };
+    // } else if (shareAbleUnit === 'desk') {
+    //   fare = {
+    //     desksAvailable: values.quantity,
+    //     deskFare: values.fare,
+    //   };
+    // } else {
+    //   fare = {
+    //     roomsAvailable: values.quantity,
+    //     roomFare: values.fare,
+    //   };
+    // }
 
     const spaceDetail = {
-      ...fare,
       sharerId: item.ownerId,
       spaceTitle: item.spaceTitle,
-      ownerContactNumber: item.ownerContactNumber,
       spaceLocation: item.spaceLocation,
-      spaceType: item.spaceType,
+      ownerContactNumber: item.ownerContactNumber,
       spacePictures: item.spacePictures,
+      spaceSpecifications: item.spaceSpecifications,
+      spaceDescription: item.spaceDescription,
+      seatsAvailable: values.seatsAvailable,
+      seatFare: values.seatFare,
+      desksAvailable: values.desksAvailable,
+      deskFare: values.deskFare,
+      roomsAvailable: values.roomsAvailable,
+      roomFare: values.roomFare,
       bookings: [],
     };
     console.log('SpaceDetails', spaceDetail);
-    createResidenceShare(spaceDetail);
+    createWorkingSpace(spaceDetail);
   };
 
-  const createResidenceShare = async (newSpaceData) => {
+  const createWorkingSpace = async (newSpaceData) => {
     setIsLoading(true);
     let data = newSpaceData;
     const result = await doPost(
-      'v1/residenceSpaceShares/createResidenceSpaceShare',
+      'v1/workingSpaceShares/createWorkingSpaceShare',
       data,
     );
     console.log(result);
@@ -88,31 +97,70 @@ const Component = ({navigation}) => {
 
   return (
     <Container>
-      <Header title="Residence Space" navigation={navigation} hasBackIcon />
+      <Header title="Working Space" navigation={navigation} hasBackIcon />
       <ScrollViewContainer>
         <KeyboardAvoidingView>
           <View style={styles.ComponentArea}>
             <Form
-              initialValues={{}}
+              initialValues={{
+                seatsAvailable: '',
+                seatFare: '-/',
+                desksAvailable: '',
+                deskFare: '-/',
+                roomsAvailable: '',
+                roomFare: '-/',
+              }}
               onSubmit={(values) => {
+                // console.log(values);
                 submitForm(values);
               }}>
-              <FormPicker
+              {/* <FormPicker
                 heading="Choose Single Shareable Uni"
                 name="singleShareAbleUnit"
                 icon="keypad-outline"
                 items={categories}
                 placeholder="Choose Shareable Unit"
                 setState={handleShareableUnit}
-              />
+              /> */}
               <View style={{marginBottom: 30}} />
 
+              <StepperButtonInputField
+                title={'Enter Seats Available'}
+                name="seatsAvailable"
+              />
+
               <FormField
-                title="Fare"
+                title="Single Seat Fare"
                 maxLength={9}
                 keyboardType="numeric"
-                name="fare"
-                placeholder={`Enter ${shareAbleUnit} fare in Rs.`}
+                name="seatFare"
+                placeholder={'Enter single seat fare in Rs'}
+              />
+
+              <StepperButtonInputField
+                title={'Enter Desks Available'}
+                name="desksAvailable"
+              />
+
+              <FormField
+                title="Single Desk Fare"
+                maxLength={9}
+                keyboardType="numeric"
+                name="deskFare"
+                placeholder={'Enter single desk fare in Rs'}
+              />
+
+              <StepperButtonInputField
+                title={'Enter Rooms Available'}
+                name="roomsAvailable"
+              />
+
+              <FormField
+                title="Single Room Fare"
+                maxLength={9}
+                keyboardType="numeric"
+                name="roomFare"
+                placeholder={'Enter single room fare in Rs'}
               />
 
               {/* Submit Button */}

@@ -22,7 +22,7 @@ const Component = ({navigation}) => {
 
   const fetchGoodsData = async () => {
     let data = {
-      sharerId: userId,
+      userId: userId,
     };
     const result = await doPost('v1/goodShares/getAllGoodShares', data);
     setDonatedGoods(result.data);

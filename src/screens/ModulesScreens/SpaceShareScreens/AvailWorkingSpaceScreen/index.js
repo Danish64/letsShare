@@ -13,20 +13,23 @@ const Component = ({navigation}) => {
   }, []);
 
   const userId = useSelector((state) => state.userInformation.user._id);
-  const [recentlySharedSpaces, setRecentlySharedSpaces] = useState(null);
+  const [availableWorkingSpaces, serAvailableWorkingSpaces] = useState(null);
 
   const fetchRecentlySharedSpaces = async () => {
     let data = {
       userId: userId,
     };
-    const result = await doPost('v1/allSpaces/getAllSpaceShares', data);
-    setRecentlySharedSpaces(result.data);
+    const result = await doPost(
+      'v1/workingSpaceShares/getAllWorkingSpaces',
+      data,
+    );
+    serAvailableWorkingSpaces(result.data);
   };
 
   return (
     <Container>
       <Header title="Avail Working Space" navigation={navigation} hasBackIcon />
-      <AvailSpacesList navigation={navigation} data={recentlySharedSpaces} />
+      <AvailSpacesList navigation={navigation} data={availableWorkingSpaces} />
     </Container>
   );
 };

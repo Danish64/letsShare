@@ -24,8 +24,19 @@ import {Colors} from 'res/constants/Colors.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ShareSpaceIcon from 'res/images/ModulesImages/SpaceSharingImages/spaceShare.png';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+import {useSelector} from 'react-redux';
 
 const Component = ({item, renderRightAction, ownerContactNumber}) => {
+  const state = useSelector((state) => state);
+  const userId = state.userInformation.user._id;
+  console.log(userId);
+  //=============get user booking=============
+  const getUserBooking = (bookings, userId) => {
+    return bookings.filter((item) => item.availerId == userId)[0];
+  };
+
+  let userBooking = getUserBooking(item.bookings, userId);
+  console.log('user Booking', userBooking);
   //=====================================Link Contact Source============
   const linkingContactPlatform = (linkFor) => {
     let msg = 'From Lets Share: Are You Available? ';
@@ -92,7 +103,7 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
               </RecentlySharedTitleText>
             </View>
           )}
-          {item.bookings[0].isAccepted == true ? (
+          {userBooking.isAccepted == true ? (
             <View
               style={{
                 width: 15,
@@ -134,7 +145,7 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
               </>
             )}
           </View>
-          <View style={styles.otherDetail}>
+          {/* <View style={styles.otherDetail}>
             <View style={styles.horizontalSeparator} />
             {item.singleShareAbleUnit && (
               <TextIcon flexDirection="column" iconName={'home-outline'}>
@@ -165,10 +176,10 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
                 {item.houseFare}
               </TextIcon>
             )}
-          </View>
+          </View> */}
         </View>
         <View style={styles.horizontalSeparator} />
-        {item.bookings[0].isAccepted == true ? (
+        {userBooking.isAccepted == true ? (
           <View style={styles.statusDetail}>
             <View style={styles.acceptedRequestsView}>
               <RecentlySharedSubtitleText>
@@ -202,9 +213,7 @@ const Component = ({item, renderRightAction, ownerContactNumber}) => {
                 Request Status
               </RecentlySharedSubtitleText>
               <View style={styles.notAcceptedStatusView}>
-                <CaptionTextRed>
-                  {item.bookings[0].bookingStatus}
-                </CaptionTextRed>
+                <CaptionTextRed>{userBooking.bookingStatus}</CaptionTextRed>
               </View>
             </View>
           </View>

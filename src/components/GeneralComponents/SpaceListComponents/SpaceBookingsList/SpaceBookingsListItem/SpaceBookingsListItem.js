@@ -58,16 +58,18 @@ const Component = ({item, onPress, shareId, availerPhoneNumber, spaceType}) => {
   const rejectRequest = (spaceType) => {
     if (spaceType === 'Residence') {
       rejectResidenceRequest();
-    } else {
-      console.log('remaining Categories');
+    }
+    if (spaceType === 'Working') {
+      rejectWorkingRequest();
     }
   };
 
   const AcceptRequest = (spaceType) => {
     if (spaceType === 'Residence') {
       AcceptResidenceRequest();
-    } else {
-      console.log('remaining Categories');
+    }
+    if (spaceType === 'Working') {
+      AcceptWorkingRequest();
     }
   };
   console.log('availerId', item.availerId);
@@ -89,6 +91,21 @@ const Component = ({item, onPress, shareId, availerPhoneNumber, spaceType}) => {
     console.log('Accept Availer Request API Call Result', result.data);
   };
 
+  const AcceptWorkingRequest = async () => {
+    const data = {
+      availerId: item.availerId,
+      shareId: shareId,
+      bookingId: item._id,
+    };
+    const result = await doPutAws(
+      data,
+      'v1/workingSpaceShares/acceptWorkingSpaceShareBooking',
+    );
+    setStatus(result.status);
+
+    console.log('Working Space Accept Request API Call Result', result.data);
+  };
+
   const rejectResidenceRequest = async () => {
     const data = {
       availerId: item.availerId,
@@ -102,6 +119,22 @@ const Component = ({item, onPress, shareId, availerPhoneNumber, spaceType}) => {
     setRejectStatus(result.status);
 
     console.log('Reject Availer Request API Call Result', result.data);
+    navigation.navigate('SharedSpaces');
+  };
+
+  const rejectWorkingRequest = async () => {
+    const data = {
+      availerId: item.availerId,
+      shareId: shareId,
+      bookingId: item._id,
+    };
+    const result = await doPutAws(
+      data,
+      'v1/workingSpaceShares/rejectWorkingSpaceShareBooking',
+    );
+    setRejectStatus(result.status);
+
+    console.log('Reject working Space Request API Call Result', result.data);
     navigation.navigate('SharedSpaces');
   };
 

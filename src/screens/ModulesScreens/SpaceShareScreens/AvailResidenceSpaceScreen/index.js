@@ -13,14 +13,19 @@ const Component = ({navigation}) => {
   }, []);
 
   const userId = useSelector((state) => state.userInformation.user._id);
-  const [recentlySharedSpaces, setRecentlySharedSpaces] = useState(null);
+  const [availableResidenceSpaces, setAvailableResidenceSpaces] = useState(
+    null,
+  );
 
   const fetchRecentlySharedSpaces = async () => {
     let data = {
       userId: userId,
     };
-    const result = await doPost('v1/allSpaces/getAllSpaceShares', data);
-    setRecentlySharedSpaces(result.data);
+    const result = await doPost(
+      'v1/residenceSpaceShares/getAllResidenceSpaces',
+      data,
+    );
+    setAvailableResidenceSpaces(result.data);
   };
 
   return (
@@ -30,7 +35,10 @@ const Component = ({navigation}) => {
         navigation={navigation}
         hasBackIcon
       />
-      <AvailSpacesList navigation={navigation} data={recentlySharedSpaces} />
+      <AvailSpacesList
+        navigation={navigation}
+        data={availableResidenceSpaces}
+      />
     </Container>
   );
 };

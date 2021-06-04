@@ -41,16 +41,29 @@ const Component = ({navigation, data}) => {
     );
   };
 
-  const handleDelete = async (itemId) => {
-    const data = {
-      id: itemId,
-    };
-    console.log(data);
-    const result = await doDeleteAws(
-      data,
-      'v1/residenceSpaceShares/deleteResidenceSpaceShare',
-    );
-    console.log('Delete Space', result);
+  const handleDelete = async (itemId, spaceType) => {
+    if (spaceType == 'Residence') {
+      const data = {
+        id: itemId,
+      };
+      console.log(data);
+      const result = await doDeleteAws(
+        data,
+        'v1/residenceSpaceShares/deleteResidenceSpaceShare',
+      );
+      console.log('Delete Space', result);
+    }
+    if (spaceType == 'Working') {
+      const data = {
+        id: itemId,
+      };
+      console.log(data);
+      const result = await doDeleteAws(
+        data,
+        'v1/workingSpaceShares/deleteWorkingSpaceShare',
+      );
+      console.log('Delete Space', result);
+    }
   };
 
   if (!data) {
@@ -72,7 +85,9 @@ const Component = ({navigation, data}) => {
             navigation.navigate('SpaceBookingRequests', {item: item});
           }}
           renderRightAction={() => (
-            <ListItemDeleteAction onPress={() => handleDelete(item._id)} />
+            <ListItemDeleteAction
+              onPress={() => handleDelete(item._id, item.spaceType)}
+            />
           )}
         />
       )}
