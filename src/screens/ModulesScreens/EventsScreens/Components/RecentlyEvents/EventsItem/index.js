@@ -22,6 +22,7 @@ import {
 } from 'res/UniversalComponents/Text';
 import {Colors} from 'res/constants/Colors.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 const Component = ({item, onPress, renderRightAction}) => {
   const linkingContactPlatform = (linkFor) => {
@@ -73,48 +74,50 @@ const Component = ({item, onPress, renderRightAction}) => {
     }
   };
   return (
-    <View style={styles.mainContainer}>
-      <TouchableOpacity onPress={onPress}>
-        <View
-          style={{
-            width: '80%',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}>
-          <BodyTextBold>{item.eventTitle}</BodyTextBold>
-          <CaptionTextPrimary>{item.eventDuration}</CaptionTextPrimary>
-        </View>
-        <View style={{width: '80%', marginTop: 5}}>
-          <CaptionText>{item.eventDescription}</CaptionText>
-        </View>
+    <Swipeable renderRightActions={renderRightAction}>
+      <View style={styles.mainContainer}>
+        <TouchableOpacity onPress={onPress}>
+          <View
+            style={{
+              width: '80%',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+            }}>
+            <BodyTextBold>{item.eventTitle}</BodyTextBold>
+            <CaptionTextPrimary>{item.eventDuration}</CaptionTextPrimary>
+          </View>
+          <View style={{width: '80%', marginTop: 5}}>
+            <CaptionText>{item.eventDescription}</CaptionText>
+          </View>
 
-        <View style={{width: '80%', marginTop: 5, flexDirection: 'row'}}>
-          <CaptionTextPrimary>{item.eventStartDate}</CaptionTextPrimary>
-          {item.eventEndDate && (
-            <CaptionTextPrimary> to {item.eventEndDate}</CaptionTextPrimary>
-          )}
-        </View>
+          <View style={{width: '80%', marginTop: 5, flexDirection: 'row'}}>
+            <CaptionTextPrimary>{item.eventStartDate}</CaptionTextPrimary>
+            {item.eventEndDate && (
+              <CaptionTextPrimary> to {item.eventEndDate}</CaptionTextPrimary>
+            )}
+          </View>
 
-        <View style={{width: '80%', marginTop: 5, flexDirection: 'row'}}>
-          <CaptionTextPrimary>Shares Available: </CaptionTextPrimary>
-          <CaptionTextPrimary>{item.sharings.length}</CaptionTextPrimary>
+          <View style={{width: '80%', marginTop: 5, flexDirection: 'row'}}>
+            <CaptionTextPrimary>Shares Available: </CaptionTextPrimary>
+            <CaptionTextPrimary>{item.sharings.length}</CaptionTextPrimary>
+          </View>
+        </TouchableOpacity>
+        <View style={{width: '90%', marginVertical: 5, alignItems: 'center'}}>
+          <CaptionText>Contact Manager</CaptionText>
         </View>
-      </TouchableOpacity>
-      <View style={{width: '90%', marginVertical: 5, alignItems: 'center'}}>
-        <CaptionText>Contact Manager</CaptionText>
+        <View style={styles.contactView}>
+          <TouchableOpacity onPress={() => linkingContactPlatform('Call')}>
+            <Ionicons name="call" size={30} color={Colors.Primary} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => linkingContactPlatform('SMS')}>
+            <Ionicons name="chatbox" size={30} color={Colors.Primary} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => linkingContactPlatform('WhatsApp')}>
+            <Ionicons name="logo-whatsapp" size={30} color={Colors.Primary} />
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.contactView}>
-        <TouchableOpacity onPress={() => linkingContactPlatform('Call')}>
-          <Ionicons name="call" size={30} color={Colors.Primary} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => linkingContactPlatform('SMS')}>
-          <Ionicons name="chatbox" size={30} color={Colors.Primary} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => linkingContactPlatform('WhatsApp')}>
-          <Ionicons name="logo-whatsapp" size={30} color={Colors.Primary} />
-        </TouchableOpacity>
-      </View>
-    </View>
+    </Swipeable>
   );
 };
 

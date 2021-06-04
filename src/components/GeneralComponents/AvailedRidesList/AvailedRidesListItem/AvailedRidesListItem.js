@@ -28,6 +28,7 @@ import {Colors} from 'res/constants/Colors.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useIsFocused} from '@react-navigation/native';
 import {getDistance, getPreciseDistance} from 'geolib';
+import {useSelector} from 'react-redux';
 
 const Component = ({
   item,
@@ -47,12 +48,33 @@ const Component = ({
 }) => {
   const isFocused = useIsFocused();
   const [fareType, setFareType] = useState(null);
+  const state = useSelector((state) => state);
+  const userId = state.userInformation.user._id;
+
+  //get user booking
+  const getUserBooking = (bookings, userId) => {
+    return bookings.filter((item) => item.availerId == userId)[0];
+  };
+
+  let userBooking = getUserBooking(item.bookings, userId);
+  // console.log('user Booking', userBooking);
+
+  const acceptedBookings = (bookings) => {
+    return bookings.filter((item) => item.isAccepted);
+  };
+
+  const accepted = acceptedBookings(item.bookings).length;
+
+  // console.log('item bookings accepted', accepted);
 
   // calculating sharer distance from start to end point
   const [sharerDistance, setSharerDistance] = useState(null);
   const [sharerChargesPerKm, setSharerChargesPerKm] = useState(null);
   const [availerCharges, setAvailerCharges] = useState(null);
   const [nearbyAvailerFare, setNearbyAvailerFare] = useState(null);
+  const [noOfBookings, setNoOfBookings] = useState(
+    acceptedBookings(item.bookings).length,
+  );
 
   console.log('Sharer Distance', sharerDistance);
   console.log('sharerChargesPerKm', sharerChargesPerKm);
@@ -104,11 +126,11 @@ const Component = ({
 
   const calculateAvailerFare = () => {
     if (rideCategory == 'Nearby' || rideCategory == 'CityToCity') {
-      const availerStartLat = item.bookings[0].availerPickUpLocation.latitude;
-      const availerStartLng = item.bookings[0].availerPickUpLocation.longitude;
+      const availerStartLat = userBooking.availerPickUpLocation.latitude;
+      const availerStartLng = userBooking.availerPickUpLocation.longitude;
 
-      const availerEndLat = item.bookings[0].availerDropOffLocation.latitude;
-      const availerEndLng = item.bookings[0].availerDropOffLocation.longitude;
+      const availerEndLat = userBooking.availerDropOffLocation.latitude;
+      const availerEndLng = userBooking.availerDropOffLocation.longitude;
 
       const dist = getPreciseDistance(
         {latitude: availerStartLat, longitude: availerStartLng},
@@ -194,7 +216,7 @@ const Component = ({
               <RecentlySharedTitleText>{rideCategory}</RecentlySharedTitleText>
             </View>
           )}
-          {item.bookings[0].isAccepted === true ? (
+          {userBooking.bookingStatus === 'Accepted' ? (
             <View style={styles.circlePrimary} />
           ) : (
             <View style={styles.circleRed} />
@@ -224,7 +246,7 @@ const Component = ({
             {rideCategory == 'Nearby' && (
               <View style={{flexDirection: 'row', marginVertical: 10}}>
                 <>
-                  <CaptionTextPrimary>Estimated Fare: </CaptionTextPrimary>
+                  <CaptionTextPrimary>Your Estimated Fare: </CaptionTextPrimary>
                   <CaptionText>{nearbyAvailerFare + ' Rs'}</CaptionText>
                 </>
               </View>
@@ -232,7 +254,7 @@ const Component = ({
             {rideCategory == 'CityToCity' && (
               <View style={{flexDirection: 'row', marginVertical: 10}}>
                 <>
-                  <CaptionTextPrimary>Estimated Fare: </CaptionTextPrimary>
+                  <CaptionTextPrimary>Your Estimated Fare: </CaptionTextPrimary>
                   <CaptionText>{availerCharges + ' Rs'}</CaptionText>
                 </>
               </View>
@@ -247,9 +269,9 @@ const Component = ({
             )} */}
           </View>
           <View style={styles.otherDetail}>
-            {item.bookings[0].availerSeats && (
+            {userBooking.availerSeats && (
               <TextIcon flexDirection="column" iconName={'people-outline'}>
-                {item.bookings[0].availerSeats}
+                {userBooking.availerSeats}
               </TextIcon>
             )}
 
@@ -268,7 +290,53 @@ const Component = ({
           </View>
         </View>
         <View style={styles.horizontalSeparator} />
-        {item.bookings[0].isAccepted === true ? (
+        {/* new code according to booking status */}
+
+        {userBooking.bookingStatus == 'Accepted' ? (
+          <View style={styles.statusDetail}>
+            <View style={styles.acceptedRequestsView}>
+              <RecentlySharedSubtitleText>
+                Request Status
+              </RecentlySharedSubtitleText>
+              <View style={styles.acceptedStatusView}>
+                <CaptionTextPrimary>Accepted</CaptionTextPrimary>
+              </View>
+            </View>
+            <View style={styles.contactView}>
+              <TouchableOpacity onPress={() => linkingContactPlatform('Call')}>
+                <Ionicons name="call" size={30} color={Colors.Primary} />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => linkingContactPlatform('SMS')}>
+                <Ionicons name="chatbox" size={30} color={Colors.Primary} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => linkingContactPlatform('WhatsApp')}>
+                <Ionicons
+                  name="logo-whatsapp"
+                  size={30}
+                  color={Colors.Primary}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+        ) : (
+          <View style={styles.statusDetail}>
+            <View style={styles.pendingRequestsView}>
+              <RecentlySharedSubtitleText>
+                Request Status
+              </RecentlySharedSubtitleText>
+              <View style={styles.notAcceptedStatusView}>
+                <CaptionTextRed>{userBooking.bookingStatus}</CaptionTextRed>
+              </View>
+            </View>
+          </View>
+        )}
+
+        {/* new code ends here */}
+
+        {/* previous code starts here */}
+
+        {/* {userBooking.isAccepted === true ? (
           <View style={styles.statusDetail}>
             <View style={styles.acceptedRequestsView}>
               <RecentlySharedSubtitleText>
@@ -306,7 +374,9 @@ const Component = ({
               </View>
             </View>
           </View>
-        )}
+        )} */}
+
+        {/* previous code ends here */}
       </View>
     </TouchableHighlight>
   );

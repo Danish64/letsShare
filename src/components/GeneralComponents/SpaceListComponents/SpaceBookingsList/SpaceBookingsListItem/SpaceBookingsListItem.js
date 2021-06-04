@@ -243,6 +243,7 @@ const Component = ({item, onPress, shareId, availerPhoneNumber, spaceType}) => {
           <View style={styles.horizontalSeparator} />
         </View>
       </View>
+
       <View style={styles.respondRequest}>
         {status == '200' ? null : item.bookingStatus == 'Pending' ? (
           <>

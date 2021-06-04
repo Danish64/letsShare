@@ -14,6 +14,7 @@ import {
   SubtitleText,
   CaptionText,
   CaptionTextPrimary,
+  CaptionTextRed,
   FormText,
   BodyTextLight,
   BodyTextBold,
@@ -38,6 +39,7 @@ import {
   doPutAws,
 } from '../../../../../utils/AxiosMethods';
 import {useIsFocused} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 const Component = ({
   item,
@@ -47,7 +49,10 @@ const Component = ({
   availerPhoneNumber,
 }) => {
   const [status, setStatus] = useState('');
+  const [rejectStatus, setRejectStatus] = useState('');
+
   const isFocused = useIsFocused();
+  const navigation = useNavigation();
 
   useEffect(() => {
     isFocused;
@@ -60,8 +65,16 @@ const Component = ({
       AcceptDonateRequest();
     }
     if (shareType === 'sell') {
-      console.log('accept availer sell request');
       AcceptSellRequest();
+    }
+  };
+
+  const rejectRequest = (shareType) => {
+    if (shareType === 'donate') {
+      rejectDonateRequest();
+    }
+    if (shareType === 'sell') {
+      rejectSellRequest();
     }
   };
 
@@ -77,6 +90,18 @@ const Component = ({
     console.log('Accept Availer Request API Call Result', result.data);
   };
 
+  const rejectDonateRequest = async () => {
+    const data = {
+      availerId: item.availerId,
+      shareId: shareId,
+      bookingId: item._id,
+    };
+    const result = await doPutAws(data, 'v1/goodShares/rejectGoodShareBooking');
+    setRejectStatus(result.status);
+    console.log('reject Availer Request API Call Result', result.data);
+    navigation.navigate('SharedGoodsScreen');
+  };
+
   const AcceptSellRequest = async () => {
     const data = {
       availerId: item.availerId,
@@ -87,6 +112,18 @@ const Component = ({
     setStatus(result.status);
 
     console.log('Accept Availer Request API Call Result', result.data);
+  };
+
+  const rejectSellRequest = async () => {
+    const data = {
+      availerId: item.availerId,
+      shareId: shareId,
+      bookingId: item._id,
+    };
+    const result = await doPutAws(data, 'v1/goodShares/rejectGoodShareBooking');
+    setRejectStatus(result.status);
+    console.log('reject Availer Request API Call Result', result.data);
+    navigation.navigate('SharedGoodsScreen');
   };
 
   //=====================================Link Contact Source============
@@ -188,7 +225,73 @@ const Component = ({
           <View style={styles.horizontalSeparator} />
         </View>
       </View>
+
+      <View style={styles.respondRequest}>
+        {status == '200' ? null : item.bookingStatus == 'Pending' ? (
+          <>
+            <PrimaryButton onPress={() => AcceptRequest(goodsShareType)}>
+              Accept
+            </PrimaryButton>
+            <PrimaryButton onPress={() => rejectRequest(goodsShareType)}>
+              Reject
+            </PrimaryButton>
+          </>
+        ) : null}
+
+        {item.bookingStatus == 'Accepted' || status == '200' ? (
+          <View style={styles.bookingStatus}>
+            <CaptionTextPrimary>Accepted</CaptionTextPrimary>
+          </View>
+        ) : null}
+        {item.bookingStatus == 'Rejected' && (
+          <View style={styles.bookingStatus}>
+            <CaptionTextRed>Rejected</CaptionTextRed>
+          </View>
+        )}
+      </View>
       <View style={styles.ContactContainer}>
+        {item.isAccepted == true || status == '200' ? (
+          <View style={styles.contactIconsView}>
+            <TouchableOpacity onPress={() => linkingContactPlatform('Call')}>
+              <Ionicons
+                name="call"
+                color={
+                  item.isAccepted || status == '200'
+                    ? Colors.Primary
+                    : Colors.LightGrey
+                }
+                size={30}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => linkingContactPlatform('SMS')}>
+              <Ionicons
+                name="chatbox"
+                color={
+                  item.isAccepted || status == '200'
+                    ? Colors.Primary
+                    : Colors.LightGrey
+                }
+                size={30}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => linkingContactPlatform('WhatsApp')}>
+              <Ionicons
+                name="logo-whatsapp"
+                color={
+                  item.isAccepted || status == '200'
+                    ? Colors.Primary
+                    : Colors.LightGrey
+                }
+                size={30}
+              />
+            </TouchableOpacity>
+          </View>
+        ) : null}
+      </View>
+
+      {/* <View style={styles.ContactContainer}>
         <View style={styles.acceptButton}>
           {item.isAccepted === true || status == '200' ? (
             <PrimaryButtonDarkGrey>Accepted</PrimaryButtonDarkGrey>
@@ -234,7 +337,7 @@ const Component = ({
             />
           </TouchableOpacity>
         </View>
-      </View>
+      </View> */}
     </View>
   );
 };
