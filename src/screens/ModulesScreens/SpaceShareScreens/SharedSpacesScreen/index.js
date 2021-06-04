@@ -24,10 +24,7 @@ const Component = ({navigation}) => {
     const data = {
       sharerId: sharerId,
     };
-    const result = await doPost(
-      'v1/residenceSpaceShares/getUserResidenceSpaceShares',
-      data,
-    );
+    const result = await doPost('v1/allSpaces/getUserSpaceShares', data);
     const allSharedSpaces = result.data.map((item, index) => {
       item.key = index;
       return item;

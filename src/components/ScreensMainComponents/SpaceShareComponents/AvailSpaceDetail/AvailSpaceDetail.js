@@ -9,7 +9,7 @@ import {
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import {PrimaryButton} from '../../../../res/UniversalComponents/Button';
 
-const Component = ({navigation, data, listFor}) => {
+const Component = ({navigation, data, spaceType}) => {
   console.log('Space Detail Screen', data);
   const imageURL = {uri: data.spacePictures[0]};
   return (
@@ -52,7 +52,8 @@ const Component = ({navigation, data, listFor}) => {
               </RecentlySharedSubtitleText>
             </View>
           )}
-          {data.roomsAvailable && (
+
+          {data.roomsAvailable && data.singleShareAbleUnit == 'room' ? (
             <View style={styles.row}>
               <RecentlySharedSubtitleText>
                 Rooms Available
@@ -61,21 +62,32 @@ const Component = ({navigation, data, listFor}) => {
                 {data.roomsAvailable}
               </RecentlySharedSubtitleText>
             </View>
-          )}
+          ) : null}
 
-          {data.roomFare && (
+          {data.roomFare && data.singleShareAbleUnit == 'room' ? (
             <View style={styles.row}>
               <RecentlySharedSubtitleText>Rent</RecentlySharedSubtitleText>
               <RecentlySharedSubtitleText>
                 {data.roomFare}
               </RecentlySharedSubtitleText>
             </View>
-          )}
+          ) : null}
           {data.bedFare && (
             <View style={styles.row}>
               <RecentlySharedSubtitleText>Rent</RecentlySharedSubtitleText>
               <RecentlySharedSubtitleText>
                 {data.bedFare}
+              </RecentlySharedSubtitleText>
+            </View>
+          )}
+
+          {data.bedsAvailable && (
+            <View style={styles.row}>
+              <RecentlySharedSubtitleText>
+                Available Beds
+              </RecentlySharedSubtitleText>
+              <RecentlySharedSubtitleText>
+                {data.bedsAvailable}
               </RecentlySharedSubtitleText>
             </View>
           )}
@@ -87,23 +99,58 @@ const Component = ({navigation, data, listFor}) => {
               </RecentlySharedSubtitleText>
             </View>
           )}
-          {data.bedsAvailable && (
-            <View style={styles.row}>
-              <RecentlySharedSubtitleText>
-                Available Beds
-              </RecentlySharedSubtitleText>
-              <RecentlySharedSubtitleText>
-                {data.bedsAvailable}
-              </RecentlySharedSubtitleText>
-            </View>
-          )}
-          {data.roomsAvailable && (
+          {data.roomsAvailable && data.spaceCategory == 'Working' ? (
             <View style={styles.row}>
               <RecentlySharedSubtitleText>
                 Available rooms
               </RecentlySharedSubtitleText>
               <RecentlySharedSubtitleText>
                 {data.roomsAvailable}
+              </RecentlySharedSubtitleText>
+            </View>
+          ) : null}
+          {data.roomFare && data.spaceCategory == 'Working' ? (
+            <View style={styles.row}>
+              <RecentlySharedSubtitleText>Room Fare</RecentlySharedSubtitleText>
+              <RecentlySharedSubtitleText>
+                {data.roomFare}
+              </RecentlySharedSubtitleText>
+            </View>
+          ) : null}
+
+          {data.seatsAvailable && (
+            <View style={styles.row}>
+              <RecentlySharedSubtitleText>
+                Available Seats
+              </RecentlySharedSubtitleText>
+              <RecentlySharedSubtitleText>
+                {data.seatsAvailable}
+              </RecentlySharedSubtitleText>
+            </View>
+          )}
+          {data.seatFare && (
+            <View style={styles.row}>
+              <RecentlySharedSubtitleText>Seat Fare</RecentlySharedSubtitleText>
+              <RecentlySharedSubtitleText>
+                {data.seatFare}
+              </RecentlySharedSubtitleText>
+            </View>
+          )}
+          {data.desksAvailable && (
+            <View style={styles.row}>
+              <RecentlySharedSubtitleText>
+                Available desks
+              </RecentlySharedSubtitleText>
+              <RecentlySharedSubtitleText>
+                {data.desksAvailable}
+              </RecentlySharedSubtitleText>
+            </View>
+          )}
+          {data.deskFare && (
+            <View style={styles.row}>
+              <RecentlySharedSubtitleText>Desk Fare</RecentlySharedSubtitleText>
+              <RecentlySharedSubtitleText>
+                {data.deskFare}
               </RecentlySharedSubtitleText>
             </View>
           )}
@@ -166,7 +213,7 @@ const Component = ({navigation, data, listFor}) => {
             onPress={() =>
               navigation.navigate('BookSpace', {
                 data: data,
-                listFor: listFor,
+                listFor: spaceType,
               })
             }>
             Send Booking Request

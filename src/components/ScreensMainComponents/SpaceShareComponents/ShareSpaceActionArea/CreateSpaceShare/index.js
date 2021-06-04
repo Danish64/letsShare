@@ -157,7 +157,7 @@ const Component = ({navigation}) => {
               }>
               Share Working Space
             </CategoryOutlinedButton>
-            <CategoryOutlinedButton
+            {/* <CategoryOutlinedButton
               iconName="arrow-forward-outline"
               onPress={() =>
                 // console.log('Parking Space')
@@ -180,7 +180,7 @@ const Component = ({navigation}) => {
                 navigation.navigate('ShareEventSpace', {item: item})
               }>
               Share Event Space
-            </CategoryOutlinedButton>
+            </CategoryOutlinedButton> */}
           </View>
         </View>
       ) : (

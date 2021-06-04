@@ -2,6 +2,8 @@ import React from 'react';
 import styles from 'res/styles/index.styles.js';
 import {Colors} from 'res/constants/Colors.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import {FlatList, View, Text, Image} from 'react-native';
 
 import {
@@ -35,6 +37,25 @@ export const TextIconSmall = ({iconName, flexDirection, children, color}) => (
   <View style={[styles.textIconStyle, {flexDirection: flexDirection}]}>
     <View style={styles.textIconAlign}>
       <Ionicons
+        name={iconName}
+        color={color ? '#006d77' : Colors.LightGrey}
+        size={18}
+      />
+    </View>
+    <View style={styles.textIconAlign}>
+      <IconTextSmallLightGrey>{children}</IconTextSmallLightGrey>
+    </View>
+  </View>
+);
+export const TextIconSmallMaterial = ({
+  iconName,
+  flexDirection,
+  children,
+  color,
+}) => (
+  <View style={[styles.textIconStyle, {flexDirection: flexDirection}]}>
+    <View style={styles.textIconAlign}>
+      <MaterialCommunityIcons
         name={iconName}
         color={color ? '#006d77' : Colors.LightGrey}
         size={18}

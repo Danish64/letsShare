@@ -31,7 +31,7 @@ const Component = ({navigation}) => {
           text="Avail Working Space"
           onPress={() => navigation.navigate('AvailWorkingSpace')}
         />
-        <TextImageContainer
+        {/* <TextImageContainer
           text="Avail Event Space"
           onPress={() => navigation.navigate('AvailEventSpace')}
         />
@@ -42,7 +42,7 @@ const Component = ({navigation}) => {
         <TextImageContainer
           text="Avail Storage Space"
           onPress={() => navigation.navigate('AvailStorageSpace')}
-        />
+        /> */}
       </View>
     </View>
   );
