@@ -14,10 +14,6 @@ import {useIsFocused} from '@react-navigation/native';
 const Component = ({navigation, data}) => {
   const isFocused = useIsFocused();
 
-  useEffect(() => {
-    isFocused;
-  }, [handleDelete]);
-
   // console.log('Data in My Shared Rides Screen', data);
   const listEmptyComponent = () => {
     return (

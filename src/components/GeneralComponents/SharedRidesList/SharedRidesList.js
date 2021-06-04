@@ -11,7 +11,7 @@ import ListItemDeleteAction from '../../GeneralComponents/ListItemDeleteAction';
 import {doDeleteAws} from '../../../utils/AxiosMethods';
 import {useIsFocused} from '@react-navigation/native';
 
-const Component = ({navigation, data}) => {
+const Component = ({navigation, data, refreshAction}) => {
   const isFocused = useIsFocused();
 
   // useEffect(() => {
