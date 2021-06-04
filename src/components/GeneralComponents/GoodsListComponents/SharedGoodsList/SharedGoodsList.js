@@ -8,8 +8,20 @@ import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
 import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
 import LoadingIndicator from '../../LoadingIndicator';
 import ListItemDeleteAction from '../../ListItemDeleteAction';
+import {doDeleteAws} from '../../../../utils/AxiosMethods';
+import {useIsFocused} from '@react-navigation/native';
 
 const Component = ({navigation, data}) => {
+  const isFocused = useIsFocused();
+
+  const handleDelete = async (itemId) => {
+    const data = {
+      id: itemId,
+    };
+    console.log(data);
+    const result = await doDeleteAws(data, 'v1/goodShares/deleteGoodShare');
+    console.log('Delete Goods', result);
+  };
   // console.log('Data in My Shared Rides Screen', data);
   const listEmptyComponent = () => {
     return (
@@ -55,7 +67,7 @@ const Component = ({navigation, data}) => {
             navigation.navigate('GoodsBookingRequests', {item: item});
           }}
           renderRightAction={() => (
-            <ListItemDeleteAction onPress={() => console.log('Delete')} />
+            <ListItemDeleteAction onPress={() => handleDelete(item._id)} />
           )}
         />
       )}

@@ -40,7 +40,11 @@ const Component = ({navigation}) => {
   return (
     <Container>
       <Header title="My Shared Rides" hasBackIcon navigation={navigation} />
-      <SharedRidesList navigation={navigation} data={userAllRides} />
+      <SharedRidesList
+        navigation={navigation}
+        data={userAllRides}
+        refreshAction={getUserAllRides}
+      />
     </Container>
   );
 };

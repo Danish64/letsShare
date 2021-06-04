@@ -28,7 +28,7 @@ const Component = ({navigation}) => {
 
   const fetchAllRides = async () => {
     let data = {
-      userId: userId,
+      sharerId: userId,
     };
     const result = await doPost('v1/userRides/getAllRideShares', data);
     setAllRides(result.data);

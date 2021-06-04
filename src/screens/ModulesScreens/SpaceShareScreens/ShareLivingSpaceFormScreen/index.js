@@ -53,11 +53,13 @@ const Component = ({navigation}) => {
       fare = {
         roomFare: values.fare,
         singleShareAbleUnit: values.singleShareAbleUnit.name,
+        roomsAvailable: values.quantity,
       };
     } else {
       fare = {
         bedFare: values.fare,
         singleShareAbleUnit: values.singleShareAbleUnit.name,
+        bedsAvailable: values.quantity,
       };
     }
 
@@ -101,6 +103,7 @@ const Component = ({navigation}) => {
             <Form
               initialValues={{}}
               onSubmit={(values) => {
+                // console.log(values);
                 submitForm(values);
               }}>
               <FormPicker
@@ -120,6 +123,13 @@ const Component = ({navigation}) => {
                 name="fare"
                 placeholder={`Enter ${shareAbleUnit} fare in Rs.`}
               />
+
+              {shareAbleUnit == 'bed' || shareAbleUnit == 'room' ? (
+                <StepperButtonInputField
+                  title="Enter Beds Available "
+                  name="quantity"
+                />
+              ) : null}
 
               {/* Submit Button */}
               <View style={styles.buttonAreaStyle}>

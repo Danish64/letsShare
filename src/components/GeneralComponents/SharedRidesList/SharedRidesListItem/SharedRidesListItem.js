@@ -66,7 +66,7 @@ const Component = ({
               <View
                 style={{width: '80%', alignItems: 'center', paddingTop: 10}}>
                 <RecentlySharedTitleText>
-                  {rideCategory + ' Ride'}
+                  {rideCategory}
                 </RecentlySharedTitleText>
               </View>
             )}

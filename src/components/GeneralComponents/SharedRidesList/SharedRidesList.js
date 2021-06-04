@@ -8,8 +8,49 @@ import Illustration from 'res/images/ModulesImages/GeneralImages/empty.png';
 import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
 import LoadingIndicator from '../LoadingIndicator';
 import ListItemDeleteAction from '../../GeneralComponents/ListItemDeleteAction';
+import {doDeleteAws} from '../../../utils/AxiosMethods';
+import {useIsFocused} from '@react-navigation/native';
 
-const Component = ({navigation, data}) => {
+const Component = ({navigation, data, refreshAction}) => {
+  const isFocused = useIsFocused();
+
+  // useEffect(() => {
+  //   isFocused;
+  // }, [handleDelete]);
+
+  const handleDelete = async (itemId, rideCategory, item) => {
+    console.log(item);
+    if (rideCategory == 'Nearby') {
+      const data = {
+        id: itemId,
+      };
+      const result = await doDeleteAws(
+        data,
+        'v1/nearByRideShares/deleteNearByRideShare',
+      );
+      console.log('Nearby Ride delete result', result);
+    }
+    if (rideCategory == 'CityToCity') {
+      const data = {
+        id: itemId,
+      };
+      const result = await doDeleteAws(
+        data,
+        'v1/cityToCityRideShares/deleteCityToCityRideShare',
+      );
+      console.log('City to city Ride delete result', result);
+    }
+    if (rideCategory == 'TourRide') {
+      const data = {
+        id: itemId,
+      };
+      const result = await doDeleteAws(
+        data,
+        'v1/tourRideShares/deleteTourRideShare',
+      );
+      console.log('Tour Ride delete result', result);
+    }
+  };
   // console.log('Data in My Shared Rides Screen', data);
   const listEmptyComponent = () => {
     return (
@@ -70,7 +111,9 @@ const Component = ({navigation, data}) => {
             navigation.navigate('BookingRequestsScreen', {item: item});
           }}
           renderRightAction={() => (
-            <ListItemDeleteAction onPress={() => console.log('Delete')} />
+            <ListItemDeleteAction
+              onPress={() => handleDelete(item._id, item.rideCategory, item)}
+            />
           )}
         />
       )}

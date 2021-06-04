@@ -5,7 +5,7 @@ import {s, vs, ms, mvs} from 'react-native-size-matters';
 export default StyleSheet.create({
   mainContainer: {
     width: '90%',
-    height: mvs(155, 0.7),
+    // height: mvs(155, 0.7),
     backgroundColor: Colors.White,
     marginTop: mvs(5, 0.6),
     marginBottom: mvs(5, 0.6),
@@ -14,6 +14,7 @@ export default StyleSheet.create({
     elevation: ms(3),
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    paddingVertical: mvs(10, 0.6),
   },
 
   spaceDetails: {
@@ -34,23 +35,38 @@ export default StyleSheet.create({
 
   locationDetails: {
     width: '50%',
-    height: mvs(100, 0.7),
+    //height: mvs(100, 0.7),
     justifyContent: 'center',
     paddingHorizontal: ms(10, 0.6),
   },
 
   otherDetail: {
     width: '20%',
-    height: mvs(100, 0.7),
+    //height: mvs(100, 0.7),
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   ContactContainer: {
-    height: 50,
+    marginVertical: mvs(10, 0.6),
+    //height: 50,
     width: '100%',
     flexDirection: 'row',
     marginHorizontal: ms(5, 0.3),
+  },
+  respondRequest: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  bookingStatus: {
+    marginTop: mvs(5, 0.5),
+    height: mvs(30, 0.5),
+    width: ms(230, 0.5),
+    borderWidth: 1,
+    borderRadius: ms(10, 0.5),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   acceptButton: {
@@ -61,7 +77,7 @@ export default StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     flexDirection: 'row',
-    width: '40%',
+    width: '100%',
   },
   verticalSeparator: {
     width: 2,

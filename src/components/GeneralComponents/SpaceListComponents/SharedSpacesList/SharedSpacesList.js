@@ -8,8 +8,12 @@ import {ButtonTextLightGrey} from 'res/UniversalComponents/Text.js';
 import LoadingIndicator from '../../LoadingIndicator';
 import ListItemDeleteAction from '../../ListItemDeleteAction';
 import SharedSpacesListItem from './SharedSpacesListItem';
+import {doDeleteAws} from '../../../../utils/AxiosMethods';
+import {useIsFocused} from '@react-navigation/native';
 
 const Component = ({navigation, data}) => {
+  const isFocused = useIsFocused();
+
   // console.log('Data in My Shared Rides Screen', data);
   const listEmptyComponent = () => {
     return (
@@ -37,6 +41,18 @@ const Component = ({navigation, data}) => {
     );
   };
 
+  const handleDelete = async (itemId) => {
+    const data = {
+      id: itemId,
+    };
+    console.log(data);
+    const result = await doDeleteAws(
+      data,
+      'v1/residenceSpaceShares/deleteResidenceSpaceShare',
+    );
+    console.log('Delete Space', result);
+  };
+
   if (!data) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -44,6 +60,7 @@ const Component = ({navigation, data}) => {
       </View>
     );
   }
+
   return (
     <FlatList
       data={data ? data : FlatListData}
@@ -55,7 +72,7 @@ const Component = ({navigation, data}) => {
             navigation.navigate('SpaceBookingRequests', {item: item});
           }}
           renderRightAction={() => (
-            <ListItemDeleteAction onPress={() => console.log('Delete')} />
+            <ListItemDeleteAction onPress={() => handleDelete(item._id)} />
           )}
         />
       )}

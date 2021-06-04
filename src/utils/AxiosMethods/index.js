@@ -31,6 +31,25 @@ export const doPost = (url, data) => {
   );
 };
 
+export const doDeleteAws = (data, url) =>
+  new Promise((resolve) =>
+    axios({
+      url: baseURL + url,
+      method: 'DELETE',
+      //timeout: 1000 * 8,
+      headers: {
+        'Content-Type': 'application/json',
+        //'Authorization': "Bearer " + token
+      },
+      data,
+    })
+      .then((result) => {
+        // console.log('Post Request Result', result);
+        resolve(result);
+      })
+      .catch((error) => resolve(error)),
+  );
+
 export const doPostWithTokenResponse = (url, data) => {
   const endPoint = baseURL + url;
 

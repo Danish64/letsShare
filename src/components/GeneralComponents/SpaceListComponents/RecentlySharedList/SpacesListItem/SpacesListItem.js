@@ -73,9 +73,9 @@ const Component = ({id, item, onPress}) => {
               </TextIcon>
             )}
 
-            {item.quantity && (
-              <TextIcon flexDirection="column" iconName={'basket-outline'}>
-                {item.quantity}
+            {item.singleShareAbleUnit && (
+              <TextIcon flexDirection="column" iconName={'home-outline'}>
+                {item.singleShareAbleUnit}
               </TextIcon>
             )}
 
