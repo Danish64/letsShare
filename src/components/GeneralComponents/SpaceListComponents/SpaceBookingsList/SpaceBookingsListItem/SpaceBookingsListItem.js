@@ -46,6 +46,8 @@ const Component = ({item, onPress, shareId, availerPhoneNumber, spaceType}) => {
   const [status, setStatus] = useState('');
   const [rejectStatus, setRejectStatus] = useState('');
 
+  console.log('Item', item);
+
   const navigation = useNavigation();
   const isFocused = useIsFocused();
 
@@ -213,12 +215,31 @@ const Component = ({item, onPress, shareId, availerPhoneNumber, spaceType}) => {
               <CaptionText>{item.availerBeds}</CaptionText>
             </>
           )}
-          {item.availerRooms && (
+
+          {item.availerRooms && spaceType == 'Residence' ? (
             <>
               <CaptionTextPrimary>Requested Rooms</CaptionTextPrimary>
               <CaptionText>{item.availerRooms}</CaptionText>
             </>
-          )}
+          ) : null}
+          {item.availerRooms && spaceType == 'Working' ? (
+            <>
+              <CaptionTextPrimary>Requested Rooms</CaptionTextPrimary>
+              <CaptionText>{item.availerRooms}</CaptionText>
+            </>
+          ) : null}
+          {item.availerSeats && spaceType == 'Working' ? (
+            <>
+              <CaptionTextPrimary>Requested Seats</CaptionTextPrimary>
+              <CaptionText>{item.availerSeats}</CaptionText>
+            </>
+          ) : null}
+          {item.availerDesks && spaceType == 'Working' ? (
+            <>
+              <CaptionTextPrimary>Requested Desks</CaptionTextPrimary>
+              <CaptionText>{item.availerDesks}</CaptionText>
+            </>
+          ) : null}
         </View>
         <View style={styles.otherDetail}>
           {item.isAccepted === true || status == '200' ? (

@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, View, Text} from 'react-native';
 import styles from './style';
 import {FlatListData} from 'res/constants/dummyData.js';
 import {useNavigation, useRoute} from '@react-navigation/native';
