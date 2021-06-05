@@ -63,8 +63,6 @@ const Component = ({
     return bookings.filter((item) => item.isAccepted);
   };
 
-  const accepted = acceptedBookings(item.bookings).length;
-
   // console.log('item bookings accepted', accepted);
 
   // calculating sharer distance from start to end point
@@ -72,9 +70,9 @@ const Component = ({
   const [sharerChargesPerKm, setSharerChargesPerKm] = useState(null);
   const [availerCharges, setAvailerCharges] = useState(null);
   const [nearbyAvailerFare, setNearbyAvailerFare] = useState(null);
-  const [noOfBookings, setNoOfBookings] = useState(
-    acceptedBookings(item.bookings).length,
-  );
+  // const [noOfBookings, setNoOfBookings] = useState(
+  //   acceptedBookings(item.bookings).length,
+  // );
 
   console.log('Sharer Distance', sharerDistance);
   console.log('sharerChargesPerKm', sharerChargesPerKm);
@@ -139,21 +137,35 @@ const Component = ({
 
       const availerDistInKm = dist / 1000;
       const availerDistance = availerDistInKm;
+      const rideUsers = acceptedBookings(item.bookings).length;
+
       console.log('Availer Distance', availerDistance);
       if (rideCategory == 'Nearby') {
         if (fareMethod == 'chargePerKm') {
           const fare = Math.floor(availerDistance * item.fareRate);
-          setNearbyAvailerFare(fare);
+          if (rideUsers > 0) {
+            setNearbyAvailerFare(Math.floor(fare / rideUsers));
+          } else {
+            setNearbyAvailerFare(fare);
+          }
         }
         if (fareMethod == 'chargePerDP') {
           const fare = Math.floor(availerDistance * sharerChargesPerKm);
-          setNearbyAvailerFare(fare);
+          if (rideUsers > 0) {
+            setNearbyAvailerFare(Math.floor(fare / rideUsers));
+          } else {
+            setNearbyAvailerFare(fare);
+          }
         }
       }
 
       if (rideCategory == 'CityToCity') {
         const availerCharges = Math.floor(availerDistance * sharerChargesPerKm);
-        setAvailerCharges(availerCharges);
+        if (rideUsers > 0) {
+          setAvailerCharges(Math.floor(availerCharges / rideUsers));
+        } else {
+          setAvailerCharges(availerCharges);
+        }
       }
     }
   };
