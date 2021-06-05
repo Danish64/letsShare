@@ -7,7 +7,11 @@ import {
   RecentlySharedSubtitleText,
 } from 'res/UniversalComponents/Text.js';
 import DummyImage from 'res/images/DummyImages/testImage.jpg';
-import {TextIcon, Icon} from 'res/UniversalComponents/TextIcon.js';
+import {
+  TextIcon,
+  Icon,
+  TextIconSmallMaterial,
+} from 'res/UniversalComponents/TextIcon.js';
 import styles from './style';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {ShareButton} from 'res/UniversalComponents/Button';
@@ -62,11 +66,11 @@ const Component = ({id, item, onPress}) => {
                 {item.bedFare}
               </TextIcon>
             )}
-            {item.roomFare && (
+            {item.roomFare && item.singleShareAbleUnit == 'room' ? (
               <TextIcon flexDirection="column" iconName={'cash-outline'}>
                 {item.roomFare}
               </TextIcon>
-            )}
+            ) : null}
             {item.houseFare && (
               <TextIcon flexDirection="column" iconName={'cash-outline'}>
                 {item.houseFare}
@@ -78,6 +82,49 @@ const Component = ({id, item, onPress}) => {
                 {item.singleShareAbleUnit}
               </TextIcon>
             )}
+            {item.seatFare && (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <TextIconSmallMaterial
+                  flexDirection="column"
+                  iconName={'chair-rolling'}>
+                  {item.seatFare}
+                </TextIconSmallMaterial>
+                <Text>{'x' + item.seatsAvailable}</Text>
+              </View>
+            )}
+            {item.deskFare && (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <TextIconSmallMaterial flexDirection="column" iconName={'desk'}>
+                  {item.deskFare}
+                </TextIconSmallMaterial>
+                <Text>{'x' + item.desksAvailable}</Text>
+              </View>
+            )}
+            {item.roomFare && item.roomsAvailable ? (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <TextIconSmallMaterial
+                  flexDirection="column"
+                  iconName={'office-building'}>
+                  {item.roomFare}
+                </TextIconSmallMaterial>
+                <Text>{'x' + item.roomsAvailable}</Text>
+              </View>
+            ) : null}
 
             <View style={styles.separator} />
           </View>
