@@ -20,7 +20,7 @@ import SetLocation from '../../../GeneralComponents/SetLocation';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {doPost} from '../../../../utils/AxiosMethods';
 
-//Third Party Exports Ends
+//Third Party Exports End
 
 const validationSchema = Yup.object().shape({
   startTime: Yup.string().required().min(3).max(20).label('Start Time'),
